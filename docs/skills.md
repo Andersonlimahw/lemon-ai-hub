@@ -69,6 +69,9 @@ The following skills are available in the Lemon AI Hub and can be used across mu
 ### `incident-runbook`
 - **Location**: [skills/incident-runbook/SKILL.md](./skills/incident-runbook/SKILL.md)
 
+### `karpathy-guidelines`
+- **Location**: [skills/karpathy-guidelines/SKILL.md](./skills/karpathy-guidelines/SKILL.md)
+
 ### `karpathy-recipe`
 - **Location**: [skills/karpathy-recipe/SKILL.md](./skills/karpathy-recipe/SKILL.md)
 
