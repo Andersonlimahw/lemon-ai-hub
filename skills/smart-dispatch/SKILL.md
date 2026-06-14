@@ -80,4 +80,3 @@ If a Tier 0 agent fails to resolve the issue (validation still fails) after **2 
 - **Token Economy**: Prefer Gemini Flash for context-heavy reads but simple edits.
 - **Fail Fast**: Don't loop on cheap models. Escalate early.
 - **Local First**: CLI tools > AI Agents for mechanical fixes.
-

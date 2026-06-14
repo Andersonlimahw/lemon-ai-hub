@@ -80,7 +80,7 @@ When context is found, fill blanks from the repo:
 
 When context is absent or thin:
 - Emit NO scaffold. Instead ask, e.g.:
-  > "Sem contexto de repo suficiente. Pra montar o prompt preciso de: (1) stack/linguagem, (2) arquivos-alvo, (3) critério de pronto. Me passa?"
+  > "Not enough repo context. To build the prompt I need: (1) stack/language, (2) target files, (3) definition of done. Can you provide them?"
 - Proceed only with user-supplied facts. Inventing a fake stack is forbidden.
 
 ---
