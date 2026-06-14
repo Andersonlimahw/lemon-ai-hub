@@ -35,9 +35,9 @@ extract_desc() {
 }
 
 {
-  echo "# VibingCash"
+  echo "# AI Marketplace"
   echo ""
-  echo "> Financial SaaS Next.js 15 + Supabase. Repository Pattern, ActionResult<T>, Apple Design System (Tailwind 4), AI copilot (OpenAI), Open Finance (Belvo), Stripe, Capacitor iOS/Android."
+  echo "> Centralized workspace to share custom AI Skills and Plugins across Claude Code, Codex, OpenCode, and Antigravity (Agy)."
   echo ""
   echo "Last generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
   echo ""
