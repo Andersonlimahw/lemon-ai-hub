@@ -2,7 +2,7 @@
 
 > Centralized workspace to share custom AI Skills and Plugins across Claude Code, Codex, OpenCode, and Antigravity (Agy).
 
-Last generated: 2026-06-14T05:52:02Z
+Last generated: 2026-06-14T05:54:21Z
 
 ## Overview
 

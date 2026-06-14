@@ -15,8 +15,7 @@ This project is based on and inspired by Peter Steinberger's pattern (`steipete/
   - [`karpathy-recipe`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/karpathy-recipe/SKILL.md): Incremental development methodology (based on Karpathy's recipe).
   - [`llm-wiki-curator`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/llm-wiki-curator/SKILL.md): Automated maintenance of structured `llms.txt` documentation.
   - [`token-saver`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/token-saver/SKILL.md): Generic skill for installing and configuring token-saving tools.
-- **`plugins/`**: References to installed plugins.
-  - `marketplaces/karpathy-skills`: Symlink to local installed plugins.
+- **`plugins/`**: Installed plugins (such as `spotify-squad` and `agentic-value-loops`).
 - **`scripts/`**: Utility helpers.
   - `setup-symlinks.sh`: Script to automate the creation of global symbolic links.
   - `marketplace`: CLI interface for listing and managing IA tools in the repository.
