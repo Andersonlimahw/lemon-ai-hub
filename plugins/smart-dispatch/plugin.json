@@ -1,0 +1,15 @@
+{
+  "name": "smart-dispatch",
+  "version": "1.0.0",
+  "description": "Automatically routes tasks to the optimal AI agent, model, or provider based on complexity, cost, and capability. Use when implementing features, fixing bugs, or any multi-step development work. Triggers on \"implement\", \"build\", \"create\", \"fix\", \"add feature\", \"develop\", or when the user asks to do any coding task.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "smart-dispatch"
+  ]
+}

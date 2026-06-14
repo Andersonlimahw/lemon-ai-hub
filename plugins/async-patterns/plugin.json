@@ -1,0 +1,15 @@
+{
+  "name": "async-patterns",
+  "version": "1.0.0",
+  "description": "Async and concurrency pattern advisor for JavaScript/TypeScript, Python, Go, and Rust. Identifies race conditions, missing error handling in promise chains, N+1 async anti-patterns, unbounded parallelism, and missing cancellation. Recommends correct patterns: Promise.all, p-limit, AbortController, AsyncLocalStorage, worker threads. Use when async code has bugs, timeouts, or memory leaks.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "async-patterns"
+  ]
+}

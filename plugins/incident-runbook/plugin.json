@@ -1,0 +1,15 @@
+{
+  "name": "incident-runbook",
+  "version": "1.0.0",
+  "description": "Incident response runbooks, on-call workflows, and postmortem templates. Generates severity-tiered runbooks, communication templates, timeline reconstruction, and blameless postmortem docs. Use when user is in an incident, doing on-call prep, writing a postmortem, or building incident response playbooks.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "incident-runbook"
+  ]
+}

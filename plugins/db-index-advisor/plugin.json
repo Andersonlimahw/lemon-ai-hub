@@ -1,0 +1,15 @@
+{
+  "name": "db-index-advisor",
+  "version": "1.0.0",
+  "description": "Database index optimization advisor for PostgreSQL, MySQL, and SQLite. Analyzes slow queries, missing indexes, unused indexes, and over-indexed tables. Generates CREATE INDEX statements with EXPLAIN ANALYZE estimates. Use when queries are slow, p99 DB latency spikes, or when reviewing a new schema.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "db-index-advisor"
+  ]
+}

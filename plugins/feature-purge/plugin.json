@@ -1,0 +1,15 @@
+{
+  "name": "feature-purge",
+  "version": "1.0.0",
+  "description": "Safely remove an entire feature and every dead reference it leaves behind — not just the folder you point at, but the sibling folders in other architecture layers, the imports/registries/routes/i18n keys that point to it, and any newly-orphaned code. Verifies the quality gate stays 100% green and writes a Markdown removal report. Use when deleting a feature, screen, module, or directory and you need it gone WITHOUT leaving dead files or dead code. Triggers on /feature-purge <path>, \"remove this feature\", \"delete this folder safely\", \"apaga essa feature sem deixar código morto\", \"limpa essa screen e as camadas\".",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "feature-purge"
+  ]
+}

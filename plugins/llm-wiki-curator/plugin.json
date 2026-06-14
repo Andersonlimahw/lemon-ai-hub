@@ -1,0 +1,15 @@
+{
+  "name": "llm-wiki-curator",
+  "version": "1.0.0",
+  "description": "Maintains docs/ in the Karpathy-style LLM-wiki standard. Generates docs/llms.txt (flat machine-readable index conforming to llmstxt.org), validates broken links, enforces a minimum front-matter in new .md files (title, status, updated, related), groups orphan docs. Use when the user says \"update docs index\", \"generate llms.txt\", \"audit docs\", \"organize wiki\", \"cure documentation\", or after adding/renaming a file in docs/.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "llm-wiki-curator"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "i18n-audit",
+  "version": "1.0.0",
+  "description": "Internationalization completeness audit and key synchronization. Finds missing translation keys, hardcoded strings, pluralization bugs, RTL layout issues, date/number formatting gaps, and untranslated copy. Supports i18next, react-intl, vue-i18n, next-intl, and custom JSON locale files. Use when adding a new language, auditing translation completeness, or debugging locale mismatch errors.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "i18n-audit"
+  ]
+}

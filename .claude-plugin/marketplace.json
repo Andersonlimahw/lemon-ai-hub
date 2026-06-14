@@ -5,10 +5,22 @@
     "url": "https://andersonlimahw.github.io"
   },
   "metadata": {
-    "description": "AI-Native hub of skills and plugins for Claude Code, Codex, Gemini, Agy, and OpenCode.",
-    "version": "1.1.0"
+    "description": "AI-Native hub of unified plugins and skills for Claude Code, Codex, Gemini, Agy, and OpenCode.",
+    "version": "1.2.0"
   },
   "plugins": [
+    {
+      "name": "a11y-audit",
+      "source": "./plugins/a11y-audit",
+      "description": "WCAG 2.1 AA/AAA accessibility audit for web components, pages, and apps. Detects contrast failures, missing ARIA labels, keyboard trap issues, focus order problems, and screen-reader gotchas. Use when user wants to audit accessibility, fix a11y warnings, prepare for compliance review, or validate UI against WCAG standards.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "a11y-audit"
+      ]
+    },
     {
       "name": "a11y-guardian",
       "source": "./plugins/a11y-guardian",
@@ -65,6 +77,30 @@
       ]
     },
     {
+      "name": "async-patterns",
+      "source": "./plugins/async-patterns",
+      "description": "Async and concurrency pattern advisor for JavaScript/TypeScript, Python, Go, and Rust. Identifies race conditions, missing error handling in promise chains, N+1 async anti-patterns, unbounded parallelism, and missing cancellation. Recommends correct patterns: Promise.all, p-limit, AbortController, AsyncLocalStorage, worker threads. Use when async code has bugs, timeouts, or memory leaks.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "async-patterns"
+      ]
+    },
+    {
+      "name": "bundle-analyzer",
+      "source": "./plugins/bundle-analyzer",
+      "description": "JavaScript/TypeScript bundle size analysis, tree-shaking audit, and code splitting recommendations. Identifies heavy dependencies, duplicate packages, unused imports, and suggests dynamic imports and lazy loading. Use when bundle is too large, Lighthouse score is low, or user wants to optimize web app loading performance.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "bundle-analyzer"
+      ]
+    },
+    {
       "name": "bundle-watch",
       "source": "./plugins/bundle-watch",
       "description": "Bundle size monitoring and budget enforcement plugin. Tracks JS/CSS bundle size per commit, blocks PRs that exceed size budgets, posts bundle size diff comments on PRs, and generates size trend charts. Supports Vite, Webpack, Next.js, Remix, and Rollup build outputs.",
@@ -96,6 +132,42 @@
         "gameday",
         "sre",
         "reliability"
+      ]
+    },
+    {
+      "name": "chaos-test",
+      "source": "./plugins/chaos-test",
+      "description": "Chaos engineering scenarios for resilience testing. Designs fault injection experiments (network partitions, latency injection, dependency failures, disk pressure, memory leaks) and verifies circuit breakers, retries, and fallbacks work correctly. Use when building resilience features, verifying SLO under failure conditions, or preparing for production chaos days.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "chaos-test"
+      ]
+    },
+    {
+      "name": "code-review-adversary",
+      "source": "./plugins/code-review-adversary",
+      "description": ">",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "code-review-adversary"
+      ]
+    },
+    {
+      "name": "code-smell",
+      "source": "./plugins/code-smell",
+      "description": "Code smell detection and remediation. Identifies long methods, god classes, feature envy, primitive obsession, shotgun surgery, dead code, magic numbers, and other structural anti-patterns. Goes beyond linters — understands semantic coupling and design intent. Use when code is hard to change, PRs are consistently risky, or technical debt is growing faster than features.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "code-smell"
       ]
     },
     {
@@ -155,6 +227,30 @@
       ]
     },
     {
+      "name": "db-index-advisor",
+      "source": "./plugins/db-index-advisor",
+      "description": "Database index optimization advisor for PostgreSQL, MySQL, and SQLite. Analyzes slow queries, missing indexes, unused indexes, and over-indexed tables. Generates CREATE INDEX statements with EXPLAIN ANALYZE estimates. Use when queries are slow, p99 DB latency spikes, or when reviewing a new schema.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "db-index-advisor"
+      ]
+    },
+    {
+      "name": "feature-flag",
+      "source": "./plugins/feature-flag",
+      "description": "Feature flag implementation, management, and cleanup. Handles flag creation, gradual rollout strategies, A/B testing wiring, stale flag detection, and safe flag removal. Supports LaunchDarkly, Unleash, GrowthBook, Statsig, custom env-var flags, and database-backed toggles. Use when adding gated features, rolling out gradually, or cleaning up old flags.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "feature-flag"
+      ]
+    },
+    {
       "name": "feature-flags",
       "source": "./plugins/feature-flags",
       "description": "Feature flag lifecycle management plugin. Tracks all flags across the codebase, detects stale flags (>90 days enabled at 100%), enforces naming conventions, auto-generates flag registry, and produces cleanup PRs for dead flags. Integrates with LaunchDarkly, GrowthBook, Unleash, Statsig, and env-var flag patterns.",
@@ -169,6 +265,42 @@
         "rollout",
         "ab-testing",
         "experiments"
+      ]
+    },
+    {
+      "name": "feature-purge",
+      "source": "./plugins/feature-purge",
+      "description": "Safely remove an entire feature and every dead reference it leaves behind — not just the folder you point at, but the sibling folders in other architecture layers, the imports/registries/routes/i18n keys that point to it, and any newly-orphaned code. Verifies the quality gate stays 100% green and writes a Markdown removal report. Use when deleting a feature, screen, module, or directory and you need it gone WITHOUT leaving dead files or dead code. Triggers on /feature-purge <path>, \"remove this feature\", \"delete this folder safely\", \"apaga essa feature sem deixar código morto\", \"limpa essa screen e as camadas\".",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "feature-purge"
+      ]
+    },
+    {
+      "name": "git-bisect-ai",
+      "source": "./plugins/git-bisect-ai",
+      "description": "AI-guided git bisect for finding the exact commit that introduced a bug or regression. Automates the binary search, interprets test results, and identifies the responsible code change with full context. Use when you know a bug exists now but didn't exist before, or when a performance regression appeared somewhere in git history.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "git-bisect-ai"
+      ]
+    },
+    {
+      "name": "i18n-audit",
+      "source": "./plugins/i18n-audit",
+      "description": "Internationalization completeness audit and key synchronization. Finds missing translation keys, hardcoded strings, pluralization bugs, RTL layout issues, date/number formatting gaps, and untranslated copy. Supports i18next, react-intl, vue-i18n, next-intl, and custom JSON locale files. Use when adding a new language, auditing translation completeness, or debugging locale mismatch errors.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "i18n-audit"
       ]
     },
     {
@@ -209,6 +341,66 @@
       ]
     },
     {
+      "name": "incident-runbook",
+      "source": "./plugins/incident-runbook",
+      "description": "Incident response runbooks, on-call workflows, and postmortem templates. Generates severity-tiered runbooks, communication templates, timeline reconstruction, and blameless postmortem docs. Use when user is in an incident, doing on-call prep, writing a postmortem, or building incident response playbooks.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "incident-runbook"
+      ]
+    },
+    {
+      "name": "karpathy-guidelines",
+      "source": "./plugins/karpathy-guidelines",
+      "description": ">",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "karpathy-guidelines"
+      ]
+    },
+    {
+      "name": "karpathy-recipe",
+      "source": "./plugins/karpathy-recipe",
+      "description": "Applies Karpathy's \"A Recipe for Training Neural Networks\" adapted to software engineering. Forces a minimum runnable baseline before optimizing, one knob at a time, with verifiable eval at the beginning. Use when implementing a new feature, doing a non-trivial refactor, integrating an external service, or when the user says \"implement X from scratch\", \"how to start feature Y\", \"recipe\", \"incremental approach\", \"baseline first\".",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "karpathy-recipe"
+      ]
+    },
+    {
+      "name": "llm-wiki-curator",
+      "source": "./plugins/llm-wiki-curator",
+      "description": "Maintains docs/ in the Karpathy-style LLM-wiki standard. Generates docs/llms.txt (flat machine-readable index conforming to llmstxt.org), validates broken links, enforces a minimum front-matter in new .md files (title, status, updated, related), groups orphan docs. Use when the user says \"update docs index\", \"generate llms.txt\", \"audit docs\", \"organize wiki\", \"cure documentation\", or after adding/renaming a file in docs/.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "llm-wiki-curator"
+      ]
+    },
+    {
+      "name": "load-test",
+      "source": "./plugins/load-test",
+      "description": "Load testing setup, execution, and analysis with k6, Artillery, or Locust. Generates test scripts, defines VU ramp-up scenarios, interprets p99 latency and error rate results, and suggests infrastructure fixes. Use when user wants to load test an API, check throughput limits, validate SLO headroom, or diagnose performance under traffic.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "load-test"
+      ]
+    },
+    {
       "name": "load-test-runner",
       "source": "./plugins/load-test-runner",
       "description": "Load testing orchestration plugin. Manages k6 and Artillery test suites, schedules nightly soak tests, stores historical performance baselines, detects performance regressions between releases, and generates Grafana-compatible performance reports. Tracks p50/p95/p99 trends over time.",
@@ -228,6 +420,18 @@
       ]
     },
     {
+      "name": "openapi-generate",
+      "source": "./plugins/openapi-generate",
+      "description": "Generate OpenAPI 3.1 specs from existing code (routes, controllers, types, Zod/Joi schemas), or generate code from an existing spec. Produces valid openapi.yaml, typed client SDKs, mock servers, and Postman collections. Use when documenting an API, onboarding clients, generating typed SDKs, or migrating to spec-first development.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "openapi-generate"
+      ]
+    },
+    {
       "name": "openapi-hub",
       "source": "./plugins/openapi-hub",
       "description": "OpenAPI spec management hub. Maintains versioned API specs, validates specs on every commit, detects breaking changes between versions, generates typed clients (TypeScript, Python, Go), publishes developer documentation (Redoc/Swagger UI), and exports Postman collections. Enforces spec-first development workflow.",
@@ -244,6 +448,42 @@
         "redoc",
         "postman",
         "contract-testing"
+      ]
+    },
+    {
+      "name": "senior-prompt-engineer",
+      "source": "./plugins/senior-prompt-engineer",
+      "description": "Pipeline stage-0 prompt refiner. Runs FIRST — before skills-selector and smart-dispatch — turning a raw idea, pasted draft, or the current chat into a definitive, production-grade prompt (Anthropic prompt-engineering best practices), then hands the refined prompt + an Execution Map (agents, skills, models, effort, time & token estimate) to the routers so they pick the best skills/models with sharpened context. When no file path is given, the input IS the chat/pasted text and the output is returned inline (processed naturally), not forced to a file. Use when the user invokes /senior-prompt-engineer, says \"refine my prompt\", \"improve this prompt\", \"turn this idea into a prompt\", \"rewrite idea.md to prompt.md\", \"definitive prompt\", \"professional prompt\", or pastes a draft prompt/idea to be hardened. Cross-CLI: Claude, Codex, Gemini, OpenCode, Antigravity (agy), lemon-code (lemon).",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "senior-prompt-engineer"
+      ]
+    },
+    {
+      "name": "skills-selector",
+      "source": "./plugins/skills-selector",
+      "description": "Meta-skill gatekeeper that runs FIRST on every task to decide which other skill(s) — if any — should activate. Analyzes the user request, matches it against a ranked catalog (frontend-design, ui-ux-pro-max, superpowers/planning, git-*, mcp-builder, smart-dispatch, claude-api, etc.), and emits a tight SELECTION plan so other skills are loaded on-demand only. Minimizes token/context consumption by refusing to activate heavy skills unless clearly justified. Triggers on ANY user instruction that could plausibly benefit from a specialized skill — i.e. essentially every turn that starts new work. Keywords: \"plan\", \"design\", \"ui\", \"ux\", \"implement\", \"build\", \"create\", \"fix\", \"refactor\", \"commit\", \"pr\", \"review\", \"test\", \"debug\", \"deploy\", \"mobile\", \"video\", \"mcp\", \"skill\", \"architecture\", \"api\", \"ci\", \"docs\", \"copy\", \"social\", \"setup\", \"doctor\".",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "skills-selector"
+      ]
+    },
+    {
+      "name": "smart-dispatch",
+      "source": "./plugins/smart-dispatch",
+      "description": "Automatically routes tasks to the optimal AI agent, model, or provider based on complexity, cost, and capability. Use when implementing features, fixing bugs, or any multi-step development work. Triggers on \"implement\", \"build\", \"create\", \"fix\", \"add feature\", \"develop\", or when the user asks to do any coding task.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "smart-dispatch"
       ]
     },
     {
@@ -273,6 +513,18 @@
         "plugin",
         "security-engineer",
         "devsecops"
+      ]
+    },
+    {
+      "name": "token-saver",
+      "source": "./plugins/token-saver",
+      "description": "Configures token-saving tools (rtk, caveman, graphify, context-mode) globally or per project. Allows auditing and calculating the token savings obtained.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "token-saver"
       ]
     }
   ]

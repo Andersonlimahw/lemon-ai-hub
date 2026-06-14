@@ -1,0 +1,15 @@
+{
+  "name": "a11y-audit",
+  "version": "1.0.0",
+  "description": "WCAG 2.1 AA/AAA accessibility audit for web components, pages, and apps. Detects contrast failures, missing ARIA labels, keyboard trap issues, focus order problems, and screen-reader gotchas. Use when user wants to audit accessibility, fix a11y warnings, prepare for compliance review, or validate UI against WCAG standards.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "a11y-audit"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "code-review-adversary",
+  "version": "1.0.0",
+  "description": ">",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "code-review-adversary"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "karpathy-recipe",
+  "version": "1.0.0",
+  "description": "Applies Karpathy's \"A Recipe for Training Neural Networks\" adapted to software engineering. Forces a minimum runnable baseline before optimizing, one knob at a time, with verifiable eval at the beginning. Use when implementing a new feature, doing a non-trivial refactor, integrating an external service, or when the user says \"implement X from scratch\", \"how to start feature Y\", \"recipe\", \"incremental approach\", \"baseline first\".",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "karpathy-recipe"
+  ]
+}

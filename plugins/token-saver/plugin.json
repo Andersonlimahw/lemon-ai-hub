@@ -1,0 +1,15 @@
+{
+  "name": "token-saver",
+  "version": "1.0.0",
+  "description": "Configures token-saving tools (rtk, caveman, graphify, context-mode) globally or per project. Allows auditing and calculating the token savings obtained.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "token-saver"
+  ]
+}
