@@ -41,20 +41,20 @@ Open the interactive installer, or install a plugin by name using the `plugin@ma
 
 | Plugin | Description |
 | --- | --- |
-| `spotify-squad` | AI-Native Squad — Spotify-model autonomous engineering team. 12 specialized agents (Tech Lead, Backend, Frontend, Mobile, UX, UI, Product, Scrum Master, DevOps, QA, Data, Security) with orchestrated collaboration and 17 domain-specific skills. |
-| `agentic-value-loops` | Continuous improvement engine that ships verified increments with constant quality. Loops for Feature Development, Maintenance & Security, Documentation Sync, and AI Tuning. |
-| `a11y-guardian` | Accessibility guardian plugin. Continuous WCAG 2.1 AA/AAA compliance monitoring for web projects. |
-| `async-advisor` | Async and concurrency static analysis plugin. Scans TypeScript/JavaScript codebases for race conditions and async patterns. |
-| `bundle-watch` | Bundle size monitoring and budget enforcement plugin. Tracks JS/CSS bundle size per commit. |
-| `chaos-runner` | Chaos engineering orchestration plugin. Manages chaos experiments and reliability verification. |
-| `code-smell-detector` | Automated code smell tracking and trend plugin. Runs smell detection on every PR. |
-| `commit-quality` | Commit message quality enforcement plugin. Validates Conventional Commits format and atomic splits. |
-| `db-advisor` | Database optimization advisor plugin. Monitors query performance and detects N+1 queries. |
-| `feature-flags` | Feature flag lifecycle management plugin. Tracks flags across the codebase and detects stale flags. |
-| `i18n-sync` | Internationalization key synchronization plugin. Keeps locale JSON files in sync across all languages. |
-| `incident-center` | Incident management hub plugin. Manages active incidents, runbooks, and on-call rotations. |
-| `load-test-runner` | Load testing orchestration plugin. Manages k6 and Artillery test suites. |
-| `openapi-hub` | OpenAPI spec management hub. Maintains versioned API specs and validates breaking changes. |
+| `a11y-guardian` | Accessibility guardian plugin. Continuous WCAG 2.1 AA/AAA compliance monitoring for web projects. Integrates static analysis of React/Vue/HTML components, contrast ratio checks, ARIA validation, keyboard navigation audit, and generates actionable HTML reports. Pairs with a11y-audit skill. |
+| `agentic-value-loops` | Agentic Value Loops plugin — Continuous improvement engine that ships verified increments with constant quality. Includes loops for Feature Development, Maintenance & Security, Documentation Sync, and AI Tuning. |
+| `async-advisor` | Async and concurrency static analysis plugin. Scans TypeScript/JavaScript codebases for race conditions, unbounded Promise.all, missing AbortController, swallowed rejections, and N+1 async patterns. Runs as a pre-commit hook or CI check and provides inline fix suggestions. |
+| `bundle-watch` | Bundle size monitoring and budget enforcement plugin. Tracks JS/CSS bundle size per commit, blocks PRs that exceed size budgets, posts bundle size diff comments on PRs, and generates size trend charts. Supports Vite, Webpack, Next.js, Remix, and Rollup build outputs. |
+| `chaos-runner` | Chaos engineering orchestration plugin. Manages chaos experiments via Toxiproxy, chaos-monkey scripts, and kubectl. Schedules regular chaos game days, tracks experiment results over time, and verifies steady-state hypotheses automatically. Integrates with Grafana for before/after metric comparison. |
+| `code-smell-detector` | Automated code smell tracking and trend plugin. Runs smell detection on every PR, tracks smell density per file over time, identifies files with worsening trends, and generates weekly code quality reports. Detects god classes, long methods, feature envy, duplicate code, and dead code without requiring linter configuration. |
+| `commit-quality` | Commit message quality enforcement plugin. Validates Conventional Commits format, enforces max diff size per commit, detects commits that mix unrelated changes, suggests atomic commit splits, and generates CHANGELOG entries from commit history. Integrates with commitlint, husky, and CI pipelines. |
+| `db-advisor` | Database optimization advisor plugin. Continuously monitors query performance, detects N+1 queries from ORM logs, suggests missing indexes, identifies table bloat, tracks connection pool health, and generates weekly database health reports. Supports PostgreSQL, MySQL, SQLite, and PlanetScale. |
+| `feature-flags` | Feature flag lifecycle management plugin. Tracks all flags across the codebase, detects stale flags (>90 days enabled at 100%), enforces naming conventions, auto-generates flag registry, and produces cleanup PRs for dead flags. Integrates with LaunchDarkly, GrowthBook, Unleash, Statsig, and env-var flag patterns. |
+| `i18n-sync` | Internationalization key synchronization plugin. Keeps locale JSON files in sync across all supported languages, detects missing and orphaned keys, enforces key naming conventions, blocks PRs that introduce hardcoded strings, and generates translation stubs for new keys. Supports i18next, react-intl, vue-i18n, next-intl, and custom JSON locale files. |
+| `incident-center` | Incident management hub plugin. Manages active incidents, runbooks, on-call rotations, and postmortem backlog. Integrates with PagerDuty, OpsGenie, and Slack. Auto-generates incident channels, tracks MTTR/MTTD metrics over time, and maintains a searchable postmortem library for recurring issue detection. |
+| `load-test-runner` | Load testing orchestration plugin. Manages k6 and Artillery test suites, schedules nightly soak tests, stores historical performance baselines, detects performance regressions between releases, and generates Grafana-compatible performance reports. Tracks p50/p95/p99 trends over time. |
+| `openapi-hub` | OpenAPI spec management hub. Maintains versioned API specs, validates specs on every commit, detects breaking changes between versions, generates typed clients (TypeScript, Python, Go), publishes developer documentation (Redoc/Swagger UI), and exports Postman collections. Enforces spec-first development workflow. |
+| `spotify-squad` | AI-Native Squad — Spotify-model autonomous engineering team. 12 specialized agents (Tech Lead, Backend, Frontend, Mobile, UX, UI, Product, Scrum Master, DevOps, QA, Data, Security) with orchestrated collaboration, domain-specific skills, and cross-functional workflows. Based on the AI Native Developer methodology. |
 
 ### 3. Manage the marketplace
 

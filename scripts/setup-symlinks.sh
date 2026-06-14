@@ -1,18 +1,23 @@
 #!/usr/bin/env bash
 
 # setup-symlinks.sh - Configure sharing of skills across agents
-# Primary target: ~/.claude/skills points to this repository's skills directory.
-# Other agents (.codex, .opencode, .agy) point to ~/.claude/skills.
+# This script creates symlinks from agent home directories to this repository's skills/ folder.
+# Supported agents: Claude Code, Codex, Codex App, Gemini, Agy, OpenCode.
 
 set -euo pipefail
 
-REPO_SKILLS_DIR="/Users/andersonlimadev/Projects/IA/lemon-ai-hub/skills"
+# Get the absolute path of the repository's skills directory
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_SKILLS_DIR="$REPO_ROOT/skills"
 
 setup_symlink() {
   local target="$1"
   local link_name="$2"
 
   echo "Setting up symlink: $link_name -> $target"
+
+  # Resolve ~ to $HOME
+  link_name="${link_name/#\~/$HOME}"
 
   # If it exists and is a directory (not a symlink)
   if [ -d "$link_name" ] && [ ! -L "$link_name" ]; then
@@ -29,17 +34,25 @@ setup_symlink() {
 
   # Create symlink
   ln -s "$target" "$link_name"
-  echo "Created: $link_name -> $(readlink "$link_name")"
+  echo "Created: $link_name"
 }
 
-echo "=== Lemon AI Hub: Setting up Agent Symlinks ==="
+echo "=== Lemon AI Hub: Multi-Agent Symlink Setup ==="
 
-# 1. Point ~/.claude/skills to our repository skills directory
-setup_symlink "$REPO_SKILLS_DIR" "$HOME/.claude/skills"
+# 1. Claude Code
+setup_symlink "$REPO_SKILLS_DIR" "~/.claude/skills"
 
-# 2. Point other agents' skills to ~/.claude/skills
-setup_symlink "$HOME/.claude/skills" "$HOME/.codex/skills"
-setup_symlink "$HOME/.claude/skills" "$HOME/.opencode/skills"
-setup_symlink "$HOME/.claude/skills" "$HOME/.agy/skills"
+# 2. Codex & Codex App
+setup_symlink "$REPO_SKILLS_DIR" "~/.codex/skills"
 
-echo "=== Symlinks configured successfully! ==="
+# 3. Gemini
+setup_symlink "$REPO_SKILLS_DIR" "~/.gemini/skills"
+
+# 4. Agy (Antigravity)
+setup_symlink "$REPO_SKILLS_DIR" "~/.agy/skills"
+
+# 5. OpenCode
+setup_symlink "$REPO_SKILLS_DIR" "~/.opencode/skills"
+
+echo "=== All symlinks configured successfully! ==="
+echo "Skills from $REPO_SKILLS_DIR are now available in all agents."

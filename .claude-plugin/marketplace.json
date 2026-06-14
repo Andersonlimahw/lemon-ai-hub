@@ -5,10 +5,27 @@
     "url": "https://andersonlimahw.github.io"
   },
   "metadata": {
-    "description": "AI-Native marketplace of Claude Code plugins and skills — autonomous squads, value loops, and token-saving routers.",
-    "version": "1.0.0"
+    "description": "AI-Native hub of skills and plugins for Claude Code, Codex, Gemini, Agy, and OpenCode.",
+    "version": "1.1.0"
   },
   "plugins": [
+    {
+      "name": "a11y-guardian",
+      "source": "./plugins/a11y-guardian",
+      "description": "Accessibility guardian plugin. Continuous WCAG 2.1 AA/AAA compliance monitoring for web projects. Integrates static analysis of React/Vue/HTML components, contrast ratio checks, ARIA validation, keyboard navigation audit, and generates actionable HTML reports. Pairs with a11y-audit skill.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "accessibility",
+        "wcag",
+        "a11y",
+        "aria",
+        "contrast",
+        "screen-reader",
+        "keyboard",
+        "compliance"
+      ]
+    },
     {
       "name": "agentic-value-loops",
       "source": "./plugins/agentic-value-loops",
@@ -26,6 +43,207 @@
         "ai-tuning",
         "ai-native",
         "plugin"
+      ]
+    },
+    {
+      "name": "async-advisor",
+      "source": "./plugins/async-advisor",
+      "description": "Async and concurrency static analysis plugin. Scans TypeScript/JavaScript codebases for race conditions, unbounded Promise.all, missing AbortController, swallowed rejections, and N+1 async patterns. Runs as a pre-commit hook or CI check and provides inline fix suggestions.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "async",
+        "concurrency",
+        "race-condition",
+        "promises",
+        "async-await",
+        "p-limit",
+        "abort-controller",
+        "memory-leak",
+        "node-js",
+        "typescript"
+      ]
+    },
+    {
+      "name": "bundle-watch",
+      "source": "./plugins/bundle-watch",
+      "description": "Bundle size monitoring and budget enforcement plugin. Tracks JS/CSS bundle size per commit, blocks PRs that exceed size budgets, posts bundle size diff comments on PRs, and generates size trend charts. Supports Vite, Webpack, Next.js, Remix, and Rollup build outputs.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "bundle-size",
+        "performance",
+        "webpack",
+        "vite",
+        "nextjs",
+        "tree-shaking",
+        "code-splitting",
+        "web-vitals"
+      ]
+    },
+    {
+      "name": "chaos-runner",
+      "source": "./plugins/chaos-runner",
+      "description": "Chaos engineering orchestration plugin. Manages chaos experiments via Toxiproxy, chaos-monkey scripts, and kubectl. Schedules regular chaos game days, tracks experiment results over time, and verifies steady-state hypotheses automatically. Integrates with Grafana for before/after metric comparison.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "chaos-engineering",
+        "resilience",
+        "fault-injection",
+        "toxiproxy",
+        "circuit-breaker",
+        "gameday",
+        "sre",
+        "reliability"
+      ]
+    },
+    {
+      "name": "code-smell-detector",
+      "source": "./plugins/code-smell-detector",
+      "description": "Automated code smell tracking and trend plugin. Runs smell detection on every PR, tracks smell density per file over time, identifies files with worsening trends, and generates weekly code quality reports. Detects god classes, long methods, feature envy, duplicate code, and dead code without requiring linter configuration.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "code-quality",
+        "code-smell",
+        "refactoring",
+        "technical-debt",
+        "god-class",
+        "duplicate-code",
+        "dead-code",
+        "complexity",
+        "maintainability"
+      ]
+    },
+    {
+      "name": "commit-quality",
+      "source": "./plugins/commit-quality",
+      "description": "Commit message quality enforcement plugin. Validates Conventional Commits format, enforces max diff size per commit, detects commits that mix unrelated changes, suggests atomic commit splits, and generates CHANGELOG entries from commit history. Integrates with commitlint, husky, and CI pipelines.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "conventional-commits",
+        "commitlint",
+        "git",
+        "changelog",
+        "commit-message",
+        "atomic-commits",
+        "husky",
+        "git-hooks",
+        "semver"
+      ]
+    },
+    {
+      "name": "db-advisor",
+      "source": "./plugins/db-advisor",
+      "description": "Database optimization advisor plugin. Continuously monitors query performance, detects N+1 queries from ORM logs, suggests missing indexes, identifies table bloat, tracks connection pool health, and generates weekly database health reports. Supports PostgreSQL, MySQL, SQLite, and PlanetScale.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "database",
+        "postgresql",
+        "mysql",
+        "sqlite",
+        "query-optimization",
+        "indexes",
+        "n+1-queries",
+        "connection-pool",
+        "query-performance",
+        "prisma",
+        "drizzle"
+      ]
+    },
+    {
+      "name": "feature-flags",
+      "source": "./plugins/feature-flags",
+      "description": "Feature flag lifecycle management plugin. Tracks all flags across the codebase, detects stale flags (>90 days enabled at 100%), enforces naming conventions, auto-generates flag registry, and produces cleanup PRs for dead flags. Integrates with LaunchDarkly, GrowthBook, Unleash, Statsig, and env-var flag patterns.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "feature-flags",
+        "toggles",
+        "launchdarkly",
+        "growthbook",
+        "unleash",
+        "rollout",
+        "ab-testing",
+        "experiments"
+      ]
+    },
+    {
+      "name": "i18n-sync",
+      "source": "./plugins/i18n-sync",
+      "description": "Internationalization key synchronization plugin. Keeps locale JSON files in sync across all supported languages, detects missing and orphaned keys, enforces key naming conventions, blocks PRs that introduce hardcoded strings, and generates translation stubs for new keys. Supports i18next, react-intl, vue-i18n, next-intl, and custom JSON locale files.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "i18n",
+        "l10n",
+        "internationalization",
+        "localization",
+        "translations",
+        "i18next",
+        "react-intl",
+        "vue-i18n",
+        "locale"
+      ]
+    },
+    {
+      "name": "incident-center",
+      "source": "./plugins/incident-center",
+      "description": "Incident management hub plugin. Manages active incidents, runbooks, on-call rotations, and postmortem backlog. Integrates with PagerDuty, OpsGenie, and Slack. Auto-generates incident channels, tracks MTTR/MTTD metrics over time, and maintains a searchable postmortem library for recurring issue detection.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "incident-management",
+        "on-call",
+        "runbook",
+        "postmortem",
+        "sre",
+        "mttr",
+        "pagerduty",
+        "opsgenie",
+        "reliability",
+        "alerting"
+      ]
+    },
+    {
+      "name": "load-test-runner",
+      "source": "./plugins/load-test-runner",
+      "description": "Load testing orchestration plugin. Manages k6 and Artillery test suites, schedules nightly soak tests, stores historical performance baselines, detects performance regressions between releases, and generates Grafana-compatible performance reports. Tracks p50/p95/p99 trends over time.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "load-testing",
+        "k6",
+        "artillery",
+        "performance",
+        "slo",
+        "p99",
+        "latency",
+        "throughput",
+        "stress-test",
+        "benchmark"
+      ]
+    },
+    {
+      "name": "openapi-hub",
+      "source": "./plugins/openapi-hub",
+      "description": "OpenAPI spec management hub. Maintains versioned API specs, validates specs on every commit, detects breaking changes between versions, generates typed clients (TypeScript, Python, Go), publishes developer documentation (Redoc/Swagger UI), and exports Postman collections. Enforces spec-first development workflow.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "openapi",
+        "swagger",
+        "rest-api",
+        "api-docs",
+        "spec-first",
+        "breaking-changes",
+        "sdk-generation",
+        "redoc",
+        "postman",
+        "contract-testing"
       ]
     },
     {
@@ -55,224 +273,6 @@
         "plugin",
         "security-engineer",
         "devsecops"
-      ]
-    },
-    {
-      "name": "a11y-guardian",
-      "source": "./.claude/plugins/a11y-guardian",
-      "description": "Accessibility guardian plugin. Continuous WCAG 2.1 AA/AAA compliance monitoring for web projects. Integrates static analysis of React/Vue/HTML components, contrast ratio checks, ARIA validation, keyboard navigation audit, and generates actionable HTML reports. Pairs with a11y-audit skill.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "accessibility",
-        "wcag",
-        "a11y",
-        "aria",
-        "contrast",
-        "screen-reader",
-        "keyboard",
-        "compliance"
-      ]
-    },
-    {
-      "name": "async-advisor",
-      "source": "./.claude/plugins/async-advisor",
-      "description": "Async and concurrency static analysis plugin. Scans TypeScript/JavaScript codebases for race conditions, unbounded Promise.all, missing AbortController, swallowed rejections, and N+1 async patterns. Runs as a pre-commit hook or CI check and provides inline fix suggestions.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "async",
-        "concurrency",
-        "race-condition",
-        "promises",
-        "async-await",
-        "p-limit",
-        "abort-controller",
-        "memory-leak",
-        "node-js",
-        "typescript"
-      ]
-    },
-    {
-      "name": "bundle-watch",
-      "source": "./.claude/plugins/bundle-watch",
-      "description": "Bundle size monitoring and budget enforcement plugin. Tracks JS/CSS bundle size per commit, blocks PRs that exceed size budgets, posts bundle size diff comments on PRs, and generates size trend charts. Supports Vite, Webpack, Next.js, Remix, and Rollup build outputs.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "bundle-size",
-        "performance",
-        "webpack",
-        "vite",
-        "nextjs",
-        "tree-shaking",
-        "code-splitting",
-        "web-vitals"
-      ]
-    },
-    {
-      "name": "chaos-runner",
-      "source": "./.claude/plugins/chaos-runner",
-      "description": "Chaos engineering orchestration plugin. Manages chaos experiments via Toxiproxy, chaos-monkey scripts, and kubectl. Schedules regular chaos game days, tracks experiment results over time, and verifies steady-state hypotheses automatically. Integrates with Grafana for before/after metric comparison.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "chaos-engineering",
-        "resilience",
-        "fault-injection",
-        "toxiproxy",
-        "circuit-breaker",
-        "gameday",
-        "sre",
-        "reliability"
-      ]
-    },
-    {
-      "name": "code-smell-detector",
-      "source": "./.claude/plugins/code-smell-detector",
-      "description": "Automated code smell tracking and trend plugin. Runs smell detection on every PR, tracks smell density per file over time, identifies files with worsening trends, and generates weekly code quality reports. Detects god classes, long methods, feature envy, duplicate code, and dead code without requiring linter configuration.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "code-quality",
-        "code-smell",
-        "refactoring",
-        "technical-debt",
-        "god-class",
-        "duplicate-code",
-        "dead-code",
-        "complexity",
-        "maintainability"
-      ]
-    },
-    {
-      "name": "commit-quality",
-      "source": "./.claude/plugins/commit-quality",
-      "description": "Commit message quality enforcement plugin. Validates Conventional Commits format, enforces max diff size per commit, detects commits that mix unrelated changes, suggests atomic commit splits, and generates CHANGELOG entries from commit history. Integrates with commitlint, husky, and CI pipelines.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "conventional-commits",
-        "commitlint",
-        "git",
-        "changelog",
-        "commit-message",
-        "atomic-commits",
-        "husky",
-        "git-hooks",
-        "semver"
-      ]
-    },
-    {
-      "name": "db-advisor",
-      "source": "./.claude/plugins/db-advisor",
-      "description": "Database optimization advisor plugin. Continuously monitors query performance, detects N+1 queries from ORM logs, suggests missing indexes, identifies table bloat, tracks connection pool health, and generates weekly database health reports. Supports PostgreSQL, MySQL, SQLite, and PlanetScale.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "database",
-        "postgresql",
-        "mysql",
-        "sqlite",
-        "query-optimization",
-        "indexes",
-        "n+1-queries",
-        "connection-pool",
-        "query-performance",
-        "prisma",
-        "drizzle"
-      ]
-    },
-    {
-      "name": "feature-flags",
-      "source": "./.claude/plugins/feature-flags",
-      "description": "Feature flag lifecycle management plugin. Tracks all flags across the codebase, detects stale flags (>90 days enabled at 100%), enforces naming conventions, auto-generates flag registry, and produces cleanup PRs for dead flags. Integrates with LaunchDarkly, GrowthBook, Unleash, Statsig, and env-var flag patterns.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "feature-flags",
-        "toggles",
-        "launchdarkly",
-        "growthbook",
-        "unleash",
-        "rollout",
-        "ab-testing",
-        "experiments"
-      ]
-    },
-    {
-      "name": "i18n-sync",
-      "source": "./.claude/plugins/i18n-sync",
-      "description": "Internationalization key synchronization plugin. Keeps locale JSON files in sync across all supported languages, detects missing and orphaned keys, enforces key naming conventions, blocks PRs that introduce hardcoded strings, and generates translation stubs for new keys. Supports i18next, react-intl, vue-i18n, next-intl, and custom JSON locale files.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "i18n",
-        "l10n",
-        "internationalization",
-        "localization",
-        "translations",
-        "i18next",
-        "react-intl",
-        "vue-i18n",
-        "locale"
-      ]
-    },
-    {
-      "name": "incident-center",
-      "source": "./.claude/plugins/incident-center",
-      "description": "Incident management hub plugin. Manages active incidents, runbooks, on-call rotations, and postmortem backlog. Integrates with PagerDuty, OpsGenie, and Slack. Auto-generates incident channels, tracks MTTR/MTTD metrics over time, and maintains a searchable postmortem library for recurring issue detection.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "incident-management",
-        "on-call",
-        "runbook",
-        "postmortem",
-        "sre",
-        "mttr",
-        "pagerduty",
-        "opsgenie",
-        "reliability",
-        "alerting"
-      ]
-    },
-    {
-      "name": "load-test-runner",
-      "source": "./.claude/plugins/load-test-runner",
-      "description": "Load testing orchestration plugin. Manages k6 and Artillery test suites, schedules nightly soak tests, stores historical performance baselines, detects performance regressions between releases, and generates Grafana-compatible performance reports. Tracks p50/p95/p99 trends over time.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "load-testing",
-        "k6",
-        "artillery",
-        "performance",
-        "slo",
-        "p99",
-        "latency",
-        "throughput",
-        "stress-test",
-        "benchmark"
-      ]
-    },
-    {
-      "name": "openapi-hub",
-      "source": "./.claude/plugins/openapi-hub",
-      "description": "OpenAPI spec management hub. Maintains versioned API specs, validates specs on every commit, detects breaking changes between versions, generates typed clients (TypeScript, Python, Go), publishes developer documentation (Redoc/Swagger UI), and exports Postman collections. Enforces spec-first development workflow.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "openapi",
-        "swagger",
-        "rest-api",
-        "api-docs",
-        "spec-first",
-        "breaking-changes",
-        "sdk-generation",
-        "redoc",
-        "postman",
-        "contract-testing"
       ]
     }
   ]
