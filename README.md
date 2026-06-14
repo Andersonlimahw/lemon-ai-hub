@@ -1,12 +1,23 @@
-# AI Marketplace
+# Lemon AI Hub
 
-Centralized and optimized repository to manage **AI Skills and Plugins** across different local agents (Claude Code, Codex, OpenCode, Agy).
+> **Build, Launch, and Scale with AI-Native Architecture.**
+
+**Lemon AI Hub** is a centralized and optimized repository to manage **AI Skills and Plugins** across different local agents (Claude Code, Codex, OpenCode, Agy). It is the technical foundation of the [Lemon.dev](https://lemon.dev.br) ecosystem, designed by [Anderson Lima](https://github.com/Andersonlimahw) to help founders and developers bridge the gap between AI-generated code and production-ready products.
 
 This project is based on and inspired by Peter Steinberger's pattern (`steipete/agent-scripts`), but structured with a focus on `.claude` and shared with other providers via transparent symbolic links.
 
 ---
 
-## 🧩 Install as a Claude Code Marketplace
+## 🍋 The Lemon.dev Philosophy
+
+The best code is invisible—it works, scales, and converts. Lemon AI Hub embodies this by providing:
+- **AI-Native Squads:** Specialized agents that understand architecture and product strategy.
+- **Value Loops:** Continuous improvement engines that keep quality high without manual overhead.
+- **Token Efficiency:** Tools like RTK and Caveman Mode to maximize speed and minimize costs.
+
+---
+
+## 🧩 Install as a Claude Code Hub
 
 This repository ships a marketplace manifest (`.claude-plugin/marketplace.json`) so you can install its plugins directly inside Claude Code.
 
@@ -16,13 +27,6 @@ Inside a Claude Code session, run the slash command:
 
 ```text
 /plugin marketplace add Andersonlimahw/lemon-ai-hub
-```
-
-You can also point at any Git URL or a local path:
-
-```text
-/plugin marketplace add https://github.com/Andersonlimahw/lemon-ai-hub.git
-/plugin marketplace add ./lemon-ai-hub          # local checkout
 ```
 
 ### 2. Browse & install plugins
@@ -35,10 +39,22 @@ Open the interactive installer, or install a plugin by name using the `plugin@ma
 /plugin install agentic-value-loops@lemon-ai-hub
 ```
 
-| Plugin | What you get |
+| Plugin | Description |
 | --- | --- |
-| `spotify-squad` | 12 specialized agents (Tech Lead, Backend, Frontend, Mobile, UX, UI, Product, Scrum Master, DevOps, QA, Data, Security) + 17 domain skills. |
-| `agentic-value-loops` | Continuous-improvement loops: Feature Development, Maintenance & Security, Documentation Sync, AI Tuning. |
+| `spotify-squad` | AI-Native Squad — Spotify-model autonomous engineering team. 12 specialized agents (Tech Lead, Backend, Frontend, Mobile, UX, UI, Product, Scrum Master, DevOps, QA, Data, Security) with orchestrated collaboration and 17 domain-specific skills. |
+| `agentic-value-loops` | Continuous improvement engine that ships verified increments with constant quality. Loops for Feature Development, Maintenance & Security, Documentation Sync, and AI Tuning. |
+| `a11y-guardian` | Accessibility guardian plugin. Continuous WCAG 2.1 AA/AAA compliance monitoring for web projects. |
+| `async-advisor` | Async and concurrency static analysis plugin. Scans TypeScript/JavaScript codebases for race conditions and async patterns. |
+| `bundle-watch` | Bundle size monitoring and budget enforcement plugin. Tracks JS/CSS bundle size per commit. |
+| `chaos-runner` | Chaos engineering orchestration plugin. Manages chaos experiments and reliability verification. |
+| `code-smell-detector` | Automated code smell tracking and trend plugin. Runs smell detection on every PR. |
+| `commit-quality` | Commit message quality enforcement plugin. Validates Conventional Commits format and atomic splits. |
+| `db-advisor` | Database optimization advisor plugin. Monitors query performance and detects N+1 queries. |
+| `feature-flags` | Feature flag lifecycle management plugin. Tracks flags across the codebase and detects stale flags. |
+| `i18n-sync` | Internationalization key synchronization plugin. Keeps locale JSON files in sync across all languages. |
+| `incident-center` | Incident management hub plugin. Manages active incidents, runbooks, and on-call rotations. |
+| `load-test-runner` | Load testing orchestration plugin. Manages k6 and Artillery test suites. |
+| `openapi-hub` | OpenAPI spec management hub. Maintains versioned API specs and validates breaking changes. |
 
 ### 3. Manage the marketplace
 
@@ -48,67 +64,51 @@ Open the interactive installer, or install a plugin by name using the `plugin@ma
 /plugin marketplace remove lemon-ai-hub          # unregister
 ```
 
-> Plugins bundle their own agents, skills, and commands — once installed they are auto-discovered by Claude Code. The standalone `skills/` in this repo are shared globally via symlinks instead (see **Installation & Symlink Setup** below).
-
 ---
 
 ## 📂 Repository Structure
 
-- **`skills/`**: Reusable skills and prompt routers.
-  - [`senior-prompt-engineer`](./skills/senior-prompt-engineer/SKILL.md): Stage-0 prompt refiner and Execution Map (`EXEC-MAP v1`) builder.
-  - [`skills-selector`](./skills/skills-selector/SKILL.md): Meta-skill gatekeeper that dynamically decides which skills to load on-demand.
-  - [`smart-dispatch`](./skills/smart-dispatch/SKILL.md): Intelligent routing of implementations with fallback and YOLO-mode.
-  - [`karpathy-recipe`](./skills/karpathy-recipe/SKILL.md): Incremental development methodology (based on Karpathy's recipe).
-  - [`llm-wiki-curator`](./skills/llm-wiki-curator/SKILL.md): Automated maintenance of structured `llms.txt` documentation.
-  - [`token-saver`](./skills/token-saver/SKILL.md): Generic skill for installing and configuring token-saving tools.
-  - [`code-review-adversary`](./skills/code-review-adversary/SKILL.md): Senior-vs-junior adversarial PR review with configurable model, criticality, and inline-comment/resolve flow.
-- **`plugins/`**: Installable Claude Code plugins (`spotify-squad`, `agentic-value-loops`) — see [Install as a Claude Code Marketplace](#-install-as-a-claude-code-marketplace).
-- **`scripts/`**: Utility helpers.
-  - `setup-symlinks.sh`: Script to automate the creation of global symbolic links.
-  - `marketplace`: CLI interface for listing and managing IA tools in the repository.
+### 🧠 Core Agent Pipeline (`skills/`)
+Reusable skills and prompt routers at the repository root.
+- [`senior-prompt-engineer`](./skills/senior-prompt-engineer/SKILL.md): Stage-0 prompt refiner and EXEC-MAP builder.
+- [`skills-selector`](./skills/skills-selector/SKILL.md): Meta-skill gatekeeper for on-demand skill loading.
+- [`smart-dispatch`](./skills/smart-dispatch/SKILL.md): Intelligent routing of implementations with fallback.
+- [`karpathy-recipe`](./skills/karpathy-recipe/SKILL.md): Incremental development methodology.
+- [`llm-wiki-curator`](./skills/llm-wiki-curator/SKILL.md): Automated maintenance of structured documentation.
+- [`token-saver`](./skills/token-saver/SKILL.md): Installation wizard for token-saving tools.
+- [`code-review-adversary`](./skills/code-review-adversary/SKILL.md): Adversarial PR review flow.
+
+### 🧩 Plugin Skills (`.claude/skills/`)
+Skills bundled as part of specialized plugins.
+- [`a11y-audit`](./.claude/skills/a11y-audit/SKILL.md), [`async-patterns`](./.claude/skills/async-patterns/SKILL.md), [`bundle-analyzer`](./.claude/skills/bundle-analyzer/SKILL.md), [`chaos-test`](./.claude/skills/chaos-test/SKILL.md), [`code-smell`](./.claude/skills/code-smell/SKILL.md), [`db-index-advisor`](./.claude/skills/db-index-advisor/SKILL.md), [`feature-flag`](./.claude/skills/feature-flag/SKILL.md), [`feature-purge`](./.claude/skills/feature-purge/SKILL.md), [`git-bisect-ai`](./.claude/skills/git-bisect-ai/SKILL.md), [`i18n-audit`](./.claude/skills/i18n-audit/SKILL.md), [`incident-runbook`](./.claude/skills/incident-runbook/SKILL.md), [`load-test`](./.claude/skills/load-test/SKILL.md), [`openapi-generate`](./.claude/skills/openapi-generate/SKILL.md).
 
 ---
 
 ## 🚀 Installation & Symlink Setup
 
-To synchronize your global agent configurations and share the same skills folder across all of them, run the setup script from the root of the repository:
+To synchronize your global agent configurations and share the same skills folder across all of them:
 
 ```bash
 chmod +x scripts/setup-symlinks.sh
 ./scripts/setup-symlinks.sh
 ```
 
-This script performs the following steps:
-1. Backs up existing folders (like `~/.claude/skills` if they already exist).
-2. Creates the symbolic link `~/.claude/skills` pointing to the `skills/` folder of this repository.
-3. Creates symbolic links for `~/.codex/skills`, `~/.opencode/skills`, and `~/.agy/skills` pointing directly to `~/.claude/skills`.
+---
 
-With this, any skill added or updated in this repository will be immediately available in all your AI CLIs!
+## 🪙 Context Optimization and Token Saving
+
+- **RTK (Rust Token Killer)**: Intercepts shell commands and removes verbose outputs.
+- **Caveman Mode**: Reduces response sizes (output tokens) by ~75% through compact writing.
+- **Graphify**: Structures your codebase into `graphify-out/` relationship graphs.
+- **Context-Mode**: Compresses long logs and API dumps.
 
 ---
 
-## 🛒 The `marketplace` CLI
+## 🤝 Connect & Support
 
-You can list active skills and plugins at any time using the `marketplace` utility:
+**Lemon AI Hub** is maintained by **Anderson Lima**. 
 
-```bash
-./scripts/marketplace list-skills
-./scripts/marketplace list-plugins
-```
+[Website](https://lemon.dev.br) • [GitHub](https://github.com/Andersonlimahw) • [LinkedIn](https://www.linkedin.com/in/andersonlimadev/) • [X/Twitter](https://x.com/andersonlimadev)
 
 ---
-
-## 🪙 Context Optimization and Token Saving (`token-saver`)
-
-To install and configure the main token-saving tools in the ecosystem with assistance, use the `token-saver` skill (or run the script directly):
-
-```bash
-chmod +x skills/token-saver/scripts/setup-token-saving.sh
-./skills/token-saver/scripts/setup-token-saving.sh
-```
-
-### What the Setup Optimizes:
-- **RTK (Rust Token Killer)**: Intercepts shell commands (git, tests, build) and removes verbose outputs. (Use `rtk gain` to view the audit).
-- **Caveman Mode**: Reduces response sizes (output tokens) by ~75% through compact telegraphic writing.
-- **Graphify**: Structures your codebase into `graphify-out/` relationship graphs so that the LLM finds files without reading the entire folder.
-- **Context-Mode**: Compresses long logs, APIs, and large dumps, sending only structured summaries to the active chat context.
+*Built with 🍋 by Anderson Lima.*
