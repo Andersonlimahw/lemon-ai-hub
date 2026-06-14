@@ -35,7 +35,7 @@ extract_desc() {
 }
 
 {
-  echo "# AI Marketplace"
+  echo "# Lemon AI Hub"
   echo ""
   echo "> Centralized workspace to share custom AI Skills and Plugins across Claude Code, Codex, OpenCode, and Antigravity (Agy)."
   echo ""

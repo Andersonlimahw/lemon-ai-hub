@@ -32,7 +32,7 @@ setup_symlink() {
   echo "Created: $link_name -> $(readlink "$link_name")"
 }
 
-echo "=== AI Marketplace: Setting up Agent Symlinks ==="
+echo "=== Lemon AI Hub: Setting up Agent Symlinks ==="
 
 # 1. Point ~/.claude/skills to our repository skills directory
 setup_symlink "$REPO_SKILLS_DIR" "$HOME/.claude/skills"

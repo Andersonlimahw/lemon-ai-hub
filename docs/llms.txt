@@ -1,4 +1,4 @@
-# AI Marketplace
+# Lemon AI Hub
 
 > Centralized workspace to share custom AI Skills and Plugins across Claude Code, Codex, OpenCode, and Antigravity (Agy).
 
@@ -6,9 +6,9 @@ Last generated: 2026-06-14T05:54:21Z
 
 ## Overview
 
-- [System Architecture & Symlinking](docs/architecture.md): This document explains how the **AI Marketplace** manages cross-agent skill sharing and the environment setup.
+- [System Architecture & Symlinking](docs/architecture.md): This document explains how the **Lemon AI Hub** manages cross-agent skill sharing and the environment setup.
 - [Marketplace CLI Utility](docs/cli-marketplace.md): The `marketplace` script located in the `scripts/` directory serves as the command-line control panel for this workspace.
-- [Documentation Index](docs/index.md): Welcome to the documentation for the **AI Marketplace** project. This repository acts as a centralized workspace to manage, deploy, and share **AI Skills and Pl
-- [Available AI Skills](docs/skills.md): Custom skills modify agent reasoning patterns and extend their toolboxes. Below is a detailed review of all skills included in the AI Marketplace.
+- [Documentation Index](docs/index.md): Welcome to the documentation for the **Lemon AI Hub** project. This repository acts as a centralized workspace to manage, deploy, and share **AI Skills and Pl
+- [Available AI Skills](docs/skills.md): Custom skills modify agent reasoning patterns and extend their toolboxes. Below is a detailed review of all skills included in the Lemon AI Hub.
 - [Token Saving Ecosystem](docs/token-saving.md): Large Context Windows permit long chat history, but feeding verbose compiler logs, unused files, and repetitive greetings wasting thousands of tokens. This repo
 

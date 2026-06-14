@@ -7,7 +7,7 @@ related: [docs/index.md, docs/token-saving.md]
 
 # Available AI Skills
 
-Custom skills modify agent reasoning patterns and extend their toolboxes. Below is a detailed review of all skills included in the AI Marketplace.
+Custom skills modify agent reasoning patterns and extend their toolboxes. Below is a detailed review of all skills included in the Lemon AI Hub.
 
 ## 🧠 Core Agent Pipeline (Stage 0 → 1 → 2)
 
@@ -73,3 +73,47 @@ Execution
 - **Location**: [skills/token-saver/SKILL.md](./skills/token-saver/SKILL.md)
 - **Concept**: Facilitates setup of token saving tools.
 - **Function**: Launches an interactive CLI wizard to configure RTK, Caveman Mode, Graphify, and Context-Mode across projects.
+
+## 🧩 Plugin Skills
+
+The following skills are bundled as part of the Claude Code plugins:
+
+### `a11y-audit`
+- **Location**: [.claude/skills/a11y-audit/SKILL.md](../.claude/skills/a11y-audit/SKILL.md)
+
+### `async-patterns`
+- **Location**: [.claude/skills/async-patterns/SKILL.md](../.claude/skills/async-patterns/SKILL.md)
+
+### `bundle-analyzer`
+- **Location**: [.claude/skills/bundle-analyzer/SKILL.md](../.claude/skills/bundle-analyzer/SKILL.md)
+
+### `chaos-test`
+- **Location**: [.claude/skills/chaos-test/SKILL.md](../.claude/skills/chaos-test/SKILL.md)
+
+### `code-smell`
+- **Location**: [.claude/skills/code-smell/SKILL.md](../.claude/skills/code-smell/SKILL.md)
+
+### `db-index-advisor`
+- **Location**: [.claude/skills/db-index-advisor/SKILL.md](../.claude/skills/db-index-advisor/SKILL.md)
+
+### `feature-flag`
+- **Location**: [.claude/skills/feature-flag/SKILL.md](../.claude/skills/feature-flag/SKILL.md)
+
+### `feature-purge`
+- **Location**: [.claude/skills/feature-purge/SKILL.md](../.claude/skills/feature-purge/SKILL.md)
+
+### `git-bisect-ai`
+- **Location**: [.claude/skills/git-bisect-ai/SKILL.md](../.claude/skills/git-bisect-ai/SKILL.md)
+
+### `i18n-audit`
+- **Location**: [.claude/skills/i18n-audit/SKILL.md](../.claude/skills/i18n-audit/SKILL.md)
+
+### `incident-runbook`
+- **Location**: [.claude/skills/incident-runbook/SKILL.md](../.claude/skills/incident-runbook/SKILL.md)
+
+### `load-test`
+- **Location**: [.claude/skills/load-test/SKILL.md](../.claude/skills/load-test/SKILL.md)
+
+### `openapi-generate`
+- **Location**: [.claude/skills/openapi-generate/SKILL.md](../.claude/skills/openapi-generate/SKILL.md)
+

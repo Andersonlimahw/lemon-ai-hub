@@ -7,7 +7,7 @@ related: [docs/index.md, docs/skills.md]
 
 # System Architecture & Symlinking
 
-This document explains how the **AI Marketplace** manages cross-agent skill sharing and the environment setup.
+This document explains how the **Lemon AI Hub** manages cross-agent skill sharing and the environment setup.
 
 ## 🏗️ The Problem: Agent Fragmentation
 Different AI command-line assistants (like Claude Code, OpenAI Codex, OpenCode, and Antigravity) use different home directories to store custom skills and plugins:
@@ -19,7 +19,7 @@ Different AI command-line assistants (like Claude Code, OpenAI Codex, OpenCode, 
 Manually copying scripts and rules between these folders introduces synchronization errors, code drift, and maintenance overhead.
 
 ## 🔗 The Solution: Centralized Symlink Sharing
-The AI Marketplace solves this by serving as the **single source of truth** for all custom agent behaviors. 
+The Lemon AI Hub solves this by serving as the **single source of truth** for all custom agent behaviors. 
 
 By utilizing symbolic links, all agents are configured to point back to this repository's `skills/` directory.
 

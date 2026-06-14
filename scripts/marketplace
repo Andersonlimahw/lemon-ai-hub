@@ -16,7 +16,7 @@ SKILLS_DIR="$REPO_DIR/skills"
 PLUGINS_DIR="$REPO_DIR/plugins"
 
 usage() {
-  echo -e "${BLUE}AI Marketplace CLI - Manage your AI Skills and Plugins${NC}"
+  echo -e "${BLUE}Lemon AI Hub CLI - Manage your AI Skills and Plugins${NC}"
   echo "Usage: $0 [command] [args]"
   echo ""
   echo "Commands:"

@@ -5,12 +5,13 @@ updated: 2026-06-14
 related: [docs/architecture.md, docs/skills.md, docs/token-saving.md, docs/cli-marketplace.md]
 ---
 
-# AI Marketplace Documentation
+# Lemon AI Hub Documentation
 
-Welcome to the documentation for the **AI Marketplace** project. This repository acts as a centralized workspace to manage, deploy, and share **AI Skills and Plugins** across multiple local AI coding agents such as Claude Code, Codex, OpenCode, and Antigravity (Agy).
+Welcome to the documentation for the **Lemon AI Hub** project. This repository acts as a centralized workspace to manage, deploy, and share **AI Skills and Plugins** across multiple local AI coding agents such as Claude Code, Codex, OpenCode, and Antigravity (Agy).
 
 ## 🗂️ Documentation Guide
 
+- [About Lemon AI Hub](../ABOUT.md): The vision, philosophy, and professional context behind the project.
 - [Architecture & Symlinking](architecture.md): Learn how the cross-agent sharing system is designed and structured using symlinks.
 - [Available Skills](skills.md): Detailed information on the prompt pipelines, gatekeepers, and specialized routing skills.
 - [Token Saving Ecosystem](token-saving.md): Deep dive into token optimization tools like RTK, Caveman Mode, Graphify, and Context-Mode.
