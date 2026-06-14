@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # setup-symlinks.sh - Configure sharing of skills across agents
-# This script creates symlinks from agent home directories to this repository's skills/ folder.
+# This script creates symlinks from agent home directories to this repository's plugins/ folder.
 # Supported agents: Claude Code, Codex, Codex App, Gemini, Agy, OpenCode.
 
 set -euo pipefail
 
-# Get the absolute path of the repository's skills directory
+# Get the absolute path of the repository's plugins directory
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-REPO_SKILLS_DIR="$REPO_ROOT/skills"
+REPO_PLUGINS_DIR="$REPO_ROOT/plugins"
 
 setup_symlink() {
   local target="$1"
@@ -37,22 +37,22 @@ setup_symlink() {
   echo "Created: $link_name"
 }
 
-echo "=== Lemon AI Hub: Multi-Agent Symlink Setup ==="
+echo "=== Lemon AI Hub: Multi-Agent Symlink Setup (Plugins-based) ==="
 
 # 1. Claude Code
-setup_symlink "$REPO_SKILLS_DIR" "~/.claude/skills"
+setup_symlink "$REPO_PLUGINS_DIR" "~/.claude/skills"
 
 # 2. Codex & Codex App
-setup_symlink "$REPO_SKILLS_DIR" "~/.codex/skills"
+setup_symlink "$REPO_PLUGINS_DIR" "~/.codex/skills"
 
 # 3. Gemini
-setup_symlink "$REPO_SKILLS_DIR" "~/.gemini/skills"
+setup_symlink "$REPO_PLUGINS_DIR" "~/.gemini/skills"
 
 # 4. Agy (Antigravity)
-setup_symlink "$REPO_SKILLS_DIR" "~/.agy/skills"
+setup_symlink "$REPO_PLUGINS_DIR" "~/.agy/skills"
 
 # 5. OpenCode
-setup_symlink "$REPO_SKILLS_DIR" "~/.opencode/skills"
+setup_symlink "$REPO_PLUGINS_DIR" "~/.opencode/skills"
 
 echo "=== All symlinks configured successfully! ==="
-echo "Skills from $REPO_SKILLS_DIR are now available in all agents."
+echo "Tools from $REPO_PLUGINS_DIR are now available in all agents."

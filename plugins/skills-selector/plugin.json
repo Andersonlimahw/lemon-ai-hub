@@ -1,0 +1,15 @@
+{
+  "name": "skills-selector",
+  "version": "1.0.0",
+  "description": "Meta-skill gatekeeper that runs FIRST on every task to decide which other skill(s) — if any — should activate. Analyzes the user request, matches it against a ranked catalog (frontend-design, ui-ux-pro-max, superpowers/planning, git-*, mcp-builder, smart-dispatch, claude-api, etc.), and emits a tight SELECTION plan so other skills are loaded on-demand only. Minimizes token/context consumption by refusing to activate heavy skills unless clearly justified. Triggers on ANY user instruction that could plausibly benefit from a specialized skill — i.e. essentially every turn that starts new work. Keywords: \"plan\", \"design\", \"ui\", \"ux\", \"implement\", \"build\", \"create\", \"fix\", \"refactor\", \"commit\", \"pr\", \"review\", \"test\", \"debug\", \"deploy\", \"mobile\", \"video\", \"mcp\", \"skill\", \"architecture\", \"api\", \"ci\", \"docs\", \"copy\", \"social\", \"setup\", \"doctor\".",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "skills-selector"
+  ]
+}

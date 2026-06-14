@@ -7,92 +7,114 @@ related: [docs/index.md, docs/token-saving.md]
 
 # Available AI Skills
 
-Custom skills modify agent reasoning patterns and extend their toolboxes. Below is a detailed review of all skills included in the Lemon AI Hub.
-
-## 🧠 Core Agent Pipeline (Stage 0 → 1 → 2)
-
-These three skills are designed to work together sequentially to classify, select, and route incoming requests with optimal token efficiency.
-
-```
-User Input 
-   ↓
-[Stage-0: senior-prompt-engineer] 
-   • Classifies intent, detects context, refines prompt.
-   • Emits Execution Map (EXEC-MAP v1).
-   ↓
-[Stage-1: skills-selector]
-   • Dynamic gatekeeper. Loads required skills on-demand.
-   ↓
-[Stage-2: smart-dispatch]
-   • Model/Agent router. Selects the cheapest capable tier.
-   ↓
-Execution
-```
+All tools in the Lemon AI Hub are now organized as **Plugins**. This unified structure ensures they are discoverable via the Claude Code marketplace and usable across multiple AI agents.
 
 ## 📂 Complete Skills Registry
 
-The following skills are available in the Lemon AI Hub and can be used across multiple AI agents (Claude Code, Codex, Gemini, Agy, OpenCode).
+The following skills are available in the Hub. Each is part of a plugin located in the `plugins/` directory.
 
 ### `a11y-audit`
-- **Location**: [skills/a11y-audit/SKILL.md](./skills/a11y-audit/SKILL.md)
+- **Location**: [plugins/a11y-audit/SKILL.md](../plugins/a11y-audit/SKILL.md)
+
+### `a11y-guardian`
+- **Location**: [plugins/a11y-guardian/SKILL.md](../plugins/a11y-guardian/SKILL.md)
+
+### `agentic-value-loops`
+- **Location**: [plugins/agentic-value-loops/SKILL.md](../plugins/agentic-value-loops/SKILL.md)
+
+### `async-advisor`
+- **Location**: [plugins/async-advisor/SKILL.md](../plugins/async-advisor/SKILL.md)
 
 ### `async-patterns`
-- **Location**: [skills/async-patterns/SKILL.md](./skills/async-patterns/SKILL.md)
+- **Location**: [plugins/async-patterns/SKILL.md](../plugins/async-patterns/SKILL.md)
 
 ### `bundle-analyzer`
-- **Location**: [skills/bundle-analyzer/SKILL.md](./skills/bundle-analyzer/SKILL.md)
+- **Location**: [plugins/bundle-analyzer/SKILL.md](../plugins/bundle-analyzer/SKILL.md)
+
+### `bundle-watch`
+- **Location**: [plugins/bundle-watch/SKILL.md](../plugins/bundle-watch/SKILL.md)
+
+### `chaos-runner`
+- **Location**: [plugins/chaos-runner/SKILL.md](../plugins/chaos-runner/SKILL.md)
 
 ### `chaos-test`
-- **Location**: [skills/chaos-test/SKILL.md](./skills/chaos-test/SKILL.md)
+- **Location**: [plugins/chaos-test/SKILL.md](../plugins/chaos-test/SKILL.md)
 
 ### `code-review-adversary`
-- **Location**: [skills/code-review-adversary/SKILL.md](./skills/code-review-adversary/SKILL.md)
+- **Location**: [plugins/code-review-adversary/SKILL.md](../plugins/code-review-adversary/SKILL.md)
 
 ### `code-smell`
-- **Location**: [skills/code-smell/SKILL.md](./skills/code-smell/SKILL.md)
+- **Location**: [plugins/code-smell/SKILL.md](../plugins/code-smell/SKILL.md)
+
+### `code-smell-detector`
+- **Location**: [plugins/code-smell-detector/SKILL.md](../plugins/code-smell-detector/SKILL.md)
+
+### `commit-quality`
+- **Location**: [plugins/commit-quality/SKILL.md](../plugins/commit-quality/SKILL.md)
+
+### `db-advisor`
+- **Location**: [plugins/db-advisor/SKILL.md](../plugins/db-advisor/SKILL.md)
 
 ### `db-index-advisor`
-- **Location**: [skills/db-index-advisor/SKILL.md](./skills/db-index-advisor/SKILL.md)
+- **Location**: [plugins/db-index-advisor/SKILL.md](../plugins/db-index-advisor/SKILL.md)
 
 ### `feature-flag`
-- **Location**: [skills/feature-flag/SKILL.md](./skills/feature-flag/SKILL.md)
+- **Location**: [plugins/feature-flag/SKILL.md](../plugins/feature-flag/SKILL.md)
+
+### `feature-flags`
+- **Location**: [plugins/feature-flags/SKILL.md](../plugins/feature-flags/SKILL.md)
 
 ### `feature-purge`
-- **Location**: [skills/feature-purge/SKILL.md](./skills/feature-purge/SKILL.md)
+- **Location**: [plugins/feature-purge/SKILL.md](../plugins/feature-purge/SKILL.md)
 
 ### `git-bisect-ai`
-- **Location**: [skills/git-bisect-ai/SKILL.md](./skills/git-bisect-ai/SKILL.md)
+- **Location**: [plugins/git-bisect-ai/SKILL.md](../plugins/git-bisect-ai/SKILL.md)
 
 ### `i18n-audit`
-- **Location**: [skills/i18n-audit/SKILL.md](./skills/i18n-audit/SKILL.md)
+- **Location**: [plugins/i18n-audit/SKILL.md](../plugins/i18n-audit/SKILL.md)
+
+### `i18n-sync`
+- **Location**: [plugins/i18n-sync/SKILL.md](../plugins/i18n-sync/SKILL.md)
+
+### `incident-center`
+- **Location**: [plugins/incident-center/SKILL.md](../plugins/incident-center/SKILL.md)
 
 ### `incident-runbook`
-- **Location**: [skills/incident-runbook/SKILL.md](./skills/incident-runbook/SKILL.md)
+- **Location**: [plugins/incident-runbook/SKILL.md](../plugins/incident-runbook/SKILL.md)
 
 ### `karpathy-guidelines`
-- **Location**: [skills/karpathy-guidelines/SKILL.md](./skills/karpathy-guidelines/SKILL.md)
+- **Location**: [plugins/karpathy-guidelines/SKILL.md](../plugins/karpathy-guidelines/SKILL.md)
 
 ### `karpathy-recipe`
-- **Location**: [skills/karpathy-recipe/SKILL.md](./skills/karpathy-recipe/SKILL.md)
+- **Location**: [plugins/karpathy-recipe/SKILL.md](../plugins/karpathy-recipe/SKILL.md)
 
 ### `llm-wiki-curator`
-- **Location**: [skills/llm-wiki-curator/SKILL.md](./skills/llm-wiki-curator/SKILL.md)
+- **Location**: [plugins/llm-wiki-curator/SKILL.md](../plugins/llm-wiki-curator/SKILL.md)
 
 ### `load-test`
-- **Location**: [skills/load-test/SKILL.md](./skills/load-test/SKILL.md)
+- **Location**: [plugins/load-test/SKILL.md](../plugins/load-test/SKILL.md)
+
+### `load-test-runner`
+- **Location**: [plugins/load-test-runner/SKILL.md](../plugins/load-test-runner/SKILL.md)
 
 ### `openapi-generate`
-- **Location**: [skills/openapi-generate/SKILL.md](./skills/openapi-generate/SKILL.md)
+- **Location**: [plugins/openapi-generate/SKILL.md](../plugins/openapi-generate/SKILL.md)
+
+### `openapi-hub`
+- **Location**: [plugins/openapi-hub/SKILL.md](../plugins/openapi-hub/SKILL.md)
 
 ### `senior-prompt-engineer`
-- **Location**: [skills/senior-prompt-engineer/SKILL.md](./skills/senior-prompt-engineer/SKILL.md)
+- **Location**: [plugins/senior-prompt-engineer/SKILL.md](../plugins/senior-prompt-engineer/SKILL.md)
 
 ### `skills-selector`
-- **Location**: [skills/skills-selector/SKILL.md](./skills/skills-selector/SKILL.md)
+- **Location**: [plugins/skills-selector/SKILL.md](../plugins/skills-selector/SKILL.md)
 
 ### `smart-dispatch`
-- **Location**: [skills/smart-dispatch/SKILL.md](./skills/smart-dispatch/SKILL.md)
+- **Location**: [plugins/smart-dispatch/SKILL.md](../plugins/smart-dispatch/SKILL.md)
+
+### `spotify-squad`
+- **Location**: [plugins/spotify-squad/SKILL.md](../plugins/spotify-squad/SKILL.md)
 
 ### `token-saver`
-- **Location**: [skills/token-saver/SKILL.md](./skills/token-saver/SKILL.md)
+- **Location**: [plugins/token-saver/SKILL.md](../plugins/token-saver/SKILL.md)
 

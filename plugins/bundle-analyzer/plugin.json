@@ -1,0 +1,15 @@
+{
+  "name": "bundle-analyzer",
+  "version": "1.0.0",
+  "description": "JavaScript/TypeScript bundle size analysis, tree-shaking audit, and code splitting recommendations. Identifies heavy dependencies, duplicate packages, unused imports, and suggests dynamic imports and lazy loading. Use when bundle is too large, Lighthouse score is low, or user wants to optimize web app loading performance.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "bundle-analyzer"
+  ]
+}
