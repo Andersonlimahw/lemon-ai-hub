@@ -1,73 +1,73 @@
 ---
 name: karpathy-recipe
-description: Aplica "A Recipe for Training Neural Networks" de Karpathy adaptado a engenharia de software. Força baseline mínimo rodável antes de otimizar, um knob por vez, eval verificável no início. Use ao implementar feature nova, refactor não-trivial, integrar serviço externo, ou quando user disser "implementar X do zero", "como começar feature Y", "recipe", "abordagem incremental", "baseline first".
+description: Applies Karpathy's "A Recipe for Training Neural Networks" adapted to software engineering. Forces a minimum runnable baseline before optimizing, one knob at a time, with verifiable eval at the beginning. Use when implementing a new feature, doing a non-trivial refactor, integrating an external service, or when the user says "implement X from scratch", "how to start feature Y", "recipe", "incremental approach", "baseline first".
 ---
 
 # karpathy-recipe
 
-Tradução do [Recipe for Training Neural Networks](https://karpathy.github.io/2019/04/25/recipe/) para features de produto. Princípio: **be paranoid, go slow, visualize everything**.
+Translation of [Recipe for Training Neural Networks](https://karpathy.github.io/2019/04/25/recipe/) to product features. Principle: **be paranoid, go slow, visualize everything**.
 
-## Fluxo obrigatório
+## Mandatory Flow
 
 ### 1. Become one with the data
-Antes de codar, ler dados reais do domínio:
-- Para feature financeira: 10 transações reais do `extratos_exemplo/` ou de `financial_transactions` em staging
-- Para AI: 5 exemplos de input/output esperado do user
-- Listar edge cases conhecidos (memory, ADRs, issues passadas) — não inventar
+Before coding, read real data from the domain:
+- For a financial feature: 10 real transactions from `extratos_exemplo/` or from `financial_transactions` in staging
+- For AI: 5 examples of expected input/output from the user
+- List known edge cases (memory, ADRs, past issues) — do not invent them
 
-Output: 1 parágrafo no PR `## Dados que olhei` com links/IDs.
+Output: 1 paragraph in the PR `## Data I looked at` with links/IDs.
 
 ### 2. Set up end-to-end skeleton + dumb baseline
-Implementar **caminho completo** com lógica trivial primeiro:
-- Server action retorna mock fixo
-- Repository retorna `[]`
-- UI usa dado hardcoded
+Implement the **complete path** with trivial logic first:
+- Server action returns a fixed mock
+- Repository returns `[]`
+- UI uses hardcoded data
 
-Validar que pipeline inteiro roda (request → action → repo → DB → UI) antes de qualquer lógica real. **Não otimizar nada ainda.**
+Validate that the entire pipeline runs (request → action → repo → DB → UI) before any real logic. **Do not optimize anything yet.**
 
 ### 3. Overfit the simplest case
-Próximo: fazer funcionar em **1 input** real, ignorando edge cases. Mock externals (Stripe, Belvo, OpenAI). Confirmar logs/output esperados.
+Next: make it work on **1 real input**, ignoring edge cases. Mock externals (Stripe, Belvo, OpenAI). Confirm expected logs/output.
 
 ### 4. Add one knob at a time
-Adicionar features em ordem (validation → real DB → external API → caching → optimization). Após cada knob:
-- rodar `rtk npm test`
-- rodar `rtk tsc --noEmit`
-- commit atômico (semantic) — cada commit deve passar verde
+Add features in order (validation → real DB → external API → caching → optimization). After each knob:
+- run `rtk npm test`
+- run `rtk tsc --noEmit`
+- atomic commit (semantic) — each commit must pass green
 
-Se algo quebra: **reverter o knob**, não empilhar fixes.
+If something breaks: **revert the knob**, do not stack fixes.
 
 ### 5. Define eval up front
-Antes de mergear, escrever:
-- 1 teste unit (caminho feliz)
-- 1 teste integração (com fixtures reais quando possível — ver memory: "integration tests must hit a real database")
-- Critério `## Eval` no doc da feature: "feito quando X mensurável"
+Before merging, write:
+- 1 unit test (happy path)
+- 1 integration test (with real fixtures when possible — see memory: "integration tests must hit a real database")
+- `## Eval` criteria in the feature doc: "done when X is measurable"
 
 ### 6. Regularize / harden
-**Só agora** adicionar: rate limit, error boundary, retry, observabilidade Sentry, i18n keys, RLS extra. Antes não.
+**Only now** add: rate limit, error boundary, retry, Sentry observability, i18n keys, extra RLS. Not before.
 
-## Anti-padrões proibidos
+## Forbidden Anti-patterns
 
-- Começar otimizando antes de baseline rodar
-- Adicionar dois knobs no mesmo commit
-- "Vou adicionar try/catch só por garantia" sem erro reproduzido
-- Caching antes de ter perf measurement
-- Abstrações genéricas (factory, strategy) sem 3 callsites reais
+- Starting optimization before the baseline is running
+- Adding two knobs in the same commit
+- "I will add a try/catch just in case" without a reproduced error
+- Caching before having performance measurements
+- Generic abstractions (factory, strategy) without 3 real callsites
 
-## Output esperado quando esta skill ativa
+## Expected Output when this skill is active
 
-Codex responde com mini-plano:
+Codex responds with a mini-plan:
 ```
 Recipe plan:
-1. Data: <fonte de 5-10 exemplos reais>
-2. Skeleton: <arquivos a criar com mocks>
-3. Overfit: <1 caso a fazer funcionar>
-4. Knobs ordenados: [...]
-5. Eval: <teste + critério mensurável>
+1. Data: <source of 5-10 real examples>
+2. Skeleton: <files to create with mocks>
+3. Overfit: <1 case to make work>
+4. Ordered knobs: [...]
+5. Eval: <test + measurable criteria>
 ```
 
-E pede confirmação antes de codar.
+And asks for confirmation before coding.
 
-## Relacionado
-- [[surgical-reviewer]] — revisor que valida estes princípios em PR
-- [[eval-harness-builder]] — agent que gera os testes do passo 5
-- [[andrej-karpathy-skills:karpathy-guidelines]] — guidelines comportamentais base
+## Related
+- [[surgical-reviewer]] — reviewer that validates these principles in a PR
+- [[eval-harness-builder]] — agent that generates tests for step 5
+- [[andrej-karpathy-skills:karpathy-guidelines]] — base behavioral guidelines

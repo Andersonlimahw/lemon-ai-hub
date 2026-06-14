@@ -1,60 +1,60 @@
 ---
 name: llm-wiki-curator
-description: Mantém docs/ no padrão LLM-wiki estilo Karpathy. Gera docs/llms.txt (índice flat machine-readable conforme llmstxt.org), valida links quebrados, força front-matter mínimo em novos .md (title, status, updated, related), agrupa docs órfãos. Use quando user disser "atualizar índice docs", "gerar llms.txt", "auditar docs", "organizar wiki", "curar documentação", ou após adicionar/renomear arquivo em docs/.
+description: Maintains docs/ in the Karpathy-style LLM-wiki standard. Generates docs/llms.txt (flat machine-readable index conforming to llmstxt.org), validates broken links, enforces a minimum front-matter in new .md files (title, status, updated, related), groups orphan docs. Use when the user says "update docs index", "generate llms.txt", "audit docs", "organize wiki", "cure documentation", or after adding/renaming a file in docs/.
 ---
 
 # llm-wiki-curator
 
-Aplica filosofia Karpathy de docs-como-código LLM-first: flat, link-rich, sem prosa decorativa, com headers previsíveis para indexação por agentes.
+Applies Karpathy's philosophy of LLM-first docs-as-code: flat, link-rich, no decorative prose, with predictable headers for indexing by agents.
 
-## Padrão de front-matter obrigatório
+## Mandatory Front-Matter Pattern
 
-Todo arquivo em `docs/**/*.md` (exceto `adr/` e `llms.txt`) deve começar com:
+Every file in `docs/**/*.md` (except `adr/` and `llms.txt`) must start with:
 
 ```yaml
 ---
-title: <título humano curto>
+title: <short human title>
 status: draft | active | deprecated | superseded-by:<path>
 updated: YYYY-MM-DD
 related: [<path1>, <path2>]
 ---
 ```
 
-## Comandos
+## Commands
 
-### 1. Gerar `docs/llms.txt`
+### 1. Generate `docs/llms.txt`
 
 ```bash
 bash .Codex/skills/llm-wiki-curator/scripts/build-index.sh
 ```
 
-Saída: `docs/llms.txt` no formato [llmstxt.org](https://llmstxt.org) — H1 do projeto, blockquote curta, seções por subpasta de `docs/`, cada item `- [Title](relative-path): one-liner`.
+Output: `docs/llms.txt` in [llmstxt.org](https://llmstxt.org) format — project H1, short blockquote, sections by `docs/` subdirectory, each item `- [Title](relative-path): one-liner`.
 
-### 2. Auditar docs
+### 2. Audit docs
 
 ```bash
 bash .Codex/skills/llm-wiki-curator/scripts/audit.sh
 ```
 
-Reporta:
-- arquivos sem front-matter
-- links markdown quebrados (alvo não existe)
-- arquivos não referenciados por nenhum outro (órfãos)
-- status `deprecated` ainda linkado a partir de docs `active`
+Reports:
+- files without front-matter
+- broken markdown links (target does not exist)
+- files not referenced by any other (orphans)
+- `deprecated` status still linked from `active` docs
 
-### 3. Promover doc para `active`
+### 3. Promote doc to `active`
 
-Editar front-matter `status: active` e rodar `build-index.sh` para republicar.
+Edit front-matter `status: active` and run `build-index.sh` to republish.
 
-## Princípios Karpathy aplicados
+## Karpathy Principles Applied
 
-- **Flat > hierárquico**: 1-2 níveis de subpasta máximo. Achatar se possível.
-- **Links bidirecionais**: cada doc lista `related:` para vizinhos.
-- **Sem prosa decorativa**: docs são código. Bullets > parágrafos.
-- **Verificável**: cada feature doc termina com seção `## Eval` — como confirmar que funciona.
-- **Recipe-first**: tutoriais começam com baseline mínimo rodável antes de otimizar.
+- **Flat > hierarchical**: maximum of 1-2 levels of subfolders. Flatten if possible.
+- **Bi-directional links**: each doc lists `related:` to neighbors.
+- **No decorative prose**: docs are code. Bullets > paragraphs.
+- **Verifiable**: each feature doc ends with an `## Eval` section — how to confirm it works.
+- **Recipe-first**: tutorials start with a minimum runnable baseline before optimizing.
 
-## Quando NÃO usar
+## When NOT to use
 
-- ADRs em `docs/adr/` — usam template próprio (data + decisão imutável).
-- `CHANGELOG.md` raiz — segue Keep-a-Changelog, fora de escopo.
+- ADRs in `docs/adr/` — they use their own template (date + immutable decision).
+- Root `CHANGELOG.md` — follows Keep-a-Changelog, out of scope.

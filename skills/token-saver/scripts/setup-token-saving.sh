@@ -74,9 +74,9 @@ echo "=== Token Saving Setup Wizard ==="
 
 # 1. RTK Prompt
 if [ -z "$INSTALL_RTK" ]; then
-  INSTALL_RTK=$(prompt_user "Deseja instalar/configurar o RTK (Rust Token Killer)? (y/n)" "y")
+  INSTALL_RTK=$(prompt_user "Do you want to install/configure RTK (Rust Token Killer)? (y/n)" "y")
   if [ "$INSTALL_RTK" = "y" ]; then
-    SCOPE_RTK=$(prompt_user "Escopo do RTK ([g]lobal / [p]rojeto)?" "g")
+    SCOPE_RTK=$(prompt_user "RTK scope ([g]lobal / [p]roject)?" "g")
     if [ "$SCOPE_RTK" = "g" ] || [ "$SCOPE_RTK" = "global" ]; then
       SCOPE_RTK="global"
     else
@@ -87,9 +87,9 @@ fi
 
 # 2. Caveman Prompt
 if [ -z "$INSTALL_CAVEMAN" ]; then
-  INSTALL_CAVEMAN=$(prompt_user "Deseja ativar o Caveman Mode (comunicação comprimida ~75%)? (y/n)" "y")
+  INSTALL_CAVEMAN=$(prompt_user "Do you want to activate Caveman Mode (compressed communication ~75%)? (y/n)" "y")
   if [ "$INSTALL_CAVEMAN" = "y" ]; then
-    SCOPE_CAVEMAN=$(prompt_user "Escopo do Caveman ([g]lobal / [p]rojeto)?" "g")
+    SCOPE_CAVEMAN=$(prompt_user "Caveman scope ([g]lobal / [p]roject)?" "g")
     if [ "$SCOPE_CAVEMAN" = "g" ] || [ "$SCOPE_CAVEMAN" = "global" ]; then
       SCOPE_CAVEMAN="global"
     else
@@ -100,9 +100,9 @@ fi
 
 # 3. Graphify Prompt
 if [ -z "$INSTALL_GRAPHIFY" ]; then
-  INSTALL_GRAPHIFY=$(prompt_user "Deseja configurar o Graphify (Knowledge Graph de codebase)? (y/n)" "y")
+  INSTALL_GRAPHIFY=$(prompt_user "Do you want to configure Graphify (codebase Knowledge Graph)? (y/n)" "y")
   if [ "$INSTALL_GRAPHIFY" = "y" ]; then
-    SCOPE_GRAPHIFY=$(prompt_user "Escopo do Graphify ([g]lobal / [p]rojeto)?" "p")
+    SCOPE_GRAPHIFY=$(prompt_user "Graphify scope ([g]lobal / [p]roject)?" "p")
     if [ "$SCOPE_GRAPHIFY" = "g" ] || [ "$SCOPE_GRAPHIFY" = "global" ]; then
       SCOPE_GRAPHIFY="global"
     else
@@ -113,9 +113,9 @@ fi
 
 # 4. Context-Mode Prompt
 if [ -z "$INSTALL_CONTEXT_MODE" ]; then
-  INSTALL_CONTEXT_MODE=$(prompt_user "Deseja instalar o Context-Mode (compactação de contexto)? (y/n)" "y")
+  INSTALL_CONTEXT_MODE=$(prompt_user "Do you want to install Context-Mode (context compression)? (y/n)" "y")
   if [ "$INSTALL_CONTEXT_MODE" = "y" ]; then
-    SCOPE_CONTEXT_MODE=$(prompt_user "Escopo do Context-Mode ([g]lobal / [p]rojeto)?" "g")
+    SCOPE_CONTEXT_MODE=$(prompt_user "Context-Mode scope ([g]lobal / [p]roject)?" "g")
     if [ "$SCOPE_CONTEXT_MODE" = "g" ] || [ "$SCOPE_CONTEXT_MODE" = "global" ]; then
       SCOPE_CONTEXT_MODE="global"
     else
@@ -126,29 +126,29 @@ fi
 
 # Apply RTK Setup
 if [ "$INSTALL_RTK" = "y" ]; then
-  echo "=> Configurando RTK..."
+  echo "=> Configuring RTK..."
   if ! command -v rtk &> /dev/null; then
-    echo "Aviso: Executável 'rtk' não foi encontrado no PATH."
-    echo "Instrução de instalação: execute 'brew install steipete/tap/rtk' ou obtenha a partir de https://github.com/steipete/rtk"
+    echo "Warning: 'rtk' executable not found in PATH."
+    echo "Installation instruction: run 'brew install steipete/tap/rtk' or obtain from https://github.com/steipete/rtk"
   else
-    echo "RTK encontrado em $(which rtk)."
+    echo "RTK found at $(which rtk)."
   fi
   
   if [ "$SCOPE_RTK" = "global" ]; then
     export ENABLE_RTK=1
   else
-    echo "Para configurar RTK apenas no projeto, adicione 'rtk hook claude' nos scripts locais ou config."
+    echo "To configure RTK for project only, add 'rtk hook claude' to local scripts or config."
   fi
 fi
 
 # Apply Caveman Setup
 if [ "$INSTALL_CAVEMAN" = "y" ]; then
-  echo "=> Configurando Caveman Mode..."
+  echo "=> Configuring Caveman Mode..."
   
   CAVEMAN_INSTRUCTIONS="
 # Caveman Mode (Active)
-Work style: telegráfico, noun-phrases, min tokens.
-Respostas curtas, sem enrolação, sem formalidades.
+Work style: telegraphic, noun-phrases, min tokens.
+Short answers, no fluff, no formalities.
 "
   if [ "$SCOPE_CAVEMAN" = "global" ]; then
     export ENABLE_CAVEMAN=1
@@ -156,50 +156,50 @@ Respostas curtas, sem enrolação, sem formalidades.
     if [ -f "$CLAUDE_MD" ]; then
       if ! grep -q "Caveman Mode" "$CLAUDE_MD"; then
         echo "$CAVEMAN_INSTRUCTIONS" >> "$CLAUDE_MD"
-        echo "Instruções Caveman adicionadas a $CLAUDE_MD"
+        echo "Caveman instructions added to $CLAUDE_MD"
       fi
     else
       echo "$CAVEMAN_INSTRUCTIONS" > "$CLAUDE_MD"
-      echo "Criado $CLAUDE_MD com instruções Caveman"
+      echo "Created $CLAUDE_MD with Caveman instructions"
     fi
   else
     # Project scope
     PROJECT_CLAUDE_MD="$CURRENT_PROJECT_DIR/CLAUDE.md"
     if ! grep -q "Caveman Mode" "$PROJECT_CLAUDE_MD" 2>/dev/null; then
       echo "$CAVEMAN_INSTRUCTIONS" >> "$PROJECT_CLAUDE_MD"
-      echo "Instruções Caveman adicionadas ao CLAUDE.md do projeto"
+      echo "Caveman instructions added to the project's CLAUDE.md"
     fi
   fi
 fi
 
 # Apply Graphify Setup
 if [ "$INSTALL_GRAPHIFY" = "y" ]; then
-  echo "=> Configurando Graphify..."
+  echo "=> Configuring Graphify..."
   if ! command -v graphify &> /dev/null; then
-    echo "Graphify não instalado globalmente. Clonando do repositório..."
+    echo "Graphify not installed globally. Cloning from repository..."
     # Local clone / build or setup instructions
     echo "Clone/Build: git clone https://github.com/safishamsi/graphify.git ~/.graphify"
-    echo "Consulte a documentação em https://github.com/safishamsi/graphify para instalar o binário."
+    echo "See documentation at https://github.com/safishamsi/graphify to install the binary."
   else
-    echo "Graphify encontrado em $(which graphify)."
+    echo "Graphify found at $(which graphify)."
   fi
 
   if [ "$SCOPE_GRAPHIFY" = "project" ]; then
-    echo "Inicializando Graphify no projeto atual..."
+    echo "Initializing Graphify in the current project..."
     if [ -d "$CURRENT_PROJECT_DIR" ]; then
-      # Simula ou roda a inicialização do graphify no projeto
+      # Simulates or runs graphify initialization in the project
       mkdir -p "$CURRENT_PROJECT_DIR/graphify-out"
-      echo "Criado diretório graphify-out/ no projeto para os grafos de conhecimento."
+      echo "Created graphify-out/ directory in the project for knowledge graphs."
       
-      # Adicionar instrução ao CLAUDE.md do projeto
+      # Add instruction to the project's CLAUDE.md
       GRAPHIFY_RULE="
 # Graphify Codebase Q&A
-Se a pasta 'graphify-out/' estiver no projeto, consulte o knowledge graph ANTES de fazer buscas lineares ou explorar múltiplos arquivos.
+If the 'graphify-out/' folder is present in the project, query the knowledge graph BEFORE making linear searches or exploring multiple files.
 "
       PROJECT_CLAUDE_MD="$CURRENT_PROJECT_DIR/CLAUDE.md"
       if ! grep -q "Graphify" "$PROJECT_CLAUDE_MD" 2>/dev/null; then
         echo "$GRAPHIFY_RULE" >> "$PROJECT_CLAUDE_MD"
-        echo "Regra Graphify adicionada ao CLAUDE.md do projeto"
+        echo "Graphify rule added to the project's CLAUDE.md"
       fi
     fi
   fi
@@ -207,7 +207,7 @@ fi
 
 # Apply Context-Mode Setup
 if [ "$INSTALL_CONTEXT_MODE" = "y" ]; then
-  echo "=> Configurando Context-Mode..."
+  echo "=> Configuring Context-Mode..."
   if [ "$SCOPE_CONTEXT_MODE" = "global" ]; then
     export ENABLE_CONTEXT_MODE=1
   fi
@@ -215,16 +215,16 @@ fi
 
 # Run settings updater if global modifications were requested
 if [ "${ENABLE_RTK:-0}" = "1" ] || [ "${ENABLE_CAVEMAN:-0}" = "1" ] || [ "${ENABLE_CONTEXT_MODE:-0}" = "1" ]; then
-  echo "=> Atualizando settings.json global de ~/.claude/..."
+  echo "=> Updating global settings.json in ~/.claude/..."
   node "$SCRIPT_DIR/update-settings.js"
 fi
 
-echo "=== Configuração Concluída com Sucesso! ==="
+echo "=== Setup Completed Successfully! ==="
 echo ""
-echo "Instruções Rápidas de Uso:"
+echo "Quick Usage Instructions:"
 echo "--------------------------------------------------------"
-echo "1. RTK: Use 'rtk gain' para ver a auditoria de economia."
-echo "2. Caveman: O agent falará de forma extremamente compacta."
-echo "3. Graphify: Se no projeto, o agent usará 'graphify-out/' para acelerar as buscas de arquitetura."
-echo "4. Context-Mode: O plugin está ativo e gerencia outputs longos automaticamente."
+echo "1. RTK: Use 'rtk gain' to view savings audit."
+echo "2. Caveman: The agent will speak in an extremely compact manner."
+echo "3. Graphify: If in project, the agent will use 'graphify-out/' to accelerate architecture searches."
+echo "4. Context-Mode: The plugin is active and manages long outputs automatically."
 echo "--------------------------------------------------------"

@@ -1,6 +1,6 @@
 ---
 name: senior-prompt-engineer
-description: Pipeline stage-0 prompt refiner. Runs FIRST — before skills-selector and smart-dispatch — turning a raw idea, pasted draft, or the current chat into a definitive, production-grade prompt (Anthropic prompt-engineering best practices), then hands the refined prompt + an Execution Map (agents, skills, models, effort, time & token estimate) to the routers so they pick the best skills/models with sharpened context. When no file path is given, the input IS the chat/pasted text and the output is returned inline (processed naturally), not forced to a file. Use when the user invokes /senior-prompt-engineer, says "refina meu prompt", "melhora esse prompt", "transforma essa ideia em prompt", "reescreve idea.md em prompt.md", "prompt definitivo", "prompt profissional", or pastes a draft prompt/idea to be hardened. Cross-CLI: Claude, Codex, Gemini, OpenCode, Antigravity (agy), lemon-code (lemon).
+description: Pipeline stage-0 prompt refiner. Runs FIRST — before skills-selector and smart-dispatch — turning a raw idea, pasted draft, or the current chat into a definitive, production-grade prompt (Anthropic prompt-engineering best practices), then hands the refined prompt + an Execution Map (agents, skills, models, effort, time & token estimate) to the routers so they pick the best skills/models with sharpened context. When no file path is given, the input IS the chat/pasted text and the output is returned inline (processed naturally), not forced to a file. Use when the user invokes /senior-prompt-engineer, says "refine my prompt", "improve this prompt", "turn this idea into a prompt", "rewrite idea.md to prompt.md", "definitive prompt", "professional prompt", or pastes a draft prompt/idea to be hardened. Cross-CLI: Claude, Codex, Gemini, OpenCode, Antigravity (agy), lemon-code (lemon).
 ---
 
 # Senior Prompt Engineer
@@ -29,7 +29,7 @@ Refining first means the routers decide on a *clarified* request instead of a va
 Do **not** refine trivial, already-clear, one-line requests (e.g. "run the tests", "fix this typo", "what does X do?"). Auto-refinement on every turn adds latency and tokens for no gain. Engage only when:
 - the user explicitly invokes the skill, OR
 - the request is ambiguous, multi-step, underspecified, or high-stakes.
-Otherwise emit one line — `Prompt já claro; pulando refino → skills-selector` — and pass through. This gate is mandatory.
+Otherwise emit one line — `Prompt already clear; skipping refinement → skills-selector` — and pass through. This gate is mandatory.
 
 ## Inputs you accept
 

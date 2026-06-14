@@ -37,13 +37,13 @@ extract_desc() {
 {
   echo "# VibingCash"
   echo ""
-  echo "> SaaS financeiro Next.js 15 + Supabase. Repository Pattern, ActionResult<T>, Apple Design System (Tailwind 4), AI copilot (OpenAI), Open Finance (Belvo), Stripe, Capacitor iOS/Android."
+  echo "> Financial SaaS Next.js 15 + Supabase. Repository Pattern, ActionResult<T>, Apple Design System (Tailwind 4), AI copilot (OpenAI), Open Finance (Belvo), Stripe, Capacitor iOS/Android."
   echo ""
-  echo "Última geração: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  echo "Last generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
   echo ""
 
   # Top-level docs first
-  echo "## Visão geral"
+  echo "## Overview"
   echo ""
   find "$DOCS" -maxdepth 1 -name "*.md" -not -name "llms*.md" | sort | while read -r f; do
     rel="${f#"$ROOT/"}"

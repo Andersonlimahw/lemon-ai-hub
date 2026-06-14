@@ -209,24 +209,24 @@ The table above is authoritative. This list is a quick regex-ish cheatsheet for 
 - `\bbranch\b|checkout|switch` → `git-branch`
 - `changelog|release notes` → `git-changelog`
 - `design|redesign|landing|hero|figma` → `frontend-design` or `ui-ux-pro-max`
-- `acessibilidade|a11y|wcag|contraste|keyboard nav` → `ui-ux-pro-max`
-- `polir|polish|micro(-| )interaction|spacing` → `ui-polisher`
+- `accessibility|a11y|wcag|contrast|keyboard nav` → `ui-ux-pro-max`
+- `polish|micro(-| )interaction|spacing` → `ui-polisher`
 - `react native|expo|android|ios\b` → `react-native` + possibly `vercel-react-native-skills`
 - `mcp server|fastmcp|mcp tool` → `mcp-builder` / `create-mcp`
-- `nova skill|create a skill|skill md` → `skill-creator`
+- `new skill|create a skill|skill md` → `skill-creator`
 - `prompt cach(e|ing)|anthropic sdk|claude api` → `claude-api`
 - `e2e|playwright|cypress` → `webapp-testing`
 - `unit test|tdd|vitest|jest|bun test` → `testing` / `backend-testing`
-- `bug|error|stack trace|regress(ion|ão)` → `auto-fix` first, escalate to `systematic-debugging`
-- `pod install.*error|NitroModules|Unable to find a specification|BUILD FAILED|atualiza as rules|update docs` → `error-fix-loop`
+- `bug|error|stack trace|regression` → `auto-fix` first, escalate to `systematic-debugging`
+- `pod install.*error|NitroModules|Unable to find a specification|BUILD FAILED|update rules|update docs` → `error-fix-loop`
 - `deploy|docker|k8s|pipeline|ci/cd` → `devops`
 - `landing copy|headline|cta|pitch` → `copywriting`
 - `linkedin|tweet|instagram|post` → `social-content`
-- `xlsx|excel|planilha` → `xlsx`
+- `xlsx|excel|spreadsheet` → `xlsx`
 - `settings\.json|hook|permission|keybind` → `update-config` / `keybindings-help`
 - `loop|every \d+ (min|hour)|cron` → `loop` / `schedule`
 - `\bgsd\b|\.planning|phase \d+\.\d+` → GSD family
-- `arquitetura|architecture|como .* se relaciona|how does .* relate|entender o codebase` + `graphify-out/` exists → `graphify` (query mode)
+- `architecture|how does .* relate|understand the codebase` + `graphify-out/` exists → `graphify` (query mode)
 
 Multiple matches? Apply step 3 (rank & prune) before emitting.
 
@@ -239,27 +239,27 @@ User: "what's the file that sets our default theme?"
 → `SKILLS: []` — answer inline with a grep. No skill earns its keep here.
 
 **Clear single-skill match**
-User: "abre um PR com as alterações staged"
+User: "open a PR with the staged changes"
 → `SKILLS: [git-pr-create]` | INTENT: git-op | REASON: direct PR request | BUDGET: low | NEXT: run git status + git diff.
 
 **Conflict, pick narrower**
-User: "cria o commit"
+User: "create the commit"
 → `SKILLS: [git-commit]` (not `git-master`) | INTENT: git-op | REASON: narrow beats broad | BUDGET: low.
 
 **Design: light vs heavy**
-User: "ajusta o espaçamento do header" → `SKILLS: [ui-polisher]`.
-User: "redesenha a landing com identidade mais ousada" → `SKILLS: [frontend-design]` (or `ui-ux-pro-max` if a system-level sweep is asked).
+User: "adjust header spacing" → `SKILLS: [ui-polisher]`.
+User: "redesign the landing with a bolder identity" → `SKILLS: [frontend-design]` (or `ui-ux-pro-max` if a system-level sweep is asked).
 
 **Planning + build — do NOT chain**
-User: "planeja e implementa a feature X de watchlist"
+User: "plan and implement watchlist feature X"
 → First turn: `SKILLS: [smart-dispatch]` | REASON: multi-model plan. Let it emit the dispatch table, then the user confirms before building.
 
 **Bug report**
-User: "tá quebrando com TS2322 em agent.ts:210"
+User: "breaking with TS2322 in agent.ts:210"
 → `SKILLS: [auto-fix]` — pattern-matched, cheap. If 2 fix attempts fail, escalate to `systematic-debugging`.
 
 **New skill**
-User: "cria uma skill para revisar SQL"
+User: "create a skill to review SQL"
 → `SKILLS: [skills-selector, skill-creator]`? **No** — skills-selector is already running. Emit `SKILLS: [skill-creator]`.
 
 ---
@@ -270,7 +270,7 @@ User: "cria uma skill para revisar SQL"
 2. **No silent escalation.** If you picked a heavy skill, your `REASON` must name the signal that justified it.
 3. **Announce before you invoke.** Always emit the block. Never call a skill without emitting the plan first — the block is the audit trail.
 4. **Respect user overrides.** If the user explicitly names a skill ("use ui-ux-pro-max for this"), pass it through — your job is scoping, not vetoing.
-5. **Language stays with the user.** Keep the selection block in the user's language if non-English (pt-BR OK). Identifiers (skill names, `SKILLS:` key) stay in English.
+5. **Language stays with the user.** Keep the selection block in the user's language if non-English (US English/pt-BR OK). Identifiers (skill names, `SKILLS:` key) stay in English.
 6. **Portability.** If the selected skill doesn't exist on the current platform, downgrade to the closest match on the same row of the catalog; note the substitution in `REASON`.
 7. **Stop at selection.** After the block, hand off. Do not continue executing the selected skill's body — invoke it via the platform's Skill mechanism.
 8. **If nothing fits, emit `[]`.** No-skill is a valid, often correct, answer. The default is to do the work inline with the base tools.

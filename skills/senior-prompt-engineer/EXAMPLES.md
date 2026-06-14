@@ -8,12 +8,12 @@ Full before/after transformations. Study the *shape*, not the specific domain.
 
 **Invocation**
 ```
-/senior-prompt-engineer Leia ./idea.md e reescreva em ./prompt.md de forma profissional
+/senior-prompt-engineer Read ./idea.md and rewrite to ./prompt.md professionally
 ```
 
 **Input `idea.md` (weak)**
 ```
-preciso adicionar dark mode no app. usar o tema do tailwind. salvar a preferencia
+need to add dark mode to the app. use tailwind theme. save preference
 ```
 
 **Step-2 probe found**: Next.js + Tailwind, `package.json` has `test`, `lint`; `AGENTS.md` defines conventions.
@@ -85,20 +85,20 @@ Effort: low | Time: ~15–25 min | Tokens: ~10k–20k | MCP/Tools: none.
 
 **Invocation**
 ```
-/senior-prompt-engineer quero um prompt pra criar um script que organiza minhas fotos
+/senior-prompt-engineer I want a prompt to create a script that organizes my photos
 ```
 
 **Step-2 probe**: not in a repo / no manifests. **Autocomplete withheld.**
 
 **Correct response (ask, don't fabricate)**
 ```
-Sem contexto de repo pra autocompletar boilerplate. Pra montar o prompt definitivo preciso de:
-1. Linguagem/runtime (Python? Node? shell?)
-2. Critério de organização (por data EXIF? por pasta? por evento?)
-3. Origem e destino (pastas), e se pode mover ou só copiar
-4. Critério de pronto (ex.: "roda em 1k fotos sem erro, idempotente")
+No repository context to autocomplete boilerplate. To build the definitive prompt I need:
+1. Language/runtime (Python? Node? shell?)
+2. Organization criteria (by EXIF date? by folder? by event?)
+3. Source and destination (folders), and whether to move or just copy
+4. Definition of done (e.g., "runs on 1k photos without error, idempotent")
 
-Me passa esses 4 e eu devolvo o prompt completo.
+Provide these 4 and I will return the complete prompt.
 ```
 Then, once answered, generate the full skeleton. Never guess the stack.
 
@@ -108,7 +108,7 @@ Then, once answered, generate the full skeleton. Never guess the stack.
 
 **Input (mediocre prompt)**
 ```
-Refatora todo o módulo de pagamentos pra ficar mais limpo e adiciona testes
+Refactor the entire payments module to make it cleaner and add tests
 ```
 
 **Key fixes the skill applies**
@@ -137,7 +137,7 @@ MCP/Tools: none. TBD — confirm there's a payments test suite to extend.
 ```
 **Input**: the skill reads the current conversation / last user request as the prompt to harden.
 **Behavior**:
-- If the last request is trivial/clear → triviality gate fires: `Prompt já claro; pulando refino → skills-selector`. No refino.
+- If the last request is trivial/clear → triviality gate fires: `Prompt already clear; skipping refinement → skills-selector`. No refinement.
 - Else → refine in place, return the definitive prompt + Execution Map **inline** (single fenced block), no file written. Then the routers (skills-selector → smart-dispatch) pick skills/models using the sharpened prompt.
 
 **Execution Map (inline)**
