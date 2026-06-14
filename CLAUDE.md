@@ -1,4 +1,5 @@
 # CLAUDE.md
+<!-- Lemon AI Hub: Karpathy Standards -->
 Single source of truth: `@AGENTS.md`
 
 Read on start a new session:
