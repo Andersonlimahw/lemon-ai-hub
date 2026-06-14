@@ -11,7 +11,7 @@ CYAN='\033[0;36m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-REPO_DIR="/Users/andersonlimadev/Projects/IA/lemon-ai-hub"
+REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SKILLS_DIR="$REPO_DIR/skills"
 PLUGINS_DIR="$REPO_DIR/plugins"
 
