@@ -17,7 +17,7 @@ Este plugin transforma automações documentadas em **Value Loops** executáveis
 ## 🚀 Instalação
 
 ```bash
-# Na raiz do seu repositório ai-marketplace:
+# Na raiz do seu repositório lemon-ai-hub:
 ./plugins/agentic-value-loops/scripts/install.sh
 ```
 

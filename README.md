@@ -15,14 +15,14 @@ This repository ships a marketplace manifest (`.claude-plugin/marketplace.json`)
 Inside a Claude Code session, run the slash command:
 
 ```text
-/plugin marketplace add Andersonlimahw/ai-marketplace
+/plugin marketplace add Andersonlimahw/lemon-ai-hub
 ```
 
 You can also point at any Git URL or a local path:
 
 ```text
-/plugin marketplace add https://github.com/Andersonlimahw/ai-marketplace.git
-/plugin marketplace add ./ai-marketplace          # local checkout
+/plugin marketplace add https://github.com/Andersonlimahw/lemon-ai-hub.git
+/plugin marketplace add ./lemon-ai-hub          # local checkout
 ```
 
 ### 2. Browse & install plugins
@@ -31,8 +31,8 @@ Open the interactive installer, or install a plugin by name using the `plugin@ma
 
 ```text
 /plugin                                            # browse the catalog UI
-/plugin install spotify-squad@ai-marketplace
-/plugin install agentic-value-loops@ai-marketplace
+/plugin install spotify-squad@lemon-ai-hub
+/plugin install agentic-value-loops@lemon-ai-hub
 ```
 
 | Plugin | What you get |
@@ -44,8 +44,8 @@ Open the interactive installer, or install a plugin by name using the `plugin@ma
 
 ```text
 /plugin marketplace list                           # show registered marketplaces
-/plugin marketplace update ai-marketplace          # pull the latest manifest
-/plugin marketplace remove ai-marketplace          # unregister
+/plugin marketplace update lemon-ai-hub          # pull the latest manifest
+/plugin marketplace remove lemon-ai-hub          # unregister
 ```
 
 > Plugins bundle their own agents, skills, and commands — once installed they are auto-discovered by Claude Code. The standalone `skills/` in this repo are shared globally via symlinks instead (see **Installation & Symlink Setup** below).

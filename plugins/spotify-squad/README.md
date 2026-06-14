@@ -16,7 +16,7 @@ A squad é composta por 12 agentes especialistas, liderados por um orquestrador 
 ## 🚀 Instalação
 
 ```bash
-# Na raiz do seu repositório ai-marketplace:
+# Na raiz do seu repositório lemon-ai-hub:
 ./plugins/spotify-squad/scripts/install.sh
 ```
 

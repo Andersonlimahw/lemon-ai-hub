@@ -25,7 +25,7 @@ By utilizing symbolic links, all agents are configured to point back to this rep
 
 ```mermaid
 graph TD
-    Marketplace["/Projects/IA/ai-marketplace/skills/"]
+    Marketplace["/Projects/IA/lemon-ai-hub/skills/"]
     Claude["~/.claude/skills/"]
     Codex["~/.codex/skills/"]
     OpenCode["~/.opencode/skills/"]
