@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# marketplace - Command-line interface to manage plugins and skills in ai-marketplace
+# marketplace - Command-line interface to manage plugins and skills in lemon-ai-hub
 
 set -euo pipefail
 
@@ -11,7 +11,7 @@ CYAN='\033[0;36m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-REPO_DIR="/Users/andersonlimadev/Projects/IA/ai-marketplace"
+REPO_DIR="/Users/andersonlimadev/Projects/IA/lemon-ai-hub"
 SKILLS_DIR="$REPO_DIR/skills"
 PLUGINS_DIR="$REPO_DIR/plugins"
 

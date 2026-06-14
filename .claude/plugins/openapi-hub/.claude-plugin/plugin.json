@@ -1,0 +1,10 @@
+{
+  "name": "openapi-hub",
+  "version": "1.0.0",
+  "description": "OpenAPI spec management hub. Maintains versioned API specs, validates specs on every commit, detects breaking changes between versions, generates typed clients (TypeScript, Python, Go), publishes developer documentation (Redoc/Swagger UI), and exports Postman collections. Enforces spec-first development workflow.",
+  "author": {
+    "name": "Anderson Lima",
+    "email": "andersonlimahw@gmail.com"
+  },
+  "keywords": ["openapi", "swagger", "rest-api", "api-docs", "spec-first", "breaking-changes", "sdk-generation", "redoc", "postman", "contract-testing"]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "chaos-runner",
+  "version": "1.0.0",
+  "description": "Chaos engineering orchestration plugin. Manages chaos experiments via Toxiproxy, chaos-monkey scripts, and kubectl. Schedules regular chaos game days, tracks experiment results over time, and verifies steady-state hypotheses automatically. Integrates with Grafana for before/after metric comparison.",
+  "author": {
+    "name": "Anderson Lima",
+    "email": "andersonlimahw@gmail.com"
+  },
+  "keywords": ["chaos-engineering", "resilience", "fault-injection", "toxiproxy", "circuit-breaker", "gameday", "sre", "reliability"]
+}
