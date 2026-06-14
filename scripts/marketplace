@@ -1,0 +1,127 @@
+#!/usr/bin/env bash
+
+# marketplace - Command-line interface to manage plugins and skills in ai-marketplace
+
+set -euo pipefail
+
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+CYAN='\033[0;36m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+REPO_DIR="/Users/andersonlimadev/Projects/IA/ai-marketplace"
+SKILLS_DIR="$REPO_DIR/skills"
+PLUGINS_DIR="$REPO_DIR/plugins"
+
+usage() {
+  echo -e "${BLUE}AI Marketplace CLI - Manage your AI Skills and Plugins${NC}"
+  echo "Usage: $0 [command] [args]"
+  echo ""
+  echo "Commands:"
+  echo "  list-skills              List all skills available in the marketplace"
+  echo "  list-plugins             List plugins (including registered marketplaces)"
+  echo "  install-skills           Verify or setup symlinks to share all skills"
+  echo "  info <skill-name>        Show details of a specific skill"
+  echo "  help                     Show this help message"
+  exit 0
+}
+
+list_skills() {
+  echo -e "${BLUE}=== Available Skills in Marketplace ===${NC}"
+  printf "%-25s | %s\n" "Skill Name" "Description"
+  printf "%-25s | %s\n" "----------" "-----------"
+  
+  for dir in "$SKILLS_DIR"/*; do
+    if [ -d "$dir" ]; then
+      local skill_name
+      skill_name=$(basename "$dir")
+      local skill_file="$dir/SKILL.md"
+      
+      if [ -f "$skill_file" ]; then
+        # Extract description from front matter
+        local desc
+        desc=$(grep -i "^description:" "$skill_file" | head -n 1 | sed -E 's/^description:[[:space:]]*["'\x27']?//; s/["'\x27']?[[:space:]]*$//')
+        printf "${GREEN}%-25s${NC} | %s\n" "$skill_name" "$desc"
+      fi
+    fi
+  done
+}
+
+list_plugins() {
+  echo -e "${BLUE}=== Available Plugins & Marketplaces ===${NC}"
+  local settings_file="$HOME/.claude/settings.json"
+  if [ -f "$settings_file" ]; then
+    echo -e "${CYAN}Registered Marketplaces in settings.json:${NC}"
+    node -e "
+      const settings = require('$settings_file');
+      if (settings.extraKnownMarketplaces) {
+        Object.entries(settings.extraKnownMarketplaces).forEach(([name, details]) => {
+          console.log(' - ' + name + ' (repo: ' + (details.source?.repo || 'local') + ')');
+        });
+      }
+    "
+    echo ""
+    echo -e "${CYAN}Enabled Plugins in settings.json:${NC}"
+    node -e "
+      const settings = require('$settings_file');
+      if (settings.enabledPlugins) {
+        Object.entries(settings.enabledPlugins).forEach(([name, enabled]) => {
+          if (enabled) console.log(' [✔] ' + name);
+        });
+      }
+    "
+  else
+    echo -e "${RED}settings.json not found in ~/.claude/${NC}"
+  fi
+}
+
+skill_info() {
+  local name="${1:-}"
+  if [ -z "$name" ]; then
+    echo -e "${RED}Error: Skill name required.${NC}"
+    exit 1
+  fi
+  
+  local skill_file="$SKILLS_DIR/$name/SKILL.md"
+  if [ -f "$skill_file" ]; then
+    echo -e "${BLUE}=== Skill Info: $name ===${NC}"
+    cat "$skill_file"
+  else
+    echo -e "${RED}Skill '$name' not found in $SKILLS_DIR.${NC}"
+  fi
+}
+
+install_skills() {
+  bash "$REPO_DIR/scripts/setup-symlinks.sh"
+}
+
+if [ $# -eq 0 ]; then
+  usage
+fi
+
+cmd="$1"
+shift
+
+case "$cmd" in
+  list-skills)
+    list_skills
+    ;;
+  list-plugins)
+    list_plugins
+    ;;
+  install-skills)
+    install_skills
+    ;;
+  info)
+    skill_info "$@"
+    ;;
+  help|--help|-h)
+    usage
+    ;;
+  *)
+    echo -e "${RED}Unknown command: $cmd${NC}"
+    usage
+    ;;
+esac
