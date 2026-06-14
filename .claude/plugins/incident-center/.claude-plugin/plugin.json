@@ -1,0 +1,10 @@
+{
+  "name": "incident-center",
+  "version": "1.0.0",
+  "description": "Incident management hub plugin. Manages active incidents, runbooks, on-call rotations, and postmortem backlog. Integrates with PagerDuty, OpsGenie, and Slack. Auto-generates incident channels, tracks MTTR/MTTD metrics over time, and maintains a searchable postmortem library for recurring issue detection.",
+  "author": {
+    "name": "Anderson Lima",
+    "email": "andersonlimahw@gmail.com"
+  },
+  "keywords": ["incident-management", "on-call", "runbook", "postmortem", "sre", "mttr", "pagerduty", "opsgenie", "reliability", "alerting"]
+}
