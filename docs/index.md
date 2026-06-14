@@ -32,5 +32,5 @@ To initialize the repository and synchronize all your local AI CLIs:
    ```
 
 ## ⚖️ General Guidelines
-- For behavioral conventions, please read [AGENTS.md](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/AGENTS.md) at the root directory.
-- For session setup rules, check [CLAUDE.md](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/CLAUDE.md) at the root directory.
+- For behavioral conventions, please read [AGENTS.md](./AGENTS.md) at the root directory.
+- For session setup rules, check [CLAUDE.md](./CLAUDE.md) at the root directory.

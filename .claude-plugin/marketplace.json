@@ -1,0 +1,40 @@
+{
+  "name": "ai-marketplace",
+  "owner": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "metadata": {
+    "description": "AI-Native marketplace of Claude Code plugins and skills — autonomous squads, value loops, and token-saving routers.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "spotify-squad",
+      "source": "./plugins/spotify-squad",
+      "description": "AI-Native Squad — Spotify-model autonomous engineering team. 12 specialized agents (Tech Lead, Backend, Frontend, Mobile, UX, UI, Product, Scrum Master, DevOps, QA, Data, Security) with orchestrated collaboration and 17 domain-specific skills.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "squad",
+        "spotify-model",
+        "agents",
+        "orchestration",
+        "ai-native"
+      ]
+    },
+    {
+      "name": "agentic-value-loops",
+      "source": "./plugins/agentic-value-loops",
+      "description": "Continuous improvement engine that ships verified increments with constant quality. Loops for Feature Development, Maintenance & Security, Documentation Sync, and AI Tuning.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "loops",
+        "continuous-improvement",
+        "automations",
+        "ai-native"
+      ]
+    }
+  ]
+}
