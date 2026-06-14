@@ -1,49 +1,49 @@
 # AI Marketplace
 
-Repositório centralizado e otimizado para gerenciar **AI Skills e Plugins** entre diferentes agentes locais (Claude Code, Codex, OpenCode, Agy).
+Centralized and optimized repository to manage **AI Skills and Plugins** across different local agents (Claude Code, Codex, OpenCode, Agy).
 
-Este projeto é baseado e inspirado no padrão do Peter Steinberger (`steipete/agent-scripts`), mas estruturado com foco em `.claude` e compartilhado com os demais provedores via links simbólicos transparentes.
-
----
-
-## 📂 Estrutura do Repositório
-
-- **`skills/`**: Skills reutilizáveis e roteadores de prompts.
-  - [`senior-prompt-engineer`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/senior-prompt-engineer/SKILL.md): Stage-0 prompt refiner e definidor de Execution Map (`EXEC-MAP v1`).
-  - [`skills-selector`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/skills-selector/SKILL.md): Gatekeeper meta-skill que decide dinamicamente quais skills carregar sob demanda.
-  - [`smart-dispatch`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/smart-dispatch/SKILL.md): Roteamento inteligente de implementações com fallback e YOLO-mode.
-  - [`karpathy-recipe`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/karpathy-recipe/SKILL.md): Metodologia incremental de desenvolvimento (baseada na receita do Karpathy).
-  - [`llm-wiki-curator`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/llm-wiki-curator/SKILL.md): Manutenção automatizada de documentação estruturada `llms.txt`.
-  - [`token-saver`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/token-saver/SKILL.md): Skill genérica para instalação e configuração de ferramentas de economia de tokens.
-- **`plugins/`**: Referências aos plugins instalados.
-  - `marketplaces/karpathy-skills`: Link simbólico para os plugins locais instalados.
-- **`scripts/`**: Helpers utilitários.
-  - `setup-symlinks.sh`: Script para automatizar a criação dos links simbólicos globais.
-  - `marketplace`: Interface CLI para listagem e gerenciamento de ferramentas de IA do repositório.
+This project is based on and inspired by Peter Steinberger's pattern (`steipete/agent-scripts`), but structured with a focus on `.claude` and shared with other providers via transparent symbolic links.
 
 ---
 
-## 🚀 Instalação & Setup de Links Simbólicos
+## 📂 Repository Structure
 
-Para sincronizar suas configurações globais de agentes e compartilhar a mesma pasta de skills entre todos eles, execute o script de setup a partir da raiz do repositório:
+- **`skills/`**: Reusable skills and prompt routers.
+  - [`senior-prompt-engineer`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/senior-prompt-engineer/SKILL.md): Stage-0 prompt refiner and Execution Map (`EXEC-MAP v1`) builder.
+  - [`skills-selector`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/skills-selector/SKILL.md): Meta-skill gatekeeper that dynamically decides which skills to load on-demand.
+  - [`smart-dispatch`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/smart-dispatch/SKILL.md): Intelligent routing of implementations with fallback and YOLO-mode.
+  - [`karpathy-recipe`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/karpathy-recipe/SKILL.md): Incremental development methodology (based on Karpathy's recipe).
+  - [`llm-wiki-curator`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/llm-wiki-curator/SKILL.md): Automated maintenance of structured `llms.txt` documentation.
+  - [`token-saver`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/token-saver/SKILL.md): Generic skill for installing and configuring token-saving tools.
+- **`plugins/`**: References to installed plugins.
+  - `marketplaces/karpathy-skills`: Symlink to local installed plugins.
+- **`scripts/`**: Utility helpers.
+  - `setup-symlinks.sh`: Script to automate the creation of global symbolic links.
+  - `marketplace`: CLI interface for listing and managing IA tools in the repository.
+
+---
+
+## 🚀 Installation & Symlink Setup
+
+To synchronize your global agent configurations and share the same skills folder across all of them, run the setup script from the root of the repository:
 
 ```bash
 chmod +x scripts/setup-symlinks.sh
 ./scripts/setup-symlinks.sh
 ```
 
-Esse script realiza os seguintes passos:
-1. Faz backup de pastas existentes (como `~/.claude/skills` se já existirem).
-2. Cria o link simbólico `~/.claude/skills` apontando para a pasta `skills/` deste repositório.
-3. Cria links simbólicos de `~/.codex/skills`, `~/.opencode/skills` e `~/.agy/skills` apontando diretamente para `~/.claude/skills`.
+This script performs the following steps:
+1. Backs up existing folders (like `~/.claude/skills` if they already exist).
+2. Creates the symbolic link `~/.claude/skills` pointing to the `skills/` folder of this repository.
+3. Creates symbolic links for `~/.codex/skills`, `~/.opencode/skills`, and `~/.agy/skills` pointing directly to `~/.claude/skills`.
 
-Com isso, qualquer skill adicionada ou atualizada neste repositório estará disponível imediatamente em todos os seus CLI de IA!
+With this, any skill added or updated in this repository will be immediately available in all your AI CLIs!
 
 ---
 
-## 🛒 O CLI `marketplace`
+## 🛒 The `marketplace` CLI
 
-Você pode listar as skills e os plugins ativos a qualquer momento através do utilitário `marketplace`:
+You can list active skills and plugins at any time using the `marketplace` utility:
 
 ```bash
 ./scripts/marketplace list-skills
@@ -52,17 +52,17 @@ Você pode listar as skills e os plugins ativos a qualquer momento através do u
 
 ---
 
-## 🪙 Otimização de Contexto e Token Saving (`token-saver`)
+## 🪙 Context Optimization and Token Saving (`token-saver`)
 
-Para instalar e configurar de forma assistida as principais ferramentas de economia de tokens do ecossistema, utilize a skill `token-saver` (ou execute o script diretamente):
+To install and configure the main token-saving tools in the ecosystem with assistance, use the `token-saver` skill (or run the script directly):
 
 ```bash
 chmod +x skills/token-saver/scripts/setup-token-saving.sh
 ./skills/token-saver/scripts/setup-token-saving.sh
 ```
 
-### O que o Setup Otimiza:
-- **RTK (Rust Token Killer)**: Intercepta comandos de shell (git, tests, build) e remove outputs verbosos. (Use `rtk gain` para ver a auditoria).
-- **Caveman Mode**: Reduz o tamanho das respostas (output tokens) em ~75% através de escrita telegráfica compacta.
-- **Graphify**: Estrutura seu codebase em grafos de relacionamento `graphify-out/` para que a LLM encontre arquivos sem ler a pasta inteira.
-- **Context-Mode**: Compacta logs longos, APIs e dumps grandes enviando apenas resumos estruturados para o contexto ativo do chat.
+### What the Setup Optimizes:
+- **RTK (Rust Token Killer)**: Intercepts shell commands (git, tests, build) and removes verbose outputs. (Use `rtk gain` to view the audit).
+- **Caveman Mode**: Reduces response sizes (output tokens) by ~75% through compact telegraphic writing.
+- **Graphify**: Structures your codebase into `graphify-out/` relationship graphs so that the LLM finds files without reading the entire folder.
+- **Context-Mode**: Compresses long logs, APIs, and large dumps, sending only structured summaries to the active chat context.
