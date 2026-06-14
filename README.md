@@ -6,16 +6,63 @@ This project is based on and inspired by Peter Steinberger's pattern (`steipete/
 
 ---
 
+## 🧩 Install as a Claude Code Marketplace
+
+This repository ships a marketplace manifest (`.claude-plugin/marketplace.json`) so you can install its plugins directly inside Claude Code.
+
+### 1. Register the marketplace
+
+Inside a Claude Code session, run the slash command:
+
+```text
+/plugin marketplace add Andersonlimahw/ai-marketplace
+```
+
+You can also point at any Git URL or a local path:
+
+```text
+/plugin marketplace add https://github.com/Andersonlimahw/ai-marketplace.git
+/plugin marketplace add ./ai-marketplace          # local checkout
+```
+
+### 2. Browse & install plugins
+
+Open the interactive installer, or install a plugin by name using the `plugin@marketplace` syntax:
+
+```text
+/plugin                                            # browse the catalog UI
+/plugin install spotify-squad@ai-marketplace
+/plugin install agentic-value-loops@ai-marketplace
+```
+
+| Plugin | What you get |
+| --- | --- |
+| `spotify-squad` | 12 specialized agents (Tech Lead, Backend, Frontend, Mobile, UX, UI, Product, Scrum Master, DevOps, QA, Data, Security) + 17 domain skills. |
+| `agentic-value-loops` | Continuous-improvement loops: Feature Development, Maintenance & Security, Documentation Sync, AI Tuning. |
+
+### 3. Manage the marketplace
+
+```text
+/plugin marketplace list                           # show registered marketplaces
+/plugin marketplace update ai-marketplace          # pull the latest manifest
+/plugin marketplace remove ai-marketplace          # unregister
+```
+
+> Plugins bundle their own agents, skills, and commands — once installed they are auto-discovered by Claude Code. The standalone `skills/` in this repo are shared globally via symlinks instead (see **Installation & Symlink Setup** below).
+
+---
+
 ## 📂 Repository Structure
 
 - **`skills/`**: Reusable skills and prompt routers.
-  - [`senior-prompt-engineer`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/senior-prompt-engineer/SKILL.md): Stage-0 prompt refiner and Execution Map (`EXEC-MAP v1`) builder.
-  - [`skills-selector`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/skills-selector/SKILL.md): Meta-skill gatekeeper that dynamically decides which skills to load on-demand.
-  - [`smart-dispatch`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/smart-dispatch/SKILL.md): Intelligent routing of implementations with fallback and YOLO-mode.
-  - [`karpathy-recipe`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/karpathy-recipe/SKILL.md): Incremental development methodology (based on Karpathy's recipe).
-  - [`llm-wiki-curator`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/llm-wiki-curator/SKILL.md): Automated maintenance of structured `llms.txt` documentation.
-  - [`token-saver`](file:///Users/andersonlimadev/Projects/IA/ai-marketplace/skills/token-saver/SKILL.md): Generic skill for installing and configuring token-saving tools.
-- **`plugins/`**: Installed plugins (such as `spotify-squad` and `agentic-value-loops`).
+  - [`senior-prompt-engineer`](./skills/senior-prompt-engineer/SKILL.md): Stage-0 prompt refiner and Execution Map (`EXEC-MAP v1`) builder.
+  - [`skills-selector`](./skills/skills-selector/SKILL.md): Meta-skill gatekeeper that dynamically decides which skills to load on-demand.
+  - [`smart-dispatch`](./skills/smart-dispatch/SKILL.md): Intelligent routing of implementations with fallback and YOLO-mode.
+  - [`karpathy-recipe`](./skills/karpathy-recipe/SKILL.md): Incremental development methodology (based on Karpathy's recipe).
+  - [`llm-wiki-curator`](./skills/llm-wiki-curator/SKILL.md): Automated maintenance of structured `llms.txt` documentation.
+  - [`token-saver`](./skills/token-saver/SKILL.md): Generic skill for installing and configuring token-saving tools.
+  - [`code-review-adversary`](./skills/code-review-adversary/SKILL.md): Senior-vs-junior adversarial PR review with configurable model, criticality, and inline-comment/resolve flow.
+- **`plugins/`**: Installable Claude Code plugins (`spotify-squad`, `agentic-value-loops`) — see [Install as a Claude Code Marketplace](#-install-as-a-claude-code-marketplace).
 - **`scripts/`**: Utility helpers.
   - `setup-symlinks.sh`: Script to automate the creation of global symbolic links.
   - `marketplace`: CLI interface for listing and managing IA tools in the repository.
