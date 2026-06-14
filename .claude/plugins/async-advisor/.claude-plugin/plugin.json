@@ -1,0 +1,10 @@
+{
+  "name": "async-advisor",
+  "version": "1.0.0",
+  "description": "Async and concurrency static analysis plugin. Scans TypeScript/JavaScript codebases for race conditions, unbounded Promise.all, missing AbortController, swallowed rejections, and N+1 async patterns. Runs as a pre-commit hook or CI check and provides inline fix suggestions.",
+  "author": {
+    "name": "Anderson Lima",
+    "email": "andersonlimahw@gmail.com"
+  },
+  "keywords": ["async", "concurrency", "race-condition", "promises", "async-await", "p-limit", "abort-controller", "memory-leak", "node-js", "typescript"]
+}

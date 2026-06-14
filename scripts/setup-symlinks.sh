@@ -6,7 +6,7 @@
 
 set -euo pipefail
 
-REPO_SKILLS_DIR="/Users/andersonlimadev/Projects/IA/ai-marketplace/skills"
+REPO_SKILLS_DIR="/Users/andersonlimadev/Projects/IA/lemon-ai-hub/skills"
 
 setup_symlink() {
   local target="$1"

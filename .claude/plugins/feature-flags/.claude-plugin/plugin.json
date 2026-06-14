@@ -1,0 +1,10 @@
+{
+  "name": "feature-flags",
+  "version": "1.0.0",
+  "description": "Feature flag lifecycle management plugin. Tracks all flags across the codebase, detects stale flags (>90 days enabled at 100%), enforces naming conventions, auto-generates flag registry, and produces cleanup PRs for dead flags. Integrates with LaunchDarkly, GrowthBook, Unleash, Statsig, and env-var flag patterns.",
+  "author": {
+    "name": "Anderson Lima",
+    "email": "andersonlimahw@gmail.com"
+  },
+  "keywords": ["feature-flags", "toggles", "launchdarkly", "growthbook", "unleash", "rollout", "ab-testing", "experiments"]
+}
