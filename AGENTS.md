@@ -63,6 +63,15 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
+## Project Rules
+
+Mandatory project rules live in `docs/rules/`. Read and apply them before touching
+the affected areas:
+
+- [`docs/rules/marketplace-sync.md`](docs/rules/marketplace-sync.md) — every plugin
+  in `plugins/` MUST be registered in `.claude-plugin/marketplace.json` in the same
+  change. Never add/rename/remove a plugin without syncing the marketplace.
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
