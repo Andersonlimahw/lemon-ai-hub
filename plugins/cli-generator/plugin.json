@@ -1,0 +1,19 @@
+{
+  "name": "cli-generator",
+  "version": "1.0.0",
+  "description": "Generate a complete, production-ready CLI in Bun from a SPEC, OpenAPI contract, JSON Schema, or natural-language description. Outputs a runnable binary with commander-style arg parsing, autocomplete, man page, and token-aware output formatting.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "cli-generator",
+    "cli",
+    "bun",
+    "code-generation",
+    "commander"
+  ]
+}

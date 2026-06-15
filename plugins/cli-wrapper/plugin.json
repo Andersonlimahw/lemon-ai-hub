@@ -1,0 +1,19 @@
+{
+  "name": "cli-wrapper",
+  "version": "1.0.0",
+  "description": "Wrapper that bridges the AI harness to external CLIs — captures help output, documents commands, saves input/output token metrics, and provides a standardized interface so the harness invokes CLIs without context bloat.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "cli-wrapper",
+    "cli",
+    "wrapper",
+    "token-saving",
+    "command-line"
+  ]
+}
