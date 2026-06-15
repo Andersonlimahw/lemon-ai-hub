@@ -147,6 +147,38 @@
       ]
     },
     {
+      "name": "cli-generator",
+      "source": "./plugins/cli-generator",
+      "description": "Generate a complete, production-ready CLI in Bun from a SPEC, OpenAPI contract, JSON Schema, or natural-language description. Outputs a runnable binary with commander-style arg parsing, autocomplete, man page, and token-aware output formatting.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "cli-generator",
+        "cli",
+        "bun",
+        "code-generation",
+        "commander"
+      ]
+    },
+    {
+      "name": "cli-wrapper",
+      "source": "./plugins/cli-wrapper",
+      "description": "Wrapper that bridges the AI harness to external CLIs — captures help output, documents commands, saves input/output token metrics, and provides a standardized interface so the harness invokes CLIs without context bloat.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "cli-wrapper",
+        "cli",
+        "wrapper",
+        "token-saving",
+        "command-line"
+      ]
+    },
+    {
       "name": "code-review-adversary",
       "source": "./plugins/code-review-adversary",
       "description": ">",
