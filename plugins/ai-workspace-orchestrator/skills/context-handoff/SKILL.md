@@ -9,7 +9,7 @@ Goal: let a fresh agent continue without rereading the whole conversation.
 
 ## Process
 
-1. Save to the OS temp directory by default, not the current workspace.
+1. Save to the OS temp directory by default, not the current workspace. Use the platform temp resolver when available, or `$TMPDIR`/`/tmp` on Unix-like systems, and report the final absolute path.
 2. If the user requests a project artifact, save under the documented project handoff path.
 3. Reference existing PRDs, plans, diffs, commits, and docs by path or URL instead of duplicating them.
 4. Redact secrets, tokens, passwords, private keys, and personal data.

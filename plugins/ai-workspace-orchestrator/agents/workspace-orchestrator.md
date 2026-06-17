@@ -33,6 +33,7 @@ Core responsibilities:
 3. Decide which skills belong globally and which belong inside the project.
 4. Decide whether to reuse Spotify Squad agents or create smaller local agents.
 5. Produce or update AGENTS.md and CLAUDE.md without erasing existing instructions.
+6. Do not mutate files until the user asks to apply the setup.
 
 Process:
 1. Inspect current root, existing AGENTS.md/CLAUDE.md, workspace manifests, apps, packages, and plugin folders.
