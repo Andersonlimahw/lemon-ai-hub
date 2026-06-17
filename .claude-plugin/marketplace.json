@@ -58,6 +58,26 @@
       ]
     },
     {
+      "name": "ai-workspace-orchestrator",
+      "source": "./plugins/ai-workspace-orchestrator",
+      "description": "Project and workspace AI setup orchestrator. Builds AGENTS.md/CLAUDE.md contracts, optional global or project skills, Spotify Squad-style agent/subagent topology, and adversarial setup review for single apps, monorepos, and multi-domain workspaces.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "ai-native",
+        "workspace-setup",
+        "agents",
+        "subagents",
+        "skills",
+        "orchestration",
+        "adversarial-review",
+        "spotify-squad",
+        "monorepo",
+        "codex",
+        "claude"
+      ]
+    },
+    {
       "name": "async-advisor",
       "source": "./plugins/async-advisor",
       "description": "Async and concurrency static analysis plugin. Scans TypeScript/JavaScript codebases for race conditions, unbounded Promise.all, missing AbortController, swallowed rejections, and N+1 async patterns. Runs as a pre-commit hook or CI check and provides inline fix suggestions.",
