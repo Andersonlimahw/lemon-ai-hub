@@ -33,7 +33,7 @@ Goal: create only the skills that improve future agent performance for repeated 
 - Put repo-specific conventions in project-local skills.
 - Put universal workflows in global skills.
 - Do not duplicate the same skill globally and locally; create a global skill plus project references when needed.
-- For plugin work in this repo, update `.claude-plugin/marketplace.json` whenever a plugin directory is added, renamed, or removed.
+- For plugin work in this repo, update `.claude-plugin/marketplace.json` whenever a plugin directory is added, renamed, removed, or plugin metadata changes.
 
 ## Skill Template
 
