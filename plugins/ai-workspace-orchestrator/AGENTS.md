@@ -12,7 +12,8 @@ flowchart TD
     C -->|medium| E[Project skills and verification gates]
     C -->|high| F[Agents, subagents, squad map]
     C -->|max| G[Domain orchestrator, cross-repo map, handoff loop]
-    E --> H[Workspace Contract]
+    D --> H[Workspace Contract]
+    E --> H
     F --> H
     G --> H
     H --> I[Adversarial Review]
