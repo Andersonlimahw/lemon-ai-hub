@@ -22,6 +22,7 @@
 2. Ask one unresolved decision at a time.
 3. Delegate domain work to the matching specialist agent.
 4. Verify each changed domain with its documented command.
+5. Run `adversarial-setup-review` before merging durable instruction changes.
 
 ## Handoff
 
