@@ -15,7 +15,8 @@ flowchart TD
     E --> H[Workspace Contract]
     F --> H
     G --> H
-    H --> I[Context Handoff]
+    H --> I[Adversarial Review]
+    I --> J[Context Handoff]
 ```
 
 ## Skills
@@ -26,6 +27,7 @@ flowchart TD
 | `write-project-skill` | Create global or project-local skills with progressive disclosure. |
 | `build-agent-orchestrator` | Create a Spotify Squad-style orchestrator and only the needed subagents. |
 | `workspace-contract` | Write or update AGENTS.md and CLAUDE.md, including symlink strategy. |
+| `adversarial-setup-review` | Review setup changes as a principal engineer before merge. |
 | `context-handoff` | Save a compact handoff for another agent or future session. |
 
 ## Agent
@@ -40,3 +42,4 @@ Use `workspace-orchestrator` for multi-domain setup work. It inspects the curren
 - For monorepos or multi-repo domains, create one root orchestrator and specialist agents per real boundary.
 - Keep `AGENTS.md` canonical. Use a `CLAUDE.md` symlink to `AGENTS.md` when supported; otherwise create a short pointer file.
 - Preserve existing project instructions and append a clearly delimited AI workspace block.
+- Run adversarial setup review before merging durable workspace instructions.

@@ -60,7 +60,7 @@
     {
       "name": "ai-workspace-orchestrator",
       "source": "./plugins/ai-workspace-orchestrator",
-      "description": "Project and workspace AI setup orchestrator. Builds AGENTS.md/CLAUDE.md contracts, optional global or project skills, and Spotify Squad-style agent/subagent topology for single apps, monorepos, and multi-domain workspaces.",
+      "description": "Project and workspace AI setup orchestrator. Builds AGENTS.md/CLAUDE.md contracts, optional global or project skills, Spotify Squad-style agent/subagent topology, and adversarial setup review for single apps, monorepos, and multi-domain workspaces.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -70,6 +70,7 @@
         "subagents",
         "skills",
         "orchestration",
+        "adversarial-review",
         "spotify-squad",
         "monorepo",
         "codex",
