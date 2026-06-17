@@ -1,0 +1,41 @@
+{
+  "name": "ai-workspace-orchestrator",
+  "version": "1.0.0",
+  "description": "Project and workspace AI setup orchestrator. Builds AGENTS.md/CLAUDE.md contracts, optional global or project skills, and Spotify Squad-style agent/subagent topology for single apps, monorepos, and multi-domain workspaces.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
+  "license": "MIT",
+  "keywords": [
+    "ai-native",
+    "workspace-setup",
+    "agents",
+    "subagents",
+    "skills",
+    "orchestration",
+    "spotify-squad",
+    "monorepo",
+    "codex",
+    "claude"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AI Workspace Orchestrator",
+    "shortDescription": "Configure AI agents, skills, and workspace contracts.",
+    "longDescription": "Guided setup for project or domain AI operating systems. It asks the minimum necessary questions, discovers repo topology, creates AGENTS.md and CLAUDE.md contracts, and plans or installs global/project skills and Spotify Squad-style orchestrators.",
+    "developerName": "Anderson Lima",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write",
+      "Orchestration"
+    ],
+    "defaultPrompt": [
+      "Set up AI config for this workspace.",
+      "Create a project agent orchestrator.",
+      "Design local skills for this domain."
+    ]
+  }
+}
