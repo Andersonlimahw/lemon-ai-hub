@@ -167,6 +167,24 @@
       ]
     },
     {
+      "name": "chrome-qa-loop",
+      "source": "./plugins/chrome-qa-loop",
+      "description": "Reusable closed loop for exploratory QA over any live web app, driven by Claude via the Chrome DevTools MCP with four expert lenses (QA, Product, Engineering, Security). Read-only on production, writes one markdown report per finding immediately, and hands reviewed findings to a triage agent that emits prioritized tasks + per-fix PLAN stubs.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "qa",
+        "browser-automation",
+        "chrome-devtools",
+        "exploratory-testing",
+        "agentic-loop",
+        "security",
+        "read-only",
+        "ai-native",
+        "plugin"
+      ]
+    },
+    {
       "name": "cli-generator",
       "source": "./plugins/cli-generator",
       "description": "Generate a complete, production-ready CLI in Bun from a SPEC, OpenAPI contract, JSON Schema, or natural-language description. Outputs a runnable binary with commander-style arg parsing, autocomplete, man page, and token-aware output formatting.",
