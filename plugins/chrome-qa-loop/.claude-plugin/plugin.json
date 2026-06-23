@@ -1,0 +1,22 @@
+{
+  "name": "chrome-qa-loop",
+  "version": "1.0.0",
+  "description": "Reusable closed loop for exploratory QA over any live web app, driven by Claude via the Chrome DevTools MCP with four expert lenses (QA, Product, Engineering, Security). Read-only on production, writes one markdown report per finding immediately, and hands reviewed findings to a triage agent that emits prioritized tasks + per-fix PLAN stubs.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
+  "license": "MIT",
+  "keywords": [
+    "qa",
+    "browser-automation",
+    "chrome-devtools",
+    "exploratory-testing",
+    "agentic-loop",
+    "security",
+    "read-only",
+    "ai-native",
+    "plugin"
+  ]
+}
