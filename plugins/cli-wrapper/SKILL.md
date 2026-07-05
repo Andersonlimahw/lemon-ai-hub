@@ -8,9 +8,19 @@ description: >
   harness needs to interact with a CLI repeatedly.
 ---
 
-# CLI Wrapper
+# CLI Wrapper — Multi-Harness Ecosystem
 
 Bridge between AI harness and external CLIs. Captures, documents, optimizes.
+**Claude Code = single source of truth. Other CLIs = symlinks.**
+
+## Ecosystem
+
+```
+claude (canonical) ← symlinks → codex, agy, opencode, gemini
+```
+
+All wrapper skills/agents live in Claude's space. Other harnesses access via symlink.
+Setup one command: `/cli-wrapper:cli-wrapper-setup`
 
 ## Why
 
@@ -19,12 +29,29 @@ Raw CLI help output floods context. A single `docker --help` = ~3KB. Wrapped dig
 ## Quick Start
 
 ```
-/cli-wrapper wrap <cli-name>           — capture CLI help + build digest
-/cli-wrapper invoke <cli-name> <args>  — run command, return compact output
-/cli-wrapper audit <cli-name>          — show token savings for this CLI
-/cli-wrapper list                      — list all wrapped CLIs
-/cli-wrapper unwrap <cli-name>         — remove wrapper, restore raw access
+/cli-wrapper:cli-wrapper-setup              — one-shot ecosystem setup (symlinks, configs, verify)
+/cli-wrapper:cli-wrapper-setup --verify     — audit existing setup
+/cli-wrapper wrap <cli-name>                — capture CLI help + build digest
+/cli-wrapper invoke <cli-name> <args>       — run command, return compact output
+/cli-wrapper audit <cli-name>               — show token savings for this CLI
+/cli-wrapper audit all                      — ecosystem-wide savings report
+/cli-wrapper list                           — list all wrapped CLIs
+/cli-wrapper unwrap <cli-name>              — remove wrapper, restore raw access
 ```
+
+### CLI-Specific Wrappers
+
+Each major AI CLI has its own dedicated wrapper skill + agent:
+
+```
+/claude-cli invoke|explain|audit|wrap      — Claude Code CLI
+/gemini-cli invoke|explain|audit|wrap      — Gemini CLI
+/codex-cli invoke|explain|audit|wrap       — Codex CLI (OpenAI)
+/opencode-cli invoke|explain|audit|wrap    — OpenCode CLI
+/agy-cli invoke|explain|audit|wrap         — Agy CLI (Antigravity)
+```
+
+These auto-delegate to the respective wrapper agent for complex operations.
 
 ## Workflow
 

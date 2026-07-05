@@ -1,0 +1,73 @@
+{
+  "$schema": "https://lemon-ai-hub.dev/schemas/symlink-map.json",
+  "version": "1.0.0",
+  "description": "Maps CLI harness config directories and symlink strategy for cli-wrapper ecosystem. Claude is the single source of truth.",
+  "source_of_truth": {
+    "cli": "claude",
+    "config_dir": "~/.claude",
+    "skills_dir": "~/.claude/skills",
+    "agents_dir": "~/.claude/agents"
+  },
+  "targets": {
+    "codex": {
+      "binary": "codex",
+      "config_dir": "~/.codex",
+      "config_file": "AGENTS.md",
+      "skills_strategy": "already_symlinked",
+      "skills_symlink": "~/.codex/skills -> ~/.claude/skills",
+      "agents_symlink_strategy": "individual",
+      "agents_dir": "~/.codex/agents",
+      "agents_format": ["md", "toml"],
+      "note": "Codex agents use .md frontmatter + .toml sidecar. Setup generates .toml from .md frontmatter automatically."
+    },
+    "gemini": {
+      "binary": "gemini",
+      "config_dir": "~/.gemini",
+      "config_file": "GEMINI.md",
+      "skills_strategy": "individual_symlinks",
+      "skills_dir": "~/.gemini/skills",
+      "agents_symlink_strategy": "individual",
+      "agents_dir": "~/.gemini/agents",
+      "agents_format": ["md"],
+      "note": "Gemini uses its own skills/ dir (not symlinked). Each skill gets an individual symlink."
+    },
+    "agy": {
+      "binary": "agy",
+      "config_dir": "~/.agy",
+      "config_file": "AGENTS.md",
+      "skills_strategy": "already_symlinked",
+      "skills_symlink": "~/.agy/skills -> ~/.claude/skills",
+      "agents_symlink_strategy": "individual",
+      "agents_dir": "~/.agy/agents",
+      "agents_format": ["md"],
+      "note": "Agy agents directory may not exist. Setup creates it."
+    },
+    "opencode": {
+      "binary": "opencode",
+      "config_dir": "~/.opencode",
+      "config_file": "AGENTS.md",
+      "skills_strategy": "already_symlinked",
+      "skills_symlink": "~/.opencode/skills -> ~/.claude/skills",
+      "agents_symlink_strategy": "individual",
+      "agents_dir": "~/.opencode/agents",
+      "agents_format": ["md"],
+      "note": "OpenCode agents directory may not exist. Setup creates it."
+    }
+  },
+  "wrapper_skills": [
+    "cli-wrapper-setup",
+    "claude-cli",
+    "gemini-cli",
+    "codex-cli",
+    "opencode-cli",
+    "agy-cli"
+  ],
+  "wrapper_agents": [
+    "claude-cli",
+    "gemini-cli",
+    "codex-cli",
+    "opencode-cli",
+    "agy-cli"
+  ],
+  "config_policy_block": "## 🔌 CLI Wrapper Policy (managed by cli-wrapper-setup)\n\n⚠️  **PREFER** `/cli-wrapper:<cli>-cli invoke ...` over raw `<cli> ...` commands.\nWrapped CLIs save 60-95% tokens per invocation.\nAvailable wrappers: claude-cli, gemini-cli, codex-cli, opencode-cli, agy-cli.\nList all: `/cli-wrapper list`\nAudit: `/cli-wrapper audit all`\nReconfigure: `/cli-wrapper:cli-wrapper-setup`\n"
+}

@@ -203,8 +203,8 @@
     {
       "name": "cli-wrapper",
       "source": "./plugins/cli-wrapper",
-      "description": "Wrapper that bridges the AI harness to external CLIs — captures help output, documents commands, saves input/output token metrics, and provides a standardized interface so the harness invokes CLIs without context bloat.",
-      "version": "1.0.0",
+      "description": "Multi-harness CLI wrapper ecosystem — Claude Code = single source of truth. Wraps any external CLI (claude, gemini, codex, opencode, agy + extensible) for token-optimized invocation. Includes per-CLI wrapper skills/agents, cross-harness symlink setup (cli-wrapper-setup), digest-driven flag validation, output post-processing, and ecosystem-wide token metrics. One setup command: /cli-wrapper:cli-wrapper-setup.",
+      "version": "2.0.0",
       "license": "MIT",
       "keywords": [
         "skill",
@@ -213,7 +213,18 @@
         "cli",
         "wrapper",
         "token-saving",
-        "command-line"
+        "command-line",
+        "multi-harness",
+        "symlink",
+        "single-source-of-truth",
+        "ecosystem",
+        "cross-cli",
+        "claude-code",
+        "gemini",
+        "codex",
+        "opencode",
+        "agy",
+        "antigravity"
       ]
     },
     {

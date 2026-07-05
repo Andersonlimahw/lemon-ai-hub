@@ -81,3 +81,15 @@ Rules:
 - If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
+
+## 🔌 CLI Wrapper — cross-harness policy
+
+When ANY AI harness (Claude Code, Codex, Gemini, Agy, OpenCode) needs to invoke another CLI:
+
+1. **PREFER** `/cli-wrapper:<cli>-cli invoke <args>` over raw `<cli> <args>`
+2. Wrapper validates flags via pre-built digest, post-processes output
+3. Token savings: 60-95% per invocation vs raw CLI output
+4. **Setup**: run `/cli-wrapper:cli-wrapper-setup` once per machine
+5. **New CLI?** `/cli-wrapper wrap <new-cli>` to add to ecosystem
+
+Wrapper agents handle cross-harness delegation (e.g., Claude spawns `codex-cli` agent to delegate to Codex). Never run raw `<cli> exec` — always through the wrapper.
