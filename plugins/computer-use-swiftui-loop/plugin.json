@@ -1,0 +1,19 @@
+{
+  "name": "computer-use-swiftui-loop",
+  "version": "1.0.0",
+  "description": "A reusable testing loop for macOS apps using Computer Use (Note: Computer Use is currently exclusive to the Codex app). Automates UI/visual verification, records findings, and validates small SwiftUI or Store/ViewModel fixes.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "computer-use-swiftui-loop",
+    "macos",
+    "swiftui",
+    "computer-use",
+    "testing"
+  ]
+}

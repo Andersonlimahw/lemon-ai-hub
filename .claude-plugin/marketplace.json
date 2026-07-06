@@ -607,6 +607,22 @@
         "lemon-ai-hub",
         "token-saver"
       ]
+    },
+    {
+      "name": "computer-use-swiftui-loop",
+      "source": "./plugins/computer-use-swiftui-loop",
+      "description": "A reusable testing loop for macOS apps using Computer Use (Note: Computer Use is currently exclusive to the Codex app). Automates UI/visual verification, records findings, and validates small SwiftUI or Store/ViewModel fixes.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "computer-use-swiftui-loop",
+        "macos",
+        "swiftui",
+        "computer-use",
+        "testing"
+      ]
     }
   ]
 }
