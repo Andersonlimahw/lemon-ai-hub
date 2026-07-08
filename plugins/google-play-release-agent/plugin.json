@@ -1,0 +1,29 @@
+{
+  "name": "google-play-release-agent",
+  "version": "1.0.0",
+  "description": "AI release agent for Google Play Store: audits Android/Expo/React Native/Firebase/RevenueCat before submission. Validates build readiness (app.json, eas.json, AAB, versionCode), Play Console metadata, Data Safety Form, Android permissions, RevenueCat/IAP, i18n parity (PT/EN/ES), policy-risk copy, internal/closed testing and staged rollout. Generates reports + GO/NO-GO checklist. Never publishes or rolls out without explicit human approval. Use when preparing an Android app for Google Play, auditing a submission, generating release notes, validating Data Safety or permissions, or running a release go/no-go.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
+  "license": "MIT",
+  "keywords": [
+    "google-play",
+    "android",
+    "release",
+    "mobile",
+    "expo",
+    "react-native",
+    "eas",
+    "revenuecat",
+    "iap",
+    "firebase",
+    "data-safety",
+    "play-console",
+    "app-review",
+    "go-no-go",
+    "ai-native",
+    "plugin"
+  ]
+}
