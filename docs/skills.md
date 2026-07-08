@@ -103,6 +103,9 @@ The following skills are available in the Hub. Each is part of a plugin located 
 ### `openapi-hub`
 - **Location**: [plugins/openapi-hub/SKILL.md](../plugins/openapi-hub/SKILL.md)
 
+### `postman-generator`
+- **Location**: [plugins/postman-generator/SKILL.md](../plugins/postman-generator/SKILL.md)
+
 ### `senior-prompt-engineer`
 - **Location**: [plugins/senior-prompt-engineer/SKILL.md](../plugins/senior-prompt-engineer/SKILL.md)
 

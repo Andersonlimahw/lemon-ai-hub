@@ -1,0 +1,20 @@
+{
+  "name": "postman-generator",
+  "version": "1.0.0",
+  "description": "Create Postman collections and environments from OpenAPI/Swagger or code context. Generates rich JS tests for status codes, headers, and schemas, and handles Newman installation and test execution.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
+  "license": "MIT",
+  "keywords": [
+    "postman",
+    "newman",
+    "api-testing",
+    "restful",
+    "automation",
+    "swagger",
+    "openapi"
+  ]
+}
