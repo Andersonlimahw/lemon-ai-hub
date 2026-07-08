@@ -58,6 +58,24 @@
       ]
     },
     {
+      "name": "api-test-loop",
+      "source": "./plugins/api-test-loop",
+      "description": "API Test Loop plugin — Automated REST API validation loop. Executes HTTP requests via CURL, logs findings for REST best practices (method, input/output format, security, performance, docs), and implements backend fixes.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "loops",
+        "automations",
+        "continuous-improvement",
+        "api-testing",
+        "restful",
+        "curl",
+        "security",
+        "performance",
+        "plugin"
+      ]
+    },
+    {
       "name": "ai-workspace-orchestrator",
       "source": "./plugins/ai-workspace-orchestrator",
       "description": "Project and workspace AI setup orchestrator. Builds AGENTS.md/CLAUDE.md contracts, optional global or project skills, Spotify Squad-style agent/subagent topology, and adversarial setup review for single apps, monorepos, and multi-domain workspaces.",
@@ -529,6 +547,22 @@
         "redoc",
         "postman",
         "contract-testing"
+      ]
+    },
+    {
+      "name": "postman-generator",
+      "source": "./plugins/postman-generator",
+      "description": "Create Postman collections and environments from OpenAPI/Swagger or code context. Generates rich JS tests for status codes, headers, and schemas, and handles Newman installation and test execution.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "postman",
+        "newman",
+        "api-testing",
+        "restful",
+        "automation",
+        "swagger",
+        "openapi"
       ]
     },
     {
