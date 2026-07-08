@@ -39,6 +39,31 @@
       ]
     },
     {
+      "name": "apple-store-release-agent",
+      "source": "./plugins/apple-store-release-agent",
+      "description": "AI release agent for the Apple App Store. Audits Expo/React Native iOS builds, App Store metadata, App Privacy readiness, TestFlight, RevenueCat/IAP, Firebase, i18n parity, screenshots, and review notes, then emits a GO/GO_WITH_WARNINGS/NO_GO decision with full risk + privacy + IAP reports. Never submits to App Review or alters the store without explicit human approval. Generic core with presets for Expo/RN/Firebase/RevenueCat apps.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "app-store",
+        "ios",
+        "release",
+        "mobile",
+        "expo",
+        "react-native",
+        "eas",
+        "testflight",
+        "revenuecat",
+        "iap",
+        "firebase",
+        "privacy",
+        "app-review",
+        "go-no-go",
+        "ai-native",
+        "plugin"
+      ]
+    },
+    {
       "name": "agentic-value-loops",
       "source": "./plugins/agentic-value-loops",
       "description": "Agentic Value Loops plugin — Continuous improvement engine that ships verified increments with constant quality. Includes loops for Feature Development, Maintenance & Security, Documentation Sync, and AI Tuning.",
@@ -370,6 +395,27 @@
         "skill",
         "lemon-ai-hub",
         "git-bisect-ai"
+      ]
+    },
+    {
+      "name": "google-play-release-agent",
+      "source": "./plugins/google-play-release-agent",
+      "description": "AI release agent for Google Play Store: audits Android/Expo/React Native/Firebase/RevenueCat before submission. Validates build readiness (app.json, eas.json, AAB, versionCode), Play Console metadata, Data Safety Form, Android permissions, RevenueCat/IAP, i18n parity (PT/EN/ES), policy-risk copy, internal/closed testing and staged rollout. Generates reports + GO/NO-GO checklist. Never publishes or rolls out without explicit human approval. Use when preparing an Android app for Google Play, auditing a submission, generating release notes, validating Data Safety or permissions, or running a release go/no-go.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "google-play",
+        "android",
+        "release",
+        "expo",
+        "react-native",
+        "eas",
+        "revenuecat",
+        "iap",
+        "firebase",
+        "data-safety",
+        "mobile",
+        "automation"
       ]
     },
     {

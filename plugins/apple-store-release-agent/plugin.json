@@ -1,0 +1,29 @@
+{
+  "name": "apple-store-release-agent",
+  "version": "1.0.0",
+  "description": "AI release agent for the Apple App Store. Audits Expo/React Native iOS builds, App Store metadata, App Privacy readiness, TestFlight, RevenueCat/IAP, Firebase, i18n parity, screenshots, and review notes, then emits a GO/GO_WITH_WARNINGS/NO_GO decision with full risk + privacy + IAP reports. Never submits to App Review or alters the store without explicit human approval. Generic core with presets for Expo/RN/Firebase/RevenueCat apps.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
+  "license": "MIT",
+  "keywords": [
+    "app-store",
+    "ios",
+    "release",
+    "mobile",
+    "expo",
+    "react-native",
+    "eas",
+    "testflight",
+    "revenuecat",
+    "iap",
+    "firebase",
+    "privacy",
+    "app-review",
+    "go-no-go",
+    "ai-native",
+    "plugin"
+  ]
+}
