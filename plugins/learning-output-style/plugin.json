@@ -1,0 +1,19 @@
+{
+  "name": "learning-output-style",
+  "version": "1.0.0",
+  "description": "Engage in active learning by requesting meaningful code contributions at decision points and providing educational insights.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "learning",
+    "output",
+    "style",
+    "education",
+    "interactive"
+  ],
+  "license": "MIT"
+}

@@ -1,7 +1,7 @@
 {
   "name": "agentic-value-loops",
   "version": "1.0.0",
-  "description": "Agentic Value Loops plugin — Continuous improvement engine that ships verified increments with constant quality. Includes loops for Feature Development, Maintenance & Security, Documentation Sync, and AI Tuning.",
+  "description": "Agentic Value Loops plugin \u2014 Continuous improvement engine that ships verified increments with constant quality. Includes loops for Feature Development, Maintenance & Security, Documentation Sync, and AI Tuning.",
   "author": {
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
@@ -9,6 +9,8 @@
   "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
   "license": "MIT",
   "keywords": [
+    "skill",
+    "lemon-ai-hub",
     "loops",
     "automations",
     "continuous-improvement",
