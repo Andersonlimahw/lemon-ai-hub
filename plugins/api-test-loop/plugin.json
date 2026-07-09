@@ -1,7 +1,7 @@
 {
   "name": "api-test-loop",
   "version": "1.0.0",
-  "description": "API Test Loop plugin — Automated REST API validation loop. Executes HTTP requests via CURL, logs findings for REST best practices (method, input/output format, security, performance, docs), and implements backend fixes.",
+  "description": "API Test Loop plugin \u2014 Automated REST API validation loop. Executes HTTP requests via CURL, logs findings for REST best practices (method, input/output format, security, performance, docs), and implements backend fixes.",
   "author": {
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
@@ -9,6 +9,8 @@
   "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
   "license": "MIT",
   "keywords": [
+    "skill",
+    "lemon-ai-hub",
     "loops",
     "automations",
     "continuous-improvement",

@@ -2,7 +2,20 @@
   "name": "agent-sdk-dev",
   "version": "1.0.0",
   "description": "A comprehensive plugin for creating and verifying Agent SDK applications in Python and TypeScript.",
-  "author": "Antigravity",
-  "skills": ["agent-sdk-dev", "agent-sdk-verifier-py"],
-  "agents": ["agent-sdk-verifier-py"]
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "skills": [
+    "agent-sdk-dev",
+    "agent-sdk-verifier-py"
+  ],
+  "agents": [
+    "agent-sdk-verifier-py"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub"
+  ]
 }

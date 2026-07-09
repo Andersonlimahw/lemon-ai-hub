@@ -1,7 +1,7 @@
 {
   "name": "spotify-squad",
   "version": "1.0.0",
-  "description": "AI-Native Squad — Spotify-model autonomous engineering team. 12 specialized agents (Tech Lead, Backend, Frontend, Mobile, UX, UI, Product, Scrum Master, DevOps, QA, Data, Security) with orchestrated collaboration, domain-specific skills, and cross-functional workflows. Based on the AI Native Developer methodology.",
+  "description": "AI-Native Squad \u2014 Spotify-model autonomous engineering team. 12 specialized agents (Tech Lead, Backend, Frontend, Mobile, UX, UI, Product, Scrum Master, DevOps, QA, Data, Security) with orchestrated collaboration, domain-specific skills, and cross-functional workflows. Based on the AI Native Developer methodology.",
   "author": {
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
@@ -9,6 +9,8 @@
   "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
   "license": "MIT",
   "keywords": [
+    "skill",
+    "lemon-ai-hub",
     "squad",
     "spotify-model",
     "agents",

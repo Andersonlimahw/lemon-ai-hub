@@ -2,6 +2,18 @@
   "name": "hookify",
   "version": "1.0.0",
   "description": "Easily create custom hooks to prevent unwanted behaviors by analyzing conversation patterns or from explicit instructions.",
-  "author": "Anthropic (Adapted for Lemon AI Hub)",
-  "keywords": ["hooks", "patterns", "behavior", "intercept", "rules"]
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "hooks",
+    "patterns",
+    "behavior",
+    "intercept",
+    "rules"
+  ],
+  "license": "MIT"
 }

@@ -2,6 +2,16 @@
   "name": "frontend-design",
   "version": "1.0.0",
   "description": "Generates distinctive, production-grade frontend interfaces that avoid generic AI aesthetics.",
-  "author": "Antigravity",
-  "skills": ["frontend-design"]
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "skills": [
+    "frontend-design"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub"
+  ]
 }

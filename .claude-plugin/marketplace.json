@@ -27,7 +27,10 @@
       "description": "A comprehensive plugin for creating and verifying Agent SDK applications in Python and TypeScript.",
       "version": "1.0.0",
       "license": "MIT",
-      "keywords": []
+      "keywords": [
+        "skill",
+        "lemon-ai-hub"
+      ]
     },
     {
       "name": "agentic-value-loops",
@@ -36,6 +39,8 @@
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
+        "skill",
+        "lemon-ai-hub",
         "loops",
         "automations",
         "continuous-improvement",
@@ -55,6 +60,8 @@
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
+        "skill",
+        "lemon-ai-hub",
         "ai-native",
         "workspace-setup",
         "agents",
@@ -75,6 +82,8 @@
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
+        "skill",
+        "lemon-ai-hub",
         "loops",
         "automations",
         "continuous-improvement",
@@ -108,6 +117,8 @@
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
+        "skill",
+        "lemon-ai-hub",
         "app-store",
         "ios",
         "release",
@@ -255,6 +266,8 @@
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
+        "skill",
+        "lemon-ai-hub",
         "continual-learning",
         "agent-memory",
         "transcripts",
@@ -319,7 +332,10 @@
       "description": "Generates distinctive, production-grade frontend interfaces that avoid generic AI aesthetics.",
       "version": "1.0.0",
       "license": "MIT",
-      "keywords": []
+      "keywords": [
+        "skill",
+        "lemon-ai-hub"
+      ]
     },
     {
       "name": "git-bisect-ai",
@@ -340,6 +356,8 @@
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
+        "skill",
+        "lemon-ai-hub",
         "google-play",
         "android",
         "release",
@@ -365,6 +383,8 @@
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
+        "skill",
+        "lemon-ai-hub",
         "hooks",
         "patterns",
         "behavior",
@@ -427,6 +447,8 @@
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
+        "skill",
+        "lemon-ai-hub",
         "learning",
         "output",
         "style",
@@ -507,6 +529,8 @@
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
+        "skill",
+        "lemon-ai-hub",
         "postman",
         "newman",
         "api-testing",
@@ -537,7 +561,10 @@
       "description": "Security review for generated code including pattern warnings, diff review, and agentic commit review.",
       "version": "1.0.0",
       "license": "MIT",
-      "keywords": []
+      "keywords": [
+        "skill",
+        "lemon-ai-hub"
+      ]
     },
     {
       "name": "senior-prompt-engineer",
@@ -582,6 +609,8 @@
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
+        "skill",
+        "lemon-ai-hub",
         "squad",
         "spotify-model",
         "agents",
@@ -611,6 +640,8 @@
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
+        "skill",
+        "lemon-ai-hub",
         "teaching",
         "study-plan",
         "practice",
@@ -625,6 +656,8 @@
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
+        "skill",
+        "lemon-ai-hub",
         "thermos",
         "thermo-nuclear",
         "code-review",
