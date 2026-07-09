@@ -1,0 +1,20 @@
+{
+  "name": "firebase-expert",
+  "version": "1.0.0",
+  "description": "Expert plugin covering Firebase CLI, Firebase App Distribution, Crashlytics deobfuscation, Hosting deploys, Functions deploys, and the new Firebase MCP Server.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "firebase-expert",
+    "firebase",
+    "firebase-cli",
+    "app-distribution",
+    "crashlytics",
+    "mcp"
+  ]
+}
