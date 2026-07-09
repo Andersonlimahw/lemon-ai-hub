@@ -9,6 +9,8 @@ An interactive menu that provides a guided way to:
 - Add the marketplace to Claude Code
 - Setup symlinks for all your local AI agents
 - Setup symlinks for a specific agent (e.g., only Gemini or OpenCode)
+- Update the Marketplace Manifest
+- Normalize Plugins Configs
 
 **Usage:**
 ```bash

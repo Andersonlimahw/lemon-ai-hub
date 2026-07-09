@@ -7,7 +7,19 @@
 set -euo pipefail
 
 # Get the absolute path of the repository's plugins directory
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if [ -d "$PWD/plugins" ] && [ -d "$PWD/.git" ]; then
+  # Running from within a local clone
+  REPO_ROOT="$PWD"
+else
+  # Running via curl or outside the repo
+  REPO_ROOT="$HOME/.lemon-ai-hub"
+  echo "Setting up Lemon AI Hub at $REPO_ROOT..."
+  if [ ! -d "$REPO_ROOT" ]; then
+    git clone https://github.com/Andersonlimahw/lemon-ai-hub.git "$REPO_ROOT"
+  else
+    git -C "$REPO_ROOT" pull
+  fi
+fi
 REPO_PLUGINS_DIR="$REPO_ROOT/plugins"
 
 setup_symlink() {
