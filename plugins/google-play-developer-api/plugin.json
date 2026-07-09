@@ -1,0 +1,21 @@
+{
+  "name": "google-play-developer-api",
+  "version": "1.0.0",
+  "description": "Google Play Developer API Expert Agent and Skills. Provides comprehensive tools and knowledge for interacting with the Google Play Developer API, covering Publishing, In-App Products, Subscriptions, Reviews, and Reporting.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "google-play",
+    "developer-api",
+    "android",
+    "publishing",
+    "subscriptions",
+    "iap"
+  ]
+}
