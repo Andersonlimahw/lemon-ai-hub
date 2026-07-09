@@ -102,27 +102,29 @@ Open the interactive installer, or install a plugin by name using the `plugin@ma
 
 All tools in this hub are organized as **Plugins**. You can explore them in the `plugins/` directory. Each plugin includes its own `SKILL.md` (logic) and `plugin.json` (manifest).
 
-## 🚀 Installation & Symlink Setup
+## 🎛️ Interactive Setup Menu
 
-To synchronize your global agent configurations and share the same skills folder across all of them, you can execute the setup script directly via `curl` (similar to how some CLI tools and agent frameworks are installed):
+To easily add the marketplace or setup your local agent symlinks (Claude Code, Codex, Gemini, OpenCode, Agy), you can run the interactive setup menu directly via `curl` (similar to how some CLI tools and agent frameworks are installed). 
+
+Run the following command in your terminal:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Andersonlimahw/lemon-ai-hub/main/scripts/setup-symlinks.sh | bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Andersonlimahw/lemon-ai-hub/main/scripts/menu.sh)"
 ```
 
 Alternatively, if you cloned the repository locally:
 
 ```bash
-chmod +x scripts/setup-symlinks.sh
-./scripts/setup-symlinks.sh
+chmod +x scripts/menu.sh
+./scripts/menu.sh
 ```
 
-## 🎯 Executing Goal Scripts
+## 🚀 Headless Installation & Symlink Setup
 
-You can execute automated tasks or specific scripts from the [`scripts/goal`](https://github.com/Andersonlimahw/lemon-ai-hub/tree/main/scripts/goal) directory using the same `curl` pattern, without needing to clone the repository:
+If you prefer to bypass the menu and just synchronize your global agent configurations:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Andersonlimahw/lemon-ai-hub/main/scripts/goal/<script-name>.sh | bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Andersonlimahw/lemon-ai-hub/main/scripts/setup-symlinks.sh)"
 ```
 
 ---
