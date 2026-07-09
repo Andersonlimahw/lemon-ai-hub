@@ -327,6 +327,23 @@
       ]
     },
     {
+      "name": "firebase-expert",
+      "source": "./plugins/firebase-expert",
+      "description": "Expert plugin covering Firebase CLI, Firebase App Distribution, Crashlytics deobfuscation, Hosting deploys, Functions deploys, and the new Firebase MCP Server.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "firebase-expert",
+        "firebase",
+        "firebase-cli",
+        "app-distribution",
+        "crashlytics",
+        "mcp"
+      ]
+    },
+    {
       "name": "frontend-design",
       "source": "./plugins/frontend-design",
       "description": "Generates distinctive, production-grade frontend interfaces that avoid generic AI aesthetics.",
@@ -347,6 +364,23 @@
         "skill",
         "lemon-ai-hub",
         "git-bisect-ai"
+      ]
+    },
+    {
+      "name": "google-play-developer-api",
+      "source": "./plugins/google-play-developer-api",
+      "description": "Google Play Developer API Expert Agent and Skills. Provides comprehensive tools and knowledge for interacting with the Google Play Developer API, covering Publishing, In-App Products, Subscriptions, Reviews, and Reporting.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "google-play",
+        "developer-api",
+        "android",
+        "publishing",
+        "subscriptions",
+        "iap"
       ]
     },
     {
