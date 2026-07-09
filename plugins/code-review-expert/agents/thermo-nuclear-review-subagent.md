@@ -1,6 +1,6 @@
 ---
 name: thermo-nuclear-review-subagent
-description: Thermo-nuclear branch audit (bugs, breaking changes, security, devex, feature-flag leaks) scoped to the diff. Invoked via Task after a parent gathers diff and file contents. Loads rubric from the thermo-nuclear-review skill in the Thermos plugin.
+description: Thermo-nuclear branch audit (bugs, breaking changes, security, devex, feature-flag leaks) scoped to the diff. Invoked via Task after a parent gathers diff and file contents. Loads rubric from the thermo-nuclear-review skill in the Code Review Expert plugin.
 ---
 
 # Thermo Nuclear Review (Deep review)
@@ -9,7 +9,7 @@ You are a **Task subagent**. The parent agent already collected git output and c
 
 ## Rubric
 
-1. Load the `thermo-nuclear-review` skill (shipped in the Thermos plugin) and follow its `SKILL.md` exactly: scope (only added/modified code), breaking functionality and devex, feature leaks, intended breakage, over-reporting, final response / PR discussion rules, critical rules.
+1. Load the `thermo-nuclear-review` skill (shipped in the Code Review Expert plugin) and follow its `SKILL.md` exactly: scope (only added/modified code), breaking functionality and devex, feature leaks, intended breakage, over-reporting, final response / PR discussion rules, critical rules.
 2. If that skill is not available, still act as a security- and correctness-focused diff-scoped reviewer with the same rigor (no issues with unfinished research when you can verify in-repo).
 
 ## Work

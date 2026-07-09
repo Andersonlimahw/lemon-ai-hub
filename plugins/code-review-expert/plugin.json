@@ -1,8 +1,8 @@
 {
-  "name": "thermos",
-  "displayName": "Thermos",
+  "name": "code-review-expert",
+  "displayName": "Code Review Expert",
   "version": "1.0.0",
-  "description": "Thermo-nuclear branch review: deep correctness and security audits plus harsh code-quality rubrics, parallel subagents, thermos orchestration, and optional take-the-wheel and FSD merge-ready flows.",
+  "description": "Thermo-nuclear branch review: deep correctness and security audits plus harsh code-quality rubrics, parallel subagents, code-review-expert orchestration, and optional take-the-wheel and FSD merge-ready flows.",
   "author": {
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
@@ -14,7 +14,7 @@
   "keywords": [
     "skill",
     "lemon-ai-hub",
-    "thermos",
+    "code-review-expert",
     "thermo-nuclear",
     "code-review",
     "deep-review",

@@ -1,10 +1,10 @@
 ---
-name: thermos
-description: "Launch both thermo-nuclear review subagents in parallel, then synthesize their findings. Use for thermos, double thermo review, or combined bug/security and code-quality branch audits."
+name: code-review-expert
+description: "Launch both thermo-nuclear review subagents in parallel, then synthesize their findings. Use for code-review-expert, double thermo review, or combined bug/security and code-quality branch audits."
 disable-model-invocation: true
 ---
 
-# Thermos
+# Code Review Expert
 
 Run the two thermo review passes as async background subagents in parallel, then synthesize their results.
 

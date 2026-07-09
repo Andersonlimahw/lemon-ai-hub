@@ -1,13 +1,13 @@
 ---
-name: thermos
+name: code-review-expert
 description: Run both thermo-nuclear review (security/correctness) and thermo-nuclear-code-quality-review (maintainability/structure) subagents in parallel, then synthesize findings. Use for full-spectrum branch audits combining bug/security and code-quality passes. The plugin also includes `code-review-adversary` for interactive, mentor-style senior-vs-junior PR reviews.
 ---
 
-# Thermos Code Review Suite
+# Code Review Expert Suite
 
-The Thermos suite provides deep, rigorous code review tools. It includes two primary modes of operation: the autonomous parallel `thermos` review, and the interactive mentor-style `code-review-adversary` review.
+The Code Review Expert suite provides deep, rigorous code review tools. It includes two primary modes of operation: the autonomous parallel `code-review-expert` review, and the interactive mentor-style `code-review-adversary` review.
 
-## 1. Thermos Parallel Audit (Autonomous)
+## 1. Code Review Expert Parallel Audit (Autonomous)
 
 Launch the two thermo review passes as async background subagents in parallel, then synthesize results.
 
@@ -30,12 +30,12 @@ Use `code-review-adversary` when the user wants a strict, expert-grade review fr
 |-------|-------------|
 | `thermo-nuclear-review` | Deep branch audit (bugs, breakages, security, devex, feature-flag leaks) |
 | `thermo-nuclear-code-quality-review` | Strict maintainability audit (code-judo, 1k-line rule, spaghetti, boundaries) |
-| `thermos` | Run both review subagents in parallel and synthesize |
+| `code-review-expert` | Run both review subagents in parallel and synthesize |
 | `code-review-adversary` | Adversarial code review where the reviewer plays a senior software engineer teaching a junior developer |
 
 ## Usage
 
-**For an autonomous double-pass audit (`thermos`):**
+**For an autonomous double-pass audit (`code-review-expert`):**
 Gather git diff main...HEAD and full contents of changed files. Invoke both `thermo-nuclear-*` subagents in one message with `run_in_background: true`. Synthesize prioritized, deduped findings.
 
 **For a mentoring review (`code-review-adversary`):**

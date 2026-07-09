@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Lemon AI Hub - Interactive Menu
+# Lemon AI Hub - Interactive Setup Menu
 
 set -e
 
@@ -12,7 +12,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 echo -e "${BLUE}=======================================${NC}"
-echo -e "${GREEN}      🍋 Lemon AI Hub Menu 🍋          ${NC}"
+echo -e "${GREEN}      🍋 Lemon AI Hub Setup 🍋         ${NC}"
 echo -e "${BLUE}=======================================${NC}"
 echo ""
 
@@ -32,65 +32,94 @@ else
 fi
 REPO_PLUGINS_DIR="$REPO_ROOT/plugins"
 
+install_symlink() {
+  local target="$1"
+  local link_name="$2"
+
+  echo -e "Setting up symlink: ${BLUE}$link_name${NC} -> ${YELLOW}$target${NC}"
+
+  # If it exists and is a directory (not a symlink)
+  if [ -d "$link_name" ] && [ ! -L "$link_name" ]; then
+    local backup="${link_name}_bak_$(date +%s)"
+    echo -e "${YELLOW}Warning: Directory $link_name exists. Backing up to $backup${NC}"
+    mv "$link_name" "$backup"
+  # If it's a broken symlink or already exists, remove it to recreate
+  elif [ -L "$link_name" ] || [ -e "$link_name" ]; then
+    rm -f "$link_name"
+  fi
+
+  # Ensure parent directory exists
+  mkdir -p "$(dirname "$link_name")"
+
+  # Create symlink
+  ln -s "$target" "$link_name"
+  echo -e "${GREEN}Created: $link_name${NC}"
+}
+
+run_installer() {
+  echo -e "\n${GREEN}--- Installation Wizard ---${NC}"
+  echo "Select Installation Scope:"
+  echo "1) Global (User profile, e.g., ~/.claude/skills)"
+  echo "2) Project (Current directory, e.g., ./.claude/skills)"
+  read -p "Choice [1-2]: " scope_choice
+
+  local base_dir
+  if [ "$scope_choice" = "2" ]; then
+    base_dir="$PWD"
+    echo -e "${YELLOW}Scope: Project ($base_dir)${NC}"
+  else
+    base_dir="$HOME"
+    echo -e "${YELLOW}Scope: Global ($base_dir)${NC}"
+  fi
+
+  echo ""
+  echo "Select Target Agent(s):"
+  echo "1) All Agents"
+  echo "2) Claude Code"
+  echo "3) Codex"
+  echo "4) Gemini"
+  echo "5) OpenCode"
+  echo "6) Agy (Antigravity)"
+  read -p "Choice [1-6]: " agent_choice
+
+  echo ""
+  case $agent_choice in
+    1)
+      install_symlink "$REPO_PLUGINS_DIR" "$base_dir/.claude/skills"
+      install_symlink "$REPO_PLUGINS_DIR" "$base_dir/.codex/skills"
+      install_symlink "$REPO_PLUGINS_DIR" "$base_dir/.gemini/skills"
+      install_symlink "$REPO_PLUGINS_DIR" "$base_dir/.opencode/skills"
+      install_symlink "$REPO_PLUGINS_DIR" "$base_dir/.agy/skills"
+      ;;
+    2) install_symlink "$REPO_PLUGINS_DIR" "$base_dir/.claude/skills" ;;
+    3) install_symlink "$REPO_PLUGINS_DIR" "$base_dir/.codex/skills" ;;
+    4) install_symlink "$REPO_PLUGINS_DIR" "$base_dir/.gemini/skills" ;;
+    5) install_symlink "$REPO_PLUGINS_DIR" "$base_dir/.opencode/skills" ;;
+    6) install_symlink "$REPO_PLUGINS_DIR" "$base_dir/.agy/skills" ;;
+    *) echo -e "${RED}Invalid choice.${NC}"; return 1 ;;
+  esac
+  echo -e "${GREEN}Installation complete!${NC}\n"
+}
+
 echo "Select an option:"
-echo "1) 🧩 Add Marketplace to Claude Code"
-echo "2) 🔗 Setup Symlinks for All Agents"
-echo "3) 🤖 Setup Symlink for a Specific Agent"
-echo "4) 🔄 Update Marketplace Manifest (update_marketplace.py)"
-echo "5) 🧹 Normalize Plugins Configs (normalize_plugins.py)"
-echo "6) 🚪 Exit"
+echo "1) 🚀 Install/Setup Symlinks (Interactive)"
+echo "2) 🧩 Add Marketplace to Claude Code"
+echo "3) 🔄 Update Marketplace Manifest (update_marketplace.py)"
+echo "4) 🧹 Normalize Plugins Configs (normalize_plugins.py)"
+echo "5) 🚪 Exit"
 echo ""
 
-read -p "Enter your choice [1-6]: " choice
+read -p "Enter your choice [1-5]: " choice
 
 case $choice in
   1)
+    run_installer
+    ;;
+  2)
     echo -e "\n${YELLOW}To add the Lemon AI Hub marketplace, you must run this inside Claude Code:${NC}"
     echo -e "${GREEN}/plugin marketplace add Andersonlimahw/lemon-ai-hub${NC}\n"
     ;;
-  2)
-    echo -e "\n${YELLOW}Setting up symlinks for all agents...${NC}"
-    if [ -f "$REPO_ROOT/scripts/setup-symlinks.sh" ]; then
-      bash "$REPO_ROOT/scripts/setup-symlinks.sh"
-    else
-      echo -e "${RED}Error: setup-symlinks.sh not found in $REPO_ROOT/scripts${NC}"
-    fi
-    ;;
   3)
-    echo ""
-    echo "Which agent do you want to configure?"
-    echo "a) Claude Code (~/.claude/skills)"
-    echo "b) Codex (~/.codex/skills)"
-    echo "c) Gemini (~/.gemini/skills)"
-    echo "d) OpenCode (~/.opencode/skills)"
-    echo "e) Agy / Antigravity (~/.agy/skills)"
-    read -p "Select agent [a-e]: " agent_choice
-    
-    case $agent_choice in
-      a) TARGET="~/.claude/skills" ;;
-      b) TARGET="~/.codex/skills" ;;
-      c) TARGET="~/.gemini/skills" ;;
-      d) TARGET="~/.opencode/skills" ;;
-      e) TARGET="~/.agy/skills" ;;
-      *) echo -e "${RED}Invalid choice.${NC}"; exit 1 ;;
-    esac
-    
-    TARGET="${TARGET/#\~/$HOME}"
-    echo -e "\n${YELLOW}Setting up symlink for: $TARGET${NC}"
-    
-    if [ -d "$TARGET" ] && [ ! -L "$TARGET" ]; then
-      BACKUP="${TARGET}_bak_$(date +%s)"
-      echo "Warning: Directory exists. Backing up to $BACKUP"
-      mv "$TARGET" "$BACKUP"
-    elif [ -L "$TARGET" ] || [ -e "$TARGET" ]; then
-      rm -f "$TARGET"
-    fi
-    
-    mkdir -p "$(dirname "$TARGET")"
-    ln -s "$REPO_PLUGINS_DIR" "$TARGET"
-    echo -e "${GREEN}Created: $TARGET -> $REPO_PLUGINS_DIR${NC}\n"
-    ;;
-  4)
     echo -e "\n${YELLOW}Updating marketplace manifest...${NC}"
     if command -v python3 >/dev/null 2>&1; then
       cd "$REPO_ROOT" && python3 scripts/update_marketplace.py
@@ -98,7 +127,7 @@ case $choice in
       echo -e "${RED}Python 3 is required but not found.${NC}"
     fi
     ;;
-  5)
+  4)
     echo -e "\n${YELLOW}Normalizing plugin configs...${NC}"
     if command -v python3 >/dev/null 2>&1; then
       cd "$REPO_ROOT" && python3 scripts/normalize_plugins.py
@@ -106,7 +135,7 @@ case $choice in
       echo -e "${RED}Python 3 is required but not found.${NC}"
     fi
     ;;
-  6)
+  5)
     echo "Exiting..."
     exit 0
     ;;

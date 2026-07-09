@@ -1,11 +1,11 @@
-# Thermos plugin
+# Code Review Expert plugin
 
 Thermo-nuclear branch review for Cursor agents: deep correctness and security audits, harsh maintainability rubrics, and parallel subagent orchestration.
 
 ## Installation
 
 ```bash
-/add-plugin thermos
+/add-plugin code-review-expert
 ```
 
 ## Architecture
@@ -13,7 +13,7 @@ Thermo-nuclear branch review for Cursor agents: deep correctness and security au
 ```mermaid
 flowchart TB
   subgraph L2["Orchestrator"]
-    TH[thermos]
+    TH[code-review-expert]
   end
 
   subgraph L1["Subagents"]
@@ -42,7 +42,7 @@ flowchart TB
 |:------|:------------|
 | `thermo-nuclear-review` | Deep branch audit (bugs, breakages, security, devex, feature-gate leaks). |
 | `thermo-nuclear-code-quality-review` | Strict maintainability audit (code-judo, 1k-line rule, spaghetti, boundaries). |
-| `thermos` | Run both review subagents in parallel and synthesize findings. |
+| `code-review-expert` | Run both review subagents in parallel and synthesize findings. |
 
 ## Agents
 
@@ -53,7 +53,7 @@ flowchart TB
 
 ## Typical usage
 
-**Double review (thermos):**
+**Double review (code-review-expert):**
 
 1. Gather `git diff main...HEAD` and full contents of changed files.
 2. Invoke both subagents in one message with `run_in_background: true`.
@@ -63,7 +63,7 @@ flowchart TB
 
 ## Migration from cursor-team-kit
 
-`cursor-team-kit` previously included only `thermo-nuclear-code-quality-review`. That skill and agent now live in **Thermos** alongside deep review and `thermos`. Remove the old thermo entries from team-kit when you install this plugin to avoid duplicates.
+`cursor-team-kit` previously included only `thermo-nuclear-code-quality-review`. That skill and agent now live in **Code Review Expert** alongside deep review and `code-review-expert`. Remove the old thermo entries from team-kit when you install this plugin to avoid duplicates.
 
 ## License
 
