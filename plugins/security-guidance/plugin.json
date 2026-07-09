@@ -1,0 +1,7 @@
+{
+  "name": "security-guidance",
+  "version": "1.0.0",
+  "description": "Security review for generated code including pattern warnings, diff review, and agentic commit review.",
+  "author": "Antigravity",
+  "skills": ["security-guidance"]
+}
