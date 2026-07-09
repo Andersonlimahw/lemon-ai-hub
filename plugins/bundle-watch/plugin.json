@@ -4,7 +4,19 @@
   "description": "Bundle size monitoring and budget enforcement plugin. Tracks JS/CSS bundle size per commit, blocks PRs that exceed size budgets, posts bundle size diff comments on PRs, and generates size trend charts. Supports Vite, Webpack, Next.js, Remix, and Rollup build outputs.",
   "author": {
     "name": "Anderson Lima",
-    "email": "andersonlimahw@gmail.com"
+    "url": "https://andersonlimahw.github.io"
   },
-  "keywords": ["bundle-size", "performance", "webpack", "vite", "nextjs", "tree-shaking", "code-splitting", "web-vitals"]
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "bundle-size",
+    "performance",
+    "webpack",
+    "vite",
+    "nextjs",
+    "tree-shaking",
+    "code-splitting",
+    "web-vitals"
+  ],
+  "license": "MIT"
 }

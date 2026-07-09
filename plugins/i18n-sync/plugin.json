@@ -4,7 +4,20 @@
   "description": "Internationalization key synchronization plugin. Keeps locale JSON files in sync across all supported languages, detects missing and orphaned keys, enforces key naming conventions, blocks PRs that introduce hardcoded strings, and generates translation stubs for new keys. Supports i18next, react-intl, vue-i18n, next-intl, and custom JSON locale files.",
   "author": {
     "name": "Anderson Lima",
-    "email": "andersonlimahw@gmail.com"
+    "url": "https://andersonlimahw.github.io"
   },
-  "keywords": ["i18n", "l10n", "internationalization", "localization", "translations", "i18next", "react-intl", "vue-i18n", "locale"]
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "i18n",
+    "l10n",
+    "internationalization",
+    "localization",
+    "translations",
+    "i18next",
+    "react-intl",
+    "vue-i18n",
+    "locale"
+  ],
+  "license": "MIT"
 }

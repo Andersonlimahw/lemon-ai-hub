@@ -4,7 +4,21 @@
   "description": "Load testing orchestration plugin. Manages k6 and Artillery test suites, schedules nightly soak tests, stores historical performance baselines, detects performance regressions between releases, and generates Grafana-compatible performance reports. Tracks p50/p95/p99 trends over time.",
   "author": {
     "name": "Anderson Lima",
-    "email": "andersonlimahw@gmail.com"
+    "url": "https://andersonlimahw.github.io"
   },
-  "keywords": ["load-testing", "k6", "artillery", "performance", "slo", "p99", "latency", "throughput", "stress-test", "benchmark"]
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "load-testing",
+    "k6",
+    "artillery",
+    "performance",
+    "slo",
+    "p99",
+    "latency",
+    "throughput",
+    "stress-test",
+    "benchmark"
+  ],
+  "license": "MIT"
 }

@@ -4,7 +4,21 @@
   "description": "OpenAPI spec management hub. Maintains versioned API specs, validates specs on every commit, detects breaking changes between versions, generates typed clients (TypeScript, Python, Go), publishes developer documentation (Redoc/Swagger UI), and exports Postman collections. Enforces spec-first development workflow.",
   "author": {
     "name": "Anderson Lima",
-    "email": "andersonlimahw@gmail.com"
+    "url": "https://andersonlimahw.github.io"
   },
-  "keywords": ["openapi", "swagger", "rest-api", "api-docs", "spec-first", "breaking-changes", "sdk-generation", "redoc", "postman", "contract-testing"]
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "openapi",
+    "swagger",
+    "rest-api",
+    "api-docs",
+    "spec-first",
+    "breaking-changes",
+    "sdk-generation",
+    "redoc",
+    "postman",
+    "contract-testing"
+  ],
+  "license": "MIT"
 }

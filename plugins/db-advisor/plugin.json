@@ -4,7 +4,22 @@
   "description": "Database optimization advisor plugin. Continuously monitors query performance, detects N+1 queries from ORM logs, suggests missing indexes, identifies table bloat, tracks connection pool health, and generates weekly database health reports. Supports PostgreSQL, MySQL, SQLite, and PlanetScale.",
   "author": {
     "name": "Anderson Lima",
-    "email": "andersonlimahw@gmail.com"
+    "url": "https://andersonlimahw.github.io"
   },
-  "keywords": ["database", "postgresql", "mysql", "sqlite", "query-optimization", "indexes", "n+1-queries", "connection-pool", "query-performance", "prisma", "drizzle"]
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "database",
+    "postgresql",
+    "mysql",
+    "sqlite",
+    "query-optimization",
+    "indexes",
+    "n+1-queries",
+    "connection-pool",
+    "query-performance",
+    "prisma",
+    "drizzle"
+  ],
+  "license": "MIT"
 }

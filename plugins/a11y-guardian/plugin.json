@@ -4,7 +4,19 @@
   "description": "Accessibility guardian plugin. Continuous WCAG 2.1 AA/AAA compliance monitoring for web projects. Integrates static analysis of React/Vue/HTML components, contrast ratio checks, ARIA validation, keyboard navigation audit, and generates actionable HTML reports. Pairs with a11y-audit skill.",
   "author": {
     "name": "Anderson Lima",
-    "email": "andersonlimahw@gmail.com"
+    "url": "https://andersonlimahw.github.io"
   },
-  "keywords": ["accessibility", "wcag", "a11y", "aria", "contrast", "screen-reader", "keyboard", "compliance"]
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "accessibility",
+    "wcag",
+    "a11y",
+    "aria",
+    "contrast",
+    "screen-reader",
+    "keyboard",
+    "compliance"
+  ],
+  "license": "MIT"
 }

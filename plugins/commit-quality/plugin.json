@@ -4,7 +4,20 @@
   "description": "Commit message quality enforcement plugin. Validates Conventional Commits format, enforces max diff size per commit, detects commits that mix unrelated changes, suggests atomic commit splits, and generates CHANGELOG entries from commit history. Integrates with commitlint, husky, and CI pipelines.",
   "author": {
     "name": "Anderson Lima",
-    "email": "andersonlimahw@gmail.com"
+    "url": "https://andersonlimahw.github.io"
   },
-  "keywords": ["conventional-commits", "commitlint", "git", "changelog", "commit-message", "atomic-commits", "husky", "git-hooks", "semver"]
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "conventional-commits",
+    "commitlint",
+    "git",
+    "changelog",
+    "commit-message",
+    "atomic-commits",
+    "husky",
+    "git-hooks",
+    "semver"
+  ],
+  "license": "MIT"
 }

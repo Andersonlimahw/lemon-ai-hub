@@ -4,7 +4,20 @@
   "description": "Automated code smell tracking and trend plugin. Runs smell detection on every PR, tracks smell density per file over time, identifies files with worsening trends, and generates weekly code quality reports. Detects god classes, long methods, feature envy, duplicate code, and dead code without requiring linter configuration.",
   "author": {
     "name": "Anderson Lima",
-    "email": "andersonlimahw@gmail.com"
+    "url": "https://andersonlimahw.github.io"
   },
-  "keywords": ["code-quality", "code-smell", "refactoring", "technical-debt", "god-class", "duplicate-code", "dead-code", "complexity", "maintainability"]
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "code-quality",
+    "code-smell",
+    "refactoring",
+    "technical-debt",
+    "god-class",
+    "duplicate-code",
+    "dead-code",
+    "complexity",
+    "maintainability"
+  ],
+  "license": "MIT"
 }
