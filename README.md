@@ -104,11 +104,25 @@ All tools in this hub are organized as **Plugins**. You can explore them in the 
 
 ## 🚀 Installation & Symlink Setup
 
-To synchronize your global agent configurations and share the same skills folder across all of them:
+To synchronize your global agent configurations and share the same skills folder across all of them, you can execute the setup script directly via `curl` (similar to how some CLI tools and agent frameworks are installed):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Andersonlimahw/lemon-ai-hub/main/scripts/setup-symlinks.sh | bash
+```
+
+Alternatively, if you cloned the repository locally:
 
 ```bash
 chmod +x scripts/setup-symlinks.sh
 ./scripts/setup-symlinks.sh
+```
+
+## 🎯 Executing Goal Scripts
+
+You can execute automated tasks or specific scripts from the [`scripts/goal`](https://github.com/Andersonlimahw/lemon-ai-hub/tree/main/scripts/goal) directory using the same `curl` pattern, without needing to clone the repository:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Andersonlimahw/lemon-ai-hub/main/scripts/goal/<script-name>.sh | bash
 ```
 
 ---
