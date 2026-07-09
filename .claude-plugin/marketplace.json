@@ -39,6 +39,78 @@
       ]
     },
     {
+      "name": "agentic-value-loops",
+      "source": "./plugins/agentic-value-loops",
+      "description": "Agentic Value Loops plugin — Continuous improvement engine that ships verified increments with constant quality. Includes loops for Feature Development, Maintenance & Security, Documentation Sync, and AI Tuning.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "loops",
+        "automations",
+        "continuous-improvement",
+        "feature-development",
+        "maintenance",
+        "security",
+        "documentation-sync",
+        "ai-tuning",
+        "ai-native",
+        "plugin"
+      ]
+    },
+    {
+      "name": "ai-workspace-orchestrator",
+      "source": "./plugins/ai-workspace-orchestrator",
+      "description": "Project and workspace AI setup orchestrator. Builds AGENTS.md/CLAUDE.md contracts, optional global or project skills, Spotify Squad-style agent/subagent topology, and adversarial setup review for single apps, monorepos, and multi-domain workspaces.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "ai-native",
+        "workspace-setup",
+        "agents",
+        "subagents",
+        "skills",
+        "orchestration",
+        "adversarial-review",
+        "spotify-squad",
+        "monorepo",
+        "codex",
+        "claude"
+      ]
+    },
+    {
+      "name": "api-test-loop",
+      "source": "./plugins/api-test-loop",
+      "description": "API Test Loop plugin — Automated REST API validation loop. Executes HTTP requests via CURL, logs findings for REST best practices (method, input/output format, security, performance, docs), and implements backend fixes.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "loops",
+        "automations",
+        "continuous-improvement",
+        "api-testing",
+        "restful",
+        "curl",
+        "security",
+        "performance",
+        "plugin"
+      ]
+    },
+    {
+      "name": "app-store-connect-api",
+      "source": "./plugins/app-store-connect-api",
+      "description": "Apple Store Connect API Expert Agent and Skills. Provides comprehensive tools and knowledge for interacting with the App Store Connect API, covering domains like TestFlight, In-app purchases, Subscriptions, App management, and Provisioning.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "app-store-connect",
+        "apple",
+        "ios",
+        "api"
+      ]
+    },
+    {
       "name": "apple-store-release-agent",
       "source": "./plugins/apple-store-release-agent",
       "description": "AI release agent for the Apple App Store. Audits Expo/React Native iOS builds, App Store metadata, App Privacy readiness, TestFlight, RevenueCat/IAP, Firebase, i18n parity, screenshots, and review notes, then emits a GO/GO_WITH_WARNINGS/NO_GO decision with full risk + privacy + IAP reports. Never submits to App Review or alters the store without explicit human approval. Generic core with presets for Expo/RN/Firebase/RevenueCat apps.",
@@ -61,63 +133,6 @@
         "go-no-go",
         "ai-native",
         "plugin"
-      ]
-    },
-    {
-      "name": "agentic-value-loops",
-      "source": "./plugins/agentic-value-loops",
-      "description": "Agentic Value Loops plugin — Continuous improvement engine that ships verified increments with constant quality. Includes loops for Feature Development, Maintenance & Security, Documentation Sync, and AI Tuning.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "loops",
-        "automations",
-        "continuous-improvement",
-        "feature-development",
-        "maintenance",
-        "security",
-        "documentation-sync",
-        "ai-tuning",
-        "ai-native",
-        "plugin"
-      ]
-    },
-    {
-      "name": "api-test-loop",
-      "source": "./plugins/api-test-loop",
-      "description": "API Test Loop plugin — Automated REST API validation loop. Executes HTTP requests via CURL, logs findings for REST best practices (method, input/output format, security, performance, docs), and implements backend fixes.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "loops",
-        "automations",
-        "continuous-improvement",
-        "api-testing",
-        "restful",
-        "curl",
-        "security",
-        "performance",
-        "plugin"
-      ]
-    },
-    {
-      "name": "ai-workspace-orchestrator",
-      "source": "./plugins/ai-workspace-orchestrator",
-      "description": "Project and workspace AI setup orchestrator. Builds AGENTS.md/CLAUDE.md contracts, optional global or project skills, Spotify Squad-style agent/subagent topology, and adversarial setup review for single apps, monorepos, and multi-domain workspaces.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "ai-native",
-        "workspace-setup",
-        "agents",
-        "subagents",
-        "skills",
-        "orchestration",
-        "adversarial-review",
-        "spotify-squad",
-        "monorepo",
-        "codex",
-        "claude"
       ]
     },
     {
@@ -228,6 +243,21 @@
       ]
     },
     {
+      "name": "cli-for-agent",
+      "source": "./plugins/cli-for-agent",
+      "description": "Design or review CLIs so coding agents can run them reliably: non-interactive flags, layered --help with examples, stdin/pipelines, fast actionable errors, idempotency, dry-run, and predictable structure.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "cli-for-agent",
+        "cli-design",
+        "agent-friendly",
+        "terminal"
+      ]
+    },
+    {
       "name": "cli-generator",
       "source": "./plugins/cli-generator",
       "description": "Generate a complete, production-ready CLI in Bun from a SPEC, OpenAPI contract, JSON Schema, or natural-language description. Outputs a runnable binary with commander-style arg parsing, autocomplete, man page, and token-aware output formatting.",
@@ -328,6 +358,37 @@
         "husky",
         "git-hooks",
         "semver"
+      ]
+    },
+    {
+      "name": "computer-use-swiftui-loop",
+      "source": "./plugins/computer-use-swiftui-loop",
+      "description": "A reusable testing loop for macOS apps using Computer Use (Note: Computer Use is currently exclusive to the Codex app). Automates UI/visual verification, records findings, and validates small SwiftUI or Store/ViewModel fixes.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "computer-use-swiftui-loop",
+        "macos",
+        "swiftui",
+        "computer-use",
+        "testing"
+      ]
+    },
+    {
+      "name": "create-plugin",
+      "source": "./plugins/create-plugin",
+      "description": "Scaffold and review AI agent plugins: create plugin directories with valid manifests, component metadata, and marketplace wiring. Includes scaffold and pre-submission review workflows.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "create-plugin",
+        "plugin-scaffold",
+        "marketplace",
+        "plugin-review"
       ]
     },
     {
@@ -596,6 +657,36 @@
       ]
     },
     {
+      "name": "orchestrate",
+      "source": "./plugins/orchestrate",
+      "description": "Fan out large tasks across parallel AI agents with planner/worker/subplanner hierarchy and structured handoffs. Isolated workers, recursive decomposition, script-driven reconciliation.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "orchestrate",
+        "parallel-execution",
+        "task-decomposition",
+        "multi-agent",
+        "orchestration"
+      ]
+    },
+    {
+      "name": "plugin-generator",
+      "source": "./plugins/plugin-generator",
+      "description": "Generator for Lemon AI Hub plugins. Creates a new plugin directory following current standards, including plugin.json, SKILL.md, and automatically updates marketplace.json to ensure the plugin is discoverable. Use when the user asks to \"create a plugin\", \"add a plugin\", or \"generate a new plugin\".",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "plugin-generator",
+        "generator",
+        "scaffold"
+      ]
+    },
+    {
       "name": "postman-generator",
       "source": "./plugins/postman-generator",
       "description": "Create Postman collections and environments from OpenAPI/Swagger or code context. Generates rich JS tests for status codes, headers, and schemas, and handles Newman installation and test execution.",
@@ -609,6 +700,21 @@
         "automation",
         "swagger",
         "openapi"
+      ]
+    },
+    {
+      "name": "pr-review-canvas",
+      "source": "./plugins/pr-review-canvas",
+      "description": "Render a PR diff review as an interactive walkthrough that groups changes by reviewer importance, separates boilerplate from core logic, and highlights tricky code.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "pr-review-canvas",
+        "code-review",
+        "pull-request",
+        "diff-review"
       ]
     },
     {
@@ -677,6 +783,21 @@
       ]
     },
     {
+      "name": "thermos",
+      "source": "./plugins/thermos",
+      "description": "Run both thermo-nuclear review subagents in parallel and synthesize findings. Full-spectrum branch audits combining bug/security and code-quality passes.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "thermos",
+        "thermo-nuclear-review",
+        "code-quality",
+        "security-audit"
+      ]
+    },
+    {
       "name": "token-saver",
       "source": "./plugins/token-saver",
       "description": "Configures token-saving tools (rtk, caveman, graphify, context-mode) globally or per project. Allows auditing and calculating the token savings obtained.",
@@ -686,22 +807,6 @@
         "skill",
         "lemon-ai-hub",
         "token-saver"
-      ]
-    },
-    {
-      "name": "computer-use-swiftui-loop",
-      "source": "./plugins/computer-use-swiftui-loop",
-      "description": "A reusable testing loop for macOS apps using Computer Use (Note: Computer Use is currently exclusive to the Codex app). Automates UI/visual verification, records findings, and validates small SwiftUI or Store/ViewModel fixes.",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "skill",
-        "lemon-ai-hub",
-        "computer-use-swiftui-loop",
-        "macos",
-        "swiftui",
-        "computer-use",
-        "testing"
       ]
     }
   ]

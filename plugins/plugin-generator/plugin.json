@@ -1,0 +1,17 @@
+{
+  "name": "plugin-generator",
+  "version": "1.0.0",
+  "description": "Generator for Lemon AI Hub plugins. Creates a new plugin directory following current standards, including plugin.json, SKILL.md, and automatically updates marketplace.json to ensure the plugin is discoverable. Use when the user asks to 'create a plugin', 'add a plugin', or 'generate a new plugin'.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "plugin-generator",
+    "generator",
+    "scaffold"
+  ]
+}

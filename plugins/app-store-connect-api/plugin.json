@@ -1,0 +1,18 @@
+{
+  "name": "app-store-connect-api",
+  "version": "1.0.0",
+  "description": "Apple Store Connect API Expert Agent and Skills. Provides comprehensive tools and knowledge for interacting with the App Store Connect API, covering domains like TestFlight, In-app purchases, Subscriptions, App management, and Provisioning.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "app-store-connect",
+    "apple",
+    "ios",
+    "api"
+  ]
+}

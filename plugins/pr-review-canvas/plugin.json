@@ -1,0 +1,18 @@
+{
+  "name": "pr-review-canvas",
+  "version": "1.0.0",
+  "description": "Render a PR diff review as an interactive walkthrough that groups changes by reviewer importance, separates boilerplate from core logic, and highlights tricky code.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "pr-review-canvas",
+    "code-review",
+    "pull-request",
+    "diff-review"
+  ]
+}

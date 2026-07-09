@@ -1,0 +1,19 @@
+{
+  "name": "orchestrate",
+  "version": "1.0.0",
+  "description": "Fan out large tasks across parallel AI agents with planner/worker/subplanner hierarchy and structured handoffs. Isolated workers, recursive decomposition, script-driven reconciliation.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "orchestrate",
+    "parallel-execution",
+    "task-decomposition",
+    "multi-agent",
+    "orchestration"
+  ]
+}
