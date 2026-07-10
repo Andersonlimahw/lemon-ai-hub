@@ -54,7 +54,7 @@
     {
       "name": "agentic-value-loops",
       "source": "./plugins/agentic-value-loops",
-      "description": "Agentic Value Loops plugin \u2014 Continuous improvement engine that ships verified increments with constant quality. Includes loops for Feature Development, Maintenance & Security, Documentation Sync, and AI Tuning.",
+      "description": "Agentic Value Loops plugin — Continuous improvement engine that ships verified increments with constant quality. Includes loops for Feature Development, Maintenance & Security, Documentation Sync, and AI Tuning.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -97,7 +97,7 @@
     {
       "name": "api-test-loop",
       "source": "./plugins/api-test-loop",
-      "description": "API Test Loop plugin \u2014 Automated REST API validation loop. Executes HTTP requests via CURL, logs findings for REST best practices (method, input/output format, security, performance, docs), and implements backend fixes.",
+      "description": "API Test Loop plugin — Automated REST API validation loop. Executes HTTP requests via CURL, logs findings for REST best practices (method, input/output format, security, performance, docs), and implements backend fixes.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -351,7 +351,7 @@
     {
       "name": "code-smell",
       "source": "./plugins/code-smell",
-      "description": "Code smell detection and remediation. Identifies long methods, god classes, feature envy, primitive obsession, shotgun surgery, dead code, magic numbers, and other structural anti-patterns. Goes beyond linters \u2014 understands semantic coupling and design intent. Use when code is hard to change, PRs are consistently risky, or technical debt is growing faster than features.",
+      "description": "Code smell detection and remediation. Identifies long methods, god classes, feature envy, primitive obsession, shotgun surgery, dead code, magic numbers, and other structural anti-patterns. Goes beyond linters — understands semantic coupling and design intent. Use when code is hard to change, PRs are consistently risky, or technical debt is growing faster than features.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -515,7 +515,7 @@
     {
       "name": "feature-purge",
       "source": "./plugins/feature-purge",
-      "description": "Safely remove an entire feature and every dead reference it leaves behind \u2014 not just the folder you point at, but the sibling folders in other architecture layers, the imports/registries/routes/i18n keys that point to it, and any newly-orphaned code. Verifies the quality gate stays 100% green and writes a Markdown removal report. Use when deleting a feature, screen, module, or directory and you need it gone WITHOUT leaving dead files or dead code. Triggers on /feature-purge <path>, \"remove this feature\", \"delete this folder safely\", \"apaga essa feature sem deixar c\u00f3digo morto\", \"limpa essa screen e as camadas\".",
+      "description": "Safely remove an entire feature and every dead reference it leaves behind — not just the folder you point at, but the sibling folders in other architecture layers, the imports/registries/routes/i18n keys that point to it, and any newly-orphaned code. Verifies the quality gate stays 100% green and writes a Markdown removal report. Use when deleting a feature, screen, module, or directory and you need it gone WITHOUT leaving dead files or dead code. Triggers on /feature-purge <path>, \"remove this feature\", \"delete this folder safely\", \"apaga essa feature sem deixar código morto\", \"limpa essa screen e as camadas\".",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -687,6 +687,23 @@
         "skill",
         "lemon-ai-hub",
         "incident-runbook"
+      ]
+    },
+    {
+      "name": "karpathy-loop",
+      "source": "./plugins/karpathy-loop",
+      "description": "Autonomous Loop Engineering engine based on Andrej Karpathy's Autoresearch method. Enables AI agents to run iterative hypothesis-modify-execute-validate-improve cycles for continuous optimization of code, models, and metrics with CAG + Prompt Cache strategy.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "loop-engineer",
+        "karpathy-loop",
+        "autoresearch",
+        "ai-agent",
+        "optimization",
+        "loop-engineering"
       ]
     },
     {
@@ -884,7 +901,7 @@
     {
       "name": "senior-prompt-engineer",
       "source": "./plugins/senior-prompt-engineer",
-      "description": "Pipeline stage-0 prompt refiner. Runs FIRST \u2014 before skills-selector and smart-dispatch \u2014 turning a raw idea, pasted draft, or the current chat into a definitive, production-grade prompt (Anthropic prompt-engineering best practices), then hands the refined prompt + an Execution Map (agents, skills, models, effort, time & token estimate) to the routers so they pick the best skills/models with sharpened context. When no file path is given, the input IS the chat/pasted text and the output is returned inline (processed naturally), not forced to a file. Use when the user invokes /senior-prompt-engineer, says \"refine my prompt\", \"improve this prompt\", \"turn this idea into a prompt\", \"rewrite idea.md to prompt.md\", \"definitive prompt\", \"professional prompt\", or pastes a draft prompt/idea to be hardened. Cross-CLI: Claude, Codex, Gemini, OpenCode, Antigravity (agy), lemon-code (lemon).",
+      "description": "Pipeline stage-0 prompt refiner. Runs FIRST — before skills-selector and smart-dispatch — turning a raw idea, pasted draft, or the current chat into a definitive, production-grade prompt (Anthropic prompt-engineering best practices), then hands the refined prompt + an Execution Map (agents, skills, models, effort, time & token estimate) to the routers so they pick the best skills/models with sharpened context. When no file path is given, the input IS the chat/pasted text and the output is returned inline (processed naturally), not forced to a file. Use when the user invokes /senior-prompt-engineer, says \"refine my prompt\", \"improve this prompt\", \"turn this idea into a prompt\", \"rewrite idea.md to prompt.md\", \"definitive prompt\", \"professional prompt\", or pastes a draft prompt/idea to be hardened. Cross-CLI: Claude, Codex, Gemini, OpenCode, Antigravity (agy), lemon-code (lemon).",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -896,7 +913,7 @@
     {
       "name": "skills-selector",
       "source": "./plugins/skills-selector",
-      "description": "Meta-skill gatekeeper that runs FIRST on every task to decide which other skill(s) \u2014 if any \u2014 should activate. Analyzes the user request, matches it against a ranked catalog (frontend-design, ui-ux-pro-max, superpowers/planning, git-*, mcp-builder, smart-dispatch, claude-api, etc.), and emits a tight SELECTION plan so other skills are loaded on-demand only. Minimizes token/context consumption by refusing to activate heavy skills unless clearly justified. Triggers on ANY user instruction that could plausibly benefit from a specialized skill \u2014 i.e. essentially every turn that starts new work. Keywords: \"plan\", \"design\", \"ui\", \"ux\", \"implement\", \"build\", \"create\", \"fix\", \"refactor\", \"commit\", \"pr\", \"review\", \"test\", \"debug\", \"deploy\", \"mobile\", \"video\", \"mcp\", \"skill\", \"architecture\", \"api\", \"ci\", \"docs\", \"copy\", \"social\", \"setup\", \"doctor\".",
+      "description": "Meta-skill gatekeeper that runs FIRST on every task to decide which other skill(s) — if any — should activate. Analyzes the user request, matches it against a ranked catalog (frontend-design, ui-ux-pro-max, superpowers/planning, git-*, mcp-builder, smart-dispatch, claude-api, etc.), and emits a tight SELECTION plan so other skills are loaded on-demand only. Minimizes token/context consumption by refusing to activate heavy skills unless clearly justified. Triggers on ANY user instruction that could plausibly benefit from a specialized skill — i.e. essentially every turn that starts new work. Keywords: \"plan\", \"design\", \"ui\", \"ux\", \"implement\", \"build\", \"create\", \"fix\", \"refactor\", \"commit\", \"pr\", \"review\", \"test\", \"debug\", \"deploy\", \"mobile\", \"video\", \"mcp\", \"skill\", \"architecture\", \"api\", \"ci\", \"docs\", \"copy\", \"social\", \"setup\", \"doctor\".",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -920,7 +937,7 @@
     {
       "name": "spotify-squad",
       "source": "./plugins/spotify-squad",
-      "description": "AI-Native Squad \u2014 Spotify-model autonomous engineering team. 12 specialized agents (Tech Lead, Backend, Frontend, Mobile, UX, UI, Product, Scrum Master, DevOps, QA, Data, Security) with orchestrated collaboration, domain-specific skills, and cross-functional workflows. Based on the AI Native Developer methodology.",
+      "description": "AI-Native Squad — Spotify-model autonomous engineering team. 12 specialized agents (Tech Lead, Backend, Frontend, Mobile, UX, UI, Product, Scrum Master, DevOps, QA, Data, Security) with orchestrated collaboration, domain-specific skills, and cross-functional workflows. Based on the AI Native Developer methodology.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [

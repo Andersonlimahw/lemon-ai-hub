@@ -1,0 +1,177 @@
+{
+  "name": "karpathy-loop",
+  "description": "Autonomous Loop Engineering engine based on Andrej Karpathy's Autoresearch method. Enables AI agents to run iterative hypothesis-modify-execute-validate-improve cycles for continuous optimization of code, models, and metrics.",
+  "version": "2.0.0",
+  "permissions": [
+    "gpu_access",
+    "llm_api_access",
+    "file_storage_read_write",
+    "network_access",
+    "git_operations"
+  ],
+  "author": "Lemon AI Hub",
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "loop-engineer",
+    "karpathy-loop",
+    "autoresearch",
+    "ai-agent",
+    "optimization",
+    "continuous-improvement",
+    "loop-engineering",
+    "metric-driven"
+  ],
+  "memory_caching": {
+    "strategy": "CAG + Prompt Caching",
+    "description": "Uses Cache-Augmented Generation (CAG) to cache stable experiment context (program.md, metric definitions, baseline results) in KV memory, combined with prompt caching via OpenAI/Anthropic APIs to avoid recomputing shared system prompts across loop iterations. KV cache with Paged Attention reduces GPU memory fragmentation during batch experiment execution.",
+    "cold_data": [
+      "program.md instructions",
+      "baseline metrics",
+      "experiment contract",
+      "permission policies"
+    ],
+    "hot_data": [
+      "iteration results",
+      "agent hypotheses",
+      "runtime logs",
+      "dynamic state"
+    ]
+  },
+  "endpoints": [
+    {
+      "name": "/runLoop",
+      "description": "Start an autonomous loop that iteratively optimizes target code against a defined metric. Agent reads program.md, modifies target file, runs experiment, evaluates metric, and commits/reverts.",
+      "method": "POST",
+      "input": {
+        "program_file": "string (path to program.md)",
+        "target_file": "string (path to code file to optimize, e.g. train.py)",
+        "evaluation_script": "string (path to prepare.py or eval harness)",
+        "metric_name": "string (e.g. val_bpb, build_time, bundle_size)",
+        "max_iterations": "number",
+        "timeout_seconds": "number (per experiment)",
+        "cache_strategy": "string (prompt_cache | kv_cache | none)"
+      },
+      "output": {
+        "loop_id": "string",
+        "status": "string (running | completed | failed)",
+        "started_at": "ISO timestamp"
+      }
+    },
+    {
+      "name": "/getResults",
+      "description": "Retrieve current or historical results from a loop run, including iteration log, best metric, and improvement history.",
+      "method": "GET",
+      "input": {
+        "loop_id": "string"
+      },
+      "output": {
+        "loop_id": "string",
+        "status": "string",
+        "current_iteration": "number",
+        "best_metric": {
+          "name": "string",
+          "value": "number",
+          "improvement_pct": "number"
+        },
+        "total_improvements": "number",
+        "iterations": [
+          {
+            "number": "number",
+            "hypothesis": "string",
+            "metric_value": "number",
+            "accepted": "boolean",
+            "duration_seconds": "number"
+          }
+        ],
+        "cache_hits": "number",
+        "cache_savings_ms": "number"
+      }
+    },
+    {
+      "name": "/runExperiment",
+      "description": "Execute a single isolated experiment iteration (dry-run or validation). Returns full metric output without commit/rollback.",
+      "method": "POST",
+      "input": {
+        "target_file": "string",
+        "evaluation_script": "string",
+        "dry_run": "boolean",
+        "use_cache": "boolean"
+      },
+      "output": {
+        "execution_time_seconds": "number",
+        "metric": {
+          "name": "string",
+          "value": "number"
+        },
+        "logs": "string (stdout/stderr)",
+        "cached": "boolean"
+      }
+    },
+    {
+      "name": "/getCacheStatus",
+      "description": "Inspect current cache state — active KV cache entries, prompt cache hits, memory usage per cache layer.",
+      "method": "GET",
+      "input": {},
+      "output": {
+        "prompt_cache": {
+          "active_entries": "number",
+          "hits": "number",
+          "misses": "number",
+          "savings_ms": "number"
+        },
+        "kv_cache": {
+          "active_entries": "number",
+          "memory_usage_mb": "number",
+          "fragmentation_pct": "number"
+        },
+        "cold_storage": {
+          "cached_files": "string[]",
+          "size_bytes": "number"
+        }
+      }
+    },
+    {
+      "name": "/revertLast",
+      "description": "Revert the last accepted change in a loop run. Useful when a metric improvement is later found to be spurious.",
+      "method": "POST",
+      "input": {
+        "loop_id": "string"
+      },
+      "output": {
+        "status": "string",
+        "reverted_iteration": "number",
+        "previous_metric": "number"
+      }
+    }
+  ],
+  "testing_steps": [
+    {
+      "step": 1,
+      "name": "Manifest Audit",
+      "command": "lemon-cli plugin audit karpathy-loop",
+      "expected": "All permissions listed (gpu_access, llm_api_access, file_storage_read_write, network_access, git_operations) must be requested at init."
+    },
+    {
+      "step": 2,
+      "name": "Baseline /runExperiment",
+      "description": "Create a mock train.py that prints val_bpb: 1.50 after 2s sleep. Hit /runExperiment and verify metric extraction."
+    },
+    {
+      "step": 3,
+      "name": "Autonomous /runLoop",
+      "description": "Write a minimal program.md asking the agent to reduce val_bpb. Start /runLoop with max_iterations: 3. Verify agent modifies train.py, experiment runs, metric is evaluated, commit/rollback fires."
+    },
+    {
+      "step": 4,
+      "name": "Cache Layer Test",
+      "description": "Run /getCacheStatus before and after a loop. Verify prompt cache hits increase across iterations with identical system prefixes."
+    },
+    {
+      "step": 5,
+      "name": "Results & Revert",
+      "description": "Call /getResults during loop — ensure iterations increment and best_metric tracks. Then call /revertLast and verify git revert."
+    }
+  ]
+}
