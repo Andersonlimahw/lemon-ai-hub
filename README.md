@@ -160,3 +160,10 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Andersonlimahw/lemon-ai-
 
 ---
 *Built with 🍋 by Anderson Lima.*
+
+### Git Expert & GitHub Expert Plugins
+
+The  and  plugins offer advanced workflows for semantic commits and pull request automation.
+To integrate them:
+- **Hooks**: You can trigger  on a  or  git hook to automatically organize or validate semantic commits.
+- **Usage**: Use  to group uncommitted changes before finalizing your work.

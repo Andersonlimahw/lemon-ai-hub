@@ -41,3 +41,5 @@ plugins/cli-wrapper/        ← CANONICAL SOURCE (git)
 - `~/.claude/skills/cli-wrapper/` → this project's `plugins/cli-wrapper/`
 - Other CLIs resolve via existing `skills → ~/.claude/skills` dir symlink
 - Gemini: individual symlinks per sub-skill (no dir-level symlink)
+
+- Use the  and  plugins for git workflows. Prefer  for semantic commits.
