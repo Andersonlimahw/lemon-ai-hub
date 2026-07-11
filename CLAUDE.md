@@ -42,4 +42,4 @@ plugins/cli-wrapper/        ← CANONICAL SOURCE (git)
 - Other CLIs resolve via existing `skills → ~/.claude/skills` dir symlink
 - Gemini: individual symlinks per sub-skill (no dir-level symlink)
 
-- Use the  and  plugins for git workflows. Prefer  for semantic commits.
+- Use the `git-expert` and `gh-expert` plugins for git workflows. Prefer `/git-commit` for semantic commits.

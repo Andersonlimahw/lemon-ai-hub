@@ -94,4 +94,4 @@ When ANY AI harness (Claude Code, Codex, Gemini, Agy, OpenCode) needs to invoke 
 
 Wrapper agents handle cross-harness delegation (e.g., Claude spawns `codex-cli` agent to delegate to Codex). Never run raw `<cli> exec` — always through the wrapper.
 
-- **Git & GitHub Operations**: Use the  plugin (, ) for version control automation. For GitHub CLI interactions, use the  plugin.
+- **Git & GitHub Operations**: Use the `git-expert` plugin (`/git-commit`, `git-bisect-ai`) for version control automation. For GitHub CLI interactions, use the `gh-expert` plugin.

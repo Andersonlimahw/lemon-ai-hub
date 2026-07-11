@@ -163,7 +163,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Andersonlimahw/lemon-ai-
 
 ### Git Expert & GitHub Expert Plugins
 
-The  and  plugins offer advanced workflows for semantic commits and pull request automation.
+The `git-expert` and `gh-expert` plugins offer advanced workflows for semantic commits and pull request automation.
 To integrate them:
-- **Hooks**: You can trigger  on a  or  git hook to automatically organize or validate semantic commits.
-- **Usage**: Use  to group uncommitted changes before finalizing your work.
+- **Hooks**: You can trigger `/git-commit` on a `post-commit` or `pre-push` git hook to automatically organize or validate semantic commits.
+- **Usage**: Use `git-expert:git-commit` to group uncommitted changes before finalizing your work.
