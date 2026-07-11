@@ -1,0 +1,19 @@
+{
+  "name": "git-expert",
+  "version": "1.0.0",
+  "description": "Expert git plugin containing multiple skills for advanced version control, semantic commits, and bisect automation.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "git-expert",
+    "git",
+    "commit",
+    "bisect",
+    "version-control"
+  ]
+}

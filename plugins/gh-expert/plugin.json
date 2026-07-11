@@ -1,0 +1,19 @@
+{
+  "name": "gh-expert",
+  "version": "1.0.0",
+  "description": "Expert GitHub CLI plugin containing multiple skills for PR management, issue tracking, and GitHub workflows automation.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "gh-expert",
+    "github",
+    "gh",
+    "pr",
+    "issues"
+  ]
+}

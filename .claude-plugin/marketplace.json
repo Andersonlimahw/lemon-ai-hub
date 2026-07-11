@@ -681,19 +681,43 @@
       ]
     },
     {
-      "name": "git-bisect-ai",
+      "name": "gh-expert",
       "source": {
         "source": "github",
         "repo": "andersonlimadev/lemon-ai-hub",
         "url": "https://github.com/andersonlimadev/lemon-ai-hub.git"
       },
-      "description": "AI-guided git bisect for finding the exact commit that introduced a bug or regression. Automates the binary search, interprets test results, and identifies the responsible code change with full context. Use when you know a bug exists now but didn't exist before, or when a performance regression appeared somewhere in git history.",
+      "description": "Expert GitHub CLI plugin containing multiple skills for PR management, issue tracking, and GitHub workflows automation.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
         "skill",
         "lemon-ai-hub",
-        "git-bisect-ai"
+        "gh-expert",
+        "github",
+        "gh",
+        "pr",
+        "issues"
+      ]
+    },
+    {
+      "name": "git-expert",
+      "source": {
+        "source": "github",
+        "repo": "andersonlimadev/lemon-ai-hub",
+        "url": "https://github.com/andersonlimadev/lemon-ai-hub.git"
+      },
+      "description": "Expert git plugin containing multiple skills for advanced version control, semantic commits, and bisect automation.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "git-expert",
+        "git",
+        "commit",
+        "bisect",
+        "version-control"
       ]
     },
     {
