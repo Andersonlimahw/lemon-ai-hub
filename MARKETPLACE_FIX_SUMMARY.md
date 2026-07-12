@@ -22,8 +22,8 @@ O `marketplace.json` não seguia o schema oficial do Claude Code marketplace.
   "name": "cli-wrapper",
   "source": {
     "source": "github",
-    "repo": "andersonlimadev/lemon-ai-hub",
-    "url": "https://github.com/andersonlimadev/lemon-ai-hub.git"
+    "repo": "andersonlimahw/lemon-ai-hub",
+    "url": "https://github.com/andersonlimahw/lemon-ai-hub.git"
   }
 }
 ```

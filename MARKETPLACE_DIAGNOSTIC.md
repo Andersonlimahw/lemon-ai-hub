@@ -8,7 +8,7 @@
 {
   "source": {
     "source": "github",
-    "repo": "andersonlimadev/lemon-ai-hub"
+    "repo": "andersonlimahw/lemon-ai-hub"
   },
   "lastUpdated": "2026-07-10T12:00:00.000Z"
 }
