@@ -9,7 +9,10 @@
     "network_access",
     "git_operations"
   ],
-  "author": "Lemon AI Hub",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
   "license": "MIT",
   "keywords": [
     "skill",
@@ -111,7 +114,7 @@
     },
     {
       "name": "/getCacheStatus",
-      "description": "Inspect current cache state — active KV cache entries, prompt cache hits, memory usage per cache layer.",
+      "description": "Inspect current cache state \u2014 active KV cache entries, prompt cache hits, memory usage per cache layer.",
       "method": "GET",
       "input": {},
       "output": {
@@ -171,7 +174,7 @@
     {
       "step": 5,
       "name": "Results & Revert",
-      "description": "Call /getResults during loop — ensure iterations increment and best_metric tracks. Then call /revertLast and verify git revert."
+      "description": "Call /getResults during loop \u2014 ensure iterations increment and best_metric tracks. Then call /revertLast and verify git revert."
     }
   ]
 }
