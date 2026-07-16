@@ -1,0 +1,41 @@
+{
+  "name": "teaching-workspace",
+  "displayName": "Teaching Workspace",
+  "version": "2.0.0",
+  "description": "Ensina habilidades ou conceitos ao usuário em workspace stateful. Missões, lições HTML, referências, registros de aprendizado. Cria roadmap personalizado com lições interativas, documentos de referência e registros de aprendizado que persistem entre sessões.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "homepage": "https://github.com/mattpocock/skills/tree/master/skills/productivity/teach",
+  "repository": "https://github.com/mattpocock/skills",
+  "license": "MIT",
+  "credits": "Based on teach by Matt Pocock (https://github.com/mattpocock/skills)",
+  "category": "education",
+  "tags": [
+    "teaching",
+    "learning",
+    "education",
+    "stateful-learning",
+    "workspace",
+    "lessons",
+    "mentorship"
+  ],
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "teaching",
+    "learning",
+    "education",
+    "skills",
+    "lessons",
+    "workspace",
+    "stateful-learning",
+    "mission-driven",
+    "zone-of-proximal-development",
+    "interactive-lessons",
+    "knowledge-transfer",
+    "spaced-repetition",
+    "learning-records"
+  ]
+}

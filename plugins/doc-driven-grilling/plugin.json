@@ -1,0 +1,28 @@
+{
+  "name": "doc-driven-grilling",
+  "version": "2.0.0",
+  "description": "Interrogatório implacável para planos e designs que cria documentação (ADRs, glossário/CONTEXT.md) durante o processo, enquanto grilla. Integra grilling de decisão com domain-modeling: desafia linguagem vaga contra o glossário existente, stress-testa cenários concretos, e captura termos e decisões inline conforme cristalizam. Diferencial: cria docs enquanto grilla — cada termo resolvido vai para o glossário, cada decisão irreversível vira ADR.",
+  "author": {
+    "name": "Matt Pocock",
+    "url": "https://github.com/mattpocock/skills"
+  },
+  "contributors": [
+    {
+      "name": "Anderson Lima",
+      "url": "https://andersonlimahw.github.io"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "documentation",
+    "grilling",
+    "ADR",
+    "domain-modeling",
+    "glossary",
+    "design-docs",
+    "decision-records",
+    "context-modeling"
+  ]
+}
