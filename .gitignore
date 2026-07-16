@@ -1,1 +1,4 @@
 plugins/.system/
+# Local Claude Code state (worktrees, settings, agent scratch dirs).
+# Machine-specific, never commit. See docs/rules/worktree-hygiene.md.
+.claude/

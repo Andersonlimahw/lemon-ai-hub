@@ -71,6 +71,11 @@ the affected areas:
 - [`docs/rules/marketplace-sync.md`](docs/rules/marketplace-sync.md) — every plugin
   in `plugins/` MUST be registered in `.claude-plugin/marketplace.json` in the same
   change. Never add/rename/remove a plugin without syncing the marketplace.
+- [`docs/rules/worktree-hygiene.md`](docs/rules/worktree-hygiene.md) — `.claude/`
+  is local machine state and MUST be in `.gitignore`. Before any `git commit` /
+  `git push` / PR creation, run `rtk git worktree list` and remove every stale
+  worktree. When an agent session ends, its worktree MUST be removed in the
+  same turn.
 
 ## graphify
 
