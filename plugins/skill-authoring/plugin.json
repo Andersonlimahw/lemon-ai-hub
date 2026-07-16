@@ -1,0 +1,31 @@
+{
+  "name": "skill-authoring",
+  "version": "2.0.0",
+  "description": "Reference for creating and editing skills well \u2014 the vocabulary and principles that make a skill predictable. Covers invocation, information hierarchy, granularity, steering, pruning, and failure modes.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "credits": {
+    "based_on": "writing-great-skills",
+    "original_author": "Matt Pocock",
+    "source": "https://github.com/mattpocock/skills"
+  },
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "skill-authoring",
+    "skill-creation",
+    "predictability",
+    "invocation",
+    "determinism",
+    "context-load",
+    "information-hierarchy",
+    "granularity",
+    "pruning",
+    "failure-modes",
+    "leading-words",
+    "matt-pocock"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "session-handoff",
+  "version": "2.0.0",
+  "description": "Compacta a conversa atual em um documento de handoff para outro agent continuar o trabalho. Preserva o contexto sem duplicar artefatos.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "contributors": [
+    {
+      "name": "Matt Pocock",
+      "url": "https://github.com/mattpocock/skills"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "session-handoff",
+    "handoff",
+    "context-preservation",
+    "session-continuation",
+    "agent-handover",
+    "context-transfer"
+  ],
+  "credits": "Based on handoff by Matt Pocock (https://github.com/mattpocock/skills)"
+}

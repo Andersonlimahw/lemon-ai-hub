@@ -1,0 +1,34 @@
+{
+  "name": "task-interrogator",
+  "displayName": "Task Interrogator",
+  "version": "2.0.0",
+  "description": "Interrogatório implacável para planos e designs. Estressa planos antes de implementar, caminhando pela árvore de decisões uma pergunta por vez. Baseado em grill-me/grilling de Matt Pocock. Use when the user wants to stress-test a plan, design, or decision before implementation, or uses any 'grill'/'interrogate' trigger phrases.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "homepage": "https://github.com/mattpocock/skills",
+  "repository": "https://github.com/mattpocock/skills",
+  "license": "MIT",
+  "credits": "Based on grill-me and grilling by Matt Pocock (https://github.com/mattpocock/skills)",
+  "category": "productivity",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "task-interrogator",
+    "interrogation",
+    "grilling",
+    "stress-test",
+    "plan-validation",
+    "design-review",
+    "decision-tree"
+  ],
+  "tags": [
+    "planning",
+    "design",
+    "validation",
+    "productivity"
+  ],
+  "skills": "./skills/",
+  "agents": "./agents/"
+}

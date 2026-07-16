@@ -1,0 +1,36 @@
+{
+  "name": "architecture-deepener",
+  "displayName": "Architecture Deepener",
+  "version": "2.0.0",
+  "description": "Surface opportunities to deepen a codebase. Finds shallow modules (thin pass-throughs, anemic types, domain logic leaking into controllers/UI) and proposes deep modules that co-locate behavior with data, enforce invariants, and stay navigable for humans and AI agents. Emits a visual HTML report and runs an interactive grilling loop that pressure-tests each opportunity before any code moves. Integrates with domain-modeling, codebase-design, and ADR workflows.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "homepage": "https://github.com/mattpocock/skills",
+  "repository": "https://github.com/mattpocock/skills",
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "architecture-deepener",
+    "architecture",
+    "refactoring",
+    "deepening",
+    "modules",
+    "testability",
+    "code-quality"
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "architecture",
+    "refactoring",
+    "deepening",
+    "modules",
+    "testability",
+    "code-quality",
+    "domain-modeling",
+    "ai-navigability"
+  ],
+  "skills": "./"
+}
