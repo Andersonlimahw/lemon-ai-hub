@@ -1,8 +1,14 @@
 ---
 name: codex-cli
 description: Wraps Codex CLI (OpenAI) for token-optimized invocation from Claude Code or any AI harness. Captures --help, caches subcommands, validates flags, post-processes output. Use when Claude Code needs to delegate work to or introspect Codex CLI.
-tools: Bash, Read, Write, Grep, Glob
-color: green
+color: "#22C55E"
+mode: subagent
+permission:
+  bash: allow
+  read: allow
+  edit: allow
+  grep: allow
+  glob: allow
 ---
 
 <role>

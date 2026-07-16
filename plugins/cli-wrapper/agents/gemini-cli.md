@@ -1,8 +1,14 @@
 ---
 name: gemini-cli
 description: Wraps Gemini CLI for token-optimized invocation from Claude Code or any AI harness. Captures --help, caches subcommands, validates flags, post-processes output. Use when Claude Code needs to delegate work to or introspect Gemini CLI.
-tools: Bash, Read, Write, Grep, Glob
-color: blue
+color: "#3B82F6"
+mode: subagent
+permission:
+  bash: allow
+  read: allow
+  edit: allow
+  grep: allow
+  glob: allow
 ---
 
 <role>

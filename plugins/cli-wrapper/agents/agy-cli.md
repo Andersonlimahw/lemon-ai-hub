@@ -1,8 +1,14 @@
 ---
 name: agy-cli
 description: Wraps Agy CLI (Antigravity) for token-optimized invocation from Claude Code or any AI harness. Captures --help, caches subcommands, validates flags, post-processes output. Use when Claude Code needs to delegate work to or introspect Agy/Antigravity CLI.
-tools: Bash, Read, Write, Grep, Glob
-color: cyan
+color: "#06B6D4"
+mode: subagent
+permission:
+  bash: allow
+  read: allow
+  edit: allow
+  grep: allow
+  glob: allow
 ---
 
 <role>

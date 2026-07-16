@@ -1,6 +1,6 @@
 {
   "name": "cli-wrapper",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Multi-harness CLI wrapper ecosystem. Claude Code = single source of truth. Wraps any external CLI (claude, gemini, codex, opencode, agy + extensible) so the AI harness can invoke it without context bloat. Includes per-CLI wrapper skills/agents, cross-harness symlink setup, and token metrics across the whole ecosystem.",
   "author": {
     "name": "Anderson Lima",

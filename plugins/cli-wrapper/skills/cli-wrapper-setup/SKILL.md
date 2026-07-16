@@ -45,6 +45,48 @@ For each detected non-Claude CLI:
 | **OpenCode** | Already symlinked (`skills → ~/.claude/skills`) | Create `~/.opencode/agents/` + symlinks | Create `~/.opencode/AGENTS.md` |
 | **Gemini** | Individual skill symlinks in `~/.gemini/skills/` | Individual agent symlinks in `~/.gemini/agents/` | Update `~/.gemini/GEMINI.md` |
 
+### Phase 3.5: Agent Frontmatter Sync (MANDATORY)
+
+**Retrocompatibility contract:** raw symlinks from `~/.{harness}/agents/` to
+Claude-format files BREAK OpenCode and may break Agy/Gemini because the
+frontmatter schema is harness-specific. This phase materializes per-harness
+copies via `scripts/sync-agents.py` with strict schema enforcement.
+
+**Why this exists:** a previous setup created raw symlinks to Claude-format
+agents. OpenCode then silently dropped `name:` (file name = agent identity)
+and the missing `description:` caused a hard parse error. A migration attempt
+that uppercased `tools:` to `Tools:` and pluralized `color:` to `colors:`
+would also be invalid — both keys are rejected.
+
+**Per-harness schema (strict):**
+
+| Harness | Top-level keys kept | Drops | Sidecar |
+|---------|--------------------|----|---------|
+| Claude | `name`, `description`, `color`, `mode`, `permission`, `tools` | — | — |
+| Codex | `name`, `description`, `color`, `mode`, `permission` | — | `.toml` |
+| Gemini | `name`, `description`, `color`, `mode`, `permission` | — | — |
+| Agy | `name`, `description`, `color`, `mode`, `permission` | — | — |
+| OpenCode | `description`, `color`, `mode`, `permission` | `name` | — |
+
+**Behavior:**
+- Reads canonical agents from `plugins/cli-wrapper/agents/*.md`
+- Emits materialized files (not symlinks) at `~/.{harness}/agents/{name}.md`
+- Codex additionally gets `~/.codex/agents/{name}.toml` with the same body
+- Drops any key not in the harness whitelist; logs a `[warn]` line
+- Idempotent: re-running with no source change = no writes
+- `--dry-run` previews writes; `--verify` audits existing files (exit 1 on drift)
+
+**Commands:**
+```bash
+python3 scripts/sync-agents.py            # apply
+python3 scripts/sync-agents.py --dry-run  # preview
+python3 scripts/sync-agents.py --verify   # audit, exit 1 on drift
+python3 scripts/sync-agents.py --harness opencode  # single harness
+```
+
+This phase is wired into `scripts/setup-symlinks.sh` and `scripts/menu.sh`
+so any symlink run automatically syncs agent frontmatter.
+
 ### Phase 4: Config Injection
 Add to each CLI's main config file:
 
