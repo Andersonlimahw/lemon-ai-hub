@@ -847,6 +847,26 @@
       ]
     },
     {
+      "name": "opencode-subagent",
+      "source": "./plugins/opencode-subagent",
+      "description": "Cross-harness skill that teaches Claude Code, Codex (OpenAI), and Antigravity (Agy) how to use OpenCode as a subagent efficiently. Covers delegation patterns, task formatting, provider routing, and result handling for each harness.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "opencode",
+        "subagent",
+        "delegation",
+        "cross-harness",
+        "claude-code",
+        "codex",
+        "antigravity",
+        "agy",
+        "orchestration"
+      ]
+    },
+    {
       "name": "orchestrate",
       "source": "./plugins/orchestrate",
       "description": "Fan out large tasks across parallel AI agents with planner/worker/subplanner hierarchy and structured handoffs. Isolated workers, recursive decomposition, script-driven reconciliation.",
