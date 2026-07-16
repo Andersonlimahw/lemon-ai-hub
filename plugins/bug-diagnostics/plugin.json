@@ -1,0 +1,32 @@
+{
+  "name": "bug-diagnostics",
+  "version": "2.0.0",
+  "description": "Loop de diagnóstico para bugs difíceis e regressões de performance. Feedback loop → reprodução → hipóteses → instrumentação → fix + teste → cleanup. Invoca quando o usuário diz 'diagnosticar'/'debugar isso', ou relata algo quebrado/lento/falhando.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
+  "license": "MIT",
+  "credits": {
+    "based_on": "diagnosing-bugs by Matt Pocock",
+    "source": "https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs"
+  },
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "bug-diagnostics",
+    "debugging",
+    "diagnostics",
+    "bugs",
+    "performance-regression",
+    "feedback-loop",
+    "bisection",
+    "root-cause-analysis",
+    "reproduction",
+    "hypothesis-driven",
+    "instrumentation",
+    "determinism",
+    "regression-test"
+  ]
+}
