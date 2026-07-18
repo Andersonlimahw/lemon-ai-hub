@@ -1,7 +1,7 @@
 ---
 name: opencode-cli
 description: Wraps OpenCode CLI for token-optimized invocation from Claude Code or any AI harness. Captures --help, caches subcommands, validates flags, post-processes output. Use when Claude Code needs to delegate work to or introspect OpenCode CLI.
-color: orange
+color: "#F97316"
 ---
 
 <role>

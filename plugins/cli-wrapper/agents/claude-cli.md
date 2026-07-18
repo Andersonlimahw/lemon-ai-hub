@@ -1,8 +1,14 @@
 ---
 name: claude-cli
 description: Wraps Claude Code CLI for token-optimized invocation from any AI harness. Captures --help, caches subcommands, validates flags, post-processes output. Use when Claude Code needs to introspect or invoke itself via CLI.
-tools: Bash, Read, Write, Grep, Glob
-color: purple
+color: "#A855F7"
+mode: subagent
+permission:
+  bash: allow
+  read: allow
+  edit: allow
+  grep: allow
+  glob: allow
 ---
 
 <role>

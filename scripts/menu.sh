@@ -99,6 +99,13 @@ run_installer() {
     *) echo -e "${RED}Invalid choice.${NC}"; return 1 ;;
   esac
   echo -e "${GREEN}Installation complete!${NC}\n"
+
+  # Phase 3.5: per-harness agent frontmatter sync (same as setup-symlinks.sh).
+  local SYNC_AGENTS="$REPO_ROOT/scripts/sync-agents.py"
+  if [ -f "$SYNC_AGENTS" ]; then
+    echo -e "${BLUE}=== Phase 3.5: Agent Frontmatter Sync ===${NC}"
+    python3 "$SYNC_AGENTS" || echo -e "${YELLOW}WARNING: sync-agents.py failed. Run 'python3 $SYNC_AGENTS --verify' to inspect.${NC}" >&2
+  fi
 }
 
 echo "Select an option:"

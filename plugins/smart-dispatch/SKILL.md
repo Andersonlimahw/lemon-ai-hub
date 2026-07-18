@@ -40,11 +40,13 @@ Any agent dispatched in YOLO/Bypass mode **MUST** execute the relevant validatio
 
 Always pick the **cheapest tier that passes validation**; escalate per 1.1. Tiers map per provider:
 
-| Tier | Claude | Codex | Gemini |
-|------|--------|-------|--------|
-| **budget** | Haiku 4.5 | gpt low/mini reasoning | Flash |
-| **balanced** | Sonnet 4.6 | gpt medium reasoning | Pro |
-| **quality** | Opus 4.8 / Fable 5 | gpt high reasoning | Pro (max thinking) |
+| Tier | Claude | Codex subagent | Gemini |
+|------|--------|----------------|--------|
+| **budget** | Haiku 4.5 | Luna (low/medium effort) | Flash |
+| **balanced** | Sonnet 4.6 | Terra (medium/high effort) | Pro |
+| **quality** | Opus 4.8 / Fable 5 | Sol (high/xhigh effort) | Pro (max thinking) |
+
+Use the newest available OpenAI Codex aliases in this order: **Luna** for bounded mechanical work, **Terra** for implementation and integration, and **Sol** for architecture, adversarial review, or repeated validation failures. These are dispatch-only names; never add them to an application's LLM provider catalog.
 
 | Task type | Tier | Notes |
 |-----------|------|-------|
@@ -67,9 +69,9 @@ If a Tier 0 agent fails to resolve the issue (validation still fails) after **2 
 | Domain | Best Platform | Reason |
 |--------|---------------|--------|
 | **Multimodal / UI screenshots** | Gemini Pro (latest) | Best image/screenshot interpretation. |
-| **Complex Logic / Math** | Codex (gpt high reasoning) | Superior reasoning for algorithms. |
+| **Complex Logic / Math** | Codex Sol | Highest-reasoning Codex subagent tier for algorithms and root cause. |
 | **Agentic Chains / Auth** | Claude Sonnet 4.6+ | Best tool-use and multi-step autonomy. |
-| **Deep Plan / Architecture** | Claude Opus 4.8 / Fable 5 | Strongest long-horizon reasoning. |
+| **Deep Plan / Architecture** | Codex Sol or Claude Opus 4.8 / Fable 5 | Use Sol for codebase-grounded decisions; use Opus/Fable for cross-domain synthesis. |
 | **Open Source / Docs** | OpenCode | Deep integration with community patterns. |
 
 ---

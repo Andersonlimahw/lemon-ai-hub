@@ -1,0 +1,23 @@
+{
+  "name": "opencode-subagent",
+  "version": "1.0.0",
+  "description": "Cross-harness skill that teaches Claude Code, Codex (OpenAI), and Antigravity (Agy) how to use OpenCode as a subagent efficiently. Covers delegation patterns, task formatting, provider routing, and result handling for each harness.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "opencode",
+    "subagent",
+    "delegation",
+    "cross-harness",
+    "claude-code",
+    "codex",
+    "antigravity",
+    "agy",
+    "orchestration"
+  ]
+}
