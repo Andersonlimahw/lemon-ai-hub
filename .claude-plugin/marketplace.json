@@ -533,6 +533,33 @@
       ]
     },
     {
+      "name": "error-fixer-loop",
+      "source": "./plugins/error-fixer-loop",
+      "description": "Recursive error-fix loop that turns every bash/test/build failure into persistent harness improvement. Protocol: detect → root-cause → minimal fix → test → lint/typecheck → persist rule (SKILL.md / AGENTS.md / docs/rules) → generate fix-prompt artifact (senior-prompt-engineer format) → audit with evidence. Cross-harness hooks (Claude Code PostToolUse + OpenCode tool.execute.after) inject the loop automatically when a build/test error pattern is matched.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "error-fixer-loop",
+        "error-handling",
+        "feedback-loop",
+        "recursive-skill",
+        "harness-improvement",
+        "root-cause",
+        "regression-test",
+        "persistent-rules",
+        "fix-prompt",
+        "senior-prompt-engineer",
+        "cross-harness",
+        "claude-code",
+        "opencode",
+        "hook",
+        "build-failure",
+        "test-failure"
+      ]
+    },
+    {
       "name": "feature-flag",
       "source": "./plugins/feature-flag",
       "description": "Feature flag implementation, management, and cleanup. Handles flag creation, gradual rollout strategies, A/B testing wiring, stale flag detection, and safe flag removal. Supports LaunchDarkly, Unleash, GrowthBook, Statsig, custom env-var flags, and database-backed toggles. Use when adding gated features, rolling out gradually, or cleaning up old flags.",

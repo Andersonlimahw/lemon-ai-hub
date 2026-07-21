@@ -1,0 +1,33 @@
+{
+  "name": "error-fixer-loop",
+  "version": "1.0.0",
+  "description": "Recursive error-fix loop that turns every bash/test/build failure into persistent harness improvement. Protocol: detect → root-cause → minimal fix → test → lint/typecheck → persist rule (SKILL.md / AGENTS.md / docs/rules) → audit with evidence. Cross-harness hooks (Claude Code PostToolUse + OpenCode tool.execute.after) inject the loop automatically when a build/test error pattern is matched.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
+  "license": "MIT",
+  "credits": {
+    "based_on": "error-fix-loop (legacy) + recursive-skill pattern",
+    "article": "https://lemon.dev.br/pt/blog/skill-recursiva-feedback-loop-harness"
+  },
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "error-fixer-loop",
+    "error-handling",
+    "feedback-loop",
+    "recursive-skill",
+    "harness-improvement",
+    "root-cause",
+    "regression-test",
+    "persistent-rules",
+    "cross-harness",
+    "claude-code",
+    "opencode",
+    "hook",
+    "build-failure",
+    "test-failure"
+  ]
+}
