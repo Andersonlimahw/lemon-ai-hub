@@ -1285,18 +1285,6 @@
       ]
     },
     {
-      "name": "lemon-blog-post",
-      "source": "./plugins/lemon-blog-post",
-      "description": "Skill para criar e publicar blog posts no Lemon Blog via MCP",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "skill",
-        "lemon-ai-hub",
-        "lemon-blog-post"
-      ]
-    },
-    {
       "name": "llm-wiki-curator",
       "source": "./plugins/llm-wiki-curator",
       "description": "Maintains docs/ in the Karpathy-style LLM-wiki standard. Generates docs/llms.txt (flat machine-readable index conforming to llmstxt.org), validates broken links, enforces a minimum front-matter in new .md files (title, status, updated, related), groups orphan docs. Use when the user says \"update docs index\", \"generate llms.txt\", \"audit docs\", \"organize wiki\", \"cure documentation\", or after adding/renaming a file in docs/.",
