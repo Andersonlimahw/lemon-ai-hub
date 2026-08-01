@@ -38,6 +38,13 @@ Receitas de prompts prontos-para-colar que ensinam a usar as skills deste hub co
 | `caveman` × `teaching` / `learning-output-style` | objetivos conflitantes | compressão máxima vs. didática — nunca no mesmo turno |
 | `copywriting` × `copy-editing` | conflito de passe | escrever do zero OU editar existente; sequencial ok, simultâneo não |
 | `karpathy-loop` × `error-fixer-loop` (mesmo alvo) | conflito de driver | um loop dono do ciclo; o outro entra como etapa, não como driver |
+| `X` × `X-advisor/-watch/-runner/-guardian/-detector` | regra geral do hub | pontual (investigar/fixar agora) × contínuo (gate de CI) — escolha por objetivo, nunca os dois como driver do mesmo passe (`async-patterns`×`async-advisor`, `bundle-analyzer`×`bundle-watch`, `load-test`×`load-test-runner`, `chaos-test`×`chaos-runner`, `a11y-audit`×`a11y-guardian`) |
+| `create-plugin` × `plugin-creator` × `plugin-generator` × `skill-creator` | sobreposição de geradores | UM gerador por artefato; neste repo o layout canônico de `validate_plugins.py` manda |
+| `security-best-practices` × `security-guidance` | sobreposição | checklist de código OU orientação contextual — não empilhar |
+| `playwright` × `playwright-interactive` | sobreposição | E2E scriptado OU sessão interativa |
+| `openapi-generate` × `openapi-hub` | sobreposição | gerar spec pontual OU gestão contínua de specs |
+| `cli-creator` × `cli-generator` | sobreposição | escolha pelo runtime alvo (Codex-composável vs Bun spec-first) |
+| `imagegen` × `imagegen-frontend-web` / `imagegen-frontend-mobile` | sobreposição | geral OU específica de frontend — pela finalidade do asset |
 
 ## Combos que funcionam
 
@@ -50,6 +57,12 @@ Receitas de prompts prontos-para-colar que ensinam a usar as skills deste hub co
 - `architecture-deepener` + `llm-wiki-curator` + `teaching` — entender + documentar + aprender
 - `api-test-loop` + `verification-before-completion` — loop de validação + gate de conclusão
 - `chrome-qa-loop` → `bug-diagnostics` → `error-fixer-loop` — sequência finding → diagnóstico → fix (nunca simultâneos)
+- `karpathy-guidelines` + `karpathy-recipe` + `karpathy-loop` — princípios sempre, receita no trabalho grande, loop na métrica (complementares)
+- `vercel-react-best-practices` + `vercel-optimize` + `bundle-analyzer` — padrões + vitals + peso do bundle
+- `openapi-generate` + `postman-generator` + `api-test-loop` — spec → collection → validação viva
+- `db-index-advisor` + `supabase-postgres-best-practices` — índice certo na modelagem certa
+- `code-review-expert` + `commit-quality` + `pr-review-canvas` — review + higiene + apresentação
+- `notion-spec-to-implementation` + `doc-driven-grilling` — spec grilada antes de virar código
 
 ## Trilhas
 
@@ -60,6 +73,15 @@ Receitas de prompts prontos-para-colar que ensinam a usar as skills deste hub co
 | Produto | [prompts-product](skills/prompts-product/SKILL.md) | posicionamento, monetização, onboarding, lançamento, feedback de usuários |
 | Marketing | [prompts-marketing](skills/prompts-marketing/SKILL.md) | copy, SEO + AI search, email, social, marca |
 | Design & Frontend | [prompts-design-frontend](skills/prompts-design-frontend/SKILL.md) | direção visual, estéticas, screenshot→código, redesign, acessibilidade |
+| Método Karpathy | [prompts-karpathy](skills/prompts-karpathy/SKILL.md) | guidelines, receita para trabalho grande, review por princípios, loop de métrica |
+| Vercel & React | [prompts-vercel-react](skills/prompts-vercel-react/SKILL.md) | best practices, otimização, composição, view transitions, RN/Expo, deploy |
+| Qualidade de engenharia | [prompts-engineering-quality](skills/prompts-engineering-quality/SKILL.md) | review de PR, async, banco, threat model, carga/caos, i18n |
+| APIs & CLIs | [prompts-apis-clis](skills/prompts-apis-clis/SKILL.md) | OpenAPI, Postman, CLIs para agentes, wrapping de CLIs |
+| Mobile & Release | [prompts-mobile-release](skills/prompts-mobile-release/SKILL.md) | go/no-go iOS/Android, App Store Connect, Play API, ASO |
+| Dados & Backend | [prompts-data-backend](skills/prompts-data-backend/SKILL.md) | Supabase/Postgres, Firebase, decisões de banco, incidentes |
+| Conhecimento & Notion | [prompts-knowledge-notion](skills/prompts-knowledge-notion/SKILL.md) | capturar decisões, reuniões, pesquisa, spec→código, aprendizado persistente |
+| Meta-harness | [prompts-meta-harness](skills/prompts-meta-harness/SKILL.md) | criar skills/plugins, hooks, orquestração multi-agente, migração, tokens |
+| Índice A–Z | [prompts-catalog-index](skills/prompts-catalog-index/SKILL.md) | todos os 159 plugins do hub com quando-usar de uma linha |
 
 ## Guardrails
 
