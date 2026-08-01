@@ -6,6 +6,7 @@
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
   },
+  "license": "MIT",
   "keywords": [
     "skill",
     "lemon-ai-hub",
@@ -17,7 +18,7 @@
     "i18next",
     "react-intl",
     "vue-i18n",
-    "locale"
-  ],
-  "license": "MIT"
+    "locale",
+    "i18n-sync"
+  ]
 }

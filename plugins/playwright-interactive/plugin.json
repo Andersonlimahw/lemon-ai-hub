@@ -1,0 +1,15 @@
+{
+  "name": "playwright-interactive",
+  "version": "1.0.0",
+  "description": "Persistent browser and Electron interaction through `js_repl` for fast iterative UI debugging.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "playwright-interactive"
+  ]
+}

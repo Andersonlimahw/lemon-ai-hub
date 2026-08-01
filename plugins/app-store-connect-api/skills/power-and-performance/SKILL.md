@@ -1,6 +1,6 @@
 ---
-name: Power and Performance
-description: Endpoints for fetching diagnostic signatures and performance metrics.
+name: "power-and-performance"
+description: "Endpoints for fetching diagnostic signatures and performance metrics."
 ---
 
 # Power and Performance

@@ -1,6 +1,6 @@
 ---
-name: App Metadata
-description: Endpoints for managing app screenshots, product pages, and localizations.
+name: "app-metadata"
+description: "Endpoints for managing app screenshots, product pages, and localizations."
 ---
 
 # App Metadata

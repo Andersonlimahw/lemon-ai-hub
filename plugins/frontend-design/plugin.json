@@ -6,12 +6,13 @@
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
   },
-  "skills": [
-    "frontend-design"
-  ],
   "license": "MIT",
   "keywords": [
     "skill",
-    "lemon-ai-hub"
+    "lemon-ai-hub",
+    "frontend-design"
+  ],
+  "skills": [
+    "frontend-design"
   ]
 }

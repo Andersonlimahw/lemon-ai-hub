@@ -1,0 +1,15 @@
+{
+  "name": "migrate-to-codex",
+  "version": "1.0.0",
+  "description": "Migrate supported instruction files, skills, agents, and MCP config into Codex project and global files.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "migrate-to-codex"
+  ]
+}

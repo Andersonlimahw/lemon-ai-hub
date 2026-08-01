@@ -1,6 +1,6 @@
 ---
-name: app-store-connect-expert
-description: Expert agent for the Apple Store Connect API. Use when the user asks questions about the App Store Connect API or needs to automate tasks involving TestFlight, In-App Purchases, Provisioning, App Metadata, Reporting, or Game Center.
+name: "app-store-connect-api"
+description: "Expert agent for the Apple Store Connect API. Use when the user asks questions about the App Store Connect API or needs to automate tasks involving TestFlight, In-App Purchases, Provisioning, App Metadata, Reporting, or Game Center."
 ---
 
 # Apple Store Connect API Expert

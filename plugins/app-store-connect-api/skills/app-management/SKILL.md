@@ -1,6 +1,6 @@
 ---
-name: App Management
-description: Endpoints for managing apps, app infos, and app store versions in Apple Store Connect.
+name: "app-management"
+description: "Endpoints for managing apps, app infos, and app store versions in Apple Store Connect."
 ---
 
 # App Management

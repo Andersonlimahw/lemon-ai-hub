@@ -1,0 +1,15 @@
+{
+  "name": "notion-meeting-intelligence",
+  "version": "1.0.0",
+  "description": "Prepare meeting materials with Notion context and Codex research; use when gathering context, drafting agendas/pre-reads, and tailoring materials to attendees.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "notion-meeting-intelligence"
+  ]
+}

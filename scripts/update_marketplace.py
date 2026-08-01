@@ -2,7 +2,9 @@ import json
 import os
 import glob
 
-REPO_ROOT = "/Users/andersonlimadev/Projects/IA/lemon-ai-hub"
+# Derived from this file's location so the script works from any clone, on any
+# machine, and in CI — not just the author's checkout.
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MARKETPLACE_PATH = os.path.join(REPO_ROOT, ".claude-plugin/marketplace.json")
 README_PATH = os.path.join(REPO_ROOT, "README.md")
 
@@ -58,7 +60,8 @@ for line in lines:
         # Insert the new table
         for plugin in new_plugins:
             name = plugin["name"]
-            desc = plugin["description"].replace('\n', ' ')
+            # A literal pipe in a description would split the Markdown cell.
+            desc = plugin["description"].replace('\n', ' ').replace('|', '\\|')
             new_lines.append(f"| `{name}` | {desc} |\n")
         table_inserted = True
         

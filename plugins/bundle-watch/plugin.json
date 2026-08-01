@@ -6,6 +6,7 @@
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
   },
+  "license": "MIT",
   "keywords": [
     "skill",
     "lemon-ai-hub",
@@ -16,7 +17,7 @@
     "nextjs",
     "tree-shaking",
     "code-splitting",
-    "web-vitals"
-  ],
-  "license": "MIT"
+    "web-vitals",
+    "bundle-watch"
+  ]
 }

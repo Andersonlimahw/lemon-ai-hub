@@ -1,0 +1,15 @@
+{
+  "name": "notion-research-documentation",
+  "version": "1.0.0",
+  "description": "Research across Notion and synthesize into structured documentation; use when gathering info from multiple Notion sources to produce briefs, comparisons, or reports with citations.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "notion-research-documentation"
+  ]
+}

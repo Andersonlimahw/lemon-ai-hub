@@ -1,6 +1,6 @@
 ---
-name: Customer Reviews
-description: Endpoints for reading and responding to customer reviews.
+name: "customer-reviews"
+description: "Endpoints for reading and responding to customer reviews."
 ---
 
 # Customer Reviews

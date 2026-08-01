@@ -1,6 +1,6 @@
 ---
-name: Reporting, Payments and Financial Reports
-description: Endpoints for downloading sales and financial reports.
+name: "reporting-and-payments"
+description: "Endpoints for downloading sales and financial reports."
 ---
 
 # Reporting, Payments and Financial Reports

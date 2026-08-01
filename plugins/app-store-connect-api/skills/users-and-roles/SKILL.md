@@ -1,6 +1,6 @@
 ---
-name: Users and Roles
-description: Endpoints for managing App Store Connect users and invitations.
+name: "users-and-roles"
+description: "Endpoints for managing App Store Connect users and invitations."
 ---
 
 # Users and Roles

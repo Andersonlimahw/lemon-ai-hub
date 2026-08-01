@@ -1,0 +1,15 @@
+{
+  "name": "supabase-postgres-best-practices",
+  "version": "1.0.0",
+  "description": "Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "supabase-postgres-best-practices"
+  ]
+}

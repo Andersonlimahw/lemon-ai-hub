@@ -1,0 +1,15 @@
+{
+  "name": "deploy-to-vercel",
+  "version": "1.0.0",
+  "description": "Deploy applications and websites to Vercel. Use when the user requests deployment actions like \"deploy my app\", \"deploy and give me the link\", \"push this live\", or \"create a preview deployment\".",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "deploy-to-vercel"
+  ]
+}

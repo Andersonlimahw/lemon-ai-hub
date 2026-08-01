@@ -1,6 +1,6 @@
 ---
-name: create-plugin-scaffold
-description: Scaffold a new AI agent plugin directory with valid manifest, component directories, and marketplace wiring. Use when starting a new plugin, adding a plugin to a multi-plugin repository, or reviewing a plugin before submission.
+name: "create-plugin"
+description: "Scaffold a new AI agent plugin directory with valid manifest, component directories, and marketplace wiring. Use when starting a new plugin, adding a plugin to a multi-plugin repository, or reviewing a plugin before submission."
 ---
 
 # Create Plugin

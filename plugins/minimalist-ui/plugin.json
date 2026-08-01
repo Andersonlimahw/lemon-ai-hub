@@ -1,0 +1,15 @@
+{
+  "name": "minimalist-ui",
+  "version": "1.0.0",
+  "description": "Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gradients, no heavy shadows.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "minimalist-ui"
+  ]
+}

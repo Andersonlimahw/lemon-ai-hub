@@ -1,6 +1,6 @@
 ---
-name: In-App Purchases
-description: Endpoints for managing in-app purchases and promoted purchases.
+name: "in-app-purchases"
+description: "Endpoints for managing in-app purchases and promoted purchases."
 ---
 
 # In-App Purchases
