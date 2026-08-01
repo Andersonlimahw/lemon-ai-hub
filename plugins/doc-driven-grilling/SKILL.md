@@ -10,6 +10,13 @@ Interrogatório implacável que cria documentação enquanto grilla. Cada termo 
 
 Integração: `/grilling` (interrogatório de decisão) + `/domain-modeling` (modelagem de domínio e glossário).
 
+### Quando NÃO usar (skills irmãs)
+
+| Situação | Use |
+|---|---|
+| Quer só afiar a decisão, **sem gerar artefatos** de documentação | `task-interrogator` |
+| O alvo é a **arquitetura de um codebase existente** (módulos rasos vs profundos) | `architecture-deepener` |
+
 ---
 
 ## O fluxo

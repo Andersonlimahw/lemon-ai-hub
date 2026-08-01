@@ -1,6 +1,6 @@
 ---
 name: task-interrogator
-description: Interrogatório implacável para planos e designs. Estressa planos antes de implementar. Baseado em grill-me/grilling de Matt Pocock.
+description: Interrogatório implacável para planos e designs, uma pergunta por vez, até chegar a entendimento compartilhado. Estressa planos antes de implementar, sem produzir artefatos. Use quando o usuário disser "interroga", "grilla", "stressa esse plano", "me entrevista sobre", "vale a pena fazer isso?", "o que pode dar errado?". Se o objetivo também for gerar documentação (CONTEXT.md, glossário, ADRs) durante o interrogatório, use doc-driven-grilling. Baseado em grill-me/grilling de Matt Pocock.
 disable-model-invocation: true
 ---
 
@@ -15,6 +15,14 @@ Um interrogatório implacável para afiar um plano, design ou decisão antes de 
 - Antes de começar uma implementação grande ou arriscada.
 - Quando o usuário quer estressar um plano, design, ideia ou decisão.
 - Gatilhos naturais: "interroga", "grilla", "stressa esse plano", "me entrevista sobre", "vale a pena fazer isso?", "o que pode dar errado?".
+
+### Quando NÃO usar (skills irmãs)
+
+| Situação | Use |
+|---|---|
+| O interrogatório também deve **produzir docs** (CONTEXT.md, glossário, ADRs) enquanto grilla | `doc-driven-grilling` |
+| O alvo é a **arquitetura de um codebase existente** (módulos rasos vs profundos), não um plano novo | `architecture-deepener` |
+| O objetivo é **passar contexto adiante**, não afiar a decisão | `session-handoff` |
 
 ## O método
 

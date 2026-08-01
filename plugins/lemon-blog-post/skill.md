@@ -1,3 +1,7 @@
+---
+name: "lemon-blog-post"
+description: "Skill para criar e publicar blog posts no Lemon Blog via MCP"
+---
 # lemon-blog-post
 
 **Skill para criar e publicar blog posts no Lemon Blog via MCP**
