@@ -61,3 +61,16 @@ python3 scripts/normalize_plugins.py             # apply
 python3 scripts/update_marketplace.py            # refresh manifest + README
 python3 scripts/validate_plugins.py              # must exit 0
 ```
+
+#### Tests
+
+Unit + integration tests for the normalizer and validator live in `scripts/tests/`
+(stdlib `unittest`, no dependencies; pytest also collects them):
+
+```bash
+python3 -m unittest discover -s scripts/tests
+```
+
+The integration test asserts the contract between the two scripts: a messy
+plugin run through `normalize_plugins.py` must pass `validate_plugins.py`
+with zero errors.
