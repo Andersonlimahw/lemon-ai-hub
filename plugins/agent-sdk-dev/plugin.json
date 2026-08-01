@@ -12,11 +12,6 @@
     "lemon-ai-hub",
     "agent-sdk-dev"
   ],
-  "skills": [
-    "agent-sdk-dev",
-    "agent-sdk-verifier-py"
-  ],
-  "agents": [
-    "agent-sdk-verifier-py"
-  ]
+  "skills": "./skills/",
+  "agents": "./agents/"
 }
