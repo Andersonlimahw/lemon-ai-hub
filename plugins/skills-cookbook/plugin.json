@@ -1,0 +1,21 @@
+{
+  "name": "skills-cookbook",
+  "version": "1.1.0",
+  "description": "Ready-to-paste example prompts that teach efficient use of the hub's skills across thirteen tracks: project understanding (cognitive-load reduction), feedback and quality loops, product, marketing, design/frontend, the Karpathy method, Vercel/React, engineering quality, APIs and CLIs, mobile release, data/backend, knowledge/Notion, and meta-harness — plus a complete A-to-Z catalog index covering every plugin in the hub. Ships combination recipes and an anti-pattern matrix of mutually exclusive or redundant skills. Use when the user asks for example prompts, how to use a skill, which skills to combine, or how to understand a project with less cognitive load.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "skills-cookbook",
+    "prompts",
+    "cookbook",
+    "recipes",
+    "combos",
+    "cognitive-load",
+    "teaching"
+  ]
+}
