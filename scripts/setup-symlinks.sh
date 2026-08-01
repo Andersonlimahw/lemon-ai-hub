@@ -27,6 +27,7 @@ update_repo() {
   local moved=0
   local f
   while IFS= read -r f; do
+    [ -z "$f" ] && continue
     if [ -e "$repo_root/$f" ] && ! git -C "$repo_root" ls-files --error-unmatch -- "$f" >/dev/null 2>&1; then
       mkdir -p "$backup_dir/$(dirname "$f")"
       mv "$repo_root/$f" "$backup_dir/$f"
