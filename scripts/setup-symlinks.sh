@@ -13,6 +13,33 @@
 
 set -euo pipefail
 
+# Pull the managed clone safely: fetch first, move any untracked file that the
+# incoming changes would overwrite into a timestamped backup dir, then pull.
+update_repo() {
+  local repo_root="$1"
+  git -C "$repo_root" fetch origin main --quiet || {
+    echo "WARNING: fetch failed for $repo_root" >&2
+    return 1
+  }
+  local incoming
+  incoming=$(git -C "$repo_root" diff --name-only HEAD FETCH_HEAD)
+  local backup_dir="$repo_root/.pull-backup-$(date +%s)"
+  local moved=0
+  local f
+  while IFS= read -r f; do
+    [ -z "$f" ] && continue
+    if [ -e "$repo_root/$f" ] && ! git -C "$repo_root" ls-files --error-unmatch -- "$f" >/dev/null 2>&1; then
+      mkdir -p "$backup_dir/$(dirname "$f")"
+      mv "$repo_root/$f" "$backup_dir/$f"
+      moved=1
+    fi
+  done <<< "$incoming"
+  if [ "$moved" = "1" ]; then
+    echo "Moved conflicting untracked files to $backup_dir"
+  fi
+  git -C "$repo_root" pull origin main
+}
+
 # Get the absolute path of the repository's plugins directory
 if [ -d "$PWD/plugins" ] && [ -d "$PWD/.git" ]; then
   # Running from within a local clone
@@ -24,7 +51,7 @@ else
   if [ ! -d "$REPO_ROOT" ]; then
     git clone https://github.com/Andersonlimahw/lemon-ai-hub.git "$REPO_ROOT"
   else
-    git -C "$REPO_ROOT" pull
+    update_repo "$REPO_ROOT"
   fi
 fi
 REPO_PLUGINS_DIR="$REPO_ROOT/plugins"
