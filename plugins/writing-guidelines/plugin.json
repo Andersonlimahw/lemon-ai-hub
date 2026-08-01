@@ -1,0 +1,15 @@
+{
+  "name": "writing-guidelines",
+  "version": "1.0.0",
+  "description": "Review docs/prose for Writing Guidelines compliance. Use when asked to \"review my docs\", \"check writing style\", \"audit prose\", \"review docs voice and tone\", or \"check this page against the writing handbook\".",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "writing-guidelines"
+  ]
+}

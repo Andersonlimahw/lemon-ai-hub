@@ -1,0 +1,15 @@
+{
+  "name": "lemon-blog-post",
+  "version": "1.0.0",
+  "description": "Skill para criar e publicar blog posts no Lemon Blog via MCP",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "lemon-blog-post"
+  ]
+}

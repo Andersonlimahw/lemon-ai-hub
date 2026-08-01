@@ -1,6 +1,6 @@
 ---
-name: Pricing and Availability
-description: Endpoints for app price schedules and territories.
+name: "pricing-and-availability"
+description: "Endpoints for app price schedules and territories."
 ---
 
 # Pricing and Availability

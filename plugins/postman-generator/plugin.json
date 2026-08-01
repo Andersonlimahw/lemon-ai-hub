@@ -6,7 +6,6 @@
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
   },
-  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
   "license": "MIT",
   "keywords": [
     "skill",
@@ -17,6 +16,8 @@
     "restful",
     "automation",
     "swagger",
-    "openapi"
-  ]
+    "openapi",
+    "postman-generator"
+  ],
+  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub"
 }

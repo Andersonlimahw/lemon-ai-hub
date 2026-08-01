@@ -1,0 +1,15 @@
+{
+  "name": "emil-design-eng",
+  "version": "1.0.0",
+  "description": "This skill encodes Emil Kowalski's philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "emil-design-eng"
+  ]
+}

@@ -6,6 +6,7 @@
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
   },
+  "license": "MIT",
   "keywords": [
     "skill",
     "lemon-ai-hub",
@@ -18,7 +19,7 @@
     "sdk-generation",
     "redoc",
     "postman",
-    "contract-testing"
-  ],
-  "license": "MIT"
+    "contract-testing",
+    "openapi-hub"
+  ]
 }

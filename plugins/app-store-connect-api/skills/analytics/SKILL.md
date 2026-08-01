@@ -1,6 +1,6 @@
 ---
-name: Analytics
-description: Endpoints for app analytics and performance reports.
+name: "analytics"
+description: "Endpoints for app analytics and performance reports."
 ---
 
 # Analytics

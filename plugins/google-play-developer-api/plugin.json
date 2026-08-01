@@ -6,7 +6,6 @@
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
   },
-  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
   "license": "MIT",
   "keywords": [
     "skill",
@@ -16,6 +15,8 @@
     "android",
     "publishing",
     "subscriptions",
-    "iap"
-  ]
+    "iap",
+    "google-play-developer-api"
+  ],
+  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub"
 }

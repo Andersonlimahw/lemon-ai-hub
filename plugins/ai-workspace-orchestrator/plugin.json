@@ -6,7 +6,6 @@
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
   },
-  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub",
   "license": "MIT",
   "keywords": [
     "skill",
@@ -21,6 +20,8 @@
     "spotify-squad",
     "monorepo",
     "codex",
-    "claude"
-  ]
+    "claude",
+    "ai-workspace-orchestrator"
+  ],
+  "repository": "https://github.com/Andersonlimahw/lemon-ai-hub"
 }

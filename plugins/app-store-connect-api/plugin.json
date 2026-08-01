@@ -13,6 +13,7 @@
     "app-store-connect",
     "apple",
     "ios",
-    "api"
+    "api",
+    "app-store-connect-api"
   ]
 }

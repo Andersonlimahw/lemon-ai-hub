@@ -1,0 +1,15 @@
+{
+  "name": "vercel-cli-with-tokens",
+  "version": "1.0.0",
+  "description": "Deploy and manage projects on Vercel using token-based authentication. Use when working with Vercel CLI using access tokens rather than interactive login — e.g. \"deploy to vercel\", \"set up vercel\", \"add environment variables to vercel\".",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "vercel-cli-with-tokens"
+  ]
+}

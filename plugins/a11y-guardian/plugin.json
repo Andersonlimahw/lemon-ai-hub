@@ -6,6 +6,7 @@
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
   },
+  "license": "MIT",
   "keywords": [
     "skill",
     "lemon-ai-hub",
@@ -16,7 +17,7 @@
     "contrast",
     "screen-reader",
     "keyboard",
-    "compliance"
-  ],
-  "license": "MIT"
+    "compliance",
+    "a11y-guardian"
+  ]
 }

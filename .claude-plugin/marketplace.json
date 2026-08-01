@@ -37,7 +37,20 @@
         "contrast",
         "screen-reader",
         "keyboard",
-        "compliance"
+        "compliance",
+        "a11y-guardian"
+      ]
+    },
+    {
+      "name": "ads",
+      "source": "./plugins/ads",
+      "description": "When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other ad platforms. Also use when the user mentions 'PPC,' 'paid media,' 'ROAS,' 'CPA,' 'ad campaign,' 'retargeting,' 'audience targeting,' 'Google Ads,' 'Facebook ads,' 'LinkedIn ads,' 'ad budget,' 'cost per click,' 'ad spend,' 'should I run ads,' 'ABM,' 'account-based marketing,' 'B2B ads,' 'lead quality,' 'negative keywords,' 'Performance Max,' 'thought leader ads,' or 'when should I kill an ad.' Use this for campaign strategy, audience targeting, bidding, and optimization. For bulk ad creative generation and iteration, see ad-creative. For landing page optimization, see cro.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "ads"
       ]
     },
     {
@@ -48,13 +61,14 @@
       "license": "MIT",
       "keywords": [
         "skill",
-        "lemon-ai-hub"
+        "lemon-ai-hub",
+        "agent-sdk-dev"
       ]
     },
     {
       "name": "agentic-value-loops",
       "source": "./plugins/agentic-value-loops",
-      "description": "Agentic Value Loops plugin — Continuous improvement engine that ships verified increments with constant quality. Includes loops for Feature Development, Maintenance & Security, Documentation Sync, and AI Tuning.",
+      "description": "Agentic Value Loops plugin \u2014 Continuous improvement engine that ships verified increments with constant quality. Includes loops for Feature Development, Maintenance & Security, Documentation Sync, and AI Tuning.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -69,7 +83,20 @@
         "documentation-sync",
         "ai-tuning",
         "ai-native",
-        "plugin"
+        "plugin",
+        "agentic-value-loops"
+      ]
+    },
+    {
+      "name": "ai-seo",
+      "source": "./plugins/ai-seo",
+      "description": "When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use when the user mentions 'AI SEO,' 'AEO,' 'GEO,' 'LLMO,' 'answer engine optimization,' 'generative engine optimization,' 'LLM optimization,' 'AI Overviews,' 'optimize for ChatGPT,' 'optimize for Perplexity,' 'AI citations,' 'AI visibility,' 'zero-click search,' 'how do I show up in AI answers,' 'LLM mentions,' 'optimize for Claude/Gemini,' 'llms.txt,' 'OKF,' 'Open Knowledge Format,' 'knowledge bundle,' or 'agent-readable site.' Use this whenever someone wants their content to be cited or surfaced by AI assistants and AI search engines. For traditional technical and on-page SEO audits, see seo-audit. For structured data implementation, see schema.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "ai-seo"
       ]
     },
     {
@@ -91,13 +118,26 @@
         "spotify-squad",
         "monorepo",
         "codex",
-        "claude"
+        "claude",
+        "ai-workspace-orchestrator"
+      ]
+    },
+    {
+      "name": "analytics",
+      "source": "./plugins/analytics",
+      "description": "When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions \"set up tracking,\" \"GA4,\" \"Google Analytics,\" \"conversion tracking,\" \"event tracking,\" \"UTM parameters,\" \"tag manager,\" \"GTM,\" \"analytics implementation,\" \"tracking plan,\" \"how do I measure this,\" \"track conversions,\" \"attribution,\" \"Mixpanel,\" \"Segment,\" \"are my events firing,\" or \"analytics isn't working.\" Use this whenever someone asks how to know if something is working or wants to measure marketing results. For A/B test measurement, see ab-testing.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "analytics"
       ]
     },
     {
       "name": "api-test-loop",
       "source": "./plugins/api-test-loop",
-      "description": "API Test Loop plugin — Automated REST API validation loop. Executes HTTP requests via CURL, logs findings for REST best practices (method, input/output format, security, performance, docs), and implements backend fixes.",
+      "description": "API Test Loop plugin \u2014 Automated REST API validation loop. Executes HTTP requests via CURL, logs findings for REST best practices (method, input/output format, security, performance, docs), and implements backend fixes.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -111,7 +151,8 @@
         "curl",
         "security",
         "performance",
-        "plugin"
+        "plugin",
+        "api-test-loop"
       ]
     },
     {
@@ -126,7 +167,8 @@
         "app-store-connect",
         "apple",
         "ios",
-        "api"
+        "api",
+        "app-store-connect-api"
       ]
     },
     {
@@ -153,24 +195,38 @@
         "app-review",
         "go-no-go",
         "ai-native",
-        "plugin"
+        "plugin",
+        "apple-store-release-agent"
       ]
     },
     {
       "name": "architecture-deepener",
       "source": "./plugins/architecture-deepener",
-      "description": "Superficia oportunidades de deepening — refactors que transformam módulos shallow em deep. Testabilidade e AI-navigability. Relatório HTML visual com before/after + grilling loop via /grilling e domain-modeling integration. Baseado em improve-codebase-architecture de Matt Pocock.",
-      "version": "1.0.0",
+      "description": "Surface opportunities to deepen a codebase. Finds shallow modules (thin pass-throughs, anemic types, domain logic leaking into controllers/UI) and proposes deep modules that co-locate behavior with data, enforce invariants, and stay navigable for humans and AI agents. Emits a visual HTML report and runs an interactive grilling loop that pressure-tests each opportunity before any code moves. Integrates with domain-modeling, codebase-design, and ADR workflows.",
+      "version": "2.0.0",
       "license": "MIT",
       "keywords": [
         "skill",
         "lemon-ai-hub",
+        "architecture-deepener",
         "architecture",
         "refactoring",
         "deepening",
         "modules",
         "testability",
         "code-quality"
+      ]
+    },
+    {
+      "name": "aso",
+      "source": "./plugins/aso",
+      "description": "When the user wants to audit or optimize an App Store or Google Play listing. Also use when the user mentions 'ASO audit,' 'app store optimization,' 'optimize my app listing,' 'improve app visibility,' 'app store ranking,' 'audit my listing,' 'why aren't people downloading my app,' 'improve my app conversion,' 'keyword optimization for app,' or 'compare my app to competitors.' Use when the user shares an App Store or Google Play URL and wants to improve it.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "aso"
       ]
     },
     {
@@ -191,7 +247,8 @@
         "abort-controller",
         "memory-leak",
         "node-js",
-        "typescript"
+        "typescript",
+        "async-advisor"
       ]
     },
     {
@@ -207,20 +264,51 @@
       ]
     },
     {
-      "name": "bug-diagnostics",
-      "source": "./plugins/bug-diagnostics",
-      "description": "Loop de diagnóstico para bugs difíceis e regressões de performance. 6 fases: feedback loop tight → reprodução → hipóteses falsificáveis → instrumentação → fix + teste de regressão → cleanup + post-mortem. Baseado em diagnosing-bugs de Matt Pocock.",
+      "name": "brand",
+      "source": "./plugins/brand",
+      "description": "Brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
         "skill",
         "lemon-ai-hub",
+        "brand"
+      ]
+    },
+    {
+      "name": "brandkit",
+      "source": "./plugins/brandkit",
+      "description": "Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks, and visual-world presentations. Trained for minimalist, cinematic, editorial, dark-tech, luxury, cultural, security, gaming, developer-tool, and consumer-app brand systems. Optimized for intentional logo concepting, refined composition, sparse typography, strong symbolic meaning, premium mockups, art-directed imagery, and flexible grid layouts.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "brandkit"
+      ]
+    },
+    {
+      "name": "bug-diagnostics",
+      "source": "./plugins/bug-diagnostics",
+      "description": "Loop de diagn\u00f3stico para bugs dif\u00edceis e regress\u00f5es de performance. Feedback loop \u2192 reprodu\u00e7\u00e3o \u2192 hip\u00f3teses \u2192 instrumenta\u00e7\u00e3o \u2192 fix + teste \u2192 cleanup. Invoca quando o usu\u00e1rio diz 'diagnosticar'/'debugar isso', ou relata algo quebrado/lento/falhando.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "bug-diagnostics",
         "debugging",
         "diagnostics",
         "bugs",
         "performance-regression",
         "feedback-loop",
-        "bisection"
+        "bisection",
+        "root-cause-analysis",
+        "reproduction",
+        "hypothesis-driven",
+        "instrumentation",
+        "determinism",
+        "regression-test"
       ]
     },
     {
@@ -251,7 +339,20 @@
         "nextjs",
         "tree-shaking",
         "code-splitting",
-        "web-vitals"
+        "web-vitals",
+        "bundle-watch"
+      ]
+    },
+    {
+      "name": "caveman",
+      "source": "./plugins/caveman",
+      "description": "> Ultra-compressed communication mode. Cuts output tokens 65% (measured) by speaking like caveman while keeping full technical accuracy. Supports intensity levels: lite, full (default), ultra, wenyan-lite, wenyan-full, wenyan-ultra. Use when user says \"caveman mode\", \"talk like caveman\", \"use caveman\", \"less tokens\", \"be brief\", or invokes /caveman. Also auto-triggers when token efficiency is requested.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "caveman"
       ]
     },
     {
@@ -270,7 +371,8 @@
         "circuit-breaker",
         "gameday",
         "sre",
-        "reliability"
+        "reliability",
+        "chaos-runner"
       ]
     },
     {
@@ -302,7 +404,32 @@
         "security",
         "read-only",
         "ai-native",
-        "plugin"
+        "plugin",
+        "chrome-qa-loop"
+      ]
+    },
+    {
+      "name": "churn-prevention",
+      "source": "./plugins/churn-prevention",
+      "description": "When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or implement retention strategies. Also use when the user mentions 'churn,' 'cancel flow,' 'offboarding,' 'save offer,' 'dunning,' 'failed payment recovery,' 'win-back,' 'retention,' 'exit survey,' 'pause subscription,' 'involuntary churn,' 'people keep canceling,' 'churn rate is too high,' 'how do I keep users,' or 'customers are leaving.' Use this whenever someone is losing subscribers or wants to build systems to prevent it. For post-cancel win-back email sequences, see emails. For in-app upgrade paywalls, see paywalls.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "churn-prevention"
+      ]
+    },
+    {
+      "name": "cli-creator",
+      "source": "./plugins/cli-creator",
+      "description": "Build a composable CLI for Codex from API docs, an OpenAPI spec, existing curl examples, an SDK, a web app, an admin tool, or a local script. Use when the user wants Codex to create a command-line tool that can run from any repo, expose composable read/write commands, return stable JSON, manage auth, and pair with a companion skill.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "cli-creator"
       ]
     },
     {
@@ -340,7 +467,7 @@
       "name": "cli-wrapper",
       "source": "./plugins/cli-wrapper",
       "description": "Multi-harness CLI wrapper ecosystem. Claude Code = single source of truth. Wraps any external CLI (claude, gemini, codex, opencode, agy + extensible) so the AI harness can invoke it without context bloat. Includes per-CLI wrapper skills/agents, cross-harness symlink setup, and token metrics across the whole ecosystem.",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "license": "MIT",
       "keywords": [
         "skill",
@@ -361,6 +488,18 @@
         "opencode",
         "agy",
         "antigravity"
+      ]
+    },
+    {
+      "name": "co-marketing",
+      "source": "./plugins/co-marketing",
+      "description": "When the user wants to find co-marketing partners, plan joint campaigns, or brainstorm partnership opportunities. Use when the user says 'co-marketing,' 'partner marketing,' 'joint campaign,' 'who should we partner with,' 'integration marketing,' 'cross-promotion,' 'collaborate with another company,' 'partnership ideas,' or 'co-brand.' For customer referral programs, see referrals. For launch-specific partnerships, see launch.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "co-marketing"
       ]
     },
     {
@@ -385,7 +524,7 @@
     {
       "name": "code-smell",
       "source": "./plugins/code-smell",
-      "description": "Code smell detection and remediation. Identifies long methods, god classes, feature envy, primitive obsession, shotgun surgery, dead code, magic numbers, and other structural anti-patterns. Goes beyond linters — understands semantic coupling and design intent. Use when code is hard to change, PRs are consistently risky, or technical debt is growing faster than features.",
+      "description": "Code smell detection and remediation. Identifies long methods, god classes, feature envy, primitive obsession, shotgun surgery, dead code, magic numbers, and other structural anti-patterns. Goes beyond linters \u2014 understands semantic coupling and design intent. Use when code is hard to change, PRs are consistently risky, or technical debt is growing faster than features.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -411,7 +550,8 @@
         "duplicate-code",
         "dead-code",
         "complexity",
-        "maintainability"
+        "maintainability",
+        "code-smell-detector"
       ]
     },
     {
@@ -431,7 +571,44 @@
         "atomic-commits",
         "husky",
         "git-hooks",
-        "semver"
+        "semver",
+        "commit-quality"
+      ]
+    },
+    {
+      "name": "community-marketing",
+      "source": "./plugins/community-marketing",
+      "description": "Build and leverage online communities to drive product growth and brand loyalty. Use when the user wants to create a community strategy, grow a Discord or Slack community, manage a forum or subreddit, build brand advocates, increase word-of-mouth, drive community-led growth, engage users post-signup, or turn customers into evangelists. Trigger phrases: \\\"build a community,\\\" \\\"community strategy,\\\" \\\"Discord community,\\\" \\\"Slack community,\\\" \\\"community-led growth,\\\" \\\"brand advocates,\\\" \\\"user community,\\\" \\\"forum strategy,\\\" \\\"community engagement,\\\" \\\"grow our community,\\\" \\\"ambassador program,\\\" \\\"community flywheel.\\",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "community-marketing"
+      ]
+    },
+    {
+      "name": "competitor-profiling",
+      "source": "./plugins/competitor-profiling",
+      "description": "When the user wants to research, profile, or analyze competitors from their URLs. Also use when the user mentions 'competitor profile,' 'competitor research,' 'competitor analysis,' 'profile this competitor,' 'analyze competitor,' 'competitive intelligence,' 'competitor deep dive,' 'who are my competitors,' 'competitor landscape,' 'competitor dossier,' 'competitive audit,' or 'research these competitors.' Input is a list of competitor URLs. Output is structured competitor profile markdown files. For creating comparison/alternative pages from profiles, see competitors. For sales-specific battle cards, see sales-enablement.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "competitor-profiling"
+      ]
+    },
+    {
+      "name": "competitors",
+      "source": "./plugins/competitors",
+      "description": "When the user wants to create competitor comparison or alternative pages for SEO and sales enablement. Also use when the user mentions 'alternative page,' 'vs page,' 'competitor comparison,' 'comparison page,' '[Product] vs [Product],' '[Product] alternative,' 'competitive landing pages,' 'how do we compare to X,' 'battle card,' or 'competitor teardown.' Use this for any content that positions your product against competitors. Covers four formats: singular alternative, plural alternatives, you vs competitor, and competitor vs competitor. For sales-specific competitor docs, see sales-enablement.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "competitors"
       ]
     },
     {
@@ -451,6 +628,18 @@
       ]
     },
     {
+      "name": "content-strategy",
+      "source": "./plugins/content-strategy",
+      "description": "When the user wants to plan a content strategy, decide what content to create, or figure out what topics to cover. Also use when the user mentions \"content strategy,\" \"what should I write about,\" \"content ideas,\" \"blog strategy,\" \"topic clusters,\" \"content planning,\" \"editorial calendar,\" \"content marketing,\" \"content roadmap,\" \"what content should I create,\" \"blog topics,\" \"content pillars,\" or \"I don't know what to write.\" Use this whenever someone needs help deciding what content to produce, not just writing it. For writing individual pieces, see copywriting. For SEO-specific audits, see seo-audit. For social media content specifically, see social.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "content-strategy"
+      ]
+    },
+    {
       "name": "continual-learning",
       "source": "./plugins/continual-learning",
       "description": "Incrementally learns durable user preferences and workspace facts from transcript changes and keeps AGENTS.md up to date with plain bullet points.",
@@ -464,6 +653,30 @@
         "transcripts",
         "hooks",
         "incremental"
+      ]
+    },
+    {
+      "name": "copy-editing",
+      "source": "./plugins/copy-editing",
+      "description": "When the user wants to edit, review, or improve existing marketing copy, or refresh outdated content. Also use when the user mentions 'edit this copy,' 'review my copy,' 'copy feedback,' 'proofread,' 'polish this,' 'make this better,' 'copy sweep,' 'tighten this up,' 'this reads awkwardly,' 'clean up this text,' 'too wordy,' 'sharpen the messaging,' 'refresh this content,' 'update this page,' 'this content is outdated,' or 'content audit.' Use this when the user already has copy and wants it improved or refreshed rather than rewritten from scratch. For writing new copy, see copywriting.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "copy-editing"
+      ]
+    },
+    {
+      "name": "copywriting",
+      "source": "./plugins/copywriting",
+      "description": "When the user wants to write, rewrite, or improve marketing copy for any page \u2014 including homepage, landing pages, pricing pages, feature pages, about pages, or product pages. Also use when the user says \"write copy for,\" \"improve this copy,\" \"rewrite this page,\" \"marketing copy,\" \"headline help,\" \"CTA copy,\" \"value proposition,\" \"tagline,\" \"subheadline,\" \"hero section copy,\" \"above the fold,\" \"this copy is weak,\" \"make this more compelling,\" or \"help me describe my product.\" Use this whenever someone is working on website text that needs to persuade or convert. For email copy, see emails. For popup copy, see popups. For editing existing copy, see copy-editing. For the offer underneath the copy (bonuses, guarantees, value framing), see offers.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "copywriting"
       ]
     },
     {
@@ -500,7 +713,8 @@
         "connection-pool",
         "query-performance",
         "prisma",
-        "drizzle"
+        "drizzle",
+        "db-advisor"
       ]
     },
     {
@@ -516,26 +730,89 @@
       ]
     },
     {
+      "name": "deploy-to-vercel",
+      "source": "./plugins/deploy-to-vercel",
+      "description": "Deploy applications and websites to Vercel. Use when the user requests deployment actions like \"deploy my app\", \"deploy and give me the link\", \"push this live\", or \"create a preview deployment\".",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "deploy-to-vercel"
+      ]
+    },
+    {
+      "name": "design",
+      "source": "./plugins/design",
+      "description": "Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini AI), corporate identity program (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG, Gemini 3.1 Pro), social photos (HTML\u2192screenshot, multi-platform). Actions: design logo, create CIP, generate mockups, build slides, design banner, generate icon, create social photos, social media images, brand identity, design system. Platforms: Facebook, Twitter, LinkedIn, YouTube, Instagram, Pinterest, TikTok, Threads, Google Ads.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "design"
+      ]
+    },
+    {
+      "name": "design-taste-frontend",
+      "source": "./plugins/design-taste-frontend",
+      "description": "Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and ships interfaces that do not look templated. Real design systems when applicable, audit-first on redesigns, strict pre-flight check.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "design-taste-frontend"
+      ]
+    },
+    {
       "name": "doc-driven-grilling",
       "source": "./plugins/doc-driven-grilling",
-      "description": "Interrogatório implacável para planos/designs que cria docs (ADRs, glossário CONTEXT.md) durante o processo. Integra /grilling + /domain-modeling. Captura decisões no momento exato, não em batch. Baseado em grill-with-docs de Matt Pocock.",
-      "version": "1.0.0",
+      "description": "Interrogat\u00f3rio implac\u00e1vel para planos e designs que cria documenta\u00e7\u00e3o (ADRs, gloss\u00e1rio/CONTEXT.md) durante o processo, enquanto grilla. Integra grilling de decis\u00e3o com domain-modeling: desafia linguagem vaga contra o gloss\u00e1rio existente, stress-testa cen\u00e1rios concretos, e captura termos e decis\u00f5es inline conforme cristalizam. Diferencial: cria docs enquanto grilla \u2014 cada termo resolvido vai para o gloss\u00e1rio, cada decis\u00e3o irrevers\u00edvel vira ADR.",
+      "version": "2.0.0",
       "license": "MIT",
       "keywords": [
         "skill",
         "lemon-ai-hub",
         "documentation",
         "grilling",
-        "adr",
+        "ADR",
         "domain-modeling",
         "glossary",
-        "design-docs"
+        "design-docs",
+        "decision-records",
+        "context-modeling",
+        "doc-driven-grilling"
+      ]
+    },
+    {
+      "name": "emails",
+      "source": "./plugins/emails",
+      "description": "When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also use when the user mentions \"email sequence,\" \"drip campaign,\" \"nurture sequence,\" \"onboarding emails,\" \"welcome sequence,\" \"re-engagement emails,\" \"email automation,\" \"lifecycle emails,\" \"trigger-based emails,\" \"email funnel,\" \"email workflow,\" \"what emails should I send,\" \"welcome series,\" or \"email cadence.\" Use this for any multi-email automated flow. For cold outreach emails, see cold-email. For in-app onboarding, see onboarding.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "emails"
+      ]
+    },
+    {
+      "name": "emil-design-eng",
+      "source": "./plugins/emil-design-eng",
+      "description": "This skill encodes Emil Kowalski's philosophy on UI polish, component design, animation decisions, and the invisible details that make software feel great.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "emil-design-eng"
       ]
     },
     {
       "name": "error-fixer-loop",
       "source": "./plugins/error-fixer-loop",
-      "description": "Recursive error-fix loop that turns every bash/test/build failure into persistent harness improvement. Protocol: detect → root-cause → minimal fix → test → lint/typecheck → persist rule (SKILL.md / AGENTS.md / docs/rules) → generate fix-prompt artifact (senior-prompt-engineer format) → audit with evidence. Cross-harness hooks (Claude Code PostToolUse + OpenCode tool.execute.after) inject the loop automatically when a build/test error pattern is matched.",
+      "description": "Recursive error-fix loop that turns every bash/test/build failure into persistent harness improvement. Protocol: detect \u2192 root-cause \u2192 minimal fix \u2192 test \u2192 lint/typecheck \u2192 persist rule (SKILL.md / AGENTS.md / docs/rules) \u2192 audit with evidence. Cross-harness hooks (Claude Code PostToolUse + OpenCode tool.execute.after) inject the loop automatically when a build/test error pattern is matched.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -549,8 +826,6 @@
         "root-cause",
         "regression-test",
         "persistent-rules",
-        "fix-prompt",
-        "senior-prompt-engineer",
         "cross-harness",
         "claude-code",
         "opencode",
@@ -593,13 +868,25 @@
     {
       "name": "feature-purge",
       "source": "./plugins/feature-purge",
-      "description": "Safely remove an entire feature and every dead reference it leaves behind — not just the folder you point at, but the sibling folders in other architecture layers, the imports/registries/routes/i18n keys that point to it, and any newly-orphaned code. Verifies the quality gate stays 100% green and writes a Markdown removal report. Use when deleting a feature, screen, module, or directory and you need it gone WITHOUT leaving dead files or dead code. Triggers on /feature-purge <path>, \"remove this feature\", \"delete this folder safely\", \"apaga essa feature sem deixar código morto\", \"limpa essa screen e as camadas\".",
+      "description": "Safely remove an entire feature and every dead reference it leaves behind \u2014 not just the folder you point at, but the sibling folders in other architecture layers, the imports/registries/routes/i18n keys that point to it, and any newly-orphaned code. Verifies the quality gate stays 100% green and writes a Markdown removal report. Use when deleting a feature, screen, module, or directory and you need it gone WITHOUT leaving dead files or dead code. Triggers on /feature-purge <path>, \"remove this feature\", \"delete this folder safely\", \"apaga essa feature sem deixar c\u00f3digo morto\", \"limpa essa screen e as camadas\".",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
         "skill",
         "lemon-ai-hub",
         "feature-purge"
+      ]
+    },
+    {
+      "name": "finishing-a-development-branch",
+      "source": "./plugins/finishing-a-development-branch",
+      "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "finishing-a-development-branch"
       ]
     },
     {
@@ -620,6 +907,18 @@
       ]
     },
     {
+      "name": "free-tools",
+      "source": "./plugins/free-tools",
+      "description": "When the user wants to plan, evaluate, or build a free tool for marketing purposes \u2014 lead generation, SEO value, or brand awareness. Also use when the user mentions \"engineering as marketing,\" \"free tool,\" \"marketing tool,\" \"calculator,\" \"generator,\" \"interactive tool,\" \"lead gen tool,\" \"build a tool for leads,\" \"free resource,\" \"ROI calculator,\" \"grader tool,\" \"audit tool,\" \"should I build a free tool,\" or \"tools for lead gen.\" Use this whenever someone wants to build something useful and give it away to attract leads or earn links. For downloadable content lead magnets (ebooks, checklists, templates), see lead-magnets.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "free-tools"
+      ]
+    },
+    {
       "name": "frontend-design",
       "source": "./plugins/frontend-design",
       "description": "Generates distinctive, production-grade frontend interfaces that avoid generic AI aesthetics.",
@@ -627,7 +926,8 @@
       "license": "MIT",
       "keywords": [
         "skill",
-        "lemon-ai-hub"
+        "lemon-ai-hub",
+        "frontend-design"
       ]
     },
     {
@@ -676,7 +976,8 @@
         "android",
         "publishing",
         "subscriptions",
-        "iap"
+        "iap",
+        "google-play-developer-api"
       ]
     },
     {
@@ -703,7 +1004,32 @@
         "app-review",
         "go-no-go",
         "ai-native",
-        "plugin"
+        "plugin",
+        "google-play-release-agent"
+      ]
+    },
+    {
+      "name": "hatch-pet",
+      "source": "./plugins/hatch-pet",
+      "description": "Create, repair, validate, visually QA, and package Codex-compatible v2 animated pets from character art, generated images, company or prospect brand cues, or visual references. Use for any new Codex pet, custom mascot, non-pixel pet style, brand-inspired pet, existing-pet repair, or 8x11 spritesheet workflow requiring all 9 standard animation rows, 16 look directions, deterministic assembly, QA artifacts, and spriteVersionNumber 2 packaging.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "hatch-pet"
+      ]
+    },
+    {
+      "name": "high-end-visual-design",
+      "source": "./plugins/high-end-visual-design",
+      "description": "Teaches the AI to design like a high-end agency. Defines the exact fonts, spacing, shadows, card structures, and animations that make a website feel expensive. Blocks all the common defaults that make AI designs look cheap or generic.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "high-end-visual-design"
       ]
     },
     {
@@ -719,7 +1045,8 @@
         "patterns",
         "behavior",
         "intercept",
-        "rules"
+        "rules",
+        "hookify"
       ]
     },
     {
@@ -751,7 +1078,68 @@
         "i18next",
         "react-intl",
         "vue-i18n",
-        "locale"
+        "locale",
+        "i18n-sync"
+      ]
+    },
+    {
+      "name": "image",
+      "source": "./plugins/image",
+      "description": "When the user wants to create, generate, edit, or optimize images for marketing \u2014 blog heroes, social graphics, product mockups, profile banners, listing visuals, or brand assets. Also use when the user mentions 'AI image generation,' 'generate an image,' 'create a graphic,' 'product mockup,' 'hero image,' 'social media graphic,' 'banner image,' 'cover photo,' 'profile banner,' 'listing screenshot,' 'Flux,' 'Flux Kontext,' 'Midjourney,' 'DALL-E,' 'GPT Image,' 'ChatGPT Images,' 'Ideogram,' 'Gemini image,' 'Nano Banana,' 'Recraft,' 'Stable Diffusion,' 'Canva,' 'Figma,' 'image optimization,' 'compress images,' 'WebP,' or 'OG image.' Use this for general-purpose marketing image creation and optimization. For paid ad image creative and platform-specific ad specs, see ad-creative. For video production, see video.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "image"
+      ]
+    },
+    {
+      "name": "image-to-code",
+      "source": "./plugins/image-to-code",
+      "description": "Elite website image-to-code skill for Codex. For visually important web tasks, it must first generate the design image(s) itself, deeply analyze them, then implement the website to match them as closely as possible. In Codex, it must prefer large, readable, section-specific images instead of tiny compressed boards, generate fresh standalone images for sections or detail views instead of cropping old ones, avoid lazy under-generation, avoid cards-inside-cards-inside-cards UI, and keep the hero clean, spacious, readable, and visible on a small laptop.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "image-to-code"
+      ]
+    },
+    {
+      "name": "imagegen",
+      "source": "./plugins/imagegen",
+      "description": "Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "imagegen"
+      ]
+    },
+    {
+      "name": "imagegen-frontend-mobile",
+      "source": "./plugins/imagegen-frontend-mobile",
+      "description": "Elite mobile app image-generation skill for creating premium, app-native screen concepts and flows. Designed for iOS, Android, and cross-platform mobile products. Prioritizes clean hierarchy, comfortably readable text, strong multi-screen consistency, controlled color palettes, non-generic creative direction, textured surfaces, image-led composition, tasteful custom iconography, and clean phone mockup framing. By default, screens should be shown inside a subtle premium iPhone or similar phone mockup with a visible frame, while the main focus stays on the app content itself. This skill generates images only. It does not write code.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "imagegen-frontend-mobile"
+      ]
+    },
+    {
+      "name": "imagegen-frontend-web",
+      "source": "./plugins/imagegen-frontend-web",
+      "description": "Elite frontend image-direction skill for generating premium, conversion-aware website design references. CRITICAL OUTPUT RULE \u2014 generate ONE separate horizontal image FOR EVERY section. A landing page with 8 sections produces 8 images. Never compress multiple sections into one image. Enforces composition variety (not always left-text / right-image), background-image freedom, varied CTAs, varied hero scales (giant / mid / mini minimalist), narrative concept spine, second-read moments, and a single consistent palette across all images. Optimized for landing pages, marketing sites, and product comps that developers or coding models can accurately recreate.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "imagegen-frontend-web"
       ]
     },
     {
@@ -772,7 +1160,8 @@
         "pagerduty",
         "opsgenie",
         "reliability",
-        "alerting"
+        "alerting",
+        "incident-center"
       ]
     },
     {
@@ -785,6 +1174,30 @@
         "skill",
         "lemon-ai-hub",
         "incident-runbook"
+      ]
+    },
+    {
+      "name": "industrial-brutalist-ui",
+      "source": "./plugins/industrial-brutalist-ui",
+      "description": "Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics. Rigid grids, extreme type scale contrast, utilitarian color, analog degradation effects. For data-heavy dashboards, portfolios, or editorial sites that need to feel like declassified blueprints.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "industrial-brutalist-ui"
+      ]
+    },
+    {
+      "name": "influencer-marketing",
+      "source": "./plugins/influencer-marketing",
+      "description": "When the user wants to run influencer, creator, or ambassador partnerships to promote their product \u2014 finding and vetting partners, structuring deals, briefing creators, disclosure compliance, and measuring ROI. Also use when the user mentions 'influencer marketing,' 'creator partnerships,' 'sponsorships,' 'YouTube sponsorships,' 'podcast sponsorships,' 'brand ambassador,' 'ambassador program,' 'creator program,' 'UGC creators,' 'B2B influencers,' 'thought leader ads,' 'gifting,' 'product seeding,' 'whitelisting creator content,' 'how much to pay an influencer,' or 'FTC disclosure.' For affiliate/referral payout mechanics, see referrals. For community-led advocacy, see community-marketing. For turning creator content into paid ads, see ad-creative.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "influencer-marketing"
       ]
     },
     {
@@ -831,6 +1244,30 @@
       ]
     },
     {
+      "name": "launch",
+      "source": "./plugins/launch",
+      "description": "When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,' 'Product Hunt,' 'feature release,' 'announcement,' 'go-to-market,' 'beta launch,' 'early access,' 'waitlist,' 'product update,' 'how do I launch this,' 'launch checklist,' 'GTM plan,' or 'we're about to ship.' Use this whenever someone is preparing to release something publicly. For ongoing marketing after launch, see marketing-ideas. For the offer being launched (bonuses, guarantees, scarcity, naming), see offers.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "launch"
+      ]
+    },
+    {
+      "name": "lead-magnets",
+      "source": "./plugins/lead-magnets",
+      "description": "When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentions \"lead magnet,\" \"gated content,\" \"content upgrade,\" \"downloadable,\" \"ebook,\" \"cheat sheet,\" \"checklist,\" \"template download,\" \"opt-in,\" \"freebie,\" \"PDF download,\" \"resource library,\" \"content offer,\" \"email capture content,\" \"Notion template,\" \"spreadsheet template,\" or \"what should I give away for emails.\" Use this for planning what to create and how to distribute it. For interactive tools as lead magnets, see free-tools. For writing the actual content, see copywriting. For the email sequence after capture, see emails.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "lead-magnets"
+      ]
+    },
+    {
       "name": "learning-output-style",
       "source": "./plugins/learning-output-style",
       "description": "Engage in active learning by requesting meaningful code contributions at decision points and providing educational insights.",
@@ -843,7 +1280,20 @@
         "output",
         "style",
         "education",
-        "interactive"
+        "interactive",
+        "learning-output-style"
+      ]
+    },
+    {
+      "name": "lemon-blog-post",
+      "source": "./plugins/lemon-blog-post",
+      "description": "Skill para criar e publicar blog posts no Lemon Blog via MCP",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "lemon-blog-post"
       ]
     },
     {
@@ -888,7 +1338,164 @@
         "latency",
         "throughput",
         "stress-test",
-        "benchmark"
+        "benchmark",
+        "load-test-runner"
+      ]
+    },
+    {
+      "name": "marketing-council",
+      "source": "./plugins/marketing-council",
+      "description": "When the user wants multiple expert perspectives on a marketing question \u2014 a simulated board of advisors staffed by legendary marketers (Seth Godin, David Ogilvy, Eugene Schwartz, April Dunford, Rory Sutherland, Alex Hormozi, Byron Sharp, and more). Also use when the user mentions 'marketing council,' 'board of advisors,' 'advisory board,' 'what would Seth Godin say,' 'what would Ogilvy think,' 'channel Hormozi,' 'get multiple perspectives,' 'debate this,' 'have the council review,' 'marketing mentors,' or asks how a famous marketer would approach their problem. The council gives each advisor's take through their documented frameworks, surfaces where they disagree, and synthesizes a recommendation. For executing the winning direction, hand off to positioning, offers, copywriting, ads, or the relevant skill.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "marketing-council"
+      ]
+    },
+    {
+      "name": "marketing-ideas",
+      "source": "./plugins/marketing-ideas",
+      "description": "When the user needs marketing ideas, inspiration, or strategies for their SaaS or software product. Also use when the user asks for 'marketing ideas,' 'growth ideas,' 'how to market,' 'marketing strategies,' 'marketing tactics,' 'ways to promote,' 'ideas to grow,' 'what else can I try,' 'I don't know how to market this,' 'brainstorm marketing,' or 'what marketing should I do.' Use this as a starting point whenever someone is stuck or looking for inspiration on how to grow. For specific channel execution, see the relevant skill (ads, social, emails, etc.).",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "marketing-ideas"
+      ]
+    },
+    {
+      "name": "marketing-loops",
+      "source": "./plugins/marketing-loops",
+      "description": "When the user wants to set up a recurring, self-running marketing workflow \u2014 a repeatable loop an AI agent runs on a cadence (weekly, daily, on a trigger) rather than a one-off task. Also use when the user mentions 'marketing loop,' 'recurring marketing workflow,' 'automate my marketing,' 'marketing on autopilot,' 'weekly marketing review,' 'ad fatigue check,' 'content refresh loop,' 'churn watch,' 'ranking drop alert,' 'always-on marketing,' 'marketing automation workflow,' or 'run this every week.' Use this to pick, adapt, and schedule an ongoing marketing loop that orchestrates the other marketing skills. For one-off marketing ideas, see marketing-ideas. For the experimentation loop specifically, see ab-testing.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "marketing-loops"
+      ]
+    },
+    {
+      "name": "marketing-plan",
+      "source": "./plugins/marketing-plan",
+      "description": "When the user needs a comprehensive marketing plan for a client, a company they advise, or their own product. Also use when the user mentions \"marketing plan,\" \"growth plan,\" \"GTM plan,\" \"go-to-market plan,\" \"AARRR plan,\" \"90-day marketing plan,\" \"12-month marketing roadmap,\" \"fractional CMO plan,\" or \"fCMO plan.\" Generates an exhaustive 13-section plan structured by AARRR (Acquisition, Activation, Retention, Referral, Revenue), customized to the client's current budget, team, and stage, mapped to future funding milestones, cross-referenced with the 139-idea marketing-ideas library and an embedded 17-section current-state audit rubric, with a full marketing operations stack showing which skills and MCP/API integrations execute each part. Outputs a Notion-paste-ready markdown document. For positioning and ICP context before planning, see product-marketing. For stage-specific deep work, see onboarding, signup, emails, referrals, pricing.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "marketing-plan"
+      ]
+    },
+    {
+      "name": "marketing-psychology",
+      "source": "./plugins/marketing-psychology",
+      "description": "When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user mentions 'psychology,' 'mental models,' 'cognitive bias,' 'persuasion,' 'behavioral science,' 'why people buy,' 'decision-making,' 'consumer behavior,' 'anchoring,' 'social proof,' 'scarcity,' 'loss aversion,' 'framing,' or 'nudge.' Use this whenever someone wants to understand or leverage how people think and make decisions in a marketing context. For applying psychology to specific pages, see cro; for pricing tactics, see pricing; for copy framing, see copywriting.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "marketing-psychology"
+      ]
+    },
+    {
+      "name": "migrate-to-codex",
+      "source": "./plugins/migrate-to-codex",
+      "description": "Migrate supported instruction files, skills, agents, and MCP config into Codex project and global files.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "migrate-to-codex"
+      ]
+    },
+    {
+      "name": "minimalist-ui",
+      "source": "./plugins/minimalist-ui",
+      "description": "Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gradients, no heavy shadows.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "minimalist-ui"
+      ]
+    },
+    {
+      "name": "notion-knowledge-capture",
+      "source": "./plugins/notion-knowledge-capture",
+      "description": "Capture conversations and decisions into structured Notion pages; use when turning chats/notes into wiki entries, how-tos, decisions, or FAQs with proper linking.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "notion-knowledge-capture"
+      ]
+    },
+    {
+      "name": "notion-meeting-intelligence",
+      "source": "./plugins/notion-meeting-intelligence",
+      "description": "Prepare meeting materials with Notion context and Codex research; use when gathering context, drafting agendas/pre-reads, and tailoring materials to attendees.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "notion-meeting-intelligence"
+      ]
+    },
+    {
+      "name": "notion-research-documentation",
+      "source": "./plugins/notion-research-documentation",
+      "description": "Research across Notion and synthesize into structured documentation; use when gathering info from multiple Notion sources to produce briefs, comparisons, or reports with citations.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "notion-research-documentation"
+      ]
+    },
+    {
+      "name": "notion-spec-to-implementation",
+      "source": "./plugins/notion-spec-to-implementation",
+      "description": "Turn Notion specs into implementation plans, tasks, and progress tracking; use when implementing PRDs/feature specs and creating Notion plans + tasks from them.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "notion-spec-to-implementation"
+      ]
+    },
+    {
+      "name": "offers",
+      "source": "./plugins/offers",
+      "description": "When the user wants to design, construct, or improve an offer \u2014 the thing they actually sell \u2014 including value framing, bonus stacking, guarantee design, scarcity/urgency, naming, and payment structure. Also use when the user mentions 'offer,' 'offer design,' 'build an offer,' 'grand slam offer,' 'irresistible offer,' 'value stack,' 'bonus stack,' 'guarantee,' 'risk reversal,' 'money-back guarantee,' 'scarcity,' 'urgency,' 'high-ticket offer,' 'productize a service,' 'naming an offer,' 'payment plan,' 'down-sell,' 'upsell offer,' or 'why isn't my offer converting.' Best for services, agencies, courses, coaching, info products, high-ticket B2B, and direct-response. If you run pure self-serve SaaS, read pricing first \u2014 tiers and packaging do more work there. For price level itself (tiers, freemium, value metric), see pricing. For the page that presents the offer, see copywriting. For the launch moment, see launch. For sales collateral, see sales-enablement.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "offers"
+      ]
+    },
+    {
+      "name": "onboarding",
+      "source": "./plugins/onboarding",
+      "description": "When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the user mentions \"onboarding flow,\" \"activation rate,\" \"user activation,\" \"first-run experience,\" \"empty states,\" \"onboarding checklist,\" \"aha moment,\" \"new user experience,\" \"users aren't activating,\" \"nobody completes setup,\" \"low activation rate,\" \"users sign up but don't use the product,\" \"time to value,\" or \"first session experience.\" Use this whenever users are signing up but not sticking around. For signup/registration optimization, see signup. For ongoing email sequences, see emails.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "onboarding"
       ]
     },
     {
@@ -921,7 +1528,8 @@
         "sdk-generation",
         "redoc",
         "postman",
-        "contract-testing"
+        "contract-testing",
+        "openapi-hub"
       ]
     },
     {
@@ -941,7 +1549,8 @@
         "codex",
         "antigravity",
         "agy",
-        "orchestration"
+        "orchestration",
+        "opencode-subagent"
       ]
     },
     {
@@ -961,6 +1570,54 @@
       ]
     },
     {
+      "name": "paywalls",
+      "source": "./plugins/paywalls",
+      "description": "When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the user mentions \"paywall,\" \"upgrade screen,\" \"upgrade modal,\" \"upsell,\" \"feature gate,\" \"convert free to paid,\" \"freemium conversion,\" \"trial expiration screen,\" \"limit reached screen,\" \"plan upgrade prompt,\" \"in-app pricing,\" \"free users won't upgrade,\" \"trial to paid conversion,\" or \"how do I get users to pay.\" Use this for any in-product moment where you're asking users to upgrade. Distinct from public pricing pages (see cro) \u2014 this focuses on in-product upgrade moments where the user has already experienced value. For pricing decisions, see pricing.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "paywalls"
+      ]
+    },
+    {
+      "name": "playwright",
+      "source": "./plugins/playwright",
+      "description": "Use when the task requires automating a real browser from the terminal (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging) via `playwright-cli` or the bundled wrapper script.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "playwright"
+      ]
+    },
+    {
+      "name": "playwright-interactive",
+      "source": "./plugins/playwright-interactive",
+      "description": "Persistent browser and Electron interaction through `js_repl` for fast iterative UI debugging.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "playwright-interactive"
+      ]
+    },
+    {
+      "name": "plugin-creator",
+      "source": "./plugins/plugin-creator",
+      "description": "Create and scaffold plugin directories for Codex with a required `.codex-plugin/plugin.json`, optional plugin folders/files, and baseline placeholders you can edit before publishing or testing. Use when Codex needs to create a new local plugin, add optional plugin structure, or generate or update repo-root `.agents/plugins/marketplace.json` entries for plugin ordering and availability metadata.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "plugin-creator"
+      ]
+    },
+    {
       "name": "plugin-generator",
       "source": "./plugins/plugin-generator",
       "description": "Generator for Lemon AI Hub plugins. Creates a new plugin directory following current standards, including plugin.json, SKILL.md, and automatically updates marketplace.json to ensure the plugin is discoverable. Use when the user asks to 'create a plugin', 'add a plugin', or 'generate a new plugin'.",
@@ -972,6 +1629,18 @@
         "plugin-generator",
         "generator",
         "scaffold"
+      ]
+    },
+    {
+      "name": "popups",
+      "source": "./plugins/popups",
+      "description": "When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when the user mentions \"exit intent,\" \"popup conversions,\" \"modal optimization,\" \"lead capture popup,\" \"email popup,\" \"announcement banner,\" \"overlay,\" \"collect emails with a popup,\" \"exit popup,\" \"scroll trigger,\" \"sticky bar,\" or \"notification bar.\" Use this for any overlay or interrupt-style conversion element. For forms outside of popups, see cro. For general page conversion optimization, see cro.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "popups"
       ]
     },
     {
@@ -989,7 +1658,8 @@
         "restful",
         "automation",
         "swagger",
-        "openapi"
+        "openapi",
+        "postman-generator"
       ]
     },
     {
@@ -1008,6 +1678,150 @@
       ]
     },
     {
+      "name": "pricing",
+      "source": "./plugins/pricing",
+      "description": "When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' 'pricing tiers,' 'freemium,' 'free trial,' 'packaging,' 'price increase,' 'value metric,' 'Van Westendorp,' 'willingness to pay,' 'monetization,' 'how much should I charge,' 'my pricing is wrong,' 'pricing page,' 'annual vs monthly,' 'per seat pricing,' or 'should I offer a free plan.' Use this whenever someone is figuring out what to charge or how to structure their plans. For in-app upgrade screens, see paywalls. For offer construction (bonuses, guarantees, value framing, naming) on services/courses/coaching/high-ticket B2B, see offers.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "pricing"
+      ]
+    },
+    {
+      "name": "product-marketing",
+      "source": "./plugins/product-marketing",
+      "description": "When the user wants to create or update their product marketing context document. Also use when the user mentions 'product context,' 'marketing context,' 'set up context,' 'positioning,' 'who is my target audience,' 'describe my product,' 'ICP,' 'ideal customer profile,' or wants to avoid repeating foundational information across marketing tasks. Use this at the start of any new project before using other marketing skills \u2014 it creates `.agents/product-marketing.md` that all other skills reference for product, audience, and positioning context.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "product-marketing"
+      ]
+    },
+    {
+      "name": "programmatic-seo",
+      "source": "./plugins/programmatic-seo",
+      "description": "When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions \"programmatic SEO,\" \"template pages,\" \"pages at scale,\" \"directory pages,\" \"location pages,\" \"[keyword] + [city] pages,\" \"comparison pages,\" \"integration pages,\" \"building many pages for SEO,\" \"pSEO,\" \"generate 100 pages,\" \"data-driven pages,\" or \"templated landing pages.\" Use this whenever someone wants to create many similar pages targeting different keywords or locations. For auditing existing SEO issues, see seo-audit. For content strategy planning, see content-strategy.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "programmatic-seo"
+      ]
+    },
+    {
+      "name": "prospecting",
+      "source": "./plugins/prospecting",
+      "description": "When the user wants to find, qualify, and build a list of prospects to reach out to \u2014 across B2B SaaS, general B2B, or local small businesses. Also use when the user mentions \"prospecting,\" \"build a prospect list,\" \"find prospects,\" \"find leads,\" \"lead gen list,\" \"find SaaS companies that,\" \"find B2B companies,\" \"find local businesses,\" \"ICP-fit accounts,\" \"who should we go after,\" \"outbound list,\" \"target account list,\" \"find clients near me,\" \"businesses without websites,\" \"prospect research,\" \"qualified leads,\" \"find my first customers,\" \"early adopters,\" \"design partners,\" \"beta users,\" or \"who has this problem.\" Use this for the list-building and qualification phase. For writing the outbound copy after the list is built, see cold-email. For deep competitive research on specific accounts, see competitor-profiling.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "prospecting"
+      ]
+    },
+    {
+      "name": "public-relations",
+      "source": "./plugins/public-relations",
+      "description": "When the user wants help with public relations, earned media, press coverage, journalist outreach, or media strategy (not pull requests). Also use when the user mentions 'PR,' 'public relations,' 'press,' 'press release,' 'press coverage,' 'media outreach,' 'pitch a journalist,' 'get featured,' 'media list,' 'media kit,' 'press kit,' 'newsjacking,' 'news hijack,' 'HARO,' 'Qwoted,' 'Featured,' 'Help A Reporter,' 'reporter request,' 'tech press,' 'TechCrunch,' 'earned media,' 'thought leadership placement,' 'op-ed,' 'guest article,' 'press contacts,' or 'how do I get press.' Use this for earned media work \u2014 finding journalists, pitching stories, newsjacking, and responding to press requests. For startup/SaaS/AI directory submissions, see directory-submissions. For product launches, see launch. For social-media engagement, see social. For cold-email outreach to prospects, see cold-email.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "public-relations"
+      ]
+    },
+    {
+      "name": "redesign-existing-projects",
+      "source": "./plugins/redesign-existing-projects",
+      "description": "Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-end design standards without breaking functionality. Works with any CSS framework or vanilla CSS.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "redesign-existing-projects"
+      ]
+    },
+    {
+      "name": "referrals",
+      "source": "./plugins/referrals",
+      "description": "When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. Also use when the user mentions 'referral,' 'affiliate,' 'ambassador,' 'word of mouth,' 'viral loop,' 'refer a friend,' 'partner program,' 'referral incentive,' 'how to get referrals,' 'customers referring customers,' or 'affiliate payout.' Use this whenever someone wants existing users or partners to bring in new customers. For launch-specific virality, see launch.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "referrals"
+      ]
+    },
+    {
+      "name": "revops",
+      "source": "./plugins/revops",
+      "description": "When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use when the user mentions 'RevOps,' 'revenue operations,' 'lead scoring,' 'lead routing,' 'MQL,' 'SQL,' 'pipeline stages,' 'deal desk,' 'CRM automation,' 'marketing-to-sales handoff,' 'data hygiene,' 'leads aren't getting to sales,' 'pipeline management,' 'lead qualification,' or 'when should marketing hand off to sales.' Use this for anything involving the systems and processes that connect marketing to revenue. For cold outreach emails, see cold-email. For email drip campaigns, see emails. For pricing decisions, see pricing.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "revops"
+      ]
+    },
+    {
+      "name": "sales-enablement",
+      "source": "./plugins/sales-enablement",
+      "description": "When the user wants to create sales collateral, pitch decks, one-pagers, objection handling docs, or demo scripts. Also use when the user mentions 'sales deck,' 'pitch deck,' 'one-pager,' 'leave-behind,' 'objection handling,' 'deal-specific ROI analysis,' 'demo script,' 'talk track,' 'sales playbook,' 'proposal template,' 'buyer persona card,' 'help my sales team,' 'sales materials,' or 'what should I give my sales reps.' Use this for any document or asset that helps a sales team close deals. For competitor comparison pages and battle cards, see competitors. For marketing website copy, see copywriting. For cold outreach emails, see cold-email. For the offer being sold (bonuses, guarantees, pricing structure), see offers.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "sales-enablement"
+      ]
+    },
+    {
+      "name": "schema",
+      "source": "./plugins/schema",
+      "description": "When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user mentions \"schema markup,\" \"structured data,\" \"JSON-LD,\" \"rich snippets,\" \"schema.org,\" \"FAQ schema,\" \"product schema,\" \"review schema,\" \"breadcrumb schema,\" \"Google rich results,\" \"knowledge panel,\" \"star ratings in search,\" or \"add structured data.\" Use this whenever someone wants their pages to show enhanced results in Google. For broader SEO issues, see seo-audit. For AI search optimization, see ai-seo.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "schema"
+      ]
+    },
+    {
+      "name": "scroll-world",
+      "source": "./plugins/scroll-world",
+      "description": "> Build an immersive scroll-scrubbed \"fly through the world\" landing page for any industry or brand using Higgsfield. As the visitor scrolls, a pre-rendered camera flies from outside each scene into its interior, then flows on to the next scene with NO cuts \u2014 one continuous connected flight (Emons-style isometric diorama world, or any art direction you pick). The skill interviews the user for the topic, the story beats/sections, and brand kit, then generates cohesive scenes + seamless camera clips with Higgsfield and wires a portable, framework-agnostic scroll-scrub engine. Use when the user wants a \"3D world\" / \"browse-through-the-industry\" hero, a scroll cinematic, a diorama landing, or to turn a business into a scrollable world.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "scroll-world"
+      ]
+    },
+    {
+      "name": "security-best-practices",
+      "source": "./plugins/security-best-practices",
+      "description": "Perform language and framework specific security best-practice reviews and suggest improvements. Trigger only when the user explicitly requests security best practices guidance, a security review/report, or secure-by-default coding help. Trigger only for supported languages (python, javascript/typescript, go). Do not trigger for general code review, debugging, or non-security tasks.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "security-best-practices"
+      ]
+    },
+    {
       "name": "security-guidance",
       "source": "./plugins/security-guidance",
       "description": "Security review for generated code including pattern warnings, diff review, and agentic commit review.",
@@ -1015,13 +1829,38 @@
       "license": "MIT",
       "keywords": [
         "skill",
-        "lemon-ai-hub"
+        "lemon-ai-hub",
+        "security-guidance"
+      ]
+    },
+    {
+      "name": "security-ownership-map",
+      "source": "./plugins/security-ownership-map",
+      "description": "Analyze git repositories to build a security ownership topology (people-to-file), compute bus factor and sensitive-code ownership, and export CSV/JSON for graph databases and visualization. Trigger only when the user explicitly wants a security-oriented ownership or bus-factor analysis grounded in git history (for example: orphaned sensitive code, security maintainers, CODEOWNERS reality checks for risk, sensitive hotspots, or ownership clusters). Do not trigger for general maintainer lists or non-security ownership questions.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "security-ownership-map"
+      ]
+    },
+    {
+      "name": "security-threat-model",
+      "source": "./plugins/security-threat-model",
+      "description": "Repository-grounded threat modeling that enumerates trust boundaries, assets, attacker capabilities, abuse paths, and mitigations, and writes a concise Markdown threat model. Trigger only when the user explicitly asks to threat model a codebase or path, enumerate threats/abuse paths, or perform AppSec threat modeling. Do not trigger for general architecture summaries, code review, or non-security design work.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "security-threat-model"
       ]
     },
     {
       "name": "senior-prompt-engineer",
       "source": "./plugins/senior-prompt-engineer",
-      "description": "Pipeline stage-0 prompt refiner. Runs FIRST — before skills-selector and smart-dispatch — turning a raw idea, pasted draft, or the current chat into a definitive, production-grade prompt (Anthropic prompt-engineering best practices), then hands the refined prompt + an Execution Map (agents, skills, models, effort, time & token estimate) to the routers so they pick the best skills/models with sharpened context. When no file path is given, the input IS the chat/pasted text and the output is returned inline (processed naturally), not forced to a file. Use when the user invokes /senior-prompt-engineer, says \"refine my prompt\", \"improve this prompt\", \"turn this idea into a prompt\", \"rewrite idea.md to prompt.md\", \"definitive prompt\", \"professional prompt\", or pastes a draft prompt/idea to be hardened. Cross-CLI: Claude, Codex, Gemini, OpenCode, Antigravity (agy), lemon-code (lemon).",
+      "description": "Pipeline stage-0 prompt refiner. Runs FIRST \u2014 before skills-selector and smart-dispatch \u2014 turning a raw idea, pasted draft, or the current chat into a definitive, production-grade prompt (Anthropic prompt-engineering best practices), then hands the refined prompt + an Execution Map (agents, skills, models, effort, time & token estimate) to the routers so they pick the best skills/models with sharpened context. When no file path is given, the input IS the chat/pasted text and the output is returned inline (processed naturally), not forced to a file. Use when the user invokes /senior-prompt-engineer, says \"refine my prompt\", \"improve this prompt\", \"turn this idea into a prompt\", \"rewrite idea.md to prompt.md\", \"definitive prompt\", \"professional prompt\", or pastes a draft prompt/idea to be hardened. Cross-CLI: Claude, Codex, Gemini, OpenCode, Antigravity (agy), lemon-code (lemon).",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -1031,14 +1870,27 @@
       ]
     },
     {
-      "name": "session-handoff",
-      "source": "./plugins/session-handoff",
-      "description": "Compacta a conversa atual em documento de handoff para outro agent continuar sem perder contexto. Redige dados sensíveis (API keys, senhas, PII). Inclui seção de skills sugeridas. Salva em tempdir do OS, não no workspace. Baseado em handoff de Matt Pocock.",
+      "name": "seo-audit",
+      "source": "./plugins/seo-audit",
+      "description": "When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions \"SEO audit,\" \"technical SEO,\" \"why am I not ranking,\" \"SEO issues,\" \"on-page SEO,\" \"meta tags review,\" \"SEO health check,\" \"my traffic dropped,\" \"lost rankings,\" \"not showing up in Google,\" \"site isn't ranking,\" \"Google update hit me,\" \"page speed,\" \"core web vitals,\" \"crawl errors,\" or \"indexing issues.\" Use this even if the user just says something vague like \"my SEO is bad\" or \"help with SEO\" \u2014 start with an audit. For building pages at scale to target keywords, see programmatic-seo. For adding structured data, see schema. For AI search optimization, see ai-seo.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
         "skill",
         "lemon-ai-hub",
+        "seo-audit"
+      ]
+    },
+    {
+      "name": "session-handoff",
+      "source": "./plugins/session-handoff",
+      "description": "Compacta a conversa atual em um documento de handoff para outro agent continuar o trabalho. Preserva o contexto sem duplicar artefatos.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "session-handoff",
         "handoff",
         "context-preservation",
         "session-continuation",
@@ -1047,26 +1899,80 @@
       ]
     },
     {
-      "name": "skill-authoring",
-      "source": "./plugins/skill-authoring",
-      "description": "Referência completa para criar e editar skills excelentes. Vocabulário e princípios de previsibilidade: invocation (model vs user), information hierarchy, granularity, pruning, leading words, failure modes (6 tipos). GLOSSARY.md separado. Baseado em writing-great-skills de Matt Pocock.",
+      "name": "signup",
+      "source": "./plugins/signup",
+      "description": "When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions \"signup conversions,\" \"registration friction,\" \"signup form optimization,\" \"free trial signup,\" \"reduce signup dropoff,\" \"account creation flow,\" \"people aren't signing up,\" \"signup abandonment,\" \"trial conversion rate,\" \"nobody completes registration,\" \"too many steps to sign up,\" or \"simplify our signup.\" Use this whenever the user has a signup or registration flow that isn't performing. For post-signup onboarding, see onboarding. For lead capture forms (not account creation), see cro.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
         "skill",
         "lemon-ai-hub",
-        "skill-creation",
+        "signup"
+      ]
+    },
+    {
+      "name": "site-architecture",
+      "source": "./plugins/site-architecture",
+      "description": "When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal linking. Also use when the user mentions \"sitemap,\" \"site map,\" \"visual sitemap,\" \"site structure,\" \"page hierarchy,\" \"information architecture,\" \"IA,\" \"navigation design,\" \"URL structure,\" \"breadcrumbs,\" \"internal linking strategy,\" \"website planning,\" \"what pages do I need,\" \"how should I organize my site,\" or \"site navigation.\" Use this whenever someone is planning what pages a website should have and how they connect. NOT for XML sitemaps (that's technical SEO \u2014 see seo-audit). For SEO audits, see seo-audit. For structured data, see schema.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "site-architecture"
+      ]
+    },
+    {
+      "name": "skill-authoring",
+      "source": "./plugins/skill-authoring",
+      "description": "Reference for creating and editing skills well \u2014 the vocabulary and principles that make a skill predictable. Covers invocation, information hierarchy, granularity, steering, pruning, and failure modes.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
         "skill-authoring",
+        "skill-creation",
         "predictability",
         "invocation",
         "determinism",
-        "context-load"
+        "context-load",
+        "information-hierarchy",
+        "granularity",
+        "pruning",
+        "failure-modes",
+        "leading-words",
+        "matt-pocock"
+      ]
+    },
+    {
+      "name": "skill-creator",
+      "source": "./plugins/skill-creator",
+      "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specialized knowledge, workflows, or tool integrations.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "skill-creator"
+      ]
+    },
+    {
+      "name": "skill-installer",
+      "source": "./plugins/skill-installer",
+      "description": "Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "skill-installer"
       ]
     },
     {
       "name": "skills-selector",
       "source": "./plugins/skills-selector",
-      "description": "Meta-skill gatekeeper that runs FIRST on every task to decide which other skill(s) — if any — should activate. Analyzes the user request, matches it against a ranked catalog (frontend-design, ui-ux-pro-max, superpowers/planning, git-*, mcp-builder, smart-dispatch, claude-api, etc.), and emits a tight SELECTION plan so other skills are loaded on-demand only. Minimizes token/context consumption by refusing to activate heavy skills unless clearly justified. Triggers on ANY user instruction that could plausibly benefit from a specialized skill — i.e. essentially every turn that starts new work. Keywords: \"plan\", \"design\", \"ui\", \"ux\", \"implement\", \"build\", \"create\", \"fix\", \"refactor\", \"commit\", \"pr\", \"review\", \"test\", \"debug\", \"deploy\", \"mobile\", \"video\", \"mcp\", \"skill\", \"architecture\", \"api\", \"ci\", \"docs\", \"copy\", \"social\", \"setup\", \"doctor\".",
+      "description": "Meta-skill gatekeeper that runs FIRST on every task to decide which other skill(s) \u2014 if any \u2014 should activate. Analyzes the user request, matches it against a ranked catalog (frontend-design, ui-ux-pro-max, superpowers/planning, git-*, mcp-builder, smart-dispatch, claude-api, etc.), and emits a tight SELECTION plan so other skills are loaded on-demand only. Minimizes token/context consumption by refusing to activate heavy skills unless clearly justified. Triggers on ANY user instruction that could plausibly benefit from a specialized skill \u2014 i.e. essentially every turn that starts new work. Keywords: \"plan\", \"design\", \"ui\", \"ux\", \"implement\", \"build\", \"create\", \"fix\", \"refactor\", \"commit\", \"pr\", \"review\", \"test\", \"debug\", \"deploy\", \"mobile\", \"video\", \"mcp\", \"skill\", \"architecture\", \"api\", \"ci\", \"docs\", \"copy\", \"social\", \"setup\", \"doctor\".",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -1088,9 +1994,33 @@
       ]
     },
     {
+      "name": "sms",
+      "source": "./plugins/sms",
+      "description": "When the user wants to plan, build, or optimize SMS or MMS marketing \u2014 including welcome flows, abandoned cart texts, post-purchase, win-back, promotional sends, or transactional/auth SMS. Also use when the user mentions \"SMS marketing,\" \"text message campaigns,\" \"SMS sequence,\" \"SMS automation,\" \"abandoned cart text,\" \"post-purchase SMS,\" \"Klaviyo SMS,\" \"Postscript,\" \"Attentive,\" \"Twilio,\" \"A2P 10DLC,\" \"TCPA,\" \"SMS compliance,\" \"short code,\" \"toll-free SMS,\" \"MMS campaign,\" \"should I do SMS,\" or \"SMS vs email.\" For email sequences, see emails. For SMS copy framing, see copywriting. For opt-in popups that capture phone numbers, see popups.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "sms"
+      ]
+    },
+    {
+      "name": "social",
+      "source": "./plugins/social",
+      "description": "When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, Facebook, or other platforms, or wants to do social listening and engagement triage. Also use when the user mentions 'LinkedIn post,' 'Twitter thread,' 'social media,' 'content calendar,' 'social scheduling,' 'engagement,' 'viral content,' 'what should I post,' 'repurpose this content,' 'tweet ideas,' 'LinkedIn carousel,' 'social media strategy,' 'grow my following,' 'TikTok video,' 'Reels,' 'Shorts,' 'video script,' 'video hook,' 'short-form video,' 'create a reel,' 'social listening,' 'brand mentions,' 'competitor monitoring,' 'top posts to comment on,' 'find people asking for,' 'carousel,' 'slide-by-slide,' or 'document post.' Use this for social media content creation, repurposing, scheduling, short-form video scripting, and social listening. For broader content strategy, see content-strategy. For paid ads, see ad-creative. For earned media, see public-relations.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "social"
+      ]
+    },
+    {
       "name": "spotify-squad",
       "source": "./plugins/spotify-squad",
-      "description": "AI-Native Squad — Spotify-model autonomous engineering team. 12 specialized agents (Tech Lead, Backend, Frontend, Mobile, UX, UI, Product, Scrum Master, DevOps, QA, Data, Security) with orchestrated collaboration, domain-specific skills, and cross-functional workflows. Based on the AI Native Developer methodology.",
+      "description": "AI-Native Squad \u2014 Spotify-model autonomous engineering team. 12 specialized agents (Tech Lead, Backend, Frontend, Mobile, UX, UI, Product, Scrum Master, DevOps, QA, Data, Security) with orchestrated collaboration, domain-specific skills, and cross-functional workflows. Based on the AI Native Developer methodology.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -1115,18 +2045,56 @@
         "context-engineering",
         "plugin",
         "security-engineer",
-        "devsecops"
+        "devsecops",
+        "spotify-squad"
       ]
     },
     {
-      "name": "task-interrogator",
-      "source": "./plugins/task-interrogator",
-      "description": "Interrogatório implacável para estressar planos e designs antes de implementar. Uma questão por vez, separando fatos (você busca no codebase) de decisões (usuário decide). Só age após confirmação explícita de entendimento compartilhado. Baseado em grill-me e grilling de Matt Pocock.",
+      "name": "subagent-driven-development",
+      "source": "./plugins/subagent-driven-development",
+      "description": "Use when executing implementation plans with independent tasks in the current session",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
         "skill",
         "lemon-ai-hub",
+        "subagent-driven-development"
+      ]
+    },
+    {
+      "name": "supabase",
+      "source": "./plugins/supabase",
+      "description": "Use when doing ANY task involving Supabase. Triggers: Supabase products (Database, Auth, Edge Functions, Realtime, Storage, Vectors, Cron, Queues); client libraries and SSR integrations (supabase-js, @supabase/ssr) in Next.js, React, SvelteKit, Astro, Remix; auth issues (login, logout, sessions, JWT, cookies, getSession, getUser, getClaims, RLS); Supabase CLI or MCP server; schema changes, migrations, declarative schemas, security audits, Postgres extensions (pg_graphql, pg_cron, pg_vector).",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "supabase"
+      ]
+    },
+    {
+      "name": "supabase-postgres-best-practices",
+      "source": "./plugins/supabase-postgres-best-practices",
+      "description": "Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "supabase-postgres-best-practices"
+      ]
+    },
+    {
+      "name": "task-interrogator",
+      "source": "./plugins/task-interrogator",
+      "description": "Interrogat\u00f3rio implac\u00e1vel para planos e designs. Estressa planos antes de implementar, caminhando pela \u00e1rvore de decis\u00f5es uma pergunta por vez. Baseado em grill-me/grilling de Matt Pocock. Use when the user wants to stress-test a plan, design, or decision before implementation, or uses any 'grill'/'interrogate' trigger phrases.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "task-interrogator",
         "interrogation",
         "grilling",
         "stress-test",
@@ -1154,8 +2122,8 @@
     {
       "name": "teaching-workspace",
       "source": "./plugins/teaching-workspace",
-      "description": "Ensina habilidades ou conceitos em workspace stateful. Estrutura: MISSION.md, lessons/*.html (unidades de ensino), reference/*.html (cheat sheets, glossários), learning-records/*.md (ADRs de aprendizado), assets/ (componentes reutilizáveis). Filosofia: knowledge → skills → wisdom, zone of proximal development. Baseado em teach de Matt Pocock.",
-      "version": "1.0.0",
+      "description": "Ensina habilidades ou conceitos ao usu\u00e1rio em workspace stateful. Miss\u00f5es, li\u00e7\u00f5es HTML, refer\u00eancias, registros de aprendizado. Cria roadmap personalizado com li\u00e7\u00f5es interativas, documentos de refer\u00eancia e registros de aprendizado que persistem entre sess\u00f5es.",
+      "version": "2.0.0",
       "license": "MIT",
       "keywords": [
         "skill",
@@ -1166,7 +2134,14 @@
         "skills",
         "lessons",
         "workspace",
-        "stateful-learning"
+        "stateful-learning",
+        "mission-driven",
+        "zone-of-proximal-development",
+        "interactive-lessons",
+        "knowledge-transfer",
+        "spaced-repetition",
+        "learning-records",
+        "teaching-workspace"
       ]
     },
     {
@@ -1179,6 +2154,150 @@
         "skill",
         "lemon-ai-hub",
         "token-saver"
+      ]
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "source": "./plugins/ui-ux-pro-max",
+      "description": "UI/UX design intelligence for web and mobile. Searchable local database with 84 styles, 192 color palettes, 74 font pairings, 192 product types, 98 UX guidelines, 104 icon entries, 16 GSAP motion presets, and 25 chart types across 22 stacks (React, Next.js, Vue, Nuxt, Svelte, Astro, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, JavaFX, WPF, WinUI, Avalonia, Uno Platform, UWP, Three.js, and HTML/CSS). Use when designing, building, or reviewing UI: pages, components, color schemes, typography, layout, accessibility, animation, or data visualization.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "ui-ux-pro-max"
+      ]
+    },
+    {
+      "name": "vercel-cli-with-tokens",
+      "source": "./plugins/vercel-cli-with-tokens",
+      "description": "Deploy and manage projects on Vercel using token-based authentication. Use when working with Vercel CLI using access tokens rather than interactive login \u2014 e.g. \"deploy to vercel\", \"set up vercel\", \"add environment variables to vercel\".",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "vercel-cli-with-tokens"
+      ]
+    },
+    {
+      "name": "vercel-composition-patterns",
+      "source": "./plugins/vercel-composition-patterns",
+      "description": "React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Triggers on tasks involving compound components, render props, context providers, or component architecture. Includes React 19 API changes.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "vercel-composition-patterns"
+      ]
+    },
+    {
+      "name": "vercel-optimize",
+      "source": "./plugins/vercel-optimize",
+      "description": "Use for Vercel cost and performance optimization on deployed projects, especially Next.js, SvelteKit, Nuxt, and limited Astro apps. Collect Vercel metrics, usage, project config, and code scan results first; investigate only metric-backed candidates; produce ranked recommendations grounded in verified files and version-aware Vercel/framework docs. Trigger for Vercel bill reduction, slow or expensive routes, caching opportunities, Function Invocations, Build Minutes, Fast Data Transfer, Core Web Vitals, Bot Management, Fluid compute, or cost breakdown requests.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "vercel-optimize"
+      ]
+    },
+    {
+      "name": "vercel-react-best-practices",
+      "source": "./plugins/vercel-react-best-practices",
+      "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "vercel-react-best-practices"
+      ]
+    },
+    {
+      "name": "vercel-react-native-skills",
+      "source": "./plugins/vercel-react-native-skills",
+      "description": "React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules. Triggers on tasks involving React Native, Expo, mobile performance, or native platform APIs.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "vercel-react-native-skills"
+      ]
+    },
+    {
+      "name": "vercel-react-view-transitions",
+      "source": "./plugins/vercel-react-view-transitions",
+      "description": "Guide for implementing smooth, native-feeling animations using React's View Transition API (`<ViewTransition>` component, `addTransitionType`, and CSS view transition pseudo-elements). Use this skill whenever the user wants to add page transitions, animate route changes, create shared element animations, animate enter/exit of components, animate list reorder, implement directional (forward/back) navigation animations, or integrate view transitions in Next.js. Also use when the user mentions view transitions, `startViewTransition`, `ViewTransition`, transition types, or asks about animating between UI states in React without third-party animation libraries.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "vercel-react-view-transitions"
+      ]
+    },
+    {
+      "name": "verification-before-completion",
+      "source": "./plugins/verification-before-completion",
+      "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "verification-before-completion"
+      ]
+    },
+    {
+      "name": "video",
+      "source": "./plugins/video",
+      "description": "When the user wants to create, generate, or produce video content using AI tools or programmatic frameworks. Also use when the user mentions 'video production,' 'AI video,' 'Remotion,' 'Hyperframes,' 'HeyGen,' 'Synthesia,' 'Veo,' 'Sora,' 'Runway,' 'Kling,' 'Seedance,' 'Hailuo,' 'MiniMax,' 'Pika,' 'Hunyuan,' 'Wan,' 'video generation,' 'AI avatar,' 'talking head video,' 'programmatic video,' 'video template,' 'explainer video,' 'product demo video,' 'video pipeline,' 'copy this edit,' 'match this video style,' 'reverse-engineer this video,' 'edit like this reference,' or 'make me a video.' Use this for video creation, generation, and production workflows. For video content strategy and what to post, see social. For paid video ad creative, see ad-creative.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "video"
+      ]
+    },
+    {
+      "name": "web-design-guidelines",
+      "source": "./plugins/web-design-guidelines",
+      "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "web-design-guidelines"
+      ]
+    },
+    {
+      "name": "webapp-testing",
+      "source": "./plugins/webapp-testing",
+      "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "webapp-testing"
+      ]
+    },
+    {
+      "name": "writing-guidelines",
+      "source": "./plugins/writing-guidelines",
+      "description": "Review docs/prose for Writing Guidelines compliance. Use when asked to \"review my docs\", \"check writing style\", \"audit prose\", \"review docs voice and tone\", or \"check this page against the writing handbook\".",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "writing-guidelines"
       ]
     }
   ]

@@ -6,12 +6,13 @@
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
   },
-  "skills": [
-    "security-guidance"
-  ],
   "license": "MIT",
   "keywords": [
     "skill",
-    "lemon-ai-hub"
+    "lemon-ai-hub",
+    "security-guidance"
+  ],
+  "skills": [
+    "security-guidance"
   ]
 }

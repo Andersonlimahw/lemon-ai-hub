@@ -1,6 +1,6 @@
 ---
-name: App Clips
-description: Endpoints for managing App Clips and default experiences.
+name: "app-clips"
+description: "Endpoints for managing App Clips and default experiences."
 ---
 
 # App Clips

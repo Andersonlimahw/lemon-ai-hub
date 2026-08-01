@@ -1,6 +1,6 @@
 ---
-name: Provisioning
-description: Endpoints for managing certificates, devices, profiles, and bundle IDs.
+name: "provisioning"
+description: "Endpoints for managing certificates, devices, profiles, and bundle IDs."
 ---
 
 # Provisioning

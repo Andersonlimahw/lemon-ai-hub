@@ -6,16 +6,17 @@
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"
   },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "agent-sdk-dev"
+  ],
   "skills": [
     "agent-sdk-dev",
     "agent-sdk-verifier-py"
   ],
   "agents": [
     "agent-sdk-verifier-py"
-  ],
-  "license": "MIT",
-  "keywords": [
-    "skill",
-    "lemon-ai-hub"
   ]
 }

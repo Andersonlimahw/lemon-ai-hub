@@ -1,0 +1,15 @@
+{
+  "name": "subagent-driven-development",
+  "version": "1.0.0",
+  "description": "Use when executing implementation plans with independent tasks in the current session",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "subagent-driven-development"
+  ]
+}

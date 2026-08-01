@@ -1,6 +1,6 @@
 ---
-name: Game Center
-description: Endpoints for managing Game Center leaderboards, achievements, and matchmaking.
+name: "game-center"
+description: "Endpoints for managing Game Center leaderboards, achievements, and matchmaking."
 ---
 
 # Game Center

@@ -1,6 +1,6 @@
 ---
-name: TestFlight
-description: Endpoints for managing TestFlight beta testing, builds, and testers.
+name: "testflight"
+description: "Endpoints for managing TestFlight beta testing, builds, and testers."
 ---
 
 # TestFlight

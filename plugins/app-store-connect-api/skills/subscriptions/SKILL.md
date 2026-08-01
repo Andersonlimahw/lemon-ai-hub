@@ -1,6 +1,6 @@
 ---
-name: Subscriptions
-description: Endpoints for managing auto-renewable subscriptions.
+name: "subscriptions"
+description: "Endpoints for managing auto-renewable subscriptions."
 ---
 
 # Subscriptions

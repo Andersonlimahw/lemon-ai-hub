@@ -1,0 +1,15 @@
+{
+  "name": "finishing-a-development-branch",
+  "version": "1.0.0",
+  "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "finishing-a-development-branch"
+  ]
+}
