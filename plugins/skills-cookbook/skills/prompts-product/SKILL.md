@@ -3,83 +3,83 @@ name: prompts-product
 description: Ready-to-paste prompts for product work — positioning, monetization funnels, onboarding, launches, and user-feedback instrumentation (exit surveys, NPS, tracking plans).
 ---
 
-# Prompts — Produto
+# Prompts — Product
 
-Receitas para trabalho de produto de ponta a ponta: posicionar, monetizar, ativar, lançar e ouvir o usuário.
+Recipes for end-to-end product work: position, monetize, activate, launch, and listen to the user.
 
-## R1 — Posicionamento que o time defende
+## R1 — Positioning the team will defend
 
 **Skills:** `product-marketing`
-**Quando:** o produto existe mas cada pessoa explica de um jeito.
+**When:** the product exists but everyone explains it differently.
 
 ```text
-Produto: <produto>. Público: <persona>. Concorrente principal:
-<concorrente>.
-Use product-marketing para gerar: posicionamento em uma frase,
-3 mensagens-chave com prova, e a narrativa de diferenciação
-vs <concorrente>.
-Sucesso: one-pager que um dev do time consegue defender em uma
-conversa sem me perguntar nada.
+Product: <product>. Audience: <persona>. Main competitor:
+<competitor>.
+Use product-marketing to generate: one-sentence positioning, 3 key
+messages with proof, and the differentiation narrative vs.
+<competitor>.
+Success: one-pager a dev on the team can defend in a conversation
+without asking me anything.
 ```
 
-## R2 — Funil de monetização
+## R2 — Monetization funnel
 
 **Skills:** `pricing` + `paywalls` + `churn-prevention`
-**Quando:** desenhar (ou reformar) como o produto cobra, converte e retém.
+**When:** designing (or reworking) how the product charges, converts, and retains.
 
 ```text
-Produto: <produto>, modelo <assinatura/uso>. Desenhe o funil de
-monetização: tiers de pricing com âncora, paywall in-app nos
-momentos de valor <momentos>, e fluxo de cancelamento com save
-offers e exit survey (churn-prevention).
-Sucesso: spec por tela + tabela de tiers + eventos de analytics
-nomeados para cada passo do funil.
+Product: <product>, <subscription/usage> model. Design the
+monetization funnel: pricing tiers with an anchor, in-app paywall
+at value moments <moments>, and a cancellation flow with save
+offers and exit survey (churn-prevention).
+Success: per-screen spec + tier table + named analytics events for
+every step of the funnel.
 ```
 
-## R3 — Onboarding que ativa
+## R3 — Onboarding that activates
 
 **Skills:** `onboarding` + `signup` + `emails`
-**Quando:** usuários assinam e somem antes do aha-moment.
+**When:** users sign up and vanish before the aha-moment.
 
 ```text
-Mapeie com onboarding + signup o fluxo do cadastro até o
-aha-moment de <produto> (aha = <definição>). Corte passos que não
-levam ao aha. Gere com emails a sequência de ativação para quem
-trava em cada etapa.
-Sucesso: fluxo com métrica de ativação definida por passo +
-sequência de emails com trigger, assunto e CTA cada.
+Map with onboarding + signup the flow from signup to the aha-moment
+of <product> (aha = <definition>). Cut steps that don't lead to the
+aha. Generate with emails the activation sequence for users who get
+stuck at each step.
+Success: flow with an activation metric per step + email sequence
+with trigger, subject, and CTA each.
 ```
 
-## R4 — Plano de lançamento
+## R4 — Launch plan
 
 **Skills:** `launch` + `product-marketing` + `social`
-**Quando:** feature ou produto novo com data.
+**When:** new feature or product with a date.
 
 ```text
-Lançamento de <feature/produto> em <data>. Use launch para o
-cronograma (T-14 a T+7), product-marketing para a mensagem central
-e social para o plano de distribuição por canal <canais>.
-Sucesso: checklist executável por data, com dono e artefato por
-item; copy base pronta para adaptar.
+Launch of <feature/product> on <date>. Use launch for the timeline
+(T-14 to T+7), product-marketing for the core message, and social
+for the distribution plan across channels <channels>.
+Success: executable checklist by date, with an owner and artifact
+per item; base copy ready to adapt.
 ```
 
-## R5 — Instrumentar feedback de usuários
+## R5 — Instrument user feedback
 
 **Skills:** `analytics` + `churn-prevention`
-**Quando:** decisões estão sendo tomadas por opinião; falta voz do usuário estruturada.
+**When:** decisions are being made on opinion; a structured user voice is missing.
 
 ```text
-Instrumente a coleta de feedback de <produto>: tracking plan GA4
-(analytics) com eventos nomeados dos fluxos <fluxos>, exit survey
-no cancelamento (churn-prevention) e trigger de NPS pós
-<momento de valor>.
-Sucesso: tracking plan em tabela (evento, propriedades, quando
-dispara) + perguntas do survey com escala definida; tudo pronto
-para implementar sem decisão pendente.
+Instrument feedback collection for <product>: GA4 tracking plan
+(analytics) with named events for flows <flows>, exit survey on
+cancellation (churn-prevention), and an NPS trigger after
+<value moment>.
+Success: tracking plan as a table (event, properties, when it
+fires) + survey questions with a defined scale; everything ready
+to implement with no pending decision.
 ```
 
-## Veja também
+## See also
 
-- `offers` — reforçar a oferta (bônus, garantia, framing de valor) antes de mexer em preço.
-- `aso` — se o produto é app: auditar a listing das lojas.
-- `free-tools` / `lead-magnets` / `referrals` — motores de aquisição fora do funil pago.
+- `offers` — sharpen the offer (bonuses, guarantee, value framing) before touching price.
+- `aso` — if the product is an app: audit the store listing.
+- `free-tools` / `lead-magnets` / `referrals` — acquisition engines outside the paid funnel.

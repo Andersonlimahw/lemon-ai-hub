@@ -5,55 +5,57 @@ description: Ready-to-paste prompts for API and CLI tooling — OpenAPI specs fr
 
 # Prompts — APIs & CLIs
 
-Receitas para a camada de contrato: specs, collections e CLIs que humanos E agentes conseguem operar. Escolha de gerador: `cli-creator` (CLI composável a partir de API/spec, foco Codex) × `cli-generator` (CLI Bun completa a partir de SPEC) — sobreposição, escolha pelo runtime alvo.
+Recipes for the contract layer: specs, collections, and CLIs that both humans and agents can operate. Generator choice: `cli-creator` (composable CLI from an API/spec, Codex-focused) × `cli-generator` (full Bun CLI from a SPEC) — overlap, pick by target runtime.
 
 ## R1 — Spec-first: OpenAPI + Postman
 
 **Skills:** `openapi-generate` + `postman-generator`
-**Quando:** API sem contrato formal, ou contrato desatualizado do código.
+**When:** an API with no formal contract, or a stale one relative to the code.
 
 ```text
-Gere com openapi-generate a spec OpenAPI 3 das rotas de <path>
-(schemas de request/response reais, exemplos). Depois gere com
-postman-generator a collection com um request por endpoint e
-environment <envs>.
-Sucesso: spec valida sem erro; collection roda contra <base-url>
-com os exemplos passando; nenhuma rota do código fora da spec.
+Generate with openapi-generate the OpenAPI 3 spec for the routes
+in <path> (real request/response schemas, examples). Then generate
+with postman-generator the collection with one request per
+endpoint and environment <envs>.
+Success: spec validates with no errors; collection runs against
+<base-url> with the examples passing; no route in the code missing
+from the spec.
 ```
 
-## R2 — CLI amigável para agentes
+## R2 — Agent-friendly CLI
 
 **Skills:** `cli-for-agent` + `cli-generator`
-**Quando:** criar (ou revisar) uma CLI que agentes de IA vão operar sem babysitting.
+**When:** creating (or reviewing) a CLI that AI agents will operate without hand-holding.
 
 ```text
-Crie com cli-generator a CLI de <API/spec> e aplique cli-for-agent
-como rubrica: flags non-interactive, --help em camadas com
-exemplos, stdin/pipes, erros acionáveis, --dry-run, JSON estável
-na saída.
-Sucesso: agente consegue descobrir e executar qualquer comando só
-pelo --help; saída parseável; nenhum prompt interativo obrigatório.
+Create with cli-generator the CLI for <API/spec> and apply
+cli-for-agent as the rubric: non-interactive flags, layered --help
+with examples, stdin/pipes, actionable errors, --dry-run, stable
+JSON output.
+Success: an agent can discover and run any command from --help
+alone; output is parseable; no required interactive prompt.
 ```
 
-## R3 — Envelopar CLI externo (economia de tokens)
+## R3 — Wrap an external CLI (token savings)
 
 **Skills:** `cli-wrapper`
-**Quando:** o harness vai chamar um CLI desconhecido/verboso repetidamente.
+**When:** the harness will call an unfamiliar/verbose CLI repeatedly.
 
 ```text
-Envelope o CLI <cli> com cli-wrapper: capture --help, gere o
-digest compacto de subcomandos/flags, valide invocações e
-pós-processe a saída. Registre as métricas de economia.
-Sucesso: /cli-wrapper list mostra <cli> com digest; invocação via
-wrapper retorna o mesmo resultado do raw com fração dos tokens.
+Wrap CLI <cli> with cli-wrapper: capture --help, generate the
+compact digest of subcommands/flags, validate invocations, and
+post-process the output. Record the savings metrics.
+Success: /cli-wrapper list shows <cli> with a digest; invoking via
+the wrapper returns the same result as raw with a fraction of the
+tokens.
 ```
 
-## R4 — Loop de validação da API
+## R4 — API validation loop
 
-Contrato pronto → valide o comportamento real com `api-test-loop` + `verification-before-completion` — receita completa na trilha [prompts-feedback-loops](../prompts-feedback-loops/SKILL.md) (R1).
+Contract ready → validate real behavior with `api-test-loop` + `verification-before-completion` — full recipe in track [prompts-feedback-loops](../prompts-feedback-loops/SKILL.md) (R1).
 
-## Veja também
+## See also
 
-- `openapi-hub` — gestão contínua de múltiplas specs (vs `openapi-generate` pontual — não usar como drivers do mesmo passe).
-- `agent-sdk-dev` — quando o consumidor da API é um agente construído no Claude Agent SDK.
-- `supabase` / `firebase-expert` — backends gerenciados por trás da API (trilha [prompts-data-backend](../prompts-data-backend/SKILL.md)).
+- `openapi-hub` — ongoing management of multiple specs (vs. one-shot `openapi-generate` — don't run both as drivers of the same pass).
+- `agent-sdk-dev` — when the API's consumer is an agent built on the Claude Agent SDK.
+- `supabase` / `firebase-expert` — managed backends behind the API (track [prompts-data-backend](../prompts-data-backend/SKILL.md)).

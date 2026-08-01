@@ -3,59 +3,57 @@ name: prompts-karpathy
 description: Ready-to-paste prompts for the Karpathy method — behavioral guidelines while coding, the full recipe for medium/large work, review against the four principles, and the autonomous optimization loop.
 ---
 
-# Prompts — Método Karpathy
+# Prompts — Karpathy method
 
-O trio `karpathy-guidelines` (princípios comportamentais), `karpathy-recipe` (receita para trabalho médio/grande) e `karpathy-loop` (ciclos autônomos de otimização). São complementares, não redundantes: guidelines valem sempre; recipe estrutura trabalho grande; loop persegue métrica.
+The trio `karpathy-guidelines` (behavioral principles), `karpathy-recipe` (recipe for medium/large work), and `karpathy-loop` (autonomous optimization cycles). Complementary, not redundant: guidelines apply always; recipe structures large work; loop chases a metric.
 
-## R1 — Guidelines em qualquer implementação
+## R1 — Guidelines on any implementation
 
 **Skills:** `karpathy-guidelines`
-**Quando:** qualquer código não-trivial — o default para reduzir os erros clássicos de LLM.
+**When:** any non-trivial code — the default to cut classic LLM mistakes.
 
 ```text
-Implemente <feature/fix> em <path> aplicando karpathy-guidelines:
-declare assunções antes de codar (pergunte se alguma for
-estrutural), mínimo código que resolve, mudanças cirúrgicas
-(nada de "melhorar" código vizinho), e plano numerado com
-"→ verify:" por passo.
-Sucesso: cada linha do diff rastreia ao pedido; todos os verify
-executados com evidência.
+Implement <feature/fix> in <path> applying karpathy-guidelines:
+state assumptions before coding (ask if one is structural), the
+minimum code that solves it, surgical changes (no "improving"
+neighboring code), and a numbered plan with "→ verify:" per step.
+Success: every line of the diff traces to the request; every
+verify ran with evidence.
 ```
 
-## R2 — Receita completa para trabalho médio/grande
+## R2 — Full recipe for medium/large work
 
 **Skills:** `karpathy-recipe` + `verification-before-completion`
-**Quando:** feature/refactor que atravessa vários arquivos ou sessões.
+**When:** a feature/refactor that spans several files or sessions.
 
 ```text
-Estruture <trabalho> com karpathy-recipe: quebre em estágios com
-critério verificável cada, execute estágio a estágio, e feche cada
-um com verification-before-completion antes de avançar.
-Sucesso: plano com estágios + verificação; nenhum estágio marcado
-completo sem o check rodado; diff final sem escopo extra.
+Structure <work> with karpathy-recipe: break it into stages with a
+verifiable criterion each, execute stage by stage, and close each
+one with verification-before-completion before moving on.
+Success: plan with stages + verification; no stage marked complete
+without the check having run; final diff with no extra scope.
 ```
 
-## R3 — Review contra os quatro princípios
+## R3 — Review against the four principles
 
 **Skills:** `karpathy-guidelines` + `code-review-expert`
-**Quando:** revisar um diff/PR procurando os vícios que as guidelines previnem.
+**When:** reviewing a diff/PR looking for the vices the guidelines prevent.
 
 ```text
-Revise o diff de <branch/PR> com code-review-expert usando
-karpathy-guidelines como rubrica: (1) assunções escondidas,
-(2) complexidade especulativa/abstração prematura, (3) mudanças
-não-cirúrgicas fora do escopo, (4) critérios de sucesso fracos ou
-não verificados.
-Sucesso: cada finding mapeado a um princípio, com arquivo:linha
-e fix de 1 frase.
+Review the diff of <branch/PR> with code-review-expert using
+karpathy-guidelines as the rubric: (1) hidden assumptions,
+(2) speculative complexity/premature abstraction, (3) non-surgical
+changes outside scope, (4) weak or unverified success criteria.
+Success: every finding mapped to a principle, with file:line and a
+1-sentence fix.
 ```
 
-## R4 — Loop autônomo de métrica
+## R4 — Autonomous metric loop
 
 **Skills:** `karpathy-loop`
-**Quando:** métrica objetiva para otimizar em ciclos. Receita completa na trilha [prompts-feedback-loops](../prompts-feedback-loops/SKILL.md) (R4) — um loop driver por vez.
+**When:** an objective metric to optimize in cycles. Full recipe in track [prompts-feedback-loops](../prompts-feedback-loops/SKILL.md) (R4) — one loop driver at a time.
 
-## Veja também
+## See also
 
-- `verification-before-completion` — gate universal de "está pronto mesmo?".
-- `continual-learning` — persistir lições dos ciclos entre sessões.
+- `verification-before-completion` — universal "is this actually done?" gate.
+- `continual-learning` — persist lessons from the cycles across sessions.

@@ -5,62 +5,64 @@ description: Ready-to-paste prompts for mobile release — App Store and Google 
 
 # Prompts — Mobile & Release
 
-Receitas para tirar app da máquina e colocar na loja com decisão auditável. Os release agents decidem GO/NO_GO — nunca submetem nem pagam sem aprovação humana.
+Recipes to get an app off the machine and into the store with an auditable decision. Release agents decide GO/NO_GO — they never submit or pay without human approval.
 
-## R1 — Go/No-Go iOS
+## R1 — iOS go/no-go
 
 **Skills:** `apple-store-release-agent`
-**Quando:** build Expo/RN iOS candidato a release; você quer auditoria antes de apertar submit.
+**When:** an Expo/RN iOS build is a release candidate; you want an audit before hitting submit.
 
 ```text
-Rode apple-store-release-agent no app <app>: audite build iOS,
-metadata da App Store, App Privacy, TestFlight, IAP/RevenueCat,
-paridade i18n, screenshots e review notes.
-Sucesso: decisão GO / GO_WITH_WARNINGS / NO_GO com cada bloqueio
-listado, acionável e com dono; nada submetido sem minha aprovação.
+Run apple-store-release-agent on app <app>: audit the iOS build,
+App Store metadata, App Privacy, TestFlight, IAP/RevenueCat, i18n
+parity, screenshots, and review notes.
+Success: GO / GO_WITH_WARNINGS / NO_GO decision with every blocker
+listed, actionable, and owned; nothing submitted without my
+approval.
 ```
 
-## R2 — Go/No-Go Android + automação Play
+## R2 — Android go/no-go + Play automation
 
 **Skills:** `google-play-release-agent` + `google-play-developer-api`
-**Quando:** release Android; tracks, staged rollout e listing via API.
+**When:** an Android release; tracks, staged rollout, and listing via API.
 
 ```text
-Rode google-play-release-agent no app <app> para o go/no-go do
-release <versão>. Onde couber automação (upload para track
+Run google-play-release-agent on app <app> for the go/no-go of
+release <version>. Where automation fits (upload to track
 <internal/closed/production>, rollout <X>%), use
-google-play-developer-api e me mostre os passos antes de executar.
-Sucesso: decisão auditável + plano de rollout por track; nenhuma
-ação irreversível sem confirmação.
+google-play-developer-api and show me the steps before executing.
+Success: auditable decision + rollout plan per track; no
+irreversible action without confirmation.
 ```
 
-## R3 — Automação App Store Connect
+## R3 — App Store Connect automation
 
 **Skills:** `app-store-connect-api`
-**Quando:** tarefa repetitiva no App Store Connect: TestFlight, IAP, provisioning, metadata, relatórios.
+**When:** a repetitive App Store Connect task: TestFlight, IAP, provisioning, metadata, reports.
 
 ```text
-Automatize com app-store-connect-api: <tarefa — ex.: distribuir
-build <n> para o grupo TestFlight <grupo>, criar IAP <produto>,
-baixar relatório de vendas <período>>.
-Sucesso: operação executada com resposta da API como evidência;
-credenciais nunca em log ou código.
+Automate with app-store-connect-api: <task — e.g. distribute build
+<n> to TestFlight group <group>, create IAP <product>, download
+sales report for <period>>.
+Success: operation executed with the API response as evidence;
+credentials never in a log or in code.
 ```
 
-## R4 — Listing que converte
+## R4 — A listing that converts
 
 **Skills:** `aso`
-**Quando:** app no ar mas instalações fracas — auditar a listing antes de comprar tráfego.
+**When:** the app is live but installs are weak — audit the listing before buying traffic.
 
 ```text
-Audite com aso a listing de <app> (<URL App Store/Play>): keywords,
-título/subtítulo, screenshots, conversão vs concorrentes <apps>.
-Sucesso: lista priorizada de mudanças na listing com hipótese de
-impacto cada; textos prontos dentro dos limites de caracteres.
+Audit with aso the listing for <app> (<App Store/Play URL>):
+keywords, title/subtitle, screenshots, conversion vs. competitors
+<apps>.
+Success: prioritized list of listing changes with an impact
+hypothesis each; ready copy within character limits.
 ```
 
-## Veja também
+## See also
 
-- `vercel-react-native-skills` — performance RN/Expo antes do release (trilha [prompts-vercel-react](../prompts-vercel-react/SKILL.md)).
-- `computer-use-swiftui-loop` — loop de validação visual para apps macOS/SwiftUI (Computer Use, exclusivo do app Codex).
-- `imagegen-frontend-mobile` — gerar screenshots/artes de listing.
+- `vercel-react-native-skills` — RN/Expo performance before release (track [prompts-vercel-react](../prompts-vercel-react/SKILL.md)).
+- `computer-use-swiftui-loop` — visual validation loop for macOS/SwiftUI apps (Computer Use, Codex app only).
+- `imagegen-frontend-mobile` — generate listing screenshots/artwork.

@@ -5,77 +5,80 @@ description: Ready-to-paste prompts for the Vercel/React family — React and Ne
 
 # Prompts — Vercel & React
 
-Receitas para a família `vercel-*`: auditar, otimizar, compor, animar e deployar apps React/Next.js e React Native.
+Recipes for the `vercel-*` family: audit, optimize, compose, animate, and deploy React/Next.js and React Native apps.
 
-## R1 — Auditoria de best practices + performance
+## R1 — Best-practice + performance audit
 
 **Skills:** `vercel-react-best-practices` + `vercel-optimize` + `bundle-analyzer`
-**Quando:** app React/Next lento, Lighthouse baixo, ou herança de código sem padrão.
+**When:** a slow React/Next app, a low Lighthouse score, or inherited code with no standard.
 
 ```text
-Audite <app/diretório> com vercel-react-best-practices (padrões de
-componente, data fetching, rendering strategy) e vercel-optimize
-(Core Web Vitals, caching, imagens/fontes). Rode bundle-analyzer
-para dependências pesadas e code splitting.
-Sucesso: lista única priorizada por impacto medido (LCP/CLS/bundle
-kB), cada item com diff proposto; top-3 aplicados e re-medidos.
+Audit <app/directory> with vercel-react-best-practices (component
+patterns, data fetching, rendering strategy) and vercel-optimize
+(Core Web Vitals, caching, images/fonts). Run bundle-analyzer for
+heavy dependencies and code splitting.
+Success: a single list prioritized by measured impact
+(LCP/CLS/bundle kB), each item with a proposed diff; top 3 applied
+and re-measured.
 ```
 
-## R2 — Refactor de composição
+## R2 — Composition refactor
 
 **Skills:** `vercel-composition-patterns`
-**Quando:** prop-drilling, god components, ou lógica duplicada entre árvores.
+**When:** prop-drilling, god components, or duplicated logic across trees.
 
 ```text
-Refatore <componente/árvore> com vercel-composition-patterns:
-elimine prop-drilling e god components usando composição
-(children, slots, compound components) em vez de novas props.
-Comportamento idêntico — sem feature nova.
-Sucesso: árvore antes/depois documentada; testes existentes verdes
-sem alteração; nenhuma prop nova atravessando >2 níveis.
+Refactor <component/tree> with vercel-composition-patterns:
+eliminate prop-drilling and god components using composition
+(children, slots, compound components) instead of new props.
+Identical behavior — no new feature.
+Success: before/after tree documented; existing tests green with
+no changes; no new prop crossing >2 levels.
 ```
 
 ## R3 — View transitions
 
 **Skills:** `vercel-react-view-transitions`
-**Quando:** navegação/estado precisa de transição fluida sem custo de layout.
+**When:** navigation/state needs a fluid transition without layout cost.
 
 ```text
-Adicione view transitions em <páginas/elementos> com
-vercel-react-view-transitions: transição de página em <rotas> e
-morph do elemento <elemento> entre telas.
-Sucesso: transições rodando nos navegadores suportados com
-fallback limpo; zero regressão de CLS/INP medida.
+Add view transitions on <pages/elements> with
+vercel-react-view-transitions: page transition on routes <routes>
+and element morph for <element> between screens.
+Success: transitions running in supported browsers with a clean
+fallback; zero measured CLS/INP regression.
 ```
 
-## R4 — React Native / Expo performático
+## R4 — Performant React Native / Expo
 
 **Skills:** `vercel-react-native-skills`
-**Quando:** listas travando, animações a 30fps, ou uso de APIs nativas no Expo/RN.
+**When:** lists jank, animations at 30fps, or native API access in Expo/RN.
 
 ```text
-Otimize <tela/lista> do app RN/Expo com vercel-react-native-skills:
-virtualização correta da lista <lista>, animações no UI thread e
-acesso nativo via <módulo>.
-Sucesso: FPS medido antes/depois na tela alvo; scroll sem frame
-drop com <N> itens; nenhuma ponte JS em hot path.
+Optimize <screen/list> of the RN/Expo app with
+vercel-react-native-skills: correct virtualization for list
+<list>, animations on the UI thread, and native access via
+<module>.
+Success: FPS measured before/after on the target screen; smooth
+scroll with <N> items, no frame drops; no JS bridge in the hot
+path.
 ```
 
-## R5 — Deploy com envs e tokens corretos
+## R5 — Deploy with correct envs and tokens
 
 **Skills:** `deploy-to-vercel` + `vercel-cli-with-tokens`
-**Quando:** publicar preview/produção sem vazar segredo nem quebrar env.
+**When:** publishing preview/production without leaking a secret or breaking env.
 
 ```text
-Deploye <app> na Vercel com deploy-to-vercel usando
-vercel-cli-with-tokens para autenticação por token (sem login
-interativo). Confira env vars de <ambientes> antes do deploy.
-Sucesso: preview URL no ar + checklist de envs conferido; nenhum
-segredo em log ou commit.
+Deploy <app> to Vercel with deploy-to-vercel using
+vercel-cli-with-tokens for token-based auth (no interactive
+login). Check env vars for <environments> before deploying.
+Success: preview URL live + env checklist confirmed; no secret in
+a log or commit.
 ```
 
-## Veja também
+## See also
 
-- `frontend-design` + `ui-ux-pro-max` — a camada visual (trilha [prompts-design-frontend](../prompts-design-frontend/SKILL.md)).
-- `webapp-testing` / `chrome-qa-loop` — validar o resultado no browser.
-- `bundle-watch` — depois do fix pontual: gate contínuo de tamanho em CI.
+- `frontend-design` + `ui-ux-pro-max` — the visual layer (track [prompts-design-frontend](../prompts-design-frontend/SKILL.md)).
+- `webapp-testing` / `chrome-qa-loop` — validate the result in-browser.
+- `bundle-watch` — after the one-shot fix: continuous size gate in CI.

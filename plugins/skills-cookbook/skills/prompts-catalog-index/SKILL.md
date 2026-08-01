@@ -3,235 +3,235 @@ name: prompts-catalog-index
 description: Complete A-to-Z index of every plugin in the hub with a one-line when-to-use hint, grouped by area. Use to locate the right skill fast when no cookbook track matches, or to browse the full catalog without reading raw descriptions.
 ---
 
-# Índice completo do catálogo (159 plugins)
+# Complete catalog index (159 plugins)
 
-Uma linha por plugin: **quando usar**. Agrupado por área; trilhas com receita completa estão linkadas no [SKILL.md raiz](../../SKILL.md). Regra transversal do hub: pares `X` × `X-advisor/-watch/-runner/-guardian/-detector` = pontual × contínuo/CI — escolha por objetivo.
+One line per plugin: **when to use it**. Grouped by area; tracks with a full recipe are linked from the [root SKILL.md](../../SKILL.md). Hub-wide rule: `X` × `X-advisor/-watch/-runner/-guardian/-detector` pairs = one-shot × continuous/CI — pick by objective.
 
-## Entender & aprender
+## Understand & learn
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `architecture-deepener` | codebase raso/confuso: mapa de módulos + oportunidades de aprofundar design |
-| `llm-wiki-curator` | gerar wiki navegável do código para onboarding |
-| `teaching` | plano de aprendizado com milestones e checkpoints |
-| `teaching-workspace` | ambiente de estudo estruturado para praticar |
-| `learning-output-style` | respostas em formato didático |
-| `doc-driven-grilling` | grilar plano/spec e gerar ADRs/glossário antes de codar |
-| `task-interrogator` | grilar plano e transformar em tarefas com aceite |
-| `session-handoff` | fim de sessão longa: handoff para a próxima começar sem re-explorar |
-| `continual-learning` | persistir lições entre sessões |
-| `bug-diagnostics` | entender comportamento quebrado: repro → hipóteses → fix |
-| `code-smell` | análise pontual de cheiros de código |
-| `code-smell-detector` | enforcement contínuo de cheiros em CI |
+| `architecture-deepener` | shallow/confusing codebase: module map + opportunities to deepen design |
+| `llm-wiki-curator` | generate a navigable code wiki for onboarding |
+| `teaching` | learning plan with milestones and checkpoints |
+| `teaching-workspace` | structured study environment to practice |
+| `learning-output-style` | responses in a didactic format |
+| `doc-driven-grilling` | grill a plan/spec and generate ADRs/glossary before coding |
+| `task-interrogator` | grill a plan and turn it into tasks with acceptance criteria |
+| `session-handoff` | end of a long session: handoff so the next one starts without re-exploring |
+| `continual-learning` | persist lessons across sessions |
+| `bug-diagnostics` | understand broken behavior: repro → hypotheses → fix |
+| `code-smell` | one-shot code-smell analysis |
+| `code-smell-detector` | continuous code-smell enforcement in CI |
 
 ## Loops & QA
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `api-test-loop` | loop de validação de API via CURL com findings.md |
-| `chrome-qa-loop` | QA exploratório de app web vivo, um report por finding |
-| `computer-use-swiftui-loop` | loop visual para apps macOS/SwiftUI (Computer Use, app Codex) |
-| `error-fixer-loop` | falha de build/teste: investigar → fixar → regra anti-regressão |
-| `karpathy-loop` | ciclos autônomos de otimização de métrica |
-| `webapp-testing` | toolkit Playwright pontual: screenshots, logs, interação |
-| `playwright` | E2E scriptado |
-| `playwright-interactive` | sessão de browser interativa/assistida |
-| `verification-before-completion` | gate "está pronto mesmo?" antes de declarar concluído |
-| `agentic-value-loops` | loops de valor contínuos: feature, docs, manutenção/segurança, AI tuning |
+| `api-test-loop` | API validation loop via CURL with findings.md |
+| `chrome-qa-loop` | exploratory QA of a live web app, one report per finding |
+| `computer-use-swiftui-loop` | visual loop for macOS/SwiftUI apps (Computer Use, Codex app) |
+| `error-fixer-loop` | build/test failure: investigate → fix → anti-regression rule |
+| `karpathy-loop` | autonomous cycles to optimize a metric |
+| `webapp-testing` | one-shot Playwright toolkit: screenshots, logs, interaction |
+| `playwright` | scripted E2E |
+| `playwright-interactive` | interactive/assisted browser session |
+| `verification-before-completion` | "is this actually done?" gate before declaring complete |
+| `agentic-value-loops` | recurring value loops: feature, docs, maintenance/security, AI tuning |
 
-## Método Karpathy
+## Karpathy method
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `karpathy-guidelines` | princípios comportamentais em qualquer código não-trivial |
-| `karpathy-recipe` | receita por estágios para trabalho médio/grande |
+| `karpathy-guidelines` | behavioral principles on any non-trivial code |
+| `karpathy-recipe` | staged recipe for medium/large work |
 
-## Engenharia & segurança
+## Engineering & security
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `code-review-expert` | review estruturado de diff/PR |
-| `pr-review-canvas` | renderizar findings de review como comentários inline |
-| `commit-quality` | higiene de commits semânticos |
-| `async-patterns` | auditar races, N+1 async, paralelismo sem limite |
-| `async-advisor` | gate de padrões async em CI/PR |
-| `bundle-analyzer` | investigar bundle pesado agora |
-| `bundle-watch` | gate de tamanho de bundle em CI |
-| `db-advisor` | monitoramento contínuo do banco com relatórios de saúde |
-| `db-index-advisor` | índice para query lenta específica |
-| `load-test` | desenhar teste de carga/SLO |
-| `load-test-runner` | rodar/agendar cargas recorrentes |
-| `chaos-test` | desenhar experimentos de falha |
-| `chaos-runner` | orquestrar/agendar chaos com score de resiliência |
-| `security-best-practices` | checklist de práticas seguras no código |
-| `security-guidance` | orientação de segurança contextual |
-| `security-ownership-map` | mapear donos por área de segurança |
-| `security-threat-model` | STRIDE de feature nova |
-| `i18n-audit` | achar chaves faltando/órfãs/hardcoded |
-| `i18n-sync` | sincronizar estrutura entre locales |
-| `feature-flag` | implementar/usar flag pontual |
-| `feature-flags` | gestão contínua de flags |
-| `feature-purge` | remover feature inteira sem deixar código morto |
-| `finishing-a-development-branch` | fechar branch com qualidade antes do merge |
-| `git-expert` | commits semânticos, bisect, fluxo git |
-| `gh-expert` | PRs, issues e automação via gh CLI |
-| `incident-center` | registro e postmortem de incidentes |
-| `incident-runbook` | resposta guiada durante o incidente |
+| `code-review-expert` | structured review of a diff/PR |
+| `pr-review-canvas` | render review findings as inline comments |
+| `commit-quality` | semantic commit hygiene |
+| `async-patterns` | audit races, N+1 async, unbounded parallelism |
+| `async-advisor` | CI/PR gate for async patterns |
+| `bundle-analyzer` | investigate a heavy bundle now |
+| `bundle-watch` | CI gate for bundle size |
+| `db-advisor` | continuous query monitoring: N+1 detection, repeated-query tracking |
+| `db-index-advisor` | index for a specific slow query |
+| `load-test` | design a load test/SLO |
+| `load-test-runner` | run/schedule recurring load tests |
+| `chaos-test` | design failure experiments |
+| `chaos-runner` | orchestrate/schedule chaos with a resilience score |
+| `security-best-practices` | secure-coding practice checklist |
+| `security-guidance` | contextual security guidance |
+| `security-ownership-map` | map owners per security area |
+| `security-threat-model` | STRIDE for a new feature |
+| `i18n-audit` | find missing/orphaned/hardcoded keys |
+| `i18n-sync` | sync structure across locales |
+| `feature-flag` | implement/use a one-shot flag |
+| `feature-flags` | ongoing flag management |
+| `feature-purge` | remove an entire feature with no dead code left |
+| `finishing-a-development-branch` | close a branch with quality before merge |
+| `git-expert` | semantic commits, bisect, git workflow |
+| `gh-expert` | PRs, issues, and automation via the gh CLI |
+| `incident-center` | incident logging and postmortem |
+| `incident-runbook` | guided response during an incident |
 
 ## APIs & CLIs
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `openapi-generate` | gerar spec OpenAPI do código (pontual) |
-| `openapi-hub` | gestão contínua de múltiplas specs |
-| `postman-generator` | collection Postman a partir de spec/rotas |
-| `cli-creator` | CLI composável de uma API (foco Codex) |
-| `cli-generator` | CLI Bun completa a partir de SPEC |
-| `cli-for-agent` | rubrica de CLI operável por agentes |
-| `cli-wrapper` | envelopar CLI externo com digest e economia de tokens |
-| `agent-sdk-dev` | construir agentes no Claude Agent SDK |
+| `openapi-generate` | generate an OpenAPI spec from code (one-shot) |
+| `openapi-hub` | ongoing management of multiple specs |
+| `postman-generator` | Postman collection from a spec/routes |
+| `cli-creator` | composable CLI from an API (Codex-focused) |
+| `cli-generator` | full Bun CLI generated from a SPEC |
+| `cli-for-agent` | rubric for a CLI operable by agents |
+| `cli-wrapper` | wrap an external CLI with a digest and token savings |
+| `agent-sdk-dev` | build agents on the Claude Agent SDK |
 
 ## Frontend & design
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `frontend-design` | direção visual intencional para UI nova |
-| `design` | produção de assets de marca: logos, CIP, banners, ícones |
-| `design-taste-frontend` | bom gosto de base quando ainda não há estética escolhida |
-| `ui-ux-pro-max` | base de dados: estilos, paletas, fontes, guidelines por stack |
-| `web-design-guidelines` | checklist de guidelines web |
-| `a11y-audit` | auditoria WCAG pontual |
-| `a11y-guardian` | gate contínuo de a11y em PR/CI |
-| `minimalist-ui` | estética minimalista (exclusiva) |
-| `industrial-brutalist-ui` | estética brutalista (exclusiva) |
-| `high-end-visual-design` | estética premium (exclusiva) |
-| `emil-design-eng` | estética design-engineer (exclusiva) |
-| `image-to-code` | screenshot/mockup → componente |
-| `redesign-existing-projects` | cara nova preservando conteúdo/fluxo |
-| `imagegen-frontend-web` | gerar referência visual web |
-| `imagegen-frontend-mobile` | gerar referência visual mobile |
-| `scroll-world` | experiência scrollytelling |
+| `frontend-design` | intentional visual direction for new UI |
+| `design` | brand asset production: logos, CIP, banners, icons |
+| `design-taste-frontend` | good-taste baseline when no aesthetic is chosen yet |
+| `ui-ux-pro-max` | data base: styles, palettes, fonts, per-stack guidelines |
+| `web-design-guidelines` | web guidelines checklist |
+| `a11y-audit` | one-shot WCAG audit |
+| `a11y-guardian` | continuous a11y gate in PR/CI |
+| `minimalist-ui` | minimalist aesthetic (exclusive) |
+| `industrial-brutalist-ui` | brutalist aesthetic (exclusive) |
+| `high-end-visual-design` | premium aesthetic (exclusive) |
+| `emil-design-eng` | design-engineer aesthetic (exclusive) |
+| `image-to-code` | screenshot/mockup → component |
+| `redesign-existing-projects` | new look preserving content/flow |
+| `imagegen-frontend-web` | generate web visual reference |
+| `imagegen-frontend-mobile` | generate mobile visual reference |
+| `scroll-world` | scrollytelling experience |
 
 ## Vercel & React
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `vercel-react-best-practices` | padrões React/Next: componentes, fetching, rendering |
-| `vercel-optimize` | Core Web Vitals, caching, imagens/fontes |
-| `vercel-composition-patterns` | matar prop-drilling/god components por composição |
-| `vercel-react-view-transitions` | transições de página/elemento |
-| `vercel-react-native-skills` | performance RN/Expo: listas, animações, nativo |
-| `vercel-cli-with-tokens` | Vercel CLI autenticada por token (não-interativa) |
-| `deploy-to-vercel` | publicar preview/produção |
+| `vercel-react-best-practices` | React/Next patterns: components, fetching, rendering |
+| `vercel-optimize` | Core Web Vitals, caching, images/fonts |
+| `vercel-composition-patterns` | kill prop-drilling/god components via composition |
+| `vercel-react-view-transitions` | page/element transitions |
+| `vercel-react-native-skills` | RN/Expo performance: lists, animations, native |
+| `vercel-cli-with-tokens` | token-authenticated Vercel CLI (non-interactive) |
+| `deploy-to-vercel` | publish preview/production |
 
 ## Mobile & release
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `apple-store-release-agent` | go/no-go auditável de release iOS |
-| `google-play-release-agent` | go/no-go auditável de release Android |
-| `app-store-connect-api` | automação App Store Connect: TestFlight, IAP, relatórios |
-| `google-play-developer-api` | automação Play Console: tracks, rollout |
-| `aso` | otimizar listing das lojas |
+| `apple-store-release-agent` | auditable go/no-go for an iOS release |
+| `google-play-release-agent` | auditable go/no-go for an Android release |
+| `app-store-connect-api` | App Store Connect automation: TestFlight, IAP, reports |
+| `google-play-developer-api` | Play Console automation: tracks, rollout |
+| `aso` | optimize store listings |
 
-## Dados & backend
+## Data & backend
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `supabase` | operar Supabase: schema, RLS, functions |
-| `supabase-postgres-best-practices` | modelagem e índices Postgres corretos |
+| `supabase` | operate Supabase: schema, RLS, functions |
+| `supabase-postgres-best-practices` | correct Postgres modeling and indexes |
 | `firebase-expert` | Firestore/Auth/Functions/Hosting |
 
-## Conhecimento & Notion
+## Knowledge & Notion
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `notion-knowledge-capture` | decisões do chat → páginas Notion rastreáveis |
-| `notion-meeting-intelligence` | notas de reunião → ações com dono |
-| `notion-research-documentation` | pesquisa com trilha auditável de fontes |
-| `notion-spec-to-implementation` | spec no Notion → plano de implementação |
+| `notion-knowledge-capture` | chat decisions → traceable Notion pages |
+| `notion-meeting-intelligence` | meeting notes → owned actions |
+| `notion-research-documentation` | research with an auditable source trail |
+| `notion-spec-to-implementation` | Notion spec → implementation plan |
 
-## Produto & growth
+## Product & growth
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `product-marketing` | posicionamento e mensagens-chave |
-| `pricing` | tiers, âncoras e estratégia de preço |
-| `paywalls` | paywall in-app nos momentos de valor |
-| `offers` | bônus, garantia, framing de valor |
-| `onboarding` | do cadastro ao aha-moment |
-| `signup` | fluxo de cadastro que converte |
-| `launch` | cronograma e execução de lançamento |
+| `product-marketing` | positioning and key messages |
+| `pricing` | tiers, anchors, and pricing strategy |
+| `paywalls` | in-app paywall at value moments |
+| `offers` | bonuses, guarantee, value framing |
+| `onboarding` | from signup to aha-moment |
+| `signup` | a signup flow that converts |
+| `launch` | launch timeline and execution |
 | `churn-prevention` | cancel flow, save offers, dunning, win-back |
-| `analytics` | tracking plan, GA4, eventos, atribuição |
-| `free-tools` | ferramenta gratuita como motor de aquisição |
-| `lead-magnets` | iscas de captura de leads |
-| `referrals` | programa de indicação |
-| `popups` | popups de conversão sem irritar |
-| `revops` | operação de receita: funil, CRM, handoffs |
-| `prospecting` | prospecção outbound |
-| `sales-enablement` | material e argumentos para vendas |
+| `analytics` | tracking plan, GA4, events, attribution |
+| `free-tools` | a free tool as an acquisition engine |
+| `lead-magnets` | lead-capture magnets |
+| `referrals` | referral program |
+| `popups` | conversion popups without annoying users |
+| `revops` | revenue operations: funnel, CRM, handoffs |
+| `prospecting` | outbound prospecting |
+| `sales-enablement` | material and talking points for sales |
 
-## Marketing & conteúdo
+## Marketing & content
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `copywriting` | escrever copy persuasiva do zero |
-| `copy-editing` | editar/afiar copy existente |
-| `writing-guidelines` | padrão de escrita clara |
-| `marketing-psychology` | vieses e comportamento aplicados com ética |
-| `marketing-plan` | plano de marketing completo |
-| `marketing-ideas` | gerar ideias/ângulos novos |
-| `marketing-council` | painel de perspectivas de marketing |
-| `marketing-loops` | workflows de marketing recorrentes/agendados (cadência ou trigger) |
-| `content-strategy` | estratégia e calendário de conteúdo |
-| `emails` | sequências e campanhas de email |
-| `sms` | campanhas SMS |
-| `social` | distribuição e formatos por rede |
-| `ads` | mídia paga: campanha, targeting, otimização |
-| `brand` | voz, identidade e consistência de marca |
-| `brandkit` | boards de brand guidelines premium |
-| `seo-audit` | auditoria SEO técnica + on-page |
-| `ai-seo` | ser citado por LLMs: AEO/GEO, llms.txt |
-| `programmatic-seo` | páginas SEO em escala programática |
-| `schema` | dados estruturados JSON-LD |
-| `site-architecture` | arquitetura de site para SEO/navegação |
-| `competitors` | análise ampla de concorrência |
-| `competitor-profiling` | perfil profundo de um concorrente |
-| `co-marketing` | parcerias de marketing |
-| `community-marketing` | crescer via comunidade |
-| `influencer-marketing` | campanhas com criadores |
-| `public-relations` | assessoria e PR |
-| `video` | roteiro e estratégia de vídeo |
-| `image` | gerar/editar imagem avulsa |
-| `imagegen` | geração de imagem (geral; ver variantes frontend) |
+| `copywriting` | write persuasive copy from scratch |
+| `copy-editing` | edit/sharpen existing copy |
+| `writing-guidelines` | clear-writing standard |
+| `marketing-psychology` | biases and behavior applied ethically |
+| `marketing-plan` | full marketing plan |
+| `marketing-ideas` | generate new ideas/angles |
+| `marketing-council` | panel of marketing perspectives |
+| `marketing-loops` | recurring/scheduled marketing workflows (cadence or trigger) |
+| `content-strategy` | content strategy and calendar |
+| `emails` | email sequences and campaigns |
+| `sms` | SMS campaigns |
+| `social` | per-network distribution and formats |
+| `ads` | paid media: campaign, targeting, optimization |
+| `brand` | voice, identity, and brand consistency |
+| `brandkit` | premium brand-guidelines boards |
+| `seo-audit` | technical + on-page SEO audit |
+| `ai-seo` | get cited by LLMs: AEO/GEO, llms.txt |
+| `programmatic-seo` | SEO pages at programmatic scale |
+| `schema` | structured data (JSON-LD) |
+| `site-architecture` | site architecture for SEO/navigation |
+| `competitors` | broad competitive analysis |
+| `competitor-profiling` | deep profile of one competitor |
+| `co-marketing` | marketing partnerships |
+| `community-marketing` | grow via community |
+| `influencer-marketing` | creator campaigns |
+| `public-relations` | PR and press |
+| `video` | video script and strategy |
+| `image` | one-off image generation/editing |
+| `imagegen` | general-purpose image generation (see the frontend variants) |
 
 ## Meta-harness & tokens
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `senior-prompt-engineer` | refinar pedido em prompt definitivo + EXEC-MAP (stage-0) |
-| `skills-selector` | decidir quais skills ativar (stage-1) |
-| `smart-dispatch` | rotear agente/modelo/custo (stage-2) |
-| `skill-creator` | criar skill nova guiada |
-| `skill-authoring` | boas práticas de escrita de skill |
-| `skill-installer` | instalar skills externas |
-| `create-plugin` | gerador de plugin (escolha UM gerador) |
-| `plugin-creator` | gerador de plugin (escolha UM gerador) |
-| `plugin-generator` | gerador de plugin (escolha UM gerador) |
-| `hookify` | automações "sempre que X, faça Y" via hooks |
-| `orchestrate` | fan-out multi-agente com integração final |
-| `subagent-driven-development` | desenvolvimento dirigido por subagentes |
-| `ai-workspace-orchestrator` | montar workspace de agentes com contrato + review |
-| `opencode-subagent` | delegar para OpenCode |
-| `migrate-to-codex` | portar skills/fluxos para Codex |
-| `caveman` | compressão de resposta (lite/full/ultra) |
-| `token-saver` | cortar os maiores consumidores de contexto |
-| `skills-cookbook` | este cookbook: receitas, combos e anti-padrões |
+| `senior-prompt-engineer` | refine a request into a definitive prompt + EXEC-MAP (stage-0) |
+| `skills-selector` | decide which skills to activate (stage-1) |
+| `smart-dispatch` | route agent/model/cost (stage-2) |
+| `skill-creator` | guided creation of a new skill |
+| `skill-authoring` | best practices for writing a skill |
+| `skill-installer` | install external skills |
+| `create-plugin` | plugin generator (pick ONE generator) |
+| `plugin-creator` | plugin generator (pick ONE generator) |
+| `plugin-generator` | plugin generator (pick ONE generator) |
+| `hookify` | "whenever X, do Y" automations via hooks |
+| `orchestrate` | multi-agent fan-out with a final integration pass |
+| `subagent-driven-development` | subagent-driven development |
+| `ai-workspace-orchestrator` | build an agent workspace with contract + review |
+| `opencode-subagent` | delegate to OpenCode |
+| `migrate-to-codex` | port skills/flows to Codex |
+| `caveman` | response compression (lite/full/ultra) |
+| `token-saver` | cut the biggest context consumers |
+| `skills-cookbook` | this cookbook: recipes, combos, and anti-patterns |
 
-## Diversão & experimentos
+## Fun & experiments
 
-| Plugin | Quando usar |
+| Plugin | When to use |
 |---|---|
-| `hatch-pet` | gerar/reparar spritesheet de pet (Codex) a partir de arte/imagem |
-| `spotify-squad` | experiência squad + Spotify |
+| `hatch-pet` | generate/repair a pet spritesheet (Codex) from art/image |
+| `spotify-squad` | squad + Spotify experience |

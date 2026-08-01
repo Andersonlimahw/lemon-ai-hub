@@ -2,8 +2,6 @@
 
 Ready-to-paste example prompts that teach efficient use of the lemon-ai-hub skills. Thirteen recipe tracks, each a sub-skill with recipes (prompt template + placeholders + verifiable success criterion), plus combination rules, an anti-pattern matrix of mutually exclusive or redundant skills, and a complete A–Z index sub-skill covering all 159 plugins in the hub.
 
-Prompt templates are written in pt-BR (the author's working language); skill names and identifiers are always exact English. Adapt the prose to any language — skills trigger on intent.
-
 ## Tracks
 
 | Track | Sub-skill | Focus |

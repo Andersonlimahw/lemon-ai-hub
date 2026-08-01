@@ -5,66 +5,66 @@ description: Ready-to-paste prompts for UI and frontend design — intentional v
 
 # Prompts — Design & Frontend
 
-Receitas para UI com intenção. Regra inegociável da trilha: **uma estética por vez** — `minimalist-ui`, `industrial-brutalist-ui`, `high-end-visual-design` e `emil-design-eng` são direções autoexcludentes; misturar duas produz UI genérica ou incoerente.
+Recipes for UI with intent. Non-negotiable rule of this track: **one aesthetic at a time** — `minimalist-ui`, `industrial-brutalist-ui`, `high-end-visual-design`, and `emil-design-eng` are mutually exclusive art directions; mixing two produces generic or incoherent UI.
 
-## R1 — Tela nova com direção + dados + compliance
+## R1 — New screen with direction + data + compliance
 
 **Skills:** `frontend-design` + `ui-ux-pro-max` + `a11y-audit`
-**Quando:** construir UI nova que não pareça template.
+**When:** building new UI that shouldn't look like a template default.
 
 ```text
-Construa <tela/componente> em <stack> para <produto/persona>.
-Direção visual intencional com frontend-design (nada de default
-de template); palette, tipografia e guidelines do stack via
-ui-ux-pro-max; feche com a11y-audit em WCAG 2.1 AA.
-Sucesso: componente renderizando + tokens documentados (cores,
-fontes, espaçamento) + auditoria a11y sem findings CRITICAL.
+Build <screen/component> in <stack> for <product/persona>.
+Intentional visual direction with frontend-design (no template
+default); palette, typography, and stack guidelines via
+ui-ux-pro-max; close with a11y-audit at WCAG 2.1 AA.
+Success: rendering component + documented tokens (colors, fonts,
+spacing) + a11y audit with no CRITICAL findings.
 ```
 
-## R2 — Estética específica (escolha UMA)
+## R2 — Specific aesthetic (pick ONE)
 
-**Skills:** `minimalist-ui` OU `industrial-brutalist-ui` OU `high-end-visual-design` OU `emil-design-eng`
-**Quando:** o projeto pede uma direção de arte forte e definida.
+**Skills:** `minimalist-ui` OR `industrial-brutalist-ui` OR `high-end-visual-design` OR `emil-design-eng`
+**When:** the project calls for a strong, defined art direction.
 
 ```text
-Aplique a estética <UMA: minimalist-ui | industrial-brutalist-ui |
-high-end-visual-design | emil-design-eng> na tela <tela> em
-<stack>. Siga a direção à risca: tipografia, densidade, cor e
-motion coerentes com a estética escolhida — sem emprestar
-elementos de outra.
-Sucesso: a tela é identificável como a estética escolhida em um
-screenshot, e um checklist de 5 traços da estética passa.
+Apply aesthetic <ONE: minimalist-ui | industrial-brutalist-ui |
+high-end-visual-design | emil-design-eng> to screen <screen> in
+<stack>. Follow the direction strictly: typography, density,
+color, and motion coherent with the chosen aesthetic — nothing
+borrowed from another.
+Success: the screen is identifiable as the chosen aesthetic in a
+screenshot, and a 5-trait checklist for the aesthetic passes.
 ```
 
-## R3 — Screenshot → código
+## R3 — Screenshot → code
 
 **Skills:** `image-to-code` + `ui-ux-pro-max`
-**Quando:** você tem referência visual (screenshot, mockup) e quer componente fiel.
+**When:** you have a visual reference (screenshot, mockup) and want a faithful component.
 
 ```text
-Anexo: <screenshot/mockup>. Gere com image-to-code o componente
-em <stack>, fiel ao layout. Mapeie cores e fontes para os tokens
-do design system via ui-ux-pro-max — nada de valores hardcoded
-soltos.
-Sucesso: diff visual mínimo vs a referência + zero cores/fontes
-fora dos tokens.
+Attached: <screenshot/mockup>. Generate with image-to-code the
+component in <stack>, faithful to the layout. Map colors and
+fonts to design-system tokens via ui-ux-pro-max — no loose
+hardcoded values.
+Success: minimal visual diff vs. the reference + zero colors/fonts
+outside the tokens.
 ```
 
-## R4 — Redesign sem quebrar o conteúdo
+## R4 — Redesign without breaking content
 
 **Skills:** `redesign-existing-projects` + `web-design-guidelines` + `a11y-audit`
-**Quando:** página/produto existente precisa de cara nova preservando informação e fluxo.
+**When:** an existing page/product needs a new look while preserving information and flow.
 
 ```text
-Redesenhe <página/fluxo> com redesign-existing-projects,
-preservando arquitetura de informação e conteúdo. Valide contra
-web-design-guidelines e feche com a11y-audit (AA).
-Sucesso: before/after lado a lado + checklist de guidelines
-passando + nenhuma regressão de conteúdo ou navegação.
+Redesign <page/flow> with redesign-existing-projects, preserving
+information architecture and content. Validate against
+web-design-guidelines and close with a11y-audit (AA).
+Success: side-by-side before/after + guidelines checklist passing
++ no content or navigation regression.
 ```
 
-## Veja também
+## See also
 
-- `design-taste-frontend` — base de bom gosto quando você ainda NÃO escolheu estética (não combinar com uma estética específica).
-- `imagegen-frontend-web` / `imagegen-frontend-mobile` — gerar referência visual antes de codar.
-- `a11y-guardian` — depois do audit pontual: gate contínuo de a11y em CI.
+- `design-taste-frontend` — good-taste baseline when you have NOT yet chosen an aesthetic (don't combine with a specific aesthetic).
+- `imagegen-frontend-web` / `imagegen-frontend-mobile` — generate visual reference before coding.
+- `a11y-guardian` — after the one-shot audit: continuous a11y gate in CI.

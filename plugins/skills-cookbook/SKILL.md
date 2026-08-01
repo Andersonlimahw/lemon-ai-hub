@@ -5,86 +5,86 @@ description: Example-prompt cookbook for the hub's skills — recipes, combos, a
 
 # Skills Cookbook
 
-Receitas de prompts prontos-para-colar que ensinam a usar as skills deste hub com eficiência — menos tentativa-e-erro, menos carga cognitiva. Cada receita cita as skills pelo nome exato, traz placeholders `<...>` e termina com um critério de sucesso verificável.
+Ready-to-paste prompt recipes that teach efficient use of this hub's skills — less trial-and-error, less cognitive load. Every recipe names the skills by their exact identifier, uses `<placeholders>`, and ends with a verifiable success criterion.
 
-## Como usar
+## How to use
 
-1. Escolha a trilha (abaixo) e a receita que casa com sua situação.
-2. Copie o prompt, preencha os `<placeholders>`.
-3. Cole no chat. Em pedidos não-triviais o pipeline padrão do hub roda por cima: `senior-prompt-engineer` → `skills-selector` → `smart-dispatch`.
-4. Cheque o resultado contra o **Sucesso:** da receita antes de aceitar.
+1. Pick the track (below) and the recipe that matches your situation.
+2. Copy the prompt, fill in the `<placeholders>`.
+3. Paste it in chat. On non-trivial requests, the hub's standard pipeline runs on top: `senior-prompt-engineer` → `skills-selector` → `smart-dispatch`.
+4. Check the result against the recipe's **Success:** line before accepting it.
 
-## Regras de combinação
+## Combination rules
 
-1. **Combine camadas diferentes, nunca a mesma camada duas vezes.** Ex.: direção visual (`frontend-design`) + dados de design (`ui-ux-pro-max`) + compliance (`a11y-audit`) funciona; duas estéticas juntas não.
-2. **Máximo ~3 skills por prompt.** Mais que isso dilui o contexto e piora todas.
-3. **Uma estética por vez.** `minimalist-ui`, `industrial-brutalist-ui`, `high-end-visual-design` e `emil-design-eng` são direções de arte autoexcludentes.
-4. **Um loop driver por vez.** `karpathy-loop`, `error-fixer-loop`, `api-test-loop` e `chrome-qa-loop` são donos de ciclo; encadeie em sequência, nunca em paralelo sobre o mesmo alvo.
-5. **Cite a skill pelo nome exato** no prompt — o seletor ativa com muito mais precisão.
-6. **Sempre feche com critério de sucesso verificável** (Karpathy: metas verificáveis deixam o agente iterar sozinho).
+1. **Combine different layers, never the same layer twice.** Example: visual direction (`frontend-design`) + design data (`ui-ux-pro-max`) + compliance (`a11y-audit`) works; two aesthetics together doesn't.
+2. **Max ~3 skills per prompt.** More than that dilutes context and weakens all of them.
+3. **One aesthetic at a time.** `minimalist-ui`, `industrial-brutalist-ui`, `high-end-visual-design`, and `emil-design-eng` are mutually exclusive art directions.
+4. **One loop driver at a time.** `karpathy-loop`, `error-fixer-loop`, `api-test-loop`, and `chrome-qa-loop` own their cycle; chain them in sequence, never run two in parallel on the same target.
+5. **Name the skill exactly** in the prompt — the selector activates with far more precision.
+6. **Always close with a verifiable success criterion** (Karpathy: strong verifiable goals let the agent iterate independently).
 
-## Anti-padrões (nunca combinar)
+## Anti-patterns (never combine)
 
-| Skills | Tipo | Regra |
+| Skills | Type | Rule |
 |---|---|---|
-| `minimalist-ui` × `industrial-brutalist-ui` × `high-end-visual-design` × `emil-design-eng` | autoexcludentes | escolha UMA direção estética por tela/projeto |
-| `design-taste-frontend` × qualquer estética acima | sobreposição | use taste como base geral OU uma estética específica, não ambos |
-| `feature-flag` × `feature-flags` | sobreposição | implementação/fix pontual OU tracking contínuo em CI — escolha por objetivo, não os dois como driver |
-| `code-smell` × `code-smell-detector` | sobreposição | análise pontual sob demanda OU enforcement contínuo em CI — escolha por objetivo |
-| `doc-driven-grilling` × `task-interrogator` | sobreposição | mesmo grilling de base; um gera docs (ADRs/glossário), o outro gera tarefas — em sequência ok, como drivers paralelos não |
-| `competitors` × `competitor-profiling` | sobreposição | análise ampla de mercado OU perfil profundo de um player |
-| `webapp-testing` × `playwright` × `chrome-qa-loop` | sobreposição | toolkit pontual OU E2E scriptado OU loop exploratório — por objetivo |
-| `image` × `imagegen` × `brandkit` | sobreposição | asset avulso OU imagem de frontend OU brand board |
-| `caveman` × `teaching` / `learning-output-style` | objetivos conflitantes | compressão máxima vs. didática — nunca no mesmo turno |
-| `copywriting` × `copy-editing` | conflito de passe | escrever do zero OU editar existente; sequencial ok, simultâneo não |
-| `karpathy-loop` × `error-fixer-loop` (mesmo alvo) | conflito de driver | um loop dono do ciclo; o outro entra como etapa, não como driver |
-| `X` × `X-advisor/-watch/-runner/-guardian/-detector` | regra geral do hub | pontual (investigar/fixar agora) × contínuo (gate de CI) — escolha por objetivo, nunca os dois como driver do mesmo passe (`async-patterns`×`async-advisor`, `bundle-analyzer`×`bundle-watch`, `load-test`×`load-test-runner`, `chaos-test`×`chaos-runner`, `a11y-audit`×`a11y-guardian`) |
-| `create-plugin` × `plugin-creator` × `plugin-generator` × `skill-creator` | sobreposição de geradores | UM gerador por artefato; neste repo o layout canônico de `validate_plugins.py` manda |
-| `security-best-practices` × `security-guidance` | sobreposição | checklist de código OU orientação contextual — não empilhar |
-| `playwright` × `playwright-interactive` | sobreposição | E2E scriptado OU sessão interativa |
-| `openapi-generate` × `openapi-hub` | sobreposição | gerar spec pontual OU gestão contínua de specs |
-| `cli-creator` × `cli-generator` | sobreposição | escolha pelo runtime alvo (Codex-composável vs Bun spec-first) |
-| `imagegen` × `imagegen-frontend-web` / `imagegen-frontend-mobile` | sobreposição | geral OU específica de frontend — pela finalidade do asset |
+| `minimalist-ui` × `industrial-brutalist-ui` × `high-end-visual-design` × `emil-design-eng` | mutually exclusive | pick ONE art direction per screen/project |
+| `design-taste-frontend` × any aesthetic above | overlap | use taste as a general baseline OR a specific aesthetic, not both |
+| `feature-flag` × `feature-flags` | overlap | one-shot implementation/fix OR continuous CI tracking — pick by objective, not both as driver |
+| `code-smell` × `code-smell-detector` | overlap | on-demand analysis OR continuous CI enforcement — pick by objective |
+| `doc-driven-grilling` × `task-interrogator` | overlap | same base grilling; one produces docs (ADRs/glossary), the other produces tasks — fine in sequence, not as parallel drivers |
+| `competitors` × `competitor-profiling` | overlap | broad market scan OR deep single-player profile |
+| `webapp-testing` × `playwright` × `chrome-qa-loop` | overlap | point-in-time toolkit OR scripted E2E OR exploratory loop — pick by goal |
+| `image` × `imagegen` × `brandkit` | overlap | one-off asset OR frontend imagery OR brand board |
+| `caveman` × `teaching` / `learning-output-style` | conflicting goals | max compression vs. didactic — never in the same turn |
+| `copywriting` × `copy-editing` | pass conflict | writing from scratch OR editing existing copy; sequential ok, simultaneous not |
+| `karpathy-loop` × `error-fixer-loop` (same target) | driver conflict | one loop owns the cycle; the other enters as a step, not as driver |
+| `X` × `X-advisor/-watch/-runner/-guardian/-detector` | hub-wide rule | one-shot (investigate/fix now) × continuous (CI gate) — pick by objective, never both as driver of the same pass (`async-patterns`×`async-advisor`, `bundle-analyzer`×`bundle-watch`, `load-test`×`load-test-runner`, `chaos-test`×`chaos-runner`, `a11y-audit`×`a11y-guardian`) |
+| `create-plugin` × `plugin-creator` × `plugin-generator` × `skill-creator` | generator overlap | ONE generator per artifact; in this repo the canonical layout from `validate_plugins.py` wins |
+| `security-best-practices` × `security-guidance` | overlap | code checklist OR contextual guidance — don't stack |
+| `playwright` × `playwright-interactive` | overlap | scripted E2E OR interactive session |
+| `openapi-generate` × `openapi-hub` | overlap | one-shot spec generation OR continuous multi-spec management |
+| `cli-creator` × `cli-generator` | overlap | pick by target runtime (Codex-composable vs. Bun spec-first) |
+| `imagegen` × `imagegen-frontend-web` / `imagegen-frontend-mobile` | overlap | general purpose OR frontend-specific — by asset purpose |
 
-## Combos que funcionam
+## Combos that work
 
-- `frontend-design` + `ui-ux-pro-max` + `a11y-audit` — direção + dados + compliance
-- `image-to-code` + `ui-ux-pro-max` — screenshot → código com tokens de design
-- `copywriting` + `marketing-psychology` + `emails` — mensagem + persuasão + canal
-- `seo-audit` + `ai-seo` + `schema` — SEO clássico + AI search + dados estruturados (complementares, não redundantes)
-- `pricing` + `paywalls` + `churn-prevention` — funil de monetização ponta a ponta
-- `product-marketing` + `launch` + `social` — posicionamento + lançamento + distribuição
-- `architecture-deepener` + `llm-wiki-curator` + `teaching` — entender + documentar + aprender
-- `api-test-loop` + `verification-before-completion` — loop de validação + gate de conclusão
-- `chrome-qa-loop` → `bug-diagnostics` → `error-fixer-loop` — sequência finding → diagnóstico → fix (nunca simultâneos)
-- `karpathy-guidelines` + `karpathy-recipe` + `karpathy-loop` — princípios sempre, receita no trabalho grande, loop na métrica (complementares)
-- `vercel-react-best-practices` + `vercel-optimize` + `bundle-analyzer` — padrões + vitals + peso do bundle
-- `openapi-generate` + `postman-generator` + `api-test-loop` — spec → collection → validação viva
-- `db-index-advisor` + `supabase-postgres-best-practices` — índice certo na modelagem certa
-- `code-review-expert` + `commit-quality` + `pr-review-canvas` — review + higiene + apresentação
-- `notion-spec-to-implementation` + `doc-driven-grilling` — spec grilada antes de virar código
+- `frontend-design` + `ui-ux-pro-max` + `a11y-audit` — direction + data + compliance
+- `image-to-code` + `ui-ux-pro-max` — screenshot → code with design tokens
+- `copywriting` + `marketing-psychology` + `emails` — message + persuasion + channel
+- `seo-audit` + `ai-seo` + `schema` — classic SEO + AI search + structured data (complementary, not redundant)
+- `pricing` + `paywalls` + `churn-prevention` — end-to-end monetization funnel
+- `product-marketing` + `launch` + `social` — positioning + launch + distribution
+- `architecture-deepener` + `llm-wiki-curator` + `teaching` — understand + document + learn
+- `api-test-loop` + `verification-before-completion` — validation loop + completion gate
+- `chrome-qa-loop` → `bug-diagnostics` → `error-fixer-loop` — finding → diagnosis → fix sequence (never simultaneous)
+- `karpathy-guidelines` + `karpathy-recipe` + `karpathy-loop` — principles always, recipe for large work, loop for metrics (complementary)
+- `vercel-react-best-practices` + `vercel-optimize` + `bundle-analyzer` — patterns + vitals + bundle weight
+- `openapi-generate` + `postman-generator` + `api-test-loop` — spec → collection → live validation
+- `db-index-advisor` + `supabase-postgres-best-practices` — correct index on correct modeling
+- `code-review-expert` + `commit-quality` + `pr-review-canvas` — review + hygiene + presentation
+- `notion-spec-to-implementation` + `doc-driven-grilling` — spec grilled before it becomes code
 
-## Trilhas
+## Tracks
 
-| Trilha | Sub-skill | Foco |
+| Track | Sub-skill | Focus |
 |---|---|---|
-| Entender projetos | [prompts-project-understanding](skills/prompts-project-understanding/SKILL.md) | reduzir carga cognitiva: arquitetura, wiki, aprendizado guiado, grilling de specs |
-| Loops de feedback | [prompts-feedback-loops](skills/prompts-feedback-loops/SKILL.md) | validação contínua: API, QA exploratório, fix de erros, otimização |
-| Produto | [prompts-product](skills/prompts-product/SKILL.md) | posicionamento, monetização, onboarding, lançamento, feedback de usuários |
-| Marketing | [prompts-marketing](skills/prompts-marketing/SKILL.md) | copy, SEO + AI search, email, social, marca |
-| Design & Frontend | [prompts-design-frontend](skills/prompts-design-frontend/SKILL.md) | direção visual, estéticas, screenshot→código, redesign, acessibilidade |
-| Método Karpathy | [prompts-karpathy](skills/prompts-karpathy/SKILL.md) | guidelines, receita para trabalho grande, review por princípios, loop de métrica |
-| Vercel & React | [prompts-vercel-react](skills/prompts-vercel-react/SKILL.md) | best practices, otimização, composição, view transitions, RN/Expo, deploy |
-| Qualidade de engenharia | [prompts-engineering-quality](skills/prompts-engineering-quality/SKILL.md) | review de PR, async, banco, threat model, carga/caos, i18n |
-| APIs & CLIs | [prompts-apis-clis](skills/prompts-apis-clis/SKILL.md) | OpenAPI, Postman, CLIs para agentes, wrapping de CLIs |
-| Mobile & Release | [prompts-mobile-release](skills/prompts-mobile-release/SKILL.md) | go/no-go iOS/Android, App Store Connect, Play API, ASO |
-| Dados & Backend | [prompts-data-backend](skills/prompts-data-backend/SKILL.md) | Supabase/Postgres, Firebase, decisões de banco, incidentes |
-| Conhecimento & Notion | [prompts-knowledge-notion](skills/prompts-knowledge-notion/SKILL.md) | capturar decisões, reuniões, pesquisa, spec→código, aprendizado persistente |
-| Meta-harness | [prompts-meta-harness](skills/prompts-meta-harness/SKILL.md) | criar skills/plugins, hooks, orquestração multi-agente, migração, tokens |
-| Índice A–Z | [prompts-catalog-index](skills/prompts-catalog-index/SKILL.md) | todos os 159 plugins do hub com quando-usar de uma linha |
+| Project understanding | [prompts-project-understanding](skills/prompts-project-understanding/SKILL.md) | cut cognitive load: architecture, wiki, guided learning, spec grilling |
+| Feedback loops | [prompts-feedback-loops](skills/prompts-feedback-loops/SKILL.md) | continuous validation: API, exploratory QA, error fixing, optimization |
+| Product | [prompts-product](skills/prompts-product/SKILL.md) | positioning, monetization, onboarding, launch, user feedback |
+| Marketing | [prompts-marketing](skills/prompts-marketing/SKILL.md) | copy, SEO + AI search, email, social, brand |
+| Design & Frontend | [prompts-design-frontend](skills/prompts-design-frontend/SKILL.md) | visual direction, aesthetics, screenshot-to-code, accessibility |
+| Karpathy method | [prompts-karpathy](skills/prompts-karpathy/SKILL.md) | guidelines, recipe for large work, principle-based review, metric loop |
+| Vercel & React | [prompts-vercel-react](skills/prompts-vercel-react/SKILL.md) | best practices, optimization, composition, view transitions, RN/Expo, deploy |
+| Engineering quality | [prompts-engineering-quality](skills/prompts-engineering-quality/SKILL.md) | PR review, async, database, threat model, load/chaos, i18n |
+| APIs & CLIs | [prompts-apis-clis](skills/prompts-apis-clis/SKILL.md) | OpenAPI, Postman, agent-friendly CLIs, CLI wrapping |
+| Mobile & Release | [prompts-mobile-release](skills/prompts-mobile-release/SKILL.md) | iOS/Android go/no-go, App Store Connect, Play API, ASO |
+| Data & Backend | [prompts-data-backend](skills/prompts-data-backend/SKILL.md) | Supabase/Postgres, Firebase, database decisions, incidents |
+| Knowledge & Notion | [prompts-knowledge-notion](skills/prompts-knowledge-notion/SKILL.md) | decision capture, meetings, research docs, spec-to-code, persistent learning |
+| Meta-harness | [prompts-meta-harness](skills/prompts-meta-harness/SKILL.md) | authoring skills/plugins, hooks, multi-agent orchestration, migration, tokens |
+| A–Z index | [prompts-catalog-index](skills/prompts-catalog-index/SKILL.md) | every plugin in the hub with a one-line when-to-use hint |
 
 ## Guardrails
 
-- Prompts de exemplo em pt-BR; identificadores e nomes de skills sempre em inglês, exatos.
-- O cookbook aponta e ensina — não replica o conteúdo das skills alvo.
-- Toda skill citada existe em `plugins/` deste repo; se uma receita citar algo que não existe mais, a receita está quebrada e deve ser corrigida.
+- All prose — recipes, hints, headers — is written in English, matching this project's language policy. Skill identifiers are always exact.
+- The cookbook points and teaches — it does not replicate the content of the target skills.
+- Every skill cited exists in this repo's `plugins/`; if a recipe cites something that no longer exists, the recipe is broken and must be fixed.

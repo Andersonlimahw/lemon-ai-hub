@@ -3,70 +3,71 @@ name: prompts-project-understanding
 description: Ready-to-paste prompts to understand a codebase fast and cut cognitive load — architecture deep-dives, auto-generated wikis, guided learning paths, and spec grilling before implementation.
 ---
 
-# Prompts — Entender projetos (menos carga cognitiva)
+# Prompts — Understanding projects (less cognitive load)
 
-Receitas para explicar um projeto a você (ou a um agente) sem afogar o contexto. Objetivo: reduzir carga cognitiva e débito cognitivo — você entende o sistema em camadas, com artefatos navegáveis, em vez de ler código cru.
+Recipes to explain a project to you (or an agent) without drowning the context. Goal: reduce cognitive load and cognitive debt — you understand the system in layers, with navigable artifacts, instead of reading raw code.
 
-## R1 — Raio-X de arquitetura
+## R1 — Architecture X-ray
 
 **Skills:** `architecture-deepener`
-**Quando:** o codebase parece "raso", lógica de domínio vazou para controllers/UI, ou você herdou um projeto.
+**When:** the codebase feels "flat", domain logic leaked into controllers/UI, or you inherited a project.
 
 ```text
-Use a skill architecture-deepener no diretório <path>.
-Quero: (1) o mapa de módulos rasos vs profundos, (2) onde a lógica de
-domínio vazou para controllers/UI, (3) as 3 oportunidades de maior
-impacto para aprofundar o design, priorizadas.
-Sucesso: relatório com oportunidades que eu consiga validar apontando
-arquivo:linha, pronto para virar backlog.
+Run architecture-deepener on <path>.
+I want: (1) the map of shallow vs. deep modules, (2) where domain
+logic leaked into controllers/UI, (3) the top 3 highest-impact
+opportunities to deepen the design, prioritized.
+Success: report with opportunities I can validate by pointing to
+file:line, ready to become backlog items.
 ```
 
-## R2 — Wiki viva do projeto
+## R2 — Living project wiki
 
 **Skills:** `llm-wiki-curator` + `architecture-deepener`
-**Quando:** onboarding de time ou de agente; ninguém quer reler o código a cada dúvida.
+**When:** onboarding a teammate or an agent; nobody wants to re-read the code for every question.
 
 ```text
-Gere uma wiki navegável do projeto <path> com llm-wiki-curator:
-índice, uma página por módulo relevante, links reais entre páginas.
-Use architecture-deepener antes para decidir o que merece página
-própria (módulos profundos) e o que é só nota de rodapé.
-Sucesso: index.md + páginas por módulo com links que resolvem;
-uma pergunta típica de onboarding se responde em ≤2 cliques.
+Generate a navigable wiki of project <path> with llm-wiki-curator:
+index, one page per relevant module, real links between pages. Run
+architecture-deepener first to decide what deserves its own page
+(deep modules) vs. a footnote.
+Success: index.md + module pages with links that resolve; a
+typical onboarding question answers in ≤2 clicks.
 ```
 
-## R3 — Me ensina o projeto
+## R3 — Teach me the project
 
 **Skills:** `teaching` + `learning-output-style`
-**Quando:** você quer dominar uma área do repo em algumas sessões, não só receber um dump.
+**When:** you want to master an area of the repo over a few sessions, not just receive a dump.
 
 ```text
-Monte com a skill teaching um plano de aprendizado do repo <repo>
-para eu dominar <área> em <N> sessões. Formato didático
-(learning-output-style): cada sessão com objetivo, leitura mínima
-(arquivos exatos), exercício prático no próprio repo e checkpoint
-verificável.
-Sucesso: plano com N sessões; cada checkpoint é um comando ou
-mudança que eu executo e confiro sozinho.
+Build with teaching a learning plan for repo <repo> so I master
+<area> in <N> sessions. Didactic format (learning-output-style):
+each session with an objective, minimal reading (exact files), a
+hands-on exercise in the repo itself, and a verifiable checkpoint.
+Success: plan with N sessions; each checkpoint is a command or
+change I run and verify myself.
 ```
 
-## R4 — Interrogatório de spec antes de codar
+## R4 — Grill the spec before coding
 
 **Skills:** `doc-driven-grilling` + `task-interrogator`
-**Quando:** antes de implementar uma feature a partir de um doc/spec — barato perguntar agora, caro descobrir depois.
-**Nota:** as duas skills se sobrepõem no grilling; aqui entram em sequência com papéis distintos (grilling+docs → tarefas com aceite), nunca como drivers paralelos.
+**When:** before implementing a feature from a doc/spec — cheap to ask now, expensive to discover later.
 
 ```text
-Antes de implementar <feature>, grile o documento <path> com
-doc-driven-grilling: liste ambiguidades, assunções não declaradas
-e perguntas bloqueantes, em ordem de risco. Use task-interrogator
-para transformar o que sobrar em tarefas com critério de aceite.
-Sucesso: lista de gaps que eu respondo em uma passada + tarefas
-com aceite verificável; nenhuma pergunta genérica.
+Before implementing <feature>, grill document <path> with
+doc-driven-grilling: list ambiguities, undeclared assumptions, and
+blocking questions, ranked by risk. Use task-interrogator to turn
+what's left into tasks with acceptance criteria.
+Success: list of gaps I can answer in one pass + tasks with
+verifiable acceptance; no generic questions.
+Note: the two skills overlap on the core grilling; here they run in
+sequence with distinct roles (grilling+docs → tasks with
+acceptance), never as parallel drivers.
 ```
 
-## Veja também
+## See also
 
-- `session-handoff` — fim de sessão longa: gere um handoff para a próxima sessão começar sem re-explorar.
-- `bug-diagnostics` — quando o objetivo é entender um comportamento quebrado, não o projeto inteiro.
-- Neste repo, `graphify query "<pergunta>"` (ferramenta do projeto, `graphify-out/`) responde perguntas de codebase mais barato que explorar arquivos.
+- `session-handoff` — end of a long session: generate a handoff so the next session starts without re-exploring.
+- `bug-diagnostics` — when the goal is understanding broken behavior, not the whole project.
+- In this repo, `graphify query "<question>"` (project tooling, `graphify-out/`) answers codebase questions more cheaply than exploring files.

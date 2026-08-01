@@ -3,66 +3,65 @@ name: prompts-data-backend
 description: Ready-to-paste prompts for data and backend — Supabase with Postgres best practices, Firebase operations, database advisory, and production incident response.
 ---
 
-# Prompts — Dados & Backend
+# Prompts — Data & Backend
 
-Receitas para a camada de dados e operação de backend gerenciado.
+Recipes for the data layer and managed-backend operations.
 
-## R1 — Supabase bem modelado
+## R1 — Well-modeled Supabase
 
 **Skills:** `supabase` + `supabase-postgres-best-practices`
-**Quando:** schema novo ou reforma em Supabase; RLS, índices e modelagem Postgres.
+**When:** a new or reworked Supabase schema; RLS, indexes, and Postgres modeling.
 
 ```text
-Modele <domínio> no Supabase com a skill supabase, aplicando
-supabase-postgres-best-practices: tipos corretos, constraints,
-índices justificados, RLS por papel <papéis>.
-Sucesso: migration SQL pronta + política RLS testada com um caso
-permitido e um negado por papel; EXPLAIN das queries principais
-sem full scan.
+Model <domain> in Supabase with the supabase skill, applying
+supabase-postgres-best-practices: correct types, constraints,
+justified indexes, RLS per role <roles>.
+Success: ready migration SQL + RLS policy tested with one allowed
+and one denied case per role; EXPLAIN on the main queries shows no
+full scan.
 ```
 
-## R2 — Operação Firebase
+## R2 — Firebase operations
 
 **Skills:** `firebase-expert`
-**Quando:** Firestore/Auth/Functions/Hosting — modelagem, rules, logs ou deploy.
+**When:** Firestore/Auth/Functions/Hosting — modeling, rules, logs, or deploy.
 
 ```text
-Use firebase-expert em <projeto>: <tarefa — ex.: revisar security
-rules do Firestore para <coleções>, diagnosticar a function
-<nome> pelos logs, estruturar a coleção <dado> para o padrão de
-leitura <padrão>>.
-Sucesso: mudança aplicada com rules/queries validadas (simulador
-ou emulador) e evidência de logs limpos.
+Use firebase-expert on <project>: <task — e.g. review Firestore
+security rules for <collections>, diagnose function <name> from
+logs, structure collection <data> for read pattern <pattern>>.
+Success: change applied with rules/queries validated (simulator or
+emulator) and evidence of clean logs.
 ```
 
-## R3 — Monitoramento contínuo do banco
+## R3 — Continuous database monitoring
 
 **Skills:** `db-advisor`
-**Quando:** o banco cresce sem ninguém olhando; você quer relatórios de saúde recorrentes, não descobrir o problema no incidente.
+**When:** the database grows with nobody watching; you want recurring health reports, not discovering the problem during an incident.
 
 ```text
-Configure db-advisor para monitorar <banco/projeto>: relatórios
-recorrentes de saúde cobrindo queries degradando, índices não
-usados, crescimento de tabelas <tabelas> e conexões.
-Sucesso: primeiro relatório gerado com ≥1 ação priorizada por
-seção; cadência definida e agendada.
+Set up db-advisor to monitor <database/project>: recurring health
+reports covering degrading queries, unused indexes, growth of
+tables <tables>, and connections.
+Success: first report generated with ≥1 prioritized action per
+section; cadence defined and scheduled.
 ```
 
-## R4 — Incidente em produção
+## R4 — Production incident
 
 **Skills:** `incident-runbook` + `incident-center`
-**Quando:** algo caiu (ou quase); resposta agora e prevenção depois.
+**When:** something broke (or nearly did); response now, prevention after.
 
 ```text
-Incidente: <sintoma/alerta>. Siga incident-runbook: triagem,
-mitigação, comunicação, evidências. Depois registre em
-incident-center o postmortem sem culpados com ações preventivas.
-Sucesso: mitigação aplicada com timeline registrada; postmortem
-com ≥2 ações preventivas com dono e prazo.
+Incident: <symptom/alert>. Follow incident-runbook: triage,
+mitigation, communication, evidence. Then log with incident-center
+the blameless postmortem with preventive actions.
+Success: mitigation applied with a recorded timeline; postmortem
+with ≥2 preventive actions, each with an owner and a deadline.
 ```
 
-## Veja também
+## See also
 
-- `db-index-advisor` — fix pontual de índice por query (trilha [prompts-engineering-quality](../prompts-engineering-quality/SKILL.md) R3); com `db-advisor` vale a regra geral do hub: pontual × contínuo, um driver por passe.
-- `api-test-loop` — validar a API que expõe esses dados.
-- `load-test` / `chaos-test` — provar que a camada de dados aguenta produção.
+- `db-index-advisor` — one-shot index fix per specific query (track [prompts-engineering-quality](../prompts-engineering-quality/SKILL.md) R3); with `db-advisor` the hub-wide rule applies: one-shot × continuous, one driver per pass.
+- `api-test-loop` — validate the API exposing this data.
+- `load-test` / `chaos-test` — prove the data layer can survive production.

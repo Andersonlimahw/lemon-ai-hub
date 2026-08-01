@@ -5,66 +5,65 @@ description: Ready-to-paste prompts for marketing execution — persuasive copyw
 
 # Prompts — Marketing
 
-Receitas para executar marketing com as skills do hub. Lembrete da matriz: `copywriting` escreve do zero, `copy-editing` edita o existente — nunca os dois no mesmo passe.
+Recipes for executing marketing with the hub's skills. Matrix reminder: `copywriting` writes from scratch, `copy-editing` edits what already exists — never both in the same pass.
 
-## R1 — Copy que converte
+## R1 — Copy that converts
 
 **Skills:** `copywriting` + `marketing-psychology`
-**Quando:** landing/página nova precisa de texto persuasivo com base em comportamento, não em adjetivos.
+**When:** a new landing page needs persuasive text grounded in behavior, not adjectives.
 
 ```text
-Escreva com copywriting a copy da landing de <produto> para
-<persona>: hero (headline + sub + CTA), 3 blocos de benefício com
-prova, e seção de objeções. Aplique marketing-psychology: use
-prova social e aversão à perda onde houver evidência real —
-nada que soe manipulação.
-Sucesso: copy A/B-testável — cada bloco com a hipótese de
-persuasão anotada; zero claims sem prova disponível.
+Write with copywriting the landing page copy for <product>,
+targeting <persona>: hero (headline + sub + CTA), 3 benefit blocks
+with proof, and an objections section. Apply marketing-psychology:
+use social proof and loss aversion only where real evidence
+supports it — nothing that reads as manipulation.
+Success: A/B-testable copy — each block annotated with its
+persuasion hypothesis; zero claims without available proof.
 ```
 
-## R2 — SEO clássico + AI search
+## R2 — Classic SEO + AI search
 
 **Skills:** `seo-audit` + `ai-seo` + `schema`
-**Quando:** tráfego orgânico importa e você quer aparecer também nas respostas de LLMs (AEO/GEO).
+**When:** organic traffic matters and you also want to show up in LLM-generated answers (AEO/GEO).
 
 ```text
-Audite <domínio/diretório do site> com seo-audit (técnico +
-on-page) e ai-seo (citabilidade por LLMs, llms.txt, AI Overviews).
-Gere com schema os dados estruturados das páginas <tipos de página>.
-Sucesso: lista única de fixes priorizada por impacto×esforço, com
-diff ou snippet pronto por item; llms.txt e JSON-LD gerados.
+Audit <site domain/directory> with seo-audit (technical + on-page)
+and ai-seo (LLM citability, llms.txt, AI Overviews). Generate with
+schema the structured data for page types <page types>.
+Success: a single list of fixes prioritized by impact×effort, with
+a diff or snippet ready per item; llms.txt and JSON-LD generated.
 ```
 
-## R3 — Sequência de email
+## R3 — Email sequence
 
 **Skills:** `emails` + `copywriting`
-**Quando:** nutrir, ativar ou recuperar via email com uma sequência coerente.
+**When:** nurturing, activating, or winning back via a coherent email sequence.
 
 ```text
-Crie com emails uma sequência de <N> emails para <objetivo:
-ativação/nutrição/win-back> de <persona>. Copy final com
-copywriting: assunto, preview text, corpo curto, um CTA por email.
-Defina trigger e intervalo de cada envio.
-Sucesso: tabela da sequência (trigger, dia, assunto, CTA) +
-corpo pronto de cada email; nenhum email com dois CTAs.
+Create with emails a sequence of <N> emails for <goal:
+activation/nurture/win-back> targeting <persona>. Final copy with
+copywriting: subject, preview text, short body, one CTA per email.
+Define the trigger and interval for each send.
+Success: sequence table (trigger, day, subject, CTA) + ready body
+copy for each email; no email with two CTAs.
 ```
 
-## R4 — Distribuição social na voz da marca
+## R4 — Social distribution in brand voice
 
 **Skills:** `social` + `content-strategy` + `brand`
-**Quando:** você tem um conteúdo-âncora e quer 2 semanas de distribuição multicanal.
+**When:** you have an anchor piece of content and want two weeks of multi-channel distribution.
 
 ```text
-A partir de <conteúdo-âncora: post/vídeo/release>, gere com
-content-strategy + social um calendário de 2 semanas para
-<canais>. Mantenha a voz definida em brand (tom: <tom>).
-Sucesso: calendário dia-a-dia com post pronto por canal, formato
-nativo de cada canal (não o mesmo texto replicado) e voz
-consistente.
+From <anchor content: post/video/release>, generate with
+content-strategy + social a two-week calendar for <channels>.
+Keep the voice defined in brand (tone: <tone>).
+Success: day-by-day calendar with ready copy per channel, native
+format per channel (not the same text repeated), consistent voice.
 ```
 
-## Veja também
+## See also
 
-- `ads` — quando houver budget pago: campanha, targeting e otimização.
-- `marketing-plan` / `marketing-ideas` / `marketing-council` — estratégia acima das execuções táticas.
-- `competitors` OU `competitor-profiling` (nunca ambos): mercado amplo vs um player a fundo.
+- `ads` — when there's paid budget: campaign, targeting, and optimization.
+- `marketing-plan` / `marketing-ideas` / `marketing-council` — strategy above the tactical executions.
+- `competitors` OR `competitor-profiling` (never both): broad market vs. one deep player.

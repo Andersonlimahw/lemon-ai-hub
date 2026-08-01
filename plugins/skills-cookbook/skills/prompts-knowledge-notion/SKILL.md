@@ -3,79 +3,81 @@ name: prompts-knowledge-notion
 description: Ready-to-paste prompts for knowledge workflows — capturing decisions into Notion, meeting intelligence, research documentation, spec-to-implementation, and cross-session learning persistence.
 ---
 
-# Prompts — Conhecimento & Notion
+# Prompts — Knowledge & Notion
 
-Receitas para transformar conversa volátil em conhecimento persistente — no Notion e entre sessões do harness. Complementa a trilha [prompts-project-understanding](../prompts-project-understanding/SKILL.md): lá você entende; aqui você registra e reaproveita.
+Recipes to turn volatile conversation into persistent knowledge — in Notion and across harness sessions. Complements track [prompts-project-understanding](../prompts-project-understanding/SKILL.md): that one helps you understand; this one helps you record and reuse.
 
-## R1 — Capturar decisões e conhecimento
+## R1 — Capture decisions and knowledge
 
 **Skills:** `notion-knowledge-capture`
-**Quando:** a sessão/discussão gerou decisões que não podem morrer no chat.
+**When:** the session/discussion produced decisions that can't die in the chat.
 
 ```text
-Capture com notion-knowledge-capture as decisões desta
-sessão/thread sobre <tema> na página/database <destino>: decisão,
-contexto, alternativas descartadas e follow-ups com dono.
-Sucesso: página criada com as decisões rastreáveis; follow-ups
-como itens acionáveis; nada de transcrição bruta.
+Capture with notion-knowledge-capture the decisions from this
+session/thread about <topic> into page/database <destination>:
+decision, context, discarded alternatives, and follow-ups with an
+owner.
+Success: page created with traceable decisions; follow-ups as
+actionable items; no raw transcript dump.
 ```
 
-## R2 — Inteligência de reunião
+## R2 — Meeting intelligence
 
 **Skills:** `notion-meeting-intelligence`
-**Quando:** notas de reunião precisam virar ações, não arqueologia.
+**When:** meeting notes need to become actions, not archaeology.
 
 ```text
-Processe com notion-meeting-intelligence as notas da reunião
-<reunião/página>: extraia decisões, ações com dono e prazo, e
-pontos em aberto; cruze com as reuniões anteriores de <série>.
-Sucesso: resumo com ações atribuídas; pendências recorrentes
-sinalizadas; link para as fontes.
+Process with notion-meeting-intelligence the notes from meeting
+<meeting/page>: extract decisions, owned actions with deadlines,
+and open points; cross-reference against prior meetings in series
+<series>.
+Success: summary with assigned actions; recurring open points
+flagged; link to the sources.
 ```
 
-## R3 — Pesquisa documentada
+## R3 — Documented research
 
 **Skills:** `notion-research-documentation`
-**Quando:** pesquisa (técnica ou de mercado) precisa de trilha auditável de fontes.
+**When:** research (technical or market) needs an auditable trail of sources.
 
 ```text
-Documente com notion-research-documentation a pesquisa sobre
-<pergunta>: estrutura pergunta → fontes → achados → síntese →
-recomendação, na database <destino>.
-Sucesso: cada achado com fonte linkada; síntese separada de
-opinião; recomendação com confiança declarada.
+Document with notion-research-documentation the research on
+<question>: structure question → sources → findings → synthesis →
+recommendation, in database <destination>.
+Success: every finding linked to a source; synthesis kept separate
+from opinion; recommendation with stated confidence.
 ```
 
-## R4 — Spec no Notion → implementação
+## R4 — Notion spec → implementation
 
 **Skills:** `notion-spec-to-implementation` + `doc-driven-grilling`
-**Quando:** a spec vive no Notion e vai virar código.
+**When:** the spec lives in Notion and will become code.
 
 ```text
-Puxe a spec <página Notion> com notion-spec-to-implementation e
-grile antes com doc-driven-grilling: ambiguidades e assunções
-primeiro, depois o plano de implementação com verificação por
-etapa.
-Sucesso: gaps da spec respondidos ou registrados; plano com
-"→ verify:" por etapa; rastreio spec→código por item.
+Pull spec <Notion page> with notion-spec-to-implementation and
+grill it first with doc-driven-grilling: ambiguities and
+assumptions first, then the implementation plan with per-step
+verification.
+Success: spec gaps answered or logged; plan with "→ verify:" per
+step; spec→code traceability per item.
 ```
 
-## R5 — Aprendizado que sobrevive à sessão
+## R5 — Learning that survives the session
 
 **Skills:** `continual-learning` + `session-handoff`
-**Quando:** lições e contexto precisam atravessar sessões/compactações.
+**When:** lessons and context need to carry across sessions/compactions.
 
 ```text
-Persista com continual-learning as lições desta sessão sobre
-<tema> (erros cometidos, padrões que funcionaram). Gere com
-session-handoff o handoff para a próxima sessão continuar sem
-re-explorar.
-Sucesso: lições consultáveis na próxima sessão; handoff com estado,
-decisões e próximos passos em ≤1 página.
+Persist with continual-learning the lessons from this session on
+<topic> (mistakes made, patterns that worked). Generate with
+session-handoff the handoff for the next session to continue
+without re-exploring.
+Success: lessons queryable in the next session; handoff with
+state, decisions, and next steps in ≤1 page.
 ```
 
-## Veja também
+## See also
 
-- `teaching-workspace` — ambiente de estudo estruturado; `teaching` monta o plano (trilha [prompts-project-understanding](../prompts-project-understanding/SKILL.md) R3).
-- `llm-wiki-curator` — wiki do código; Notion guarda o resto do conhecimento.
-- `writing-guidelines` — padrão de escrita para tudo que essas receitas produzem.
+- `teaching-workspace` — structured study environment; `teaching` builds the plan (track [prompts-project-understanding](../prompts-project-understanding/SKILL.md) R3).
+- `llm-wiki-curator` — wiki of the code; Notion holds the rest of the knowledge.
+- `writing-guidelines` — writing standard for everything these recipes produce.
