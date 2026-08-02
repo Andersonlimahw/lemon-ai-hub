@@ -1,6 +1,6 @@
 ---
 name: smart-dispatch
-description: Automatically routes tasks to the optimal AI agent, model, or provider based on complexity, cost, and capability. Use when implementing features, fixing bugs, or any multi-step development work. Triggers on "implement", "build", "create", "fix", "add feature", "develop", or when the user asks to do any coding task.
+description: Automatically routes tasks to the optimal AI agent, model, or provider based on complexity, cost, and capability. Optionally combines with smart-sub-agents to pin harness, provider, model, and effort through an explicit combine_smart_subagents parameter. Use when implementing features, fixing bugs, or any multi-step development work. Triggers on "implement", "build", "create", "fix", "add feature", "develop", or when the user asks to do any coding task.
 ---
 
 # Smart Agent & Model Dispatch (Pro Edition)
@@ -13,6 +13,26 @@ If an `EXEC-MAP v1` block from `senior-prompt-engineer` is in context, **consume
 - `EXEC-MAP.executor` picks the provider/CLI; map model tiers to that CLI's tiers.
 - `EXEC-MAP.mcp` lists tools to wire up.
 Treat the map as a starting routing decision, not gospel — escalation rules (Tier 1) still override it when validation keeps failing. With no EXEC-MAP, derive routing from the request as usual.
+
+## Optional combination parameter: `combine_smart_subagents`
+
+When `smart-sub-agents` is installed, support this parameter in the dispatch request:
+
+```text
+combine_smart_subagents: ask | always | never
+```
+
+The default is `ask`, but ask only when the task has explicit provider/model/effort requirements, needs more than one provider/harness, or would materially benefit from isolated parallel subagents. Use this exact question once:
+
+> Combine this dispatch with `smart-sub-agents` to pin the harness, provider, model, and effort and render a subagent configuration? (yes/no)
+
+- `yes` or `always`: invoke `smart-sub-agents`, consume its `ROUTE-MAP v1`, and preserve its explicit route unless validation proves it unavailable.
+- `no` or `never`: continue with the normal smart-dispatch matrix and do not ask again for the same task.
+- If the user already supplied `combine_smart_subagents`, honor it without asking.
+
+The combined route must log both the requested and effective `harness/provider/model/effort`. A provider fallback is visible and auditable; STOP/Ctrl+C or an explicit cancellation must not retry or fall back.
+
+If `smart-sub-agents` is unavailable, state that fact and continue with the standard dispatch table. Do not recreate its catalog inside this skill.
 
 ## Tier 0 — Automated Boilerplate & Verification (RTK Bypass)
 
