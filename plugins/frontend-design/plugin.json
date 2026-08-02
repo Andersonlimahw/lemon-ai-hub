@@ -12,7 +12,5 @@
     "lemon-ai-hub",
     "frontend-design"
   ],
-  "skills": [
-    "frontend-design"
-  ]
+  "skills": "./skills/"
 }

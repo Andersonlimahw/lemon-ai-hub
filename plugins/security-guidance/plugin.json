@@ -12,7 +12,5 @@
     "lemon-ai-hub",
     "security-guidance"
   ],
-  "skills": [
-    "security-guidance"
-  ]
+  "skills": "./skills/"
 }

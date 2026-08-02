@@ -1,7 +1,7 @@
 {
   "name": "smart-dispatch",
-  "version": "1.0.0",
-  "description": "Automatically routes tasks to the optimal AI agent, model, or provider based on complexity, cost, and capability. Use when implementing features, fixing bugs, or any multi-step development work. Triggers on \"implement\", \"build\", \"create\", \"fix\", \"add feature\", \"develop\", or when the user asks to do any coding task.",
+  "version": "1.1.0",
+  "description": "Automatically routes tasks to the optimal AI agent, model, or provider based on complexity, cost, and capability. Optionally combines with smart-sub-agents to pin harness, provider, model, and effort through an explicit combine_smart_subagents parameter. Use when implementing features, fixing bugs, or any multi-step development work. Triggers on \"implement\", \"build\", \"create\", \"fix\", \"add feature\", \"develop\", or when the user asks to do any coding task.",
   "author": {
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"

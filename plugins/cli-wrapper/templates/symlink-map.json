@@ -1,20 +1,21 @@
 {
   "$schema": "https://lemon-ai-hub.dev/schemas/symlink-map.json",
-  "version": "1.0.0",
-  "description": "Maps CLI harness config directories and symlink strategy for cli-wrapper ecosystem. Claude is the single source of truth.",
+  "version": "1.1.0",
+  "description": "Maps CLI harness config directories and symlink strategy for cli-wrapper ecosystem. Claude is the single source of truth; the skills hub is this repo's plugins/ directory.",
   "source_of_truth": {
     "cli": "claude",
     "config_dir": "~/.claude",
-    "skills_dir": "~/.claude/skills",
-    "agents_dir": "~/.claude/agents"
+    "skills_hub": "~/Projects/IA/lemon-ai-hub/plugins",
+    "agents_dir": "~/.claude/agents",
+    "note": "Claude consumes the hub via the lemon-ai-hub plugin marketplace (enabledPlugins). ~/.claude/skills is intentionally absent — recreating it would duplicate every marketplace skill in context."
   },
   "targets": {
     "codex": {
       "binary": "codex",
       "config_dir": "~/.codex",
       "config_file": "AGENTS.md",
-      "skills_strategy": "already_symlinked",
-      "skills_symlink": "~/.codex/skills -> ~/.claude/skills",
+      "skills_strategy": "dir_symlink",
+      "skills_symlink": "~/.codex/skills -> ~/Projects/IA/lemon-ai-hub/plugins",
       "agents_symlink_strategy": "individual",
       "agents_dir": "~/.codex/agents",
       "agents_format": ["md", "toml"],
@@ -29,14 +30,14 @@
       "agents_symlink_strategy": "individual",
       "agents_dir": "~/.gemini/agents",
       "agents_format": ["md"],
-      "note": "Gemini uses its own skills/ dir (not symlinked). Each skill gets an individual symlink."
+      "note": "Gemini uses its own skills/ dir (not symlinked). Each curated skill gets an individual symlink into the hub."
     },
     "agy": {
       "binary": "agy",
       "config_dir": "~/.agy",
       "config_file": "AGENTS.md",
-      "skills_strategy": "already_symlinked",
-      "skills_symlink": "~/.agy/skills -> ~/.claude/skills",
+      "skills_strategy": "dir_symlink",
+      "skills_symlink": "~/.agy/skills -> ~/Projects/IA/lemon-ai-hub/plugins",
       "agents_symlink_strategy": "individual",
       "agents_dir": "~/.agy/agents",
       "agents_format": ["md"],
@@ -44,14 +45,14 @@
     },
     "opencode": {
       "binary": "opencode",
-      "config_dir": "~/.opencode",
+      "config_dir": "~/.config/opencode",
       "config_file": "AGENTS.md",
-      "skills_strategy": "already_symlinked",
-      "skills_symlink": "~/.opencode/skills -> ~/.claude/skills",
+      "skills_strategy": "individual_symlinks",
+      "skills_dir": "~/.config/opencode/skills",
       "agents_symlink_strategy": "individual",
-      "agents_dir": "~/.opencode/agents",
+      "agents_dir": "~/.config/opencode/agents",
       "agents_format": ["md"],
-      "note": "OpenCode agents directory may not exist. Setup creates it."
+      "note": "Curated skills dir: hub-backed entries must be symlinks into the hub (never physical copies); non-hub entries (e.g. ~/.agents/skills links) are allowed. Loading the whole hub would inject 150+ skill descriptions per session."
     }
   },
   "wrapper_skills": [

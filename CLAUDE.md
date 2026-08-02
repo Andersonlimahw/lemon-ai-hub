@@ -37,9 +37,9 @@ plugins/cli-wrapper/        ← CANONICAL SOURCE (git)
 └── templates/              ← symlink-map.json + config templates
 ```
 
-**Global symlinks** (created by cli-wrapper-setup):
-- `~/.claude/skills/cli-wrapper/` → this project's `plugins/cli-wrapper/`
-- Other CLIs resolve via existing `skills → ~/.claude/skills` dir symlink
-- Gemini: individual symlinks per sub-skill (no dir-level symlink)
+**Global topology** (managed by `scripts/setup-symlinks.sh`; verified by `scripts/harness-doctor.sh`):
+- Skills hub = this project's `plugins/`. Claude consumes it via the `lemon-ai-hub` plugin marketplace (no `~/.claude/skills` — it would duplicate every skill).
+- Codex/Agy: `~/.codex/skills` and `~/.agy/skills` → dir symlinks to `plugins/`
+- OpenCode (`~/.config/opencode/skills`) and Gemini (`~/.gemini/skills`): curated per-skill symlinks into `plugins/`
 
 - Use the `git-expert` and `gh-expert` plugins for git workflows. Prefer `/git-commit` for semantic commits.

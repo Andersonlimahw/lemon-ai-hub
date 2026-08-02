@@ -115,9 +115,11 @@ The following skills are available in the Hub. Each is part of a plugin located 
 ### `smart-dispatch`
 - **Location**: [plugins/smart-dispatch/SKILL.md](../plugins/smart-dispatch/SKILL.md)
 
+### `smart-sub-agents`
+- **Location**: [plugins/smart-sub-agents/SKILL.md](../plugins/smart-sub-agents/SKILL.md)
+
 ### `spotify-squad`
 - **Location**: [plugins/spotify-squad/SKILL.md](../plugins/spotify-squad/SKILL.md)
 
 ### `token-saver`
 - **Location**: [plugins/token-saver/SKILL.md](../plugins/token-saver/SKILL.md)
-

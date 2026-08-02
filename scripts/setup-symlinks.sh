@@ -82,11 +82,34 @@ echo "=== Lemon AI Hub: Headless Symlink Setup ==="
 echo "Scope: Global (~/)"
 echo "Target: All Supported Agents"
 
-install_symlink "$REPO_PLUGINS_DIR" "~/.claude/skills"
+# Claude Code deliberately has NO ~/.claude/skills link: it consumes the hub via
+# the lemon-ai-hub plugin marketplace; a skills/ symlink would duplicate every
+# skill in the session context.
 install_symlink "$REPO_PLUGINS_DIR" "~/.codex/skills"
-install_symlink "$REPO_PLUGINS_DIR" "~/.gemini/skills"
 install_symlink "$REPO_PLUGINS_DIR" "~/.agy/skills"
-install_symlink "$REPO_PLUGINS_DIR" "~/.opencode/skills"
+
+# OpenCode (~/.config/opencode) and Gemini keep CURATED skills dirs: hub-backed
+# entries become individual symlinks (fresh content, no drift), non-hub entries
+# are left untouched. Whole-dir symlinks would load 150+ skill descriptions per
+# session in those harnesses.
+curate_hub_symlinks() {
+  local skills_dir="$1"
+  skills_dir="${skills_dir/#\~/$HOME}"
+  [ -d "$skills_dir" ] || return 0
+  local entry name
+  for entry in "$skills_dir"/*/; do
+    [ -d "$entry" ] || continue
+    name="$(basename "$entry")"
+    if [ ! -L "${entry%/}" ] && [ -d "$REPO_PLUGINS_DIR/$name" ]; then
+      local backup="${skills_dir}/.${name}_bak_$(date +%s)"
+      echo "Curating: $name (physical hub copy -> symlink; backup at $backup)"
+      mv "${entry%/}" "$backup"
+      ln -s "$REPO_PLUGINS_DIR/$name" "${entry%/}"
+    fi
+  done
+}
+curate_hub_symlinks "~/.config/opencode/skills"
+curate_hub_symlinks "~/.gemini/skills"
 
 # Phase 3.5: per-harness agent frontmatter sync.
 # Materializes transformed copies of plugins/cli-wrapper/agents/*.md into each
