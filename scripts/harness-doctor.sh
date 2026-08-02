@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# harness-doctor.sh — Verifica saúde do ecossistema multi-harness (Claude = fonte da verdade).
-# Checa symlinks, hooks (rtk/caveman/context-mode), configs e drift entre harnesses.
+# harness-doctor.sh — Health check for the multi-harness ecosystem (Claude = source of truth).
+# Verifies symlinks, hooks (rtk/caveman/context-mode), configs and drift across harnesses.
 #
-# Uso:  bash scripts/harness-doctor.sh          # checks locais (sem rede)
-#       bash scripts/harness-doctor.sh --net    # + smoke-test zai (chama API)
+# Usage:  bash scripts/harness-doctor.sh          # local checks (no network)
+#         bash scripts/harness-doctor.sh --net    # + zai smoke-test (calls API)
 set -uo pipefail
 
 HUB="$HOME/Projects/IA/lemon-ai-hub/plugins"
@@ -20,47 +20,47 @@ link_is() { # $1=link $2=expected_target
 echo "=== harness-doctor — $(date +%F) ==="
 
 echo "[hub]"
-[ -d "$HUB" ] && ok "hub plugins/ existe ($(ls "$HUB" | wc -l | tr -d ' ') plugins)" || bad "hub ausente: $HUB"
+[ -d "$HUB" ] && ok "hub plugins/ exists ($(ls "$HUB" | wc -l | tr -d ' ') plugins)" || bad "hub missing: $HUB"
 
 echo "[rtk]"
 if command -v rtk >/dev/null 2>&1; then
-  ok "binário: $(rtk --version 2>/dev/null | head -1)"
+  ok "binary: $(rtk --version 2>/dev/null | head -1)"
   R=$(echo '{"tool_name":"Bash","tool_input":{"command":"git status"}}' | rtk hook claude 2>/dev/null)
-  case "$R" in *'rtk git status'*) ok "processor 'rtk hook claude' reescreve" ;; *) bad "'rtk hook claude' não reescreveu" ;; esac
-  grep -q '"rtk hook claude"' "$HOME/.claude/settings.json" && ok "hook instalado em settings.json (PreToolUse Bash)" || bad "hook rtk ausente em ~/.claude/settings.json"
+  case "$R" in *'rtk git status'*) ok "'rtk hook claude' processor rewrites commands" ;; *) bad "'rtk hook claude' did not rewrite" ;; esac
+  grep -q '"rtk hook claude"' "$HOME/.claude/settings.json" && ok "hook installed in settings.json (PreToolUse Bash)" || bad "rtk hook missing in ~/.claude/settings.json"
 else
-  bad "rtk não encontrado no PATH"
+  bad "rtk not found in PATH"
 fi
 
 echo "[claude ~/.claude]"
 for f in CLAUDE.md RTK.md kaparthy.md settings.json; do
-  [ -r "$HOME/.claude/$f" ] && ok "$f" || bad "$f ausente"
+  [ -r "$HOME/.claude/$f" ] && ok "$f" || bad "$f missing"
 done
 if [ -e "$HOME/.claude/skills" ]; then
-  warn "~/.claude/skills existe — duplica skills do marketplace; remova (design: marketplace lemon-ai-hub cobre o hub)"
+  warn "~/.claude/skills exists — duplicates marketplace skills; remove it (design: lemon-ai-hub marketplace covers the hub)"
 else
-  ok "~/.claude/skills ausente (correto: marketplace cobre o hub)"
+  ok "~/.claude/skills absent (correct: marketplace covers the hub)"
 fi
-grep -q '"caveman@caveman": true' "$HOME/.claude/settings.json" && ok "caveman plugin habilitado" || bad "caveman plugin desabilitado"
-grep -q '"context-mode@context-mode": true' "$HOME/.claude/settings.json" && ok "context-mode plugin habilitado" || bad "context-mode desabilitado"
-grep -q 'ctx-recall.sh' "$HOME/.claude/settings.json" && ok "ctx-recall (memory recall) no SessionStart" || warn "ctx-recall não wired"
-grep -q 'auto-model-selector.sh' "$HOME/.claude/settings.json" && ok "auto-model-selector no UserPromptSubmit" || warn "auto-model-selector não wired"
+grep -q '"caveman@caveman": true' "$HOME/.claude/settings.json" && ok "caveman plugin enabled" || bad "caveman plugin disabled"
+grep -q '"context-mode@context-mode": true' "$HOME/.claude/settings.json" && ok "context-mode plugin enabled" || bad "context-mode disabled"
+grep -q 'ctx-recall.sh' "$HOME/.claude/settings.json" && ok "ctx-recall (memory recall) on SessionStart" || warn "ctx-recall not wired"
+grep -q 'auto-model-selector.sh' "$HOME/.claude/settings.json" && ok "auto-model-selector on UserPromptSubmit" || warn "auto-model-selector not wired"
 
 echo "[codex ~/.codex]"
-link_is "$HOME/.codex/skills" "$HUB" && ok "skills → hub" || bad "skills symlink incorreto: $(readlink "$HOME/.codex/skills" 2>/dev/null || echo ausente)"
-[ -r "$HOME/.codex/AGENTS.md" ] && ok "AGENTS.md" || bad "AGENTS.md ausente"
-[ -r "$HOME/.codex/RTK.md" ] && ok "RTK.md" || warn "RTK.md ausente (referenciado por AGENTS.md)"
+link_is "$HOME/.codex/skills" "$HUB" && ok "skills → hub" || bad "skills symlink wrong: $(readlink "$HOME/.codex/skills" 2>/dev/null || echo absent)"
+[ -r "$HOME/.codex/AGENTS.md" ] && ok "AGENTS.md" || bad "AGENTS.md missing"
+[ -r "$HOME/.codex/RTK.md" ] && ok "RTK.md" || warn "RTK.md missing (referenced by AGENTS.md)"
 
 echo "[agy ~/.agy]"
-link_is "$HOME/.agy/skills" "$HUB" && ok "skills → hub" || bad "skills symlink incorreto: $(readlink "$HOME/.agy/skills" 2>/dev/null || echo ausente)"
-[ -r "$HOME/.agy/AGENTS.md" ] && ok "AGENTS.md" || bad "AGENTS.md ausente"
+link_is "$HOME/.agy/skills" "$HUB" && ok "skills → hub" || bad "skills symlink wrong: $(readlink "$HOME/.agy/skills" 2>/dev/null || echo absent)"
+[ -r "$HOME/.agy/AGENTS.md" ] && ok "AGENTS.md" || bad "AGENTS.md missing"
 
 echo "[opencode ~/.config/opencode]"
 OC="$HOME/.config/opencode"
-[ -r "$OC/AGENTS.md" ] && ok "AGENTS.md" || bad "AGENTS.md ausente"
-ls "$OC"/opencode.json* >/dev/null 2>&1 && ok "opencode.json" || bad "opencode.json ausente"
+[ -r "$OC/AGENTS.md" ] && ok "AGENTS.md" || bad "AGENTS.md missing"
+ls "$OC"/opencode.json* >/dev/null 2>&1 && ok "opencode.json" || bad "opencode.json missing"
 for p in rtk.ts ctx-recall.ts; do
-  [ -r "$OC/plugins/$p" ] && ok "plugin $p" || warn "plugin $p ausente"
+  [ -r "$OC/plugins/$p" ] && ok "plugin $p" || warn "plugin $p missing"
 done
 DRIFT=0
 if [ -d "$OC/skills" ]; then
@@ -68,30 +68,30 @@ if [ -d "$OC/skills" ]; then
     [ -d "$entry" ] || continue
     n="$(basename "$entry")"
     if [ ! -L "${entry%/}" ] && [ -d "$HUB/$n" ]; then
-      bad "skill '$n' é cópia física do hub (drift) — rode setup-symlinks.sh"
+      bad "skill '$n' is a physical copy of the hub (drift) — run setup-symlinks.sh"
       DRIFT=1
     fi
   done
-  [ "$DRIFT" = 0 ] && ok "skills sem drift (hub-backed = symlinks)"
+  [ "$DRIFT" = 0 ] && ok "skills without drift (hub-backed = symlinks)"
 else
-  warn "skills/ ausente"
+  warn "skills/ missing"
 fi
 
 echo "[gemini ~/.gemini]"
-[ -r "$HOME/.gemini/GEMINI.md" ] && ok "GEMINI.md" || warn "GEMINI.md ausente"
-[ -d "$HOME/.gemini/skills" ] && ok "skills/ ($(ls "$HOME/.gemini/skills" | wc -l | tr -d ' ') curadas)" || warn "skills/ ausente"
+[ -r "$HOME/.gemini/GEMINI.md" ] && ok "GEMINI.md" || warn "GEMINI.md missing"
+[ -d "$HOME/.gemini/skills" ] && ok "skills/ ($(ls "$HOME/.gemini/skills" | wc -l | tr -d ' ') curated)" || warn "skills/ missing"
 
 echo "[agents git-master]"
 for d in "$HOME/.claude/agents" "$HOME/.codex/agents" "$HOME/.agy/agents" "$OC/agents" "$HOME/.gemini/config/agents"; do
-  [ -e "$d/git-master.md" ] && ok "$(echo "$d" | sed "s|$HOME|~|")/git-master.md" || warn "git-master ausente em $(echo "$d" | sed "s|$HOME|~|")"
+  [ -e "$d/git-master.md" ] && ok "$(echo "$d" | sed "s|$HOME|~|")/git-master.md" || warn "git-master missing in $(echo "$d" | sed "s|$HOME|~|")"
 done
 
 echo "[zai]"
-[ -r "$HOME/.claude/env-zai.json" ] && ok "env-zai.json (perfil provider)" || warn "env-zai.json ausente"
+[ -r "$HOME/.claude/env-zai.json" ] && ok "env-zai.json (provider profile)" || warn "env-zai.json missing"
 if [ "${1:-}" = "--net" ]; then
-  bash "$HOME/.claude/hooks/zai-health.sh" glm-4.5-air || warn "zai-health falhou"
+  bash "$HOME/.claude/hooks/zai-health.sh" glm-4.5-air || warn "zai-health failed"
 fi
 
 echo
-echo "=== resumo: $PASS OK / $WARN WARN / $FAIL FAIL ==="
+echo "=== summary: $PASS OK / $WARN WARN / $FAIL FAIL ==="
 [ "$FAIL" -eq 0 ]
