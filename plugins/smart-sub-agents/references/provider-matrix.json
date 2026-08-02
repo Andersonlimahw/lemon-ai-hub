@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schemaVersion": 1,
+  "updated": "2026-08-02",
+  "efforts": ["none", "low", "medium", "high", "xhigh", "max", "ultra"],
+  "profiles": {
+    "budget": {
+      "effort": "low",
+      "routes": {
+        "claude-code": {"provider": "anthropic", "model": "claude-haiku-4-5"},
+        "codex": {"provider": "openai", "model": "gpt-5.6-luna"},
+        "opencode": {"provider": "openai", "model": "gpt-5.6-luna"},
+        "antigravity": {"provider": "google", "model": "gemini-3.5-flash-lite"},
+        "gemini-cli": {"provider": "google", "model": "gemini-3.5-flash-lite"},
+        "lemon-code": {"provider": "openrouter", "model": "auto"}
+      }
+    },
+    "balanced": {
+      "effort": "medium",
+      "routes": {
+        "claude-code": {"provider": "anthropic", "model": "claude-sonnet-5"},
+        "codex": {"provider": "openai", "model": "gpt-5.6-terra"},
+        "opencode": {"provider": "openai", "model": "gpt-5.6-terra"},
+        "antigravity": {"provider": "google", "model": "gemini-3.6-flash"},
+        "gemini-cli": {"provider": "google", "model": "gemini-3.6-flash"},
+        "lemon-code": {"provider": "openrouter", "model": "auto"}
+      }
+    },
+    "quality": {
+      "effort": "high",
+      "routes": {
+        "claude-code": {"provider": "anthropic", "model": "claude-opus-5"},
+        "codex": {"provider": "openai", "model": "gpt-5.6"},
+        "opencode": {"provider": "openai", "model": "gpt-5.6"},
+        "antigravity": {"provider": "google", "model": "gemini-3.1-pro-preview"},
+        "gemini-cli": {"provider": "google", "model": "gemini-3.1-pro-preview"},
+        "lemon-code": {"provider": "openrouter", "model": "auto"}
+      }
+    },
+    "research": {
+      "effort": "max",
+      "routes": {
+        "claude-code": {"provider": "anthropic", "model": "claude-fable-5"},
+        "codex": {"provider": "openai", "model": "gpt-5.6"},
+        "opencode": {"provider": "anthropic", "model": "claude-opus-5"},
+        "antigravity": {"provider": "google", "model": "antigravity-agent-preview"},
+        "gemini-cli": {"provider": "google", "model": "gemini-deep-research-max-preview"},
+        "lemon-code": {"provider": "openrouter", "model": "auto"}
+      }
+    }
+  },
+  "aliases": {
+    "l 5.6 lunce": {"provider": "openai", "model": "gpt-5.6-luna"},
+    "gpt-5.6 lunce": {"provider": "openai", "model": "gpt-5.6-luna"},
+    "kimi k3": {"provider": "moonshotai", "model": "kimi-k2"},
+    "opus %": {"provider": "anthropic", "model": "claude-opus-5"},
+    "deepseek v4 flash": {"provider": "deepseek", "model": "deepseek-v4-flash"},
+    "gemini 3.5 pro": {"provider": "google", "model": "gemini-2.5-pro"}
+  },
+  "harnesses": {
+    "claude-code": {
+      "configMode": "markdown-agent",
+      "configPath": "~/.claude/agents/",
+      "nativeProviders": ["anthropic"],
+      "effortField": "effort"
+    },
+    "codex": {
+      "configMode": "toml-agent",
+      "configPath": "~/.codex/agents/ or .codex/agents/",
+      "nativeProviders": ["openai"],
+      "effortField": "model_reasoning_effort"
+    },
+    "opencode": {
+      "configMode": "json-agent",
+      "configPath": "opencode.json or ~/.config/opencode/agents/",
+      "nativeProviders": ["*"],
+      "effortField": "model-specific"
+    },
+    "antigravity": {
+      "configMode": "handoff-manifest",
+      "configPath": "manual / managed agent surface",
+      "nativeProviders": ["google"],
+      "effortField": "managed"
+    },
+    "gemini-cli": {
+      "configMode": "handoff-manifest",
+      "configPath": "GEMINI.md or CLI-specific agent configuration",
+      "nativeProviders": ["google"],
+      "effortField": "model-specific"
+    },
+    "lemon-code": {
+      "configMode": "route-manifest",
+      "configPath": "project runtime configuration",
+      "nativeProviders": ["*"],
+      "effortField": "provider-specific"
+    }
+  },
+  "providers": [
+    {
+      "id": "anthropic",
+      "displayName": "Anthropic",
+      "apiKeyEnv": "ANTHROPIC_API_KEY",
+      "docs": "https://platform.claude.com/docs/en/about-claude/models/overview",
+      "effortParameter": "effort/adaptive-thinking",
+      "models": [
+        {"id": "claude-fable-5", "displayName": "Claude Fable 5", "tier": "quality", "status": "stable", "efforts": ["low", "medium", "high", "xhigh", "max"], "capabilities": ["research", "long-horizon", "agentic"]},
+        {"id": "claude-opus-5", "displayName": "Claude Opus 5", "tier": "quality", "status": "stable", "efforts": ["low", "medium", "high", "xhigh", "max"], "capabilities": ["reasoning", "coding", "agentic", "vision"]},
+        {"id": "claude-sonnet-5", "displayName": "Claude Sonnet 5", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high", "xhigh"], "capabilities": ["coding", "tools", "analysis"]},
+        {"id": "claude-sonnet-4-6", "displayName": "Claude Sonnet 4.6", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high", "xhigh"], "capabilities": ["coding", "tools", "analysis"]},
+        {"id": "claude-haiku-4-5", "displayName": "Claude Haiku 4.5", "tier": "budget", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["fast", "subagent", "classification"]}
+      ]
+    },
+    {
+      "id": "deepseek",
+      "displayName": "DeepSeek API",
+      "apiKeyEnv": "DEEPSEEK_API_KEY",
+      "docs": "https://api-docs.deepseek.com/quick_start/pricing",
+      "effortParameter": "thinking-mode",
+      "models": [
+        {"id": "deepseek-v4-pro", "displayName": "DeepSeek V4 Pro", "tier": "quality", "status": "stable", "efforts": ["medium", "high", "max"], "capabilities": ["reasoning", "coding", "tools"]},
+        {"id": "deepseek-v4-flash", "displayName": "DeepSeek V4 Flash", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high", "max"], "capabilities": ["fast", "coding", "tools", "json"]}
+      ]
+    },
+    {
+      "id": "google",
+      "displayName": "Google Gemini API",
+      "apiKeyEnv": "GEMINI_API_KEY",
+      "docs": "https://ai.google.dev/gemini-api/docs/models",
+      "effortParameter": "thinkingConfig/model-specific",
+      "models": [
+        {"id": "gemini-3.1-pro-preview", "displayName": "Gemini 3.1 Pro", "tier": "quality", "status": "preview", "efforts": ["medium", "high", "max"], "capabilities": ["reasoning", "coding", "multimodal", "agentic"]},
+        {"id": "gemini-2.5-pro", "displayName": "Gemini 2.5 Pro", "tier": "quality", "status": "stable", "efforts": ["medium", "high"], "capabilities": ["reasoning", "coding", "multimodal"]},
+        {"id": "gemini-3.6-flash", "displayName": "Gemini 3.6 Flash", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["fast", "coding", "multimodal", "agentic"]},
+        {"id": "gemini-3.5-flash", "displayName": "Gemini 3.5 Flash", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "multimodal", "agentic"]},
+        {"id": "gemini-3.5-flash-lite", "displayName": "Gemini 3.5 Flash-Lite", "tier": "budget", "status": "stable", "efforts": ["low", "medium"], "capabilities": ["fast", "high-throughput", "multimodal"]},
+        {"id": "gemini-deep-research-max-preview", "displayName": "Gemini Deep Research Max", "tier": "quality", "status": "preview", "efforts": ["high", "max"], "capabilities": ["research", "citations", "agentic"]},
+        {"id": "antigravity-agent-preview", "displayName": "Antigravity Agent", "tier": "quality", "status": "managed", "efforts": ["medium", "high", "max"], "capabilities": ["agentic", "browser", "code", "sandbox"]}
+      ]
+    },
+    {
+      "id": "moonshotai",
+      "displayName": "Moonshot AI",
+      "apiKeyEnv": "MOONSHOT_API_KEY",
+      "docs": "https://opencode.ai/docs/providers",
+      "effortParameter": "model-specific",
+      "models": [
+        {"id": "kimi-k2", "displayName": "Kimi K2", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "tools", "long-context"]}
+      ]
+    },
+    {
+      "id": "openai",
+      "displayName": "OpenAI",
+      "apiKeyEnv": "OPENAI_API_KEY",
+      "docs": "https://developers.openai.com/api/docs/guides/latest-model",
+      "effortParameter": "reasoning.effort/model_reasoning_effort",
+      "models": [
+        {"id": "gpt-5.6", "displayName": "GPT-5.6", "tier": "quality", "status": "stable", "efforts": ["none", "low", "medium", "high", "xhigh", "max"], "capabilities": ["reasoning", "coding", "tools", "agentic"]},
+        {"id": "gpt-5.6-terra", "displayName": "GPT-5.6 Terra", "tier": "balanced", "status": "stable", "efforts": ["none", "low", "medium", "high", "xhigh", "max"], "capabilities": ["coding", "tools", "fast"]},
+        {"id": "gpt-5.6-luna", "displayName": "GPT-5.6 Luna", "tier": "budget", "status": "stable", "efforts": ["none", "low", "medium", "high", "xhigh", "max"], "capabilities": ["fast", "bounded", "high-throughput"]},
+        {"id": "gpt-5-codex", "displayName": "GPT-5-Codex", "tier": "quality", "status": "stable", "efforts": ["low", "medium", "high", "xhigh", "max"], "capabilities": ["agentic", "coding", "tools"]}
+      ]
+    },
+    {
+      "id": "openrouter",
+      "displayName": "OpenRouter",
+      "apiKeyEnv": "OPENROUTER_API_KEY",
+      "docs": "https://openrouter.ai/docs/guides/routing/routers/auto-router",
+      "effortParameter": "selected-model-specific",
+      "models": [
+        {"id": "auto", "displayName": "OpenRouter Auto Router", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high", "max"], "capabilities": ["routing", "fallbacks", "multi-provider"]}
+      ]
+    },
+    {
+      "id": "qwen",
+      "displayName": "Qwen",
+      "apiKeyEnv": "DASHSCOPE_API_KEY",
+      "docs": "https://opencode.ai/docs/models",
+      "effortParameter": "model-specific",
+      "models": [
+        {"id": "qwen3-coder", "displayName": "Qwen3 Coder", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "tools", "open-model"]}
+      ]
+    },
+    {
+      "id": "zai",
+      "displayName": "Z.AI",
+      "apiKeyEnv": "ZAI_API_KEY",
+      "docs": "https://opencode.ai/docs/providers",
+      "effortParameter": "model-specific",
+      "models": [
+        {"id": "glm-4.7", "displayName": "GLM-4.7", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "tools", "multilingual"]}
+      ]
+    }
+  ]
+}
