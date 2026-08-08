@@ -100,3 +100,14 @@ When ANY AI harness (Claude Code, Codex, Gemini, Agy, OpenCode) needs to invoke 
 Wrapper agents handle cross-harness delegation (e.g., Claude spawns `codex-cli` agent to delegate to Codex). Never run raw `<cli> exec` — always through the wrapper.
 
 - **Git & GitHub Operations**: Use the `git-expert` plugin (`/git-commit`, `git-bisect-ai`) for version control automation. For GitHub CLI interactions, use the `gh-expert` plugin.
+
+## 🤝 Smart Handoff — cross-session continuity
+
+When a session's context, token budget, or usage limit is nearly exhausted (~90-95%+):
+
+1. **Save a handoff** — invoke `smart-handoff` skill or spawn `handoff-writer` agent to write a self-contained handoff file under `docs/ai/handoff/<runtime>/<date>/`, commit, push, and stop.
+2. **Resume later** — invoke `handoff-resumer` agent or say "implement the handoff" / "continue where you stopped". The agent finds the latest handoff across all runtimes, verifies repo state matches, and resumes from the recorded next action.
+3. **Runtime-agnostic** — handoff files are plain markdown with zero runtime assumptions. Any harness (Claude Code, Codex, Gemini, Agy, OpenCode) can read and resume.
+4. **Chaining** — when you approach your own budget limit while resuming, write a new handoff pointing back to the previous one.
+
+**Never** skip the commit/push step. Broken-but-committed beats uncommitted-and-lost. Do not fabricate session IDs — write `unknown` if the runtime doesn't expose one.

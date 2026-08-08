@@ -1,5 +1,10 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+- **smart-handoff plugin**: Runtime-agnostic session handoff protocol. Pauses long-running AI coding sessions when context/token budget is nearly exhausted (~90-95%), writes a self-contained handoff file, commits, pushes, and stops — enabling any runtime (Claude Code, Codex, Antigravity/Agy, OpenCode, Gemini CLI) to cleanly resume. Includes `handoff-writer` and `handoff-resumer` agents plus a handoff template.
+
 ## [1.2.0] - 2026-07-11
 
 ### Added
