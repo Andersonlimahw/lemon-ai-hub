@@ -1,0 +1,19 @@
+{
+  "name": "smart-handoff",
+  "version": "1.0.0",
+  "description": "Smart Handoff plugin. Implements a runtime-agnostic, token-optimized protocol for pausing and resuming long AI coding sessions. When approaching context or usage budgets (~90-95%+), it saves a resumable snapshot of state, commits, pushes, and stops, enabling any runtime (Claude Code, Codex, Antigravity/Agy, OpenCode, Gemini CLI) to cleanly resume.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "handoff",
+    "session-continuity",
+    "multi-runtime",
+    "context-management",
+    "resumable-work"
+  ]
+}
