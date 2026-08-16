@@ -105,6 +105,13 @@ def validate(catalog: dict) -> list[str]:
                 )
             if family.get("tier") not in TIERS:
                 errors.append(f"workerMatrix {harness_id}/{family.get('id')}: invalid tier")
+            elif family.get("tier") != models_by_key[key].get("tier"):
+                errors.append(
+                    f"workerMatrix {harness_id}/{family.get('id')}: tier {family.get('tier')!r} does not match "
+                    f"canonical tier {models_by_key[key].get('tier')!r} of {key[0]}/{key[1]} "
+                    "(cost-tier mismatch — a mislabeled family can route budget-tier volume to a "
+                    "quality-priced model or vice versa)"
+                )
 
     task_routing = catalog.get("taskRouting", {})
     for task_name, route in task_routing.items():

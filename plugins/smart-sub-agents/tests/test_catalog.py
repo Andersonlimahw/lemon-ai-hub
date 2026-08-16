@@ -77,6 +77,28 @@ class SmartSubAgentsCatalogTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("unknown model", result.stderr)
 
+    def test_worker_matrix_tier_mismatch_fails_closed(self) -> None:
+        """Regression: a workerMatrix family tier that disagrees with the model's
+        own canonical tier must fail validation. Otherwise a family can silently
+        route budget-tier volume to a quality-priced model (or vice versa) — the
+        exact cost-leak vector reported against opencode-go/zen worker families
+        pointing at Anthropic/OpenAI-owned model ids."""
+        catalog = json.loads((PLUGIN_ROOT / "references" / "provider-matrix.json").read_text(encoding="utf-8"))
+        for lane in catalog["workerMatrix"]["opencode"]["lanes"].values():
+            for family in lane["families"]:
+                if family["id"] == "zen_opus":
+                    family["tier"] = "budget"  # tamper: claude-opus-5 is quality
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            json.dump(catalog, f)
+            catalog_path = Path(f.name)
+        try:
+            result = self.run_cli(VALIDATOR, "--catalog", str(catalog_path))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("tier", result.stderr)
+            self.assertIn("does not match", result.stderr)
+        finally:
+            catalog_path.unlink(missing_ok=True)
+
 
 class InstallHelperTests(unittest.TestCase):
     @classmethod

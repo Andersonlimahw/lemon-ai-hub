@@ -265,9 +265,14 @@ def install_agy(catalog: dict, dry_run: bool) -> list[str]:
     for family in catalog["workerMatrix"]["codex"]["families"]:
         for effort in family["efforts"]:
             name = worker_name(family["id"], effort)
-            # Map codex family -> claude tier equivalent for body
-            tier_map = {"luna": "haiku", "terra": "sonnet", "sol": "opus"}
-            claude_family = tier_map[family["id"]]
+            # Map codex family -> claude tier equivalent for body via tier match
+            # (derived from provider-matrix.json, not a hand-authored dict, so it
+            # cannot drift out of sync with the catalog).
+            claude_family = next(
+                f["id"]
+                for f in catalog["workerMatrix"]["claude-code"]["families"]
+                if f["tier"] == family["tier"]
+            )
             # clamp effort to claude family efforts
             claude_efforts = next(
                 f["efforts"]
@@ -275,19 +280,22 @@ def install_agy(catalog: dict, dry_run: bool) -> list[str]:
                 if f["id"] == claude_family
             )
             mapped_effort = effort if effort in claude_efforts else claude_efforts[-1]
+            clamp_note = "" if mapped_effort == effort else f" (clamped from {effort})"
             src = claude_root / f"{worker_name(claude_family, mapped_effort)}.md"
             dst = root / f"{name}.md"
             content = f"""---
 name: {name}
 description: >
   Codex-named alias for {family['id']} @ {effort}. Body canonical from Claude
-  {claude_family}_worker_{mapped_effort}. Prefer native Codex TOML worker when
+  {claude_family}_worker_{mapped_effort}{clamp_note}. Prefer native Codex TOML worker when
   running under Codex.
 # {MANAGED_MARKER}
 ---
 
 See canonical Claude worker: `{src.name}`.
 Harness note: Agy should load Claude-equivalent tier and keep budget discipline.
+Effective effort: `{mapped_effort}`{clamp_note} — the filename says `{effort}` but the linked body
+runs at `{mapped_effort}` because Claude's `{claude_family}` family does not support `{effort}`.
 Provider target when delegated to Codex: `{family['provider']}/{family['model']}` effort `{effort}`.
 """
             results.append(write_file(dst, content, dry_run))
