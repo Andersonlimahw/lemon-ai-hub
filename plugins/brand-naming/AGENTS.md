@@ -48,6 +48,10 @@ Never `GENERATE -> FALL IN LOVE -> JUSTIFY`.
 4. Score never overrides collision. A collision is a gate, not a deduction.
 5. Never force a winner. Non-convergence is a valid result.
 6. Log every rejected name with its reason so no agent recycles it.
+7. **Domains gate before red team, not after.** Verify domains on funnel
+   survivors first. `NOT VERIFIED` (WHOIS and RDAP both failed/timed out)
+   always demotes a candidate — it never means "likely free" and never
+   advances to red team.
 
 ## Stages
 
@@ -56,8 +60,8 @@ Never `GENERATE -> FALL IN LOVE -> JUSTIFY`.
 | 1. Brief | — | `naming/00-brief.md` |
 | 2. Longlist 300+ | `references/generation.md` | `naming/01-longlist.md` |
 | 3. Funnel 300→30 | `references/scorecard.md` | `naming/02-funnel.md`, `naming/03-scorecard.md` |
-| 4. Red team | `references/collision-research.md` | `naming/04-collisions.md` |
-| 5. Domains | `references/domain-verification.md` | `naming/05-domains.md` |
+| 4. Domains (transactional gate) | `references/domain-verification.md` | `naming/04-domains.md` |
+| 5. Red team (domain-gate survivors only) | `references/collision-research.md` | `naming/05-collisions.md` |
 | 6. Trademark | `references/trademark.md` | `naming/06-trademark.md` |
 | 7. Final gates | `references/final-tests.md` | — |
 | 8. Report | `references/output-format.md` | `naming/07-decision.md` |
@@ -81,8 +85,10 @@ python3 scripts/check_domains.py --names candidates.txt \
 ```
 
 DNS absence of NS is a pre-filter only. Quote RDAP results, never DNS ones.
-If RDAP is unreachable the script reports `UNKNOWN` — report that verbatim
-rather than falling back to the DNS guess.
+If RDAP is unreachable, retry once with a direct WHOIS query (see
+`references/domain-verification.md`) before reporting `NOT VERIFIED`.
+Never fall back to the DNS pre-filter guess as if it were a verified
+result.
 
 ## Two failure modes to avoid
 
