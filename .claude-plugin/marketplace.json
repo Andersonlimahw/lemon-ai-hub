@@ -2038,8 +2038,8 @@
     {
       "name": "smart-sub-agents",
       "source": "./plugins/smart-sub-agents",
-      "description": "Creates portable subagent routes with explicit harness, provider, model, and effort selection. Ships a verified model matrix, normalization for common aliases, and renderers for Claude Code, Codex, OpenCode, Antigravity, Gemini CLI, and lemon-code.",
-      "version": "1.0.0",
+      "description": "Creates portable subagent routes with explicit harness, provider, model, and effort selection. Ships a verified provider/model matrix, normalization for common aliases, renderers for Claude Code, Codex, OpenCode, Antigravity, Gemini CLI, and lemon-code, plus an idempotent worker-matrix installer (Claude canonical, Codex TOML, OpenCode md, Agy symlink) and a monthly/weekly sync that reconciles the catalog against live `opencode models` (discovered/stale) without inventing model IDs.",
+      "version": "1.1.0",
       "license": "MIT",
       "keywords": [
         "skill",
@@ -2049,11 +2049,15 @@
         "provider-routing",
         "model-routing",
         "effort",
+        "worker-matrix",
+        "named-workers",
         "claude-code",
         "codex",
         "opencode",
         "antigravity",
-        "gemini"
+        "gemini",
+        "model-sync",
+        "budget-contract"
       ]
     },
     {

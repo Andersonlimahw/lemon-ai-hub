@@ -81,6 +81,45 @@ def validate(catalog: dict) -> list[str]:
             elif profile.get("effort") not in models_by_key[key].get("efforts", []):
                 errors.append(f"profile {profile_name}/{harness}: effort unsupported by {key[0]}/{key[1]}")
 
+    # Optional worker matrix (Claude canonical + per-harness families/lanes)
+    worker_matrix = catalog.get("workerMatrix", {})
+    for harness_id, matrix in worker_matrix.items():
+        if harness_id not in harnesses:
+            errors.append(f"workerMatrix: unknown harness {harness_id}")
+            continue
+        families = matrix.get("families", [])
+        if "lanes" in matrix:
+            for lane_id, lane in matrix["lanes"].items():
+                families = families + lane.get("families", [])
+        for family in families:
+            key = (family.get("provider", ""), family.get("model", ""))
+            if key not in models_by_key:
+                errors.append(f"workerMatrix {harness_id}/{family.get('id')}: unknown model {key[0]}/{key[1]}")
+                continue
+            family_efforts = set(family.get("efforts", []))
+            if not family_efforts or not family_efforts <= efforts:
+                errors.append(f"workerMatrix {harness_id}/{family.get('id')}: invalid efforts")
+            elif not family_efforts <= set(models_by_key[key].get("efforts", [])):
+                errors.append(
+                    f"workerMatrix {harness_id}/{family.get('id')}: effort not supported by {key[0]}/{key[1]}"
+                )
+            if family.get("tier") not in TIERS:
+                errors.append(f"workerMatrix {harness_id}/{family.get('id')}: invalid tier")
+            elif family.get("tier") != models_by_key[key].get("tier"):
+                errors.append(
+                    f"workerMatrix {harness_id}/{family.get('id')}: tier {family.get('tier')!r} does not match "
+                    f"canonical tier {models_by_key[key].get('tier')!r} of {key[0]}/{key[1]} "
+                    "(cost-tier mismatch — a mislabeled family can route budget-tier volume to a "
+                    "quality-priced model or vice versa)"
+                )
+
+    task_routing = catalog.get("taskRouting", {})
+    for task_name, route in task_routing.items():
+        if route.get("tier") not in TIERS:
+            errors.append(f"taskRouting {task_name}: invalid tier")
+        if route.get("effort") not in efforts:
+            errors.append(f"taskRouting {task_name}: invalid effort")
+
     return errors
 
 

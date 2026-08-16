@@ -60,22 +60,43 @@ Any agent dispatched in YOLO/Bypass mode **MUST** execute the relevant validatio
 
 Always pick the **cheapest tier that passes validation**; escalate per 1.1. Tiers map per provider:
 
-| Tier | Claude | Codex subagent | Gemini |
-|------|--------|----------------|--------|
-| **budget** | Haiku 4.5 | Luna (low/medium effort) | Flash |
-| **balanced** | Sonnet 4.6 | Terra (medium/high effort) | Pro |
-| **quality** | Opus 4.8 / Fable 5 | Sol (high/xhigh effort) | Pro (max thinking) |
+| Tier | Claude worker | Codex worker | OpenCode Zen | OpenCode Go | Gemini |
+|------|---------------|--------------|--------------|-------------|--------|
+| **budget** | `haiku_worker_{low\|medium\|high}` | `luna_worker_{low…max}` | `zen_flash_*` / `zen_luna_*` | `go_luna_*` / `go_flash_*` | Flash-Lite |
+| **balanced** | `sonnet_worker_{low…xhigh}` | `terra_worker_{low…max}` | `zen_terra_*` / `zen_grok_*` | `go_grok_*` / `go_glm_*` / `go_kimi_*` | Flash |
+| **quality** | `opus_worker_{low…max}` | `sol_worker_{low…max}` | `zen_sol_*` / `zen_opus_*` | `go_pro_*` / `go_qwen_max_*` | Pro |
 
-Use the newest available OpenAI Codex aliases in this order: **Luna** for bounded mechanical work, **Terra** for implementation and integration, and **Sol** for architecture, adversarial review, or repeated validation failures. These are dispatch-only names; never add them to an application's LLM provider catalog.
+Use named workers when the harness supports custom agents. Prefer the **cheapest worker that still fits the task**. Codex: **Luna** mechanical, **Terra** implementation, **Sol** architecture/root-cause. Claude: **Haiku / Sonnet / Opus**. OpenCode: prefer **Go** lane when subscribed; else **Zen free**.
 
-| Task type | Tier | Notes |
-|-----------|------|-------|
-| Docs, comments, changelogs, summaries, translations | budget | Haiku-class is enough; never burn Opus here |
-| Test writing — mechanical / known pattern | budget | Verify with test run (0.3 mandate) |
-| Lint / typecheck / format fixes | local CLI → budget | Tier 0 rules apply first |
-| Implementation, refactor, multi-step agentic | balanced | Sonnet-class default for code |
-| Test design — integration/e2e strategy | balanced | Strategy needs reasoning; writing the cases can drop to budget |
-| Plan, architecture, root-cause, security audit, migration | quality | Opus-class; deep reasoning pays for itself |
+### Budget contract (mandatory on every dispatch)
+
+Announce before work:
+
+```text
+DISPATCH
+worker: <name>
+tier: budget|balanced|quality
+effort: low|medium|high|xhigh|max
+tokens: <range from taskRouting>
+time: <range from taskRouting>
+verify: <command>
+```
+
+Source of truth: `plugins/smart-sub-agents/references/provider-matrix.json` → `taskRouting` + `workerMatrix`.
+Refresh models: `python3 plugins/smart-sub-agents/scripts/sync_provider_matrix.py --write`
+Reinstall workers: `python3 plugins/smart-sub-agents/scripts/install_worker_matrix.py`
+
+| Task type | Tier | Default worker (Claude / Codex) | Tokens | Time |
+|-----------|------|----------------------------------|--------|------|
+| Docs, comments, changelogs, summaries, translations | budget | `haiku_worker_low` / `luna_worker_low` | 2k–8k | 1–5min |
+| Test writing — mechanical / known pattern | budget | `haiku_worker_low` / `luna_worker_low` | 3k–12k | 3–10min |
+| Lint / typecheck / format fixes | local CLI → budget | Tier 0 first, then haiku/luna | 1k–6k | 1–5min |
+| Boilerplate / scaffolding | budget | `haiku_worker_medium` / `luna_worker_medium` | 2k–10k | 2–8min |
+| Implementation, refactor | balanced | `sonnet_worker_medium` / `terra_worker_medium` | 8k–40k | 10–40min |
+| Multi-step agentic | balanced | `sonnet_worker_high` / `terra_worker_high` | 15k–60k | 15–60min |
+| Test design — integration/e2e strategy | balanced | `sonnet_worker_medium` / `terra_worker_medium` | 6k–25k | 8–25min |
+| Plan, architecture, security audit, migration | quality | `opus_worker_high` / `sol_worker_high` | 15k–80k | 15–90min |
+| Root-cause / hard debug | quality | `opus_worker_xhigh` / `sol_worker_xhigh` | 20k–100k | 20–90min |
 
 EXEC-MAP's `models: {plan, impl, mechanical}` maps 1:1 to quality/balanced/budget rows above.
 
