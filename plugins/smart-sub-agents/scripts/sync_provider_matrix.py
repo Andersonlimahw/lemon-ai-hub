@@ -64,6 +64,10 @@ def ensure_provider(catalog: dict, provider_id: str) -> dict:
 
 def tier_guess(model_id: str) -> str:
     low = model_id.lower()
+    # minimax models are balanced-tier in the catalog; guard before the "mini"
+    # substring check below would misclassify them as budget.
+    if "minimax" in low:
+        return "balanced"
     if any(x in low for x in ("flash", "lite", "nano", "mini", "free", "luna", "haiku", "air")):
         return "budget"
     if any(x in low for x in ("opus", "sol", "pro", "max", "fable", "ultra")):

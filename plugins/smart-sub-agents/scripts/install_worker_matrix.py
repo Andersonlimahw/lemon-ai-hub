@@ -19,6 +19,8 @@ import sys
 from datetime import date
 from pathlib import Path
 
+from validate_catalog import validate
+
 PLUGIN_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CATALOG = PLUGIN_ROOT / "references" / "provider-matrix.json"
 MANAGED_MARKER = "managed-by: smart-sub-agents/worker-matrix"
@@ -59,7 +61,11 @@ TIER_COLOR = {
 
 
 def load_catalog(path: Path) -> dict:
-    return json.loads(path.read_text(encoding="utf-8"))
+    catalog = json.loads(path.read_text(encoding="utf-8"))
+    errors = validate(catalog)
+    if errors:
+        raise ValueError("; ".join(errors))
+    return catalog
 
 
 def slug(value: str) -> str:
@@ -346,6 +352,17 @@ def validate_installed() -> list[str]:
             errors.append(f"{path}: missing model")
         if MANAGED_MARKER not in text:
             errors.append(f"{path}: missing managed marker")
+    # Agy: validate managed codex-named aliases only. Symlinks point to Claude
+    # canonical bodies (already validated above); non-managed files are skipped
+    # so a user's manual worker file does not trigger a false positive.
+    for path in HARNESS_DIRS["antigravity"].glob("*_worker_*.md"):
+        if path.is_symlink():
+            continue
+        text = path.read_text(encoding="utf-8")
+        if MANAGED_MARKER not in text:
+            continue
+        if not text.startswith("---"):
+            errors.append(f"{path}: missing frontmatter")
     return errors
 
 
