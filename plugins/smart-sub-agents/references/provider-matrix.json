@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "schemaVersion": 1,
-  "updated": "2026-08-02",
+  "updated": "2026-08-16",
   "efforts": ["none", "low", "medium", "high", "xhigh", "max", "ultra"],
   "profiles": {
     "budget": {
@@ -9,7 +9,7 @@
       "routes": {
         "claude-code": {"provider": "anthropic", "model": "claude-haiku-4-5"},
         "codex": {"provider": "openai", "model": "gpt-5.6-luna"},
-        "opencode": {"provider": "openai", "model": "gpt-5.6-luna"},
+        "opencode": {"provider": "opencode", "model": "deepseek-v4-flash-free"},
         "antigravity": {"provider": "google", "model": "gemini-3.5-flash-lite"},
         "gemini-cli": {"provider": "google", "model": "gemini-3.5-flash-lite"},
         "lemon-code": {"provider": "openrouter", "model": "auto"}
@@ -20,7 +20,7 @@
       "routes": {
         "claude-code": {"provider": "anthropic", "model": "claude-sonnet-5"},
         "codex": {"provider": "openai", "model": "gpt-5.6-terra"},
-        "opencode": {"provider": "openai", "model": "gpt-5.6-terra"},
+        "opencode": {"provider": "opencode-go", "model": "gpt-5.6-luna"},
         "antigravity": {"provider": "google", "model": "gemini-3.6-flash"},
         "gemini-cli": {"provider": "google", "model": "gemini-3.6-flash"},
         "lemon-code": {"provider": "openrouter", "model": "auto"}
@@ -30,8 +30,8 @@
       "effort": "high",
       "routes": {
         "claude-code": {"provider": "anthropic", "model": "claude-opus-5"},
-        "codex": {"provider": "openai", "model": "gpt-5.6"},
-        "opencode": {"provider": "openai", "model": "gpt-5.6"},
+        "codex": {"provider": "openai", "model": "gpt-5.6-sol"},
+        "opencode": {"provider": "opencode", "model": "gpt-5.6-sol"},
         "antigravity": {"provider": "google", "model": "gemini-3.1-pro-preview"},
         "gemini-cli": {"provider": "google", "model": "gemini-3.1-pro-preview"},
         "lemon-code": {"provider": "openrouter", "model": "auto"}
@@ -41,19 +41,254 @@
       "effort": "max",
       "routes": {
         "claude-code": {"provider": "anthropic", "model": "claude-fable-5"},
-        "codex": {"provider": "openai", "model": "gpt-5.6"},
-        "opencode": {"provider": "anthropic", "model": "claude-opus-5"},
+        "codex": {"provider": "openai", "model": "gpt-5.6-sol"},
+        "opencode": {"provider": "opencode", "model": "claude-opus-5"},
         "antigravity": {"provider": "google", "model": "antigravity-agent-preview"},
         "gemini-cli": {"provider": "google", "model": "gemini-deep-research-max-preview"},
         "lemon-code": {"provider": "openrouter", "model": "auto"}
       }
     }
   },
+  "workerMatrix": {
+    "claude-code": {
+      "canonical": true,
+      "families": [
+        {
+          "id": "haiku",
+          "provider": "anthropic",
+          "model": "claude-haiku-4-5",
+          "tier": "budget",
+          "efforts": ["low", "medium", "high"],
+          "tasks": ["docs", "comments", "changelogs", "mechanical-tests", "lint-fixes", "boilerplate"]
+        },
+        {
+          "id": "sonnet",
+          "provider": "anthropic",
+          "model": "claude-sonnet-5",
+          "tier": "balanced",
+          "efforts": ["low", "medium", "high", "xhigh"],
+          "tasks": ["implementation", "refactor", "integration-tests", "multi-step-agentic"]
+        },
+        {
+          "id": "opus",
+          "provider": "anthropic",
+          "model": "claude-opus-5",
+          "tier": "quality",
+          "efforts": ["low", "medium", "high", "xhigh", "max"],
+          "tasks": ["architecture", "plans", "root-cause", "security-audit", "migration"]
+        }
+      ]
+    },
+    "codex": {
+      "canonical": false,
+      "sourceOfTruth": "claude-code",
+      "families": [
+        {
+          "id": "luna",
+          "provider": "openai",
+          "model": "gpt-5.6-luna",
+          "tier": "budget",
+          "efforts": ["none", "low", "medium", "high", "xhigh", "max"],
+          "tasks": ["docs", "comments", "changelogs", "mechanical-tests", "lint-fixes", "boilerplate"]
+        },
+        {
+          "id": "terra",
+          "provider": "openai",
+          "model": "gpt-5.6-terra",
+          "tier": "balanced",
+          "efforts": ["none", "low", "medium", "high", "xhigh", "max"],
+          "tasks": ["implementation", "refactor", "integration-tests", "multi-step-agentic"]
+        },
+        {
+          "id": "sol",
+          "provider": "openai",
+          "model": "gpt-5.6-sol",
+          "tier": "quality",
+          "efforts": ["none", "low", "medium", "high", "xhigh", "max"],
+          "tasks": ["architecture", "plans", "root-cause", "security-audit", "migration"]
+        }
+      ]
+    },
+    "opencode": {
+      "canonical": false,
+      "sourceOfTruth": "claude-code",
+      "lanes": {
+        "zen": {
+          "label": "OpenCode Zen free",
+          "families": [
+            {
+              "id": "zen_flash",
+              "provider": "opencode",
+              "model": "deepseek-v4-flash-free",
+              "tier": "budget",
+              "efforts": ["low", "medium", "high"],
+              "tasks": ["docs", "boilerplate", "mechanical-tests", "lint-fixes"]
+            },
+            {
+              "id": "zen_luna",
+              "provider": "opencode",
+              "model": "gpt-5.6-luna",
+              "tier": "budget",
+              "efforts": ["low", "medium", "high", "xhigh", "max"],
+              "tasks": ["docs", "bounded-impl", "mechanical-tests"]
+            },
+            {
+              "id": "zen_terra",
+              "provider": "opencode",
+              "model": "gpt-5.6-terra",
+              "tier": "balanced",
+              "efforts": ["low", "medium", "high", "xhigh", "max"],
+              "tasks": ["implementation", "refactor", "integration"]
+            },
+            {
+              "id": "zen_sol",
+              "provider": "opencode",
+              "model": "gpt-5.6-sol",
+              "tier": "quality",
+              "efforts": ["low", "medium", "high", "xhigh", "max"],
+              "tasks": ["architecture", "plans", "adversarial-review"]
+            },
+            {
+              "id": "zen_opus",
+              "provider": "opencode",
+              "model": "claude-opus-5",
+              "tier": "quality",
+              "efforts": ["low", "medium", "high", "xhigh", "max"],
+              "tasks": ["architecture", "plans", "security-audit"]
+            },
+            {
+              "id": "zen_grok",
+              "provider": "opencode",
+              "model": "grok-4.5",
+              "tier": "balanced",
+              "efforts": ["low", "medium", "high"],
+              "tasks": ["implementation", "fast-reasoning"]
+            }
+          ]
+        },
+        "go": {
+          "label": "OpenCode Go subscription",
+          "families": [
+            {
+              "id": "go_luna",
+              "provider": "opencode-go",
+              "model": "gpt-5.6-luna",
+              "tier": "budget",
+              "efforts": ["low", "medium", "high", "xhigh", "max"],
+              "tasks": ["docs", "boilerplate", "mechanical-tests"]
+            },
+            {
+              "id": "go_flash",
+              "provider": "opencode-go",
+              "model": "deepseek-v4-flash",
+              "tier": "budget",
+              "efforts": ["low", "medium", "high"],
+              "tasks": ["docs", "boilerplate", "lint-fixes"]
+            },
+            {
+              "id": "go_grok",
+              "provider": "opencode-go",
+              "model": "grok-4.5",
+              "tier": "balanced",
+              "efforts": ["low", "medium", "high"],
+              "tasks": ["implementation", "refactor"]
+            },
+            {
+              "id": "go_glm",
+              "provider": "opencode-go",
+              "model": "glm-5.2",
+              "tier": "balanced",
+              "efforts": ["low", "medium", "high"],
+              "tasks": ["implementation", "agentic"]
+            },
+            {
+              "id": "go_kimi",
+              "provider": "opencode-go",
+              "model": "kimi-k2.7-code",
+              "tier": "balanced",
+              "efforts": ["low", "medium", "high"],
+              "tasks": ["implementation", "long-context"]
+            },
+            {
+              "id": "go_pro",
+              "provider": "opencode-go",
+              "model": "deepseek-v4-pro",
+              "tier": "quality",
+              "efforts": ["medium", "high", "max"],
+              "tasks": ["architecture", "root-cause", "hard-debug"]
+            },
+            {
+              "id": "go_qwen_max",
+              "provider": "opencode-go",
+              "model": "qwen3.7-max",
+              "tier": "quality",
+              "efforts": ["medium", "high", "max"],
+              "tasks": ["architecture", "plans", "complex-impl"]
+            }
+          ]
+        }
+      }
+    },
+    "antigravity": {
+      "canonical": false,
+      "sourceOfTruth": "claude-code",
+      "symlinkBody": true,
+      "families": [
+        {
+          "id": "flash_lite",
+          "provider": "google",
+          "model": "gemini-3.5-flash-lite",
+          "tier": "budget",
+          "efforts": ["low", "medium"],
+          "tasks": ["docs", "boilerplate"]
+        },
+        {
+          "id": "flash",
+          "provider": "google",
+          "model": "gemini-3.6-flash",
+          "tier": "balanced",
+          "efforts": ["low", "medium", "high"],
+          "tasks": ["implementation", "multimodal"]
+        },
+        {
+          "id": "pro",
+          "provider": "google",
+          "model": "gemini-3.1-pro-preview",
+          "tier": "quality",
+          "efforts": ["medium", "high", "max"],
+          "tasks": ["architecture", "multimodal-reasoning"]
+        }
+      ]
+    }
+  },
+  "taskRouting": {
+    "docs": {"tier": "budget", "effort": "low", "budgetTokens": "2k-8k", "budgetTime": "1-5min"},
+    "comments": {"tier": "budget", "effort": "low", "budgetTokens": "1k-4k", "budgetTime": "1-3min"},
+    "changelogs": {"tier": "budget", "effort": "low", "budgetTokens": "2k-6k", "budgetTime": "1-4min"},
+    "boilerplate": {"tier": "budget", "effort": "low", "budgetTokens": "2k-10k", "budgetTime": "2-8min"},
+    "mechanical-tests": {"tier": "budget", "effort": "low", "budgetTokens": "3k-12k", "budgetTime": "3-10min"},
+    "lint-fixes": {"tier": "budget", "effort": "low", "budgetTokens": "1k-6k", "budgetTime": "1-5min"},
+    "implementation": {"tier": "balanced", "effort": "medium", "budgetTokens": "8k-40k", "budgetTime": "10-40min"},
+    "refactor": {"tier": "balanced", "effort": "medium", "budgetTokens": "8k-35k", "budgetTime": "10-35min"},
+    "integration-tests": {"tier": "balanced", "effort": "medium", "budgetTokens": "6k-25k", "budgetTime": "8-25min"},
+    "multi-step-agentic": {"tier": "balanced", "effort": "high", "budgetTokens": "15k-60k", "budgetTime": "15-60min"},
+    "architecture": {"tier": "quality", "effort": "high", "budgetTokens": "20k-80k", "budgetTime": "20-90min"},
+    "plans": {"tier": "quality", "effort": "high", "budgetTokens": "15k-50k", "budgetTime": "15-45min"},
+    "root-cause": {"tier": "quality", "effort": "xhigh", "budgetTokens": "20k-100k", "budgetTime": "20-90min"},
+    "security-audit": {"tier": "quality", "effort": "high", "budgetTokens": "20k-80k", "budgetTime": "20-60min"},
+    "migration": {"tier": "quality", "effort": "high", "budgetTokens": "25k-100k", "budgetTime": "30-120min"}
+  },
   "aliases": {
     "l 5.6 lunce": {"provider": "openai", "model": "gpt-5.6-luna"},
     "gpt-5.6 lunce": {"provider": "openai", "model": "gpt-5.6-luna"},
+    "luna": {"provider": "openai", "model": "gpt-5.6-luna"},
+    "terra": {"provider": "openai", "model": "gpt-5.6-terra"},
+    "sol": {"provider": "openai", "model": "gpt-5.6-sol"},
     "kimi k3": {"provider": "moonshotai", "model": "kimi-k2"},
     "opus %": {"provider": "anthropic", "model": "claude-opus-5"},
+    "haiku": {"provider": "anthropic", "model": "claude-haiku-4-5"},
+    "sonnet": {"provider": "anthropic", "model": "claude-sonnet-5"},
+    "opus": {"provider": "anthropic", "model": "claude-opus-5"},
     "deepseek v4 flash": {"provider": "deepseek", "model": "deepseek-v4-flash"},
     "gemini 3.5 pro": {"provider": "google", "model": "gemini-2.5-pro"}
   },
@@ -71,14 +306,14 @@
       "effortField": "model_reasoning_effort"
     },
     "opencode": {
-      "configMode": "json-agent",
+      "configMode": "markdown-agent",
       "configPath": "opencode.json or ~/.config/opencode/agents/",
       "nativeProviders": ["*"],
       "effortField": "model-specific"
     },
     "antigravity": {
-      "configMode": "handoff-manifest",
-      "configPath": "manual / managed agent surface",
+      "configMode": "markdown-agent",
+      "configPath": "~/.agy/agents/",
       "nativeProviders": ["google"],
       "effortField": "managed"
     },
@@ -155,9 +390,51 @@
       "effortParameter": "reasoning.effort/model_reasoning_effort",
       "models": [
         {"id": "gpt-5.6", "displayName": "GPT-5.6", "tier": "quality", "status": "stable", "efforts": ["none", "low", "medium", "high", "xhigh", "max"], "capabilities": ["reasoning", "coding", "tools", "agentic"]},
+        {"id": "gpt-5.6-sol", "displayName": "GPT-5.6 Sol", "tier": "quality", "status": "stable", "efforts": ["none", "low", "medium", "high", "xhigh", "max"], "capabilities": ["reasoning", "coding", "tools", "agentic", "architecture"]},
         {"id": "gpt-5.6-terra", "displayName": "GPT-5.6 Terra", "tier": "balanced", "status": "stable", "efforts": ["none", "low", "medium", "high", "xhigh", "max"], "capabilities": ["coding", "tools", "fast"]},
         {"id": "gpt-5.6-luna", "displayName": "GPT-5.6 Luna", "tier": "budget", "status": "stable", "efforts": ["none", "low", "medium", "high", "xhigh", "max"], "capabilities": ["fast", "bounded", "high-throughput"]},
         {"id": "gpt-5-codex", "displayName": "GPT-5-Codex", "tier": "quality", "status": "stable", "efforts": ["low", "medium", "high", "xhigh", "max"], "capabilities": ["agentic", "coding", "tools"]}
+      ]
+    },
+    {
+      "id": "opencode",
+      "displayName": "OpenCode Zen",
+      "apiKeyEnv": "OPENCODE_API_KEY",
+      "docs": "https://opencode.ai/docs/models",
+      "effortParameter": "model-specific",
+      "models": [
+        {"id": "deepseek-v4-flash-free", "displayName": "DeepSeek V4 Flash Free", "tier": "budget", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["fast", "coding", "free"]},
+        {"id": "mimo-v2.5-free", "displayName": "Mimo V2.5 Free", "tier": "budget", "status": "stable", "efforts": ["low", "medium"], "capabilities": ["fast", "free"]},
+        {"id": "nemotron-3.5-lightning-free", "displayName": "Nemotron 3.5 Lightning Free", "tier": "budget", "status": "stable", "efforts": ["low", "medium"], "capabilities": ["fast", "free"]},
+        {"id": "gpt-5.6-luna", "displayName": "GPT-5.6 Luna (Zen)", "tier": "budget", "status": "stable", "efforts": ["low", "medium", "high", "xhigh", "max"], "capabilities": ["fast", "bounded"]},
+        {"id": "gpt-5.6-terra", "displayName": "GPT-5.6 Terra (Zen)", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high", "xhigh", "max"], "capabilities": ["coding", "tools"]},
+        {"id": "gpt-5.6-sol", "displayName": "GPT-5.6 Sol (Zen)", "tier": "quality", "status": "stable", "efforts": ["low", "medium", "high", "xhigh", "max"], "capabilities": ["reasoning", "architecture"]},
+        {"id": "claude-opus-5", "displayName": "Claude Opus 5 (Zen)", "tier": "quality", "status": "stable", "efforts": ["low", "medium", "high", "xhigh", "max"], "capabilities": ["reasoning", "coding", "agentic"]},
+        {"id": "claude-sonnet-5", "displayName": "Claude Sonnet 5 (Zen)", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high", "xhigh"], "capabilities": ["coding", "tools"]},
+        {"id": "claude-haiku-4-5", "displayName": "Claude Haiku 4.5 (Zen)", "tier": "budget", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["fast", "subagent"]},
+        {"id": "grok-4.5", "displayName": "Grok 4.5 (Zen)", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "fast-reasoning"]},
+        {"id": "grok-4.6", "displayName": "Grok 4.6 (Zen)", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "fast-reasoning"]}
+      ]
+    },
+    {
+      "id": "opencode-go",
+      "displayName": "OpenCode Go",
+      "apiKeyEnv": "OPENCODE_API_KEY",
+      "docs": "https://opencode.ai/docs/models",
+      "effortParameter": "model-specific",
+      "models": [
+        {"id": "gpt-5.6-luna", "displayName": "GPT-5.6 Luna (Go)", "tier": "budget", "status": "stable", "efforts": ["low", "medium", "high", "xhigh", "max"], "capabilities": ["fast", "bounded"]},
+        {"id": "deepseek-v4-flash", "displayName": "DeepSeek V4 Flash (Go)", "tier": "budget", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["fast", "coding"]},
+        {"id": "deepseek-v4-pro", "displayName": "DeepSeek V4 Pro (Go)", "tier": "quality", "status": "stable", "efforts": ["medium", "high", "max"], "capabilities": ["reasoning", "coding"]},
+        {"id": "grok-4.5", "displayName": "Grok 4.5 (Go)", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "fast-reasoning"]},
+        {"id": "glm-5.2", "displayName": "GLM-5.2 (Go)", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "agentic"]},
+        {"id": "glm-5.3", "displayName": "GLM-5.3 (Go)", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "agentic"]},
+        {"id": "kimi-k2.7-code", "displayName": "Kimi K2.7 Code (Go)", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "long-context"]},
+        {"id": "kimi-k3", "displayName": "Kimi K3 (Go)", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "long-context"]},
+        {"id": "qwen3.7-max", "displayName": "Qwen3.7 Max (Go)", "tier": "quality", "status": "stable", "efforts": ["medium", "high", "max"], "capabilities": ["reasoning", "coding"]},
+        {"id": "qwen3.8-max", "displayName": "Qwen3.8 Max (Go)", "tier": "quality", "status": "stable", "efforts": ["medium", "high", "max"], "capabilities": ["reasoning", "coding"]},
+        {"id": "mimo-v2.5-pro", "displayName": "Mimo V2.5 Pro (Go)", "tier": "quality", "status": "stable", "efforts": ["medium", "high", "max"], "capabilities": ["reasoning", "coding"]},
+        {"id": "minimax-m3", "displayName": "MiniMax M3 (Go)", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "tools"]}
       ]
     },
     {
@@ -187,7 +464,9 @@
       "docs": "https://opencode.ai/docs/providers",
       "effortParameter": "model-specific",
       "models": [
-        {"id": "glm-4.7", "displayName": "GLM-4.7", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "tools", "multilingual"]}
+        {"id": "glm-4.7", "displayName": "GLM-4.7", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "tools", "multilingual"]},
+        {"id": "glm-5.2", "displayName": "GLM-5.2", "tier": "balanced", "status": "stable", "efforts": ["low", "medium", "high"], "capabilities": ["coding", "tools", "multilingual"]},
+        {"id": "glm-4.5-air", "displayName": "GLM-4.5 Air", "tier": "budget", "status": "stable", "efforts": ["low", "medium"], "capabilities": ["fast", "budget"]}
       ]
     }
   ]

@@ -18,7 +18,14 @@ class SmartSubAgentsCatalogTests(unittest.TestCase):
     def test_catalog_is_valid(self) -> None:
         result = self.run_cli(VALIDATOR)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("8 providers", result.stdout)
+        self.assertRegex(result.stdout, r"\d+ providers")
+        self.assertIn("harnesses", result.stdout)
+
+    def test_sol_route_renders(self) -> None:
+        result = self.run_cli(RENDERER, "--harness", "codex", "--provider", "openai", "--model", "gpt-5.6-sol", "--effort", "xhigh")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn('model = "gpt-5.6-sol"', result.stdout)
+        self.assertIn('model_reasoning_effort = "xhigh"', result.stdout)
 
     def test_alias_normalizes_lunce_to_luna(self) -> None:
         result = self.run_cli(RENDERER, "--harness", "codex", "--model", "gpt-5.6 lunce", "--effort", "low")

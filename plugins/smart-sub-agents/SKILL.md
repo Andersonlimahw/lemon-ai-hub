@@ -101,6 +101,43 @@ reason: quality-first coding route with DeepSeek V4 Flash thinking mode
 
 Do not add secrets, invent provider support, or fall back after an explicit cancellation. A fallback is only a declared route for a provider outage or unavailable model and must be visible to the caller.
 
+## Worker matrix (named agents)
+
+Install the full tier × effort worker grid into local harnesses:
+
+```bash
+python3 plugins/smart-sub-agents/scripts/validate_catalog.py
+python3 plugins/smart-sub-agents/scripts/install_worker_matrix.py
+python3 plugins/smart-sub-agents/scripts/install_worker_matrix.py --validate-only
+```
+
+Naming contract:
+
+| Harness | Pattern | Example |
+| --- | --- | --- |
+| Claude (canonical) | `{haiku\|sonnet\|opus}_worker_{effort}` | `sonnet_worker_high` |
+| Codex | `{luna\|terra\|sol}_worker_{effort}` | `luna_worker_max` |
+| OpenCode Zen | `zen_{family}_worker_{effort}` | `zen_sol_worker_max` |
+| OpenCode Go | `go_{family}_worker_{effort}` | `go_luna_worker_high` |
+| Agy | symlink → Claude workers + Codex-named aliases | `opus_worker_high` → `~/.claude/agents/...` |
+
+Claude bodies are canonical. Codex gets native TOML (`model` + `model_reasoning_effort`). OpenCode gets adapted markdown (`mode/permission/model`). Agy symlinks Claude.
+
+## Sync models/providers (monthly/weekly drift)
+
+```bash
+# Dry report against live `opencode models`
+python3 plugins/smart-sub-agents/scripts/sync_provider_matrix.py
+
+# Persist discovered/stale flags + bump updated date
+python3 plugins/smart-sub-agents/scripts/sync_provider_matrix.py --write
+
+# Reinstall workers after promoting discovered models
+python3 plugins/smart-sub-agents/scripts/install_worker_matrix.py
+```
+
+Discovered models stay `status: discovered` until a human promotes them into `workerMatrix` / profiles. Never auto-delete.
+
 ## Refresh policy
 
-The matrix is a curated snapshot, not a live provider API. Check the linked official documentation before production rollout and update `updated` plus the affected source URL when a model is added, deprecated, renamed, or changes effort semantics. Run the validator and tests after every matrix change.
+The matrix is a curated snapshot, not a live provider API. Check the linked official documentation before production rollout and update `updated` plus the affected source URL when a model is added, deprecated, renamed, or changes effort semantics. Run the validator and tests after every matrix change. Prefer `sync_provider_matrix.py` for OpenCode Zen/Go drift.

@@ -158,13 +158,39 @@ Do not invent provider availability or expose credentials.
 
 
 def render_opencode(route: dict) -> str:
+    """Render OpenCode markdown agent (preferred) plus optional json snippet."""
+    model_ref = route["modelRef"]
+    # OpenCode accepts provider/model; zen/go providers already include prefix.
+    name = agent_name(route)
+    md = f"""---
+name: {name}
+description: Dynamic subagent route for {model_ref} at {route['effort']} effort. Native mapping: {route['nativeEffort']}.
+mode: subagent
+model: {model_ref}
+temperature: 0.1
+permission:
+  bash: allow
+  read: allow
+  edit: allow
+  glob: allow
+  grep: allow
+---
+
+Use the selected route for bounded delegated work. Return evidence, changed files, and validation results.
+Requested native mapping: {route['nativeEffort']}.
+Do not invent provider availability or expose credentials.
+"""
+    return md
+
+
+def render_opencode_json(route: dict) -> str:
     agent = {
         "description": f"Dynamic subagent route for {route['modelRef']} at {route['effort']} effort. Native mapping: {route['nativeEffort']}.",
         "mode": "subagent",
         "model": route["modelRef"],
         "steps": 12 if route["effort"] in {"high", "xhigh", "max", "ultra"} else 6,
     }
-    if route["provider"] == "openai":
+    if route["provider"] in {"openai", "opencode", "opencode-go"} and route["model"].startswith("gpt-"):
         agent["reasoningEffort"] = route["effort"]
     return json.dumps({"$schema": "https://opencode.ai/config.json", "agent": {agent_name(route): agent}}, indent=2) + "\n"
 
@@ -179,7 +205,7 @@ def render(harness: str, route: dict) -> tuple[str, str]:
     if harness == "codex":
         return f"{agent_name(route)}.toml", render_codex(route)
     if harness == "opencode":
-        return "opencode.json", render_opencode(route)
+        return f"{agent_name(route)}.md", render_opencode(route)
     return "route.json", render_manifest(route)
 
 
