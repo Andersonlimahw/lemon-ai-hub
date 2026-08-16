@@ -276,6 +276,26 @@
       ]
     },
     {
+      "name": "brand-naming",
+      "source": "./plugins/brand-naming",
+      "description": "Run an adversarial naming sprint to find a defensible brand name for a company or product. Use when the user says \"naming sprint\", \"find a name\", \"name my company\", \"name this product\", \"rebrand\", \"brand name\", \"escolher nome\", \"nomear a empresa\", or asks to validate a shortlist of candidate names. Generates a large longlist, funnels it down with an explicit scorecard, then tries to destroy every survivor with collision research across software, dev ecosystems, companies, app stores, domains and trademarks before recommending anything. Refuses to recommend a name that has not been researched, and refuses to invent domain availability.",
+      "version": "1.0.1",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "brand-naming",
+        "naming",
+        "branding",
+        "brand-strategy",
+        "verbal-identity",
+        "trademark",
+        "domain-research",
+        "inpi",
+        "collision-research"
+      ]
+    },
+    {
       "name": "brandkit",
       "source": "./plugins/brandkit",
       "description": "Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks, and visual-world presentations. Trained for minimalist, cinematic, editorial, dark-tech, luxury, cultural, security, gaming, developer-tool, and consumer-app brand systems. Optimized for intentional logo concepting, refined composition, sparse typography, strong symbolic meaning, premium mockups, art-directed imagery, and flexible grid layouts.",

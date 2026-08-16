@@ -1,0 +1,86 @@
+{
+  "skill_name": "brand-naming",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're renaming our software consultancy. Give me a name.",
+      "expected_output": "Should NOT immediately produce names. Should first gather the brief: what the company does, future categories it must not be locked out of, brand personality with reference brands, target languages, hard constraints (length, syllables, domain rule), and names already rejected. Should write naming/00-brief.md before generating. Should explain the GENERATE -> RESEARCH -> DESTROY loop and that it will not present unresearched candidates.",
+      "assertions": [
+        "Does not produce a name list before gathering the brief",
+        "Asks what categories the name must not limit",
+        "Asks for reference brands and target languages",
+        "Asks about the domain rule specifically",
+        "Writes or proposes naming/00-brief.md",
+        "States that candidates will be researched before being presented"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Here's my brief: B2B software engineering company in Brazil, going international, must work in PT-BR/EN/ES, 4-8 letters, one word, no accents, must not lock us into AI or web dev. Reference brands: Stripe, Linear, Figma. Run the sprint.",
+      "expected_output": "Should generate a longlist of 300+ distributed across the four categories (real words, rare words, linguistic roots, grounded neologisms). Should apply the funnel 300->150->75->30->15->10->5->3->1. Should score survivors on the 100-point matrix with an 85 floor. Should run collision research including the developer-ecosystem test on GitHub/npm/PyPI/Maven/Apache/CNCF/Docker Hub. Should verify domains with RDAP and classify each TLD. Should do preliminary trademark screening in Nice classes 9 and 42 including INPI. Should present the report in the specified format with real URLs.",
+      "assertions": [
+        "Generates a longlist across all four categories",
+        "Applies the documented funnel stages",
+        "Uses the 100-point scorecard with an 85 minimum",
+        "Runs the developer-ecosystem test explicitly",
+        "Verifies domains with RDAP rather than asserting availability",
+        "Screens Nice classes 9 and 42",
+        "Cites real URLs as evidence",
+        "Logs eliminated names with reasons"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I love the name MAVEN for our developer tools company. Let's go with it.",
+      "expected_output": "Should run the developer-ecosystem test and identify Apache Maven as one of the best-known build tools in the Java ecosystem. Should eliminate the name on that basis. Should explicitly refuse the rationalisation that 'maven' has other legitimate meanings, explaining that a widely-known tool owns the name inside the developer audience being sold to. Should offer to run a full sprint to find alternatives rather than just rejecting.",
+      "assertions": [
+        "Identifies Apache Maven as a collision",
+        "Eliminates the name rather than hedging",
+        "Rejects the 'other meanings' rationalisation explicitly",
+        "Explains why audience overlap makes this disqualifying",
+        "Offers to run a sprint for alternatives"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Check if velmora.com and velmora.com.br are available.",
+      "expected_output": "Should perform an actual lookup rather than guessing. Should use RDAP endpoints (rdap.verisign.com for .com, rdap.registro.br for .com.br) or the check_domains.py script. Should classify results as AVAILABLE / REGISTERED-PARKED / ACTIVE / FOR SALE / UNKNOWN with the evidence source. If the lookup cannot be completed, should report UNKNOWN or NOT VERIFIED rather than asserting availability. Should note that a DNS-only check is a pre-filter and not proof. May also flag that 'velmora' matches the banned -ora artificial suffix pattern.",
+      "assertions": [
+        "Performs a real lookup instead of asserting from memory",
+        "Uses RDAP or the provided script",
+        "Classifies with the documented status vocabulary",
+        "Reports UNKNOWN rather than guessing when verification fails",
+        "Does not claim 'available for registration'"
+      ],
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "We ran two rounds and every finalist got killed by collisions. Just pick the least bad one so we can move on.",
+      "expected_output": "Should refuse to force a weak winner. Should explain that non-convergence is a valid result and that delivering a name the founder abandons in six months is worse. Should produce the NAMING SPRINT — NO CONVERGENCE report: volume screened, each finalist and the specific evidence that killed it, the binding constraint (usually domain policy or category saturation), concrete options for relaxing it with tradeoffs, and what the next round will explore differently. Should offer to generate another 200 candidates.",
+      "assertions": [
+        "Refuses to force a winner",
+        "Explains why non-convergence is legitimate",
+        "Identifies the binding constraint",
+        "Offers concrete options for relaxing the constraint",
+        "Proposes a further round rather than stopping"
+      ],
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "My top candidate is CRISOL and BURIL. Check if crisol.com.br, crisol.com, buril.com.br, buril.com are available.",
+      "expected_output": "Should run transactional verification (WHOIS or RDAP, not DNS pre-filter alone). Should report that CRISOL and BURIL are both REGISTERED. Should NOT recommend either name. Should offer to continue with the next candidate from the ranking.",
+      "assertions": [
+        "Uses WHOIS or RDAP, not DNS pre-filter alone",
+        "Reports actual registration status (REGISTERED, not LIKELY FREE)",
+        "Refuses to recommend names without available domains",
+        "Offers to continue with alternatives"
+      ],
+      "files": []
+    }
+  ]
+}
