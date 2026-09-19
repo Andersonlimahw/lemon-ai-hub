@@ -126,7 +126,7 @@ class ScanTests(unittest.TestCase):
         self.assertEqual(summary["candidates"], 2)
 
     def test_report_is_self_contained(self) -> None:
-        html = render_report(self.scan, wtj.REASON_LABELS, wtj.human_bytes)
+        html = render_report(self.scan)
         self.assertEqual(re.findall(r"__[A-Z_]+__", html), [])
         self.assertEqual(re.findall(r'(?:src|href)="(?!#)[^"]+"', html), [])
         self.assertEqual(html.count('<tr data-risk'), 5)
@@ -228,7 +228,7 @@ class CleanTests(unittest.TestCase):
     def test_executed_report_renders(self) -> None:
         ids = wtj.parse_selection("safe", self.scan["items"])
         result = wtj.clean(self.scan, ids, branch_policy="auto", force=False)
-        html = render_report(result, wtj.REASON_LABELS, wtj.human_bytes)
+        html = render_report(result)
         self.assertEqual(re.findall(r"__[A-Z_]+__", html), [])
         self.assertIn("Desfazer", html)
         self.assertIn("Removida", html)

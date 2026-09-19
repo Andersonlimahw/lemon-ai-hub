@@ -11,8 +11,24 @@ No external assets, no CDN, no network: the produced file opens offline from
 from __future__ import annotations
 
 import html
-import json
-from typing import Callable
+import re
+
+REASON_LABELS = {
+    "prunable": "Órfã — diretório sumiu, resta só o ref administrativo",
+    "missing": "Diretório inexistente, mas o git ainda não marcou como órfã",
+    "merged": "Branch já mergeada na base",
+    "upstream-gone": "Upstream removido (PR mergeada e branch deletada no remoto)",
+    "orphan-detached": "HEAD detached sem commits próprios",
+    "no-unique-commits": "Nenhum commit à frente da base",
+    "stale": "Sem commits recentes",
+    "dirty": "Alterações não commitadas",
+    "unknown": "Estado indeterminado — o git não respondeu à comparação com a base",
+    "active": "Trabalho em andamento",
+    "main-worktree": "Worktree principal do repositório",
+    "current-session": "Worktree da sessão atual",
+    "locked": "Worktree travada (git worktree lock)",
+    "protected": "Protegida por configuração",
+}
 
 RISK_META = {
     "safe": ("Seguro", "safe"),
@@ -206,6 +222,15 @@ def esc(value) -> str:
     return html.escape("" if value is None else str(value), quote=True)
 
 
+def human_bytes(value: int) -> str:
+    size = float(value or 0)
+    for unit in ("B", "KB", "MB", "GB", "TB"):
+        if size < 1024 or unit == "TB":
+            return f"{size:.0f} {unit}" if unit == "B" else f"{size:.1f} {unit}"
+        size /= 1024
+    return f"{size:.1f} TB"
+
+
 def _card(label: str, value: str, suffix: str = "") -> str:
     tail = f" <small>{esc(suffix)}</small>" if suffix else ""
     return f'<div class="card"><div class="label">{esc(label)}</div><div class="value">{esc(value)}{tail}</div></div>'
@@ -227,11 +252,8 @@ def _bars(counts: dict[str, int], total: int) -> str:
     return "".join(rows)
 
 
-def render_report(
-    data: dict,
-    reason_labels: dict[str, str],
-    human_bytes: Callable[[int], str],
-) -> str:
+def render_report(data: dict) -> str:
+    reason_labels = REASON_LABELS
     executed = data.get("mode") == "executed"
     items = data.get("items", [])
     summary = data.get("summary") or {}
@@ -364,26 +386,21 @@ def render_report(
         f"<dt>{esc(key)}</dt><dd>{esc(value)}</dd>" for key, value in reason_labels.items()
     )
 
-    return (
-        TEMPLATE
-        .replace("__TITLE__", esc(heading))
-        .replace("__HEADING__", esc(heading))
-        .replace("__SUBTITLE__", esc(subtitle))
-        .replace("__CARDS__", cards)
-        .replace("__EXEC_SECTION__", exec_section)
-        .replace("__CHIPS__", "".join(chips))
-        .replace("__SELECTION_NOTE__", selection_note)
-        .replace("__ROWS__", rows)
-        .replace("__BARS__", bars)
-        .replace("__UNDO_SECTION__", undo_section)
-        .replace("__LEGEND__", legend)
-        .replace("__VERSION__", esc(data.get("version", "1.0.0")))
-        .replace("__GENERATED__", esc(data.get("generatedAt", "")))
-    )
-
-
-if __name__ == "__main__":  # pragma: no cover - manual rendering helper
-    import sys
-
-    payload = json.loads(open(sys.argv[1], encoding="utf-8").read())
-    print(render_report(payload, {}, lambda b: f"{b} B"))
+    tokens = {
+        "__TITLE__": esc(heading),
+        "__HEADING__": esc(heading),
+        "__SUBTITLE__": esc(subtitle),
+        "__CARDS__": cards,
+        "__EXEC_SECTION__": exec_section,
+        "__CHIPS__": "".join(chips),
+        "__SELECTION_NOTE__": selection_note,
+        "__ROWS__": rows,
+        "__BARS__": bars,
+        "__UNDO_SECTION__": undo_section,
+        "__LEGEND__": legend,
+        "__VERSION__": esc(data.get("version", "1.0.0")),
+        "__GENERATED__": esc(data.get("generatedAt", "")),
+    }
+    # Single pass: substituted content is never rescanned, so a branch or
+    # directory literally named `__ROWS__` cannot inject into another slot.
+    return re.sub(r"__[A-Z_]+__", lambda m: tokens.get(m.group(0), m.group(0)), TEMPLATE)

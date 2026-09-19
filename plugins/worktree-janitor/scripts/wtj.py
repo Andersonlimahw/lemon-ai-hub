@@ -29,6 +29,8 @@ import fnmatch
 import json
 import os
 import re
+import shlex
+import shutil
 import subprocess
 import sys
 import webbrowser
@@ -36,7 +38,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from render_html import render_report  # noqa: E402
+from render_html import REASON_LABELS, human_bytes, render_report  # noqa: E402
 
 VERSION = "1.0.0"
 
@@ -71,20 +73,9 @@ OUTPUT_ROOT = Path("~/.worktree-janitor/reports").expanduser()
 
 RISK_ORDER = {"safe": 0, "review": 1, "risky": 2, "keep": 3, "protected": 4}
 
-REASON_LABELS = {
-    "prunable": "Órfã — diretório sumiu, resta só o ref administrativo",
-    "merged": "Branch já mergeada na base",
-    "upstream-gone": "Upstream removido (PR mergeada e branch deletada no remoto)",
-    "orphan-detached": "HEAD detached sem commits próprios",
-    "no-unique-commits": "Nenhum commit à frente da base",
-    "stale": "Sem commits recentes",
-    "dirty": "Alterações não commitadas",
-    "active": "Trabalho em andamento",
-    "main-worktree": "Worktree principal do repositório",
-    "current-session": "Worktree da sessão atual",
-    "locked": "Worktree travada (git worktree lock)",
-    "protected": "Protegida por configuração",
-}
+# Reasons that mean "this branch is reproducible from the base", and are
+# therefore the only ones where `--delete-branch auto` removes the local branch.
+BRANCH_DELETABLE_REASONS = ("merged", "upstream-gone", "no-unique-commits")
 
 
 # --------------------------------------------------------------------------- #
@@ -166,8 +157,14 @@ def list_worktrees(repo: Path) -> list[dict]:
     return blocks
 
 
-def resolve_base(repo: Path) -> tuple[str, str]:
-    """Return (base_branch_name, comparable_ref) for the repository."""
+def resolve_base(repo: Path) -> tuple[str, str | None]:
+    """Return (base_branch_name, comparable_ref) for the repository.
+
+    The ref is None when no real base could be found. Comparing against `HEAD`
+    as a fallback would mean "merged into whatever the main checkout happens to
+    be parked on" — routinely a feature branch — so callers must treat an
+    unresolved base as "cannot classify" rather than guessing.
+    """
     code, out, _ = git(["symbolic-ref", "--quiet", "refs/remotes/origin/HEAD"], cwd=str(repo))
     if code == 0 and out.startswith("refs/remotes/origin/"):
         name = out[len("refs/remotes/origin/"):]
@@ -177,7 +174,7 @@ def resolve_base(repo: Path) -> tuple[str, str]:
             return name, f"origin/{name}"
         if git(["rev-parse", "--verify", "--quiet", f"refs/heads/{name}"], cwd=str(repo))[0] == 0:
             return name, name
-    return "HEAD", "HEAD"
+    return "(indeterminada)", None
 
 
 def detect_harness(path: str) -> tuple[str | None, bool]:
@@ -195,20 +192,10 @@ def detect_harness(path: str) -> tuple[str | None, bool]:
 
 
 def dir_size_bytes(path: str) -> int:
-    code, out, _ = run(["du", "-sk", path], timeout=120)
-    if code == 0 and out:
-        match = re.match(r"^(\d+)", out)
-        if match:
-            return int(match.group(1)) * 1024
-    total = 0
-    for dirpath, dirnames, filenames in os.walk(path, followlinks=False):
-        dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
-        for name in filenames:
-            try:
-                total += os.lstat(os.path.join(dirpath, name)).st_size
-            except OSError:
-                pass
-    return total
+    """Best-effort size. Cosmetic only — 0 on failure, never blocks a decision."""
+    _, out, _ = run(["du", "-sk", path], timeout=120)
+    match = re.match(r"^(\d+)", out)
+    return int(match.group(1)) * 1024 if match else 0
 
 
 def current_worktree() -> str | None:
@@ -222,141 +209,169 @@ def current_worktree() -> str | None:
 # classification
 # --------------------------------------------------------------------------- #
 
-def inspect_worktree(
-    repo: Path,
-    block: dict,
-    base_name: str,
-    base_ref: str,
-    is_main: bool,
-    stale_days: int,
-    include_dirty: bool,
-    protect_patterns: list[str],
-    here: str | None,
-) -> dict:
+def expand_patterns(patterns: list[str]) -> list[str]:
+    """`~` in a --protect glob must expand, or the pattern silently matches
+    nothing — the failure mode is "protection did not apply", so it fails open."""
+    return [os.path.expanduser(p) for p in patterns]
+
+
+def matches_protect(path: str, patterns: list[str]) -> bool:
+    """Match a glob against both the literal and the resolved path.
+
+    `/tmp` vs `/private/tmp`, autofs and symlinked home dirs mean the porcelain
+    path and the path the user typed the glob against may differ.
+    """
+    candidates = {path}
+    try:
+        candidates.add(str(Path(path).resolve()))
+    except OSError:
+        pass
+    return any(fnmatch.fnmatch(c, p) for c in candidates for p in patterns)
+
+
+def gather_facts(repo: Path, block: dict, base_name: str, base_ref: str | None, is_main: bool) -> dict:
+    """Everything the classifier needs, read from disk and git. No policy here.
+
+    Numbers that could not be measured stay `None` — never `0`. A git failure
+    must not be indistinguishable from "this branch has no unique commits".
+    """
     path = block.get("worktree", "")
     head = block.get("HEAD", "")
     branch_ref = block.get("branch", "")
     # Keep the full branch name: `refs/heads/feat/x` -> `feat/x`, not `x`.
     branch = branch_ref[len("refs/heads/"):] if branch_ref.startswith("refs/heads/") else (branch_ref or None)
-    prunable = "prunable" in block
-    locked = "locked" in block
-    exists = bool(path) and Path(path).exists()
-    harness, agent_managed = detect_harness(path)
 
-    item: dict = {
-        "id": 0,
+    facts: dict = {
         "repoPath": str(repo),
         "repoName": repo.name,
         "path": path,
-        "exists": exists,
+        "exists": bool(path) and Path(path).exists(),
         "branch": branch,
         "head": head,
         "baseBranch": base_name,
-        "harness": harness,
-        "agentManaged": agent_managed,
         "isMain": is_main,
-        "locked": locked,
+        "locked": "locked" in block,
         "lockedReason": block.get("locked") or None,
-        "prunable": prunable,
+        "prunable": "prunable" in block,
         "prunableReason": block.get("prunable") or None,
-        "dirtyFiles": 0,
-        "ahead": 0,
-        "behind": 0,
-        "merged": False,
+        "dirtyFiles": None,
+        "ahead": None,
+        "behind": None,
+        "merged": None,
         "upstream": None,
         "upstreamGone": False,
         "lastCommit": None,
         "ageDays": None,
         "sizeBytes": 0,
-        "signals": [],
-        "reason": "active",
-        "risk": "keep",
-        "recommended": False,
     }
+    facts["harness"], facts["agentManaged"] = detect_harness(path)
 
-    if is_main:
-        item["reason"], item["risk"] = "main-worktree", "protected"
-        return item
-    if here and path and str(Path(path).resolve()) == here:
-        item["reason"], item["risk"] = "current-session", "protected"
-        return item
-    if any(fnmatch.fnmatch(path, pattern) for pattern in protect_patterns):
-        item["reason"], item["risk"] = "protected", "protected"
-        return item
-    if locked:
-        item["reason"], item["risk"] = "locked", "protected"
-        return item
-    if prunable or not exists:
-        item["reason"], item["risk"], item["recommended"] = "prunable", "safe", True
-        item["signals"].append("prunable")
-        return item
+    # Protected and dead worktrees are classified from the porcelain block
+    # alone; touching the filesystem for them is wasted work.
+    if is_main or facts["locked"] or facts["prunable"] or not facts["exists"]:
+        return facts
 
-    # --- facts about a live worktree -------------------------------------- #
-    item["sizeBytes"] = dir_size_bytes(path)
+    facts["sizeBytes"] = dir_size_bytes(path)
 
     code, out, _ = git(["status", "--porcelain", "--untracked-files=normal"], cwd=path)
-    if code == 0 and out:
-        item["dirtyFiles"] = len(out.splitlines())
+    if code == 0:
+        facts["dirtyFiles"] = len(out.splitlines()) if out else 0
 
     code, out, _ = git(["log", "-1", "--format=%cI"], cwd=path)
     if code == 0 and out:
-        item["lastCommit"] = out
+        facts["lastCommit"] = out
         try:
-            committed = datetime.fromisoformat(out)
-            item["ageDays"] = (datetime.now(timezone.utc) - committed).days
+            facts["ageDays"] = (datetime.now(timezone.utc) - datetime.fromisoformat(out)).days
         except ValueError:
             pass
 
     if head and base_ref:
-        if git(["merge-base", "--is-ancestor", head, base_ref], cwd=str(repo))[0] == 0:
-            item["merged"] = True
-            item["signals"].append("merged")
+        code, _, _ = git(["merge-base", "--is-ancestor", head, base_ref], cwd=str(repo))
+        if code in (0, 1):  # 1 = definitively not an ancestor; anything else = error
+            facts["merged"] = code == 0
         code, out, _ = git(["rev-list", "--left-right", "--count", f"{base_ref}...{head}"], cwd=str(repo))
-        if code == 0 and out:
-            numbers = out.split()
-            if len(numbers) == 2:
-                item["behind"], item["ahead"] = int(numbers[0]), int(numbers[1])
+        numbers = out.split() if code == 0 else []
+        if len(numbers) == 2:
+            facts["behind"], facts["ahead"] = int(numbers[0]), int(numbers[1])
 
     if branch:
+        # `|` is a legal refname character, so it cannot be the separator.
+        # A newline is not legal in a refname, so `%0a` is unambiguous.
         code, out, _ = git(
-            ["for-each-ref", "--format=%(upstream:short)|%(upstream:track)", f"refs/heads/{branch}"],
+            ["for-each-ref", "--format=%(upstream:short)%0a%(upstream:track)", f"refs/heads/{branch}"],
             cwd=str(repo),
         )
-        if code == 0 and out:
-            upstream, _, track = out.partition("|")
-            item["upstream"] = upstream or None
-            if upstream and "gone" in track:
-                item["upstreamGone"] = True
-                item["signals"].append("upstream-gone")
+        lines = out.split("\n") if code == 0 else []
+        if len(lines) == 2:
+            facts["upstream"] = lines[0] or None
+            facts["upstreamGone"] = bool(lines[0]) and lines[1].strip() == "[gone]"
 
-    dirty = item["dirtyFiles"] > 0
+    return facts
+
+
+def classify(facts: dict, stale_days: int, include_dirty: bool,
+             protect_patterns: list[str], here: str | None) -> dict:
+    """Pure policy: facts in, (reason, risk, recommended, signals) out.
+
+    Evaluation is sequential and stops at the first match. The order is the
+    contract documented in references/criteria.md — safety before convenience.
+    """
+    path = facts["path"]
+    signals: list[str] = []
+
+    def verdict(reason: str, risk: str) -> dict:
+        return {**facts, "reason": reason, "risk": risk, "signals": signals,
+                "recommended": risk == "safe"}
+
+    if facts["isMain"]:
+        return verdict("main-worktree", "protected")
+    if here and path:
+        try:
+            if str(Path(path).resolve()) == here:
+                return verdict("current-session", "protected")
+        except OSError:
+            pass
+    if matches_protect(path, protect_patterns):
+        return verdict("protected", "protected")
+    if facts["locked"]:
+        return verdict("locked", "protected")
+    if facts["prunable"]:
+        signals.append("prunable")
+        return verdict("prunable", "safe")
+    if not facts["exists"]:
+        # Directory is gone but git has not noticed. Could be an unmounted
+        # volume rather than a dead worktree — never auto-recommend.
+        return verdict("missing", "review")
+
+    dirty = bool(facts["dirtyFiles"])
     if dirty:
-        item["signals"].append("dirty")
-
+        signals.append("dirty")
     if dirty and not include_dirty:
-        item["reason"], item["risk"] = "dirty", "risky"
-        return item
+        return verdict("dirty", "risky")
 
-    if item["merged"]:
-        item["reason"], item["risk"] = "merged", "safe"
-    elif item["upstreamGone"]:
-        item["reason"], item["risk"] = "upstream-gone", "safe"
-    elif not branch and item["ahead"] == 0:
-        item["reason"], item["risk"] = "orphan-detached", "safe"
-    elif item["ahead"] == 0:
-        item["reason"], item["risk"] = "no-unique-commits", "safe"
-    elif item["ageDays"] is not None and item["ageDays"] >= stale_days:
-        item["reason"], item["risk"] = "stale", "review"
+    if facts["merged"]:
+        signals.append("merged")
+        reason, risk = "merged", "safe"
+    elif facts["upstreamGone"]:
+        signals.append("upstream-gone")
+        reason, risk = "upstream-gone", "safe"
+    elif facts["ahead"] is None or facts["merged"] is None:
+        # git could not answer. Never let a measurement failure read as
+        # "nothing unique here" and green-light a deletion.
+        reason, risk = "unknown", "review"
+    elif not facts["branch"] and facts["ahead"] == 0:
+        reason, risk = "orphan-detached", "safe"
+    elif facts["ahead"] == 0:
+        reason, risk = "no-unique-commits", "safe"
+    elif facts["ageDays"] is not None and facts["ageDays"] >= stale_days:
+        reason, risk = "stale", "review"
     else:
-        item["reason"], item["risk"] = "active", "keep"
-        return item
+        return verdict("active", "keep")
 
     # Uncommitted work is unrecoverable: never auto-recommend it.
-    if dirty and item["risk"] == "safe":
-        item["risk"] = "review"
-
-    item["recommended"] = item["risk"] == "safe"
-    return item
+    if dirty and risk == "safe":
+        risk = "review"
+    return verdict(reason, risk)
 
 
 def build_scan(
@@ -368,12 +383,12 @@ def build_scan(
     quiet: bool = False,
 ) -> dict:
     here = current_worktree()
+    protect_patterns = expand_patterns(protect_patterns)
     repos = find_repos(roots, depth)
     if not quiet:
         log(f"[wtj] {len(repos)} repositório(s) encontrado(s) em {', '.join(roots)}")
 
     items: list[dict] = []
-    next_id = 1
     for repo in repos:
         blocks = list_worktrees(repo)
         if len(blocks) <= 1:
@@ -382,13 +397,14 @@ def build_scan(
         for index, block in enumerate(blocks):
             if "bare" in block:
                 continue
-            item = inspect_worktree(
-                repo, block, base_name, base_ref, index == 0,
-                stale_days, include_dirty, protect_patterns, here,
-            )
-            item["id"] = next_id
-            next_id += 1
-            items.append(item)
+            facts = gather_facts(repo, block, base_name, base_ref, index == 0)
+            items.append(classify(facts, stale_days, include_dirty, protect_patterns, here))
+
+    # A --protect glob that matches nothing is almost always a typo, and its
+    # failure mode is silent: the user believes a path is protected when it is not.
+    for pattern in protect_patterns:
+        if not any(matches_protect(i["path"], [pattern]) for i in items):
+            log(f"[wtj] AVISO: o glob --protect {pattern!r} não casou com nenhuma worktree")
 
     items.sort(key=lambda i: (RISK_ORDER.get(i["risk"], 9), i["repoName"], i["path"]))
     for new_id, item in enumerate(items, start=1):
@@ -447,74 +463,141 @@ def should_delete_branch(item: dict, policy: str) -> bool:
         return False
     if policy == "always":
         return True
-    return item["reason"] in ("merged", "upstream-gone", "no-unique-commits")
+    if item["reason"] not in BRANCH_DELETABLE_REASONS:
+        return False
+    # `upstream-gone` catches squash-merges, but it is not proof of a merge: a
+    # remote branch deleted without merging leaves commits that exist only here.
+    # Keep the ref — the worktree still goes, and the commits stay reachable.
+    if item["reason"] == "upstream-gone" and not item.get("merged") and (item.get("ahead") or 0) > 0:
+        return False
+    return True
+
+
+def prune_one(repo: str, path: str) -> tuple[bool, str]:
+    """Drop the administrative record of one dead worktree.
+
+    `git worktree prune` is repo-wide: it would remove every prunable worktree
+    in the repository, including ids the user did not select, and the report
+    would then claim nothing outside the selection was touched. So the entry is
+    located by its own `gitdir` file and removed on its own.
+    """
+    code, common, err = git(["rev-parse", "--path-format=absolute", "--git-common-dir"], cwd=repo)
+    if code != 0:
+        return False, err or "não foi possível localizar o git dir"
+    admin_root = Path(common) / "worktrees"
+    if not admin_root.is_dir():
+        return False, "repositório não possui registros de worktree"
+
+    target = str(Path(path))
+    for entry in sorted(admin_root.iterdir()):
+        gitdir_file = entry / "gitdir"
+        try:
+            recorded = gitdir_file.read_text(encoding="utf-8", errors="replace").strip()
+        except OSError:
+            continue
+        # `gitdir` holds `<worktree>/.git`; older git wrote the worktree itself.
+        if recorded == target or str(Path(recorded).parent) == target:
+            try:
+                shutil.rmtree(entry)
+            except OSError as exc:
+                return False, str(exc)
+            return True, ""
+    return False, f"nenhum registro administrativo aponta para {path}"
+
+
+def revalidate(item: dict, here: str | None, protect_patterns: list[str]) -> str | None:
+    """Re-check the safety invariants against live state, not against the scan.
+
+    `scan` and `clean` are separate invocations; minutes and several agent turns
+    can pass between them. Returns an error string when the classification no
+    longer holds, or None when it is still safe to proceed.
+    """
+    path = item.get("path") or ""
+    repo = item.get("repoPath") or ""
+
+    if here and path:
+        try:
+            if str(Path(path).resolve()) == here:
+                return "scan desatualizado: esta é a worktree da sessão atual"
+        except OSError:
+            pass
+    if matches_protect(path, protect_patterns):
+        return "protegida por --protect"
+
+    for block in list_worktrees(Path(repo)):
+        if block.get("worktree") != path:
+            continue
+        if "locked" in block:
+            return "scan desatualizado: a worktree foi travada (git worktree lock)"
+        if "prunable" in block:
+            return None
+        code, out, _ = git(["status", "--porcelain", "--untracked-files=normal"], cwd=path)
+        if code == 0 and out and not item.get("dirtyFiles"):
+            return (f"scan desatualizado: a worktree passou a ter {len(out.splitlines())} "
+                    "alteração(ões) não commitada(s)")
+        return None
+    return "scan desatualizado: a worktree não está mais registrada no repositório"
 
 
 def clean(scan_data: dict, selected_ids: list[int], branch_policy: str, force: bool) -> dict:
     by_id = {item["id"]: item for item in scan_data["items"]}
+    protect_patterns = expand_patterns(scan_data.get("protect", []))
+    here = current_worktree()
     results: list[dict] = []
-    touched_repos: set[str] = set()
+
+    def record(item: dict | None, item_id: int, **fields) -> None:
+        base = {k: item.get(k) for k in
+                ("repoPath", "repoName", "path", "branch", "head", "risk", "reason", "sizeBytes")} if item else {}
+        results.append({"id": item_id, **base, "undo": [], **fields})
 
     for item_id in selected_ids:
         item = by_id.get(item_id)
         if item is None:
-            results.append({"id": item_id, "status": "skipped", "error": "id inexistente no scan"})
+            record(None, item_id, status="skipped", error="id inexistente no scan")
             continue
-        outcome = dict(item)
         if item["risk"] == "protected":
-            outcome.update(status="skipped", error=f"protegida ({REASON_LABELS.get(item['reason'], item['reason'])})")
-            results.append(outcome)
+            record(item, item_id, status="skipped",
+                   error=f"protegida ({REASON_LABELS.get(item['reason'], item['reason'])})")
             continue
 
         repo, path = item["repoPath"], item["path"]
-        touched_repos.add(repo)
-        undo: list[str] = []
+        stale = revalidate(item, here, protect_patterns)
+        if stale:
+            record(item, item_id, status="skipped", error=stale)
+            continue
 
         if item["prunable"] or not item["exists"]:
-            code, _, err = git(["worktree", "prune"], cwd=repo)
-            outcome.update(
-                status="removed" if code == 0 else "failed",
-                error=None if code == 0 else err,
-                action="prune",
-                undo=[],
-            )
-            results.append(outcome)
+            ok, err = prune_one(repo, path)
+            record(item, item_id, status="removed" if ok else "failed",
+                   action="prune", error=None if ok else err)
+            continue
+
+        if item.get("dirtyFiles") and not force:
+            record(item, item_id, status="skipped",
+                   error="worktree com alterações não commitadas exige --force")
             continue
 
         args = ["worktree", "remove", path]
-        if force or item["dirtyFiles"] > 0:
+        if force:
             args.append("--force")
         code, _, err = git(args, cwd=repo)
         if code != 0:
-            outcome.update(status="failed", error=err or "git worktree remove falhou", action="remove", undo=[])
-            results.append(outcome)
+            record(item, item_id, status="failed", action="remove",
+                   error=err or "git worktree remove falhou")
             continue
 
-        branch_deleted = False
-        branch_error = None
+        branch_deleted, branch_error, undo = False, None, []
         if should_delete_branch(item, branch_policy):
             bcode, _, berr = git(["branch", "-D", item["branch"]], cwd=repo)
             branch_deleted = bcode == 0
-            if not branch_deleted:
-                branch_error = berr
-
+            branch_error = None if branch_deleted else berr
         if branch_deleted:
-            undo.append(f"git -C {shq(repo)} branch {shq(item['branch'])} {item['head']}")
-        target = item["branch"] or item["head"]
-        undo.append(f"git -C {shq(repo)} worktree add {shq(path)} {shq(target)}")
+            undo.append(f"git -C {shlex.quote(repo)} branch {shlex.quote(item['branch'])} {item['head']}")
+        undo.append(f"git -C {shlex.quote(repo)} worktree add {shlex.quote(path)} "
+                    f"{shlex.quote(item['branch'] or item['head'])}")
 
-        outcome.update(
-            status="removed",
-            action="remove",
-            branchDeleted=branch_deleted,
-            branchError=branch_error,
-            error=None,
-            undo=undo,
-        )
-        results.append(outcome)
-
-    for repo in sorted(touched_repos):
-        git(["worktree", "prune"], cwd=repo)
+        record(item, item_id, status="removed", action="remove", error=None,
+               branchDeleted=branch_deleted, branchError=branch_error, undo=undo)
 
     removed = [r for r in results if r.get("status") == "removed"]
     return {
@@ -566,15 +649,6 @@ def write_undo_script(result: dict, path: Path) -> None:
 # output
 # --------------------------------------------------------------------------- #
 
-def human_bytes(value: int) -> str:
-    size = float(value or 0)
-    for unit in ("B", "KB", "MB", "GB", "TB"):
-        if size < 1024 or unit == "TB":
-            return f"{size:.0f} {unit}" if unit == "B" else f"{size:.1f} {unit}"
-        size /= 1024
-    return f"{size:.1f} TB"
-
-
 def print_table(scan_data: dict) -> None:
     items = scan_data["items"]
     if not items:
@@ -610,7 +684,7 @@ def output_dir(explicit: str | None) -> Path:
 
 def emit_report(data: dict, out_dir: Path, open_browser: bool) -> Path:
     report_path = out_dir / "report.html"
-    report_path.write_text(render_report(data, REASON_LABELS, human_bytes), encoding="utf-8")
+    report_path.write_text(render_report(data), encoding="utf-8")
     if open_browser:
         try:
             webbrowser.open(report_path.as_uri())
