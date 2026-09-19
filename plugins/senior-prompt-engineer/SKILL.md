@@ -9,6 +9,31 @@ Turn a rough idea or weak prompt into a **definitive prompt** a coding agent can
 
 **Prime directive:** the output is a *better prompt* + an Execution Map — NOT the execution of the task. Produce the artifact; the downstream routers (skills-selector → smart-dispatch) run the task.
 
+## Decision-native refinement
+
+Treat refinement as one bounded decision workflow, not a chain of prose guesses:
+
+```text
+shared task state + executor/catalog facts
+        -> typed questions evaluated together
+        -> explicit ambiguity and safety policy
+        -> definitive prompt + EXEC-MAP
+        -> skills-selector -> smart-dispatch
+```
+
+Build one dense state from the request, confirmed repository facts, target executor,
+available skills, constraints, and verification commands. Ask the independent
+questions once: `intent` (Choice), `ambiguity` (Noul), `risk` (Score),
+`execution_shape` (Choice), and `route_fit` (Score). The prompt remains prose for
+the executor; the routing answers remain typed and bounded. Reuse the shared state
+instead of re-reading or re-classifying it for every downstream decision.
+
+This is a model-agnostic pattern. A real calibrated scorer may supply probabilities;
+ordinary prompt reasoning must mark confidence as `unavailable`, never invent a
+calibrated number. Invalid, missing, or low-confidence decisions fall back to a
+clarifying question or the static map. See the shared architecture reference in
+[`smart-sub-agents`](../smart-sub-agents/references/decision-routing.md).
+
 ## Pipeline position — runs FIRST
 
 This skill is **stage 0**, ahead of the routers. Order:
@@ -47,7 +72,9 @@ Example invocations:
 ## Protocol — 6 steps
 
 ### 1. Ingest & classify
-Read the input (file, inline, or current chat). In one line, classify the **task intent** (build-code, refactor, design-ui, fix-bug, research, content, data, ops…) and the **target executor** (this CLI's agent, an API call, another LLM CLI). This drives every later choice.
+Read the input (file, inline, or current chat). Classify the **task intent** and
+**target executor** once from the shared state; do not make each downstream router
+re-classify the raw request. This drives every later choice.
 
 ### 2. Detect repo context (gates autocomplete) — cheap + rtk
 Probe lightly; never flood context. Prefer `rtk` (token-killer) over raw shell:
@@ -60,7 +87,12 @@ rtk git status && rtk ls . && rtk read AGENTS.md   # or CLAUDE.md / README.md / 
 Keep the probe minimal — do not `cat` large files into context.
 
 ### 3. Extract requirements & surface gaps (Karpathy gate)
-List explicitly: **Assumptions** (ask if a load-bearing one is uncertain), **Ambiguities** (name them, don't silently pick), **Success criteria** (vague verbs → verifiable checks). If a critical gap blocks a good prompt, ask 1–3 sharp questions before generating (Claude: AskUserQuestion; other CLIs: plain questions).
+Evaluate the typed decision questions over the same state, then list explicitly:
+**Assumptions** (ask if a load-bearing one is uncertain), **Ambiguities** (name
+them, don't silently pick), and **Success criteria** (vague verbs → verifiable
+checks). If a critical gap blocks a good prompt, ask 1–3 sharp questions before
+generating (Claude: AskUserQuestion; other CLIs: plain questions). Do not turn a
+free-form confidence claim into a routing fact.
 
 ### 4. Generate the definitive prompt
 Assemble using the canonical block order in [REFERENCE.md](REFERENCE.md#prompt-skeleton): 1. Role/Context 2. Task 3. Inputs/files 4. Constraints (surgical-edit rule) 5. Plan (numbered, each with `→ verify:`) 6. Output contract 7. Examples (multishot, only when it disambiguates) 8. Feedback — DO 9. Feedback — DO NOT (highest-leverage; most failures come from unspoken don'ts).
@@ -70,7 +102,7 @@ Append a machine-readable **`EXEC-MAP v1`** fenced block. This is a **contract**
 
 ```
 EXEC-MAP v1
-intent:   <build-code | refactor | design-ui | fix-bug | research | content | data | ops | docs | git-op | debug | test | trivial-or-chat>
+intent:   <plan | design-ui | build-code | fix-bug | refactor | review | test | git-op | debug | docs | research | data | content | media | mcp-or-skill | config-harness | ops | trivial-or-chat>
 executor: <claude | codex | gemini | opencode | lemon | api>
 effort:   <trivial | low | medium | high>
 time:     <rough range, e.g. ~5–10 min>
@@ -79,12 +111,18 @@ skills:   [<candidate skills in order, executor-aware; [] if inline>]
 models:   {plan: <opus|tier>, impl: <sonnet|tier>, mechanical: <haiku|tier>}
 agents:   <inline | [named subagents only if the task truly fans out]>
 mcp:      [<tools needed, or empty>]
+router: <heuristic | typed-scorer>
+router_mode: <heuristic | shadow | advisory | enforce>
+router_confidence: <0.00-1.00 | unavailable>
+router_fallback: <ask | static-catalog | balanced | none>
 notes:    <one line; mark unknowns "TBD — needs user input">
 ```
 
 Rules for the block:
 - **Executor-aware**: only name skills/agents/models that exist on the target CLI; map to the closest tier and note substitutions in `notes`. Non-Claude → map opus/sonnet/haiku to that CLI's quality/balanced/budget tier.
 - **Honest over confident**: `TBD` beats a wrong guess. Never fabricate a model/agent/skill.
+- **Typed decisions stay bounded**: `intent`, `effort`, `skills`, `models`, and `router_fallback` must use the declared catalogs; never invent an option in prose and then route to it.
+- **Confidence is evidence-bound**: use a numeric `router_confidence` only when a calibrated scorer produced it. Otherwise use `unavailable`; low confidence or invalid output uses `router_fallback`.
 - `effort`, `time`, `tokens` are **mandatory**. Estimation method + catalogs in [REFERENCE.md](REFERENCE.md#execution-map).
 - Keep a 1–2 line human-readable gloss above the block for the user; the block itself is the contract the routers parse.
 

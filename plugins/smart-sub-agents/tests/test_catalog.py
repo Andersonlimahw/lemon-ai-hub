@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import importlib.util
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -9,6 +10,7 @@ from pathlib import Path
 
 
 PLUGIN_ROOT = Path(__file__).resolve().parents[1]
+HUB_ROOT = PLUGIN_ROOT.parents[1]
 SCRIPTS_DIR = PLUGIN_ROOT / "scripts"
 VALIDATOR = SCRIPTS_DIR / "validate_catalog.py"
 RENDERER = SCRIPTS_DIR / "render_agents.py"
@@ -28,11 +30,119 @@ class SmartSubAgentsCatalogTests(unittest.TestCase):
     def run_cli(self, script: Path, *args: str) -> subprocess.CompletedProcess[str]:
         return subprocess.run([sys.executable, str(script), *args], capture_output=True, text=True, check=False)
 
+    def validate_catalog(self, catalog: object) -> subprocess.CompletedProcess[str]:
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            json.dump(catalog, f)
+            catalog_path = Path(f.name)
+        try:
+            return self.run_cli(VALIDATOR, "--catalog", str(catalog_path))
+        finally:
+            catalog_path.unlink(missing_ok=True)
+
     def test_catalog_is_valid(self) -> None:
         result = self.run_cli(VALIDATOR)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertRegex(result.stdout, r"\d+ providers")
         self.assertIn("harnesses", result.stdout)
+
+    def test_decision_router_contract_is_model_agnostic_fail_open_and_calibrated(self) -> None:
+        catalog = json.loads((PLUGIN_ROOT / "references" / "provider-matrix.json").read_text(encoding="utf-8"))
+        routing = catalog["decisionRouting"]
+        contract = routing["scoreContract"]
+        self.assertEqual(routing["defaultMode"], "heuristic")
+        self.assertNotIn("engines", routing)
+        self.assertEqual(contract["output"], "typed-option-probabilities")
+        self.assertTrue(contract["requiresCalibration"])
+        self.assertEqual(contract["failureTier"], "balanced")
+        self.assertTrue(routing["sharedState"]["reusePrefix"])
+        self.assertTrue(routing["sharedState"]["batchIndependentCriteria"])
+
+    def test_invalid_decision_confidence_gate_fails_closed(self) -> None:
+        catalog = json.loads((PLUGIN_ROOT / "references" / "provider-matrix.json").read_text(encoding="utf-8"))
+        catalog["decisionRouting"]["scoreContract"]["confidenceGate"] = 1.2
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            json.dump(catalog, f)
+            catalog_path = Path(f.name)
+        try:
+            result = self.run_cli(VALIDATOR, "--catalog", str(catalog_path))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("confidenceGate", result.stderr)
+        finally:
+            catalog_path.unlink(missing_ok=True)
+
+    def test_malformed_decision_objects_fail_without_traceback(self) -> None:
+        source = json.loads((PLUGIN_ROOT / "references" / "provider-matrix.json").read_text(encoding="utf-8"))
+        mutations = (
+            ("decisionRouting", lambda catalog: catalog.__setitem__("decisionRouting", None)),
+            ("scoreContract", lambda catalog: catalog["decisionRouting"].__setitem__("scoreContract", None)),
+            ("sharedState", lambda catalog: catalog["decisionRouting"].__setitem__("sharedState", None)),
+            ("safetyFloor", lambda catalog: catalog["decisionRouting"].__setitem__("safetyFloor", None)),
+        )
+        for expected, mutate in mutations:
+            with self.subTest(expected=expected):
+                catalog = json.loads(json.dumps(source))
+                mutate(catalog)
+                result = self.validate_catalog(catalog)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn(expected, result.stderr)
+                self.assertNotIn("Traceback", result.stderr)
+
+    def test_invalid_decision_safety_fields_fail_closed(self) -> None:
+        source = json.loads((PLUGIN_ROOT / "references" / "provider-matrix.json").read_text(encoding="utf-8"))
+        mutations = (
+            ("confidenceGate", lambda routing: routing["scoreContract"].__setitem__("confidenceGate", True)),
+            ("requiresCalibration", lambda routing: routing["scoreContract"].__setitem__("requiresCalibration", False)),
+            ("tasks", lambda routing: routing["safetyFloor"].__setitem__("tasks", [])),
+            ("tasks", lambda routing: routing["safetyFloor"].__setitem__("tasks", ["legal", "legal"])),
+            ("tasks", lambda routing: routing["safetyFloor"].__setitem__("tasks", ["legal", 7])),
+        )
+        for expected, mutate in mutations:
+            with self.subTest(expected=expected):
+                catalog = json.loads(json.dumps(source))
+                mutate(catalog["decisionRouting"])
+                result = self.validate_catalog(catalog)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn(expected, result.stderr)
+
+    def test_router_contract_is_lossless_across_pipeline(self) -> None:
+        senior = (HUB_ROOT / "plugins" / "senior-prompt-engineer" / "SKILL.md").read_text(encoding="utf-8")
+        selector = (HUB_ROOT / "plugins" / "skills-selector" / "SKILL.md").read_text(encoding="utf-8")
+        dispatch = (HUB_ROOT / "plugins" / "smart-dispatch" / "SKILL.md").read_text(encoding="utf-8")
+        subagents = (PLUGIN_ROOT / "SKILL.md").read_text(encoding="utf-8")
+
+        match = re.search(r"^intent:\s+<([^>]+)>", senior, re.MULTILINE)
+        self.assertIsNotNone(match)
+        senior_intents = {intent.strip() for intent in match.group(1).split("|")}
+        intent_table = selector.split("### 1a. Classify", 1)[1].split("Ambiguous?", 1)[0]
+        selector_intents = set(re.findall(r"^\| `([^`]+)`\s+\|", intent_table, re.MULTILINE))
+        expected_intents = {
+            "plan", "design-ui", "build-code", "fix-bug", "refactor", "review", "test", "git-op",
+            "debug", "docs", "research", "data", "content", "media", "mcp-or-skill", "config-harness",
+            "ops", "trivial-or-chat",
+        }
+        self.assertEqual(senior_intents, expected_intents)
+        self.assertEqual(selector_intents, expected_intents)
+
+        for document in (senior, selector, dispatch, subagents):
+            for field in ("router:", "router_mode:", "router_confidence:", "router_fallback:"):
+                self.assertIn(field, document)
+        route_match = re.search(r"```text\n(ROUTE-MAP v1.*?)\n```", subagents, re.DOTALL)
+        self.assertIsNotNone(route_match)
+        route_contract = route_match.group(1)
+        self.assertIn("provider_fallback:", route_contract)
+        self.assertIn("router_fallback:", route_contract)
+        self.assertNotRegex(route_contract, r"(?m)^fallback:")
+
+        route_agent = (PLUGIN_ROOT / "agents" / "smart-route.md").read_text(encoding="utf-8")
+        decision_reference = (PLUGIN_ROOT / "references" / "decision-routing.md").read_text(encoding="utf-8")
+        order_contracts = (
+            (subagents, "Apply an explicit user route override", "Otherwise, if confidence", "Apply `decisionRouting.safetyFloor`"),
+            (route_agent, "Apply an explicit user route override", "Without an explicit override, fail open", "Apply the safety floor"),
+            (decision_reference, "Apply an explicit user route", "Without an explicit route, fail open", "Apply safety floors"),
+        )
+        for policy, explicit, fallback, floor in order_contracts:
+            self.assertLess(policy.index(explicit), policy.index(fallback))
+            self.assertLess(policy.index(fallback), policy.index(floor))
 
     def test_sol_route_renders(self) -> None:
         result = self.run_cli(RENDERER, "--harness", "codex", "--provider", "openai", "--model", "gpt-5.6-sol", "--effort", "xhigh")

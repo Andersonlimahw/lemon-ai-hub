@@ -1,6 +1,6 @@
 ---
 name: smart-dispatch
-description: Automatically routes tasks to the optimal AI agent, model, or provider based on complexity, cost, and capability. Optionally combines with smart-sub-agents to pin harness, provider, model, and effort through an explicit combine_smart_subagents parameter. Use when implementing features, fixing bugs, or any multi-step development work. Triggers on "implement", "build", "create", "fix", "add feature", "develop", or when the user asks to do any coding task.
+description: Routes tasks to the cheapest adequate agent, model, or provider using deterministic bypasses, calibrated escalation, and optional typed option scoring through smart-sub-agents. Use for features, fixes, refactors, or multi-step development where model tier, effort, cost, latency, or verification strategy matters.
 ---
 
 # Smart Agent & Model Dispatch (Pro Edition)
@@ -12,6 +12,7 @@ If an `EXEC-MAP v1` block from `senior-prompt-engineer` is in context, **consume
 - `EXEC-MAP.models` is the per-phase routing intent (`plan`→Opus/quality, `impl`→Sonnet/balanced, `mechanical`→Haiku/budget); honor it unless validation proves it wrong.
 - `EXEC-MAP.executor` picks the provider/CLI; map model tiers to that CLI's tiers.
 - `EXEC-MAP.mcp` lists tools to wire up.
+- Preserve `router`, `router_mode`, `router_confidence`, and `router_fallback` losslessly in the dispatch contract; do not rename or recompute them.
 Treat the map as a starting routing decision, not gospel — escalation rules (Tier 1) still override it when validation keeps failing. With no EXEC-MAP, derive routing from the request as usual.
 
 ## Optional combination parameter: `combine_smart_subagents`
@@ -52,6 +53,17 @@ Any agent dispatched in YOLO/Bypass mode **MUST** execute the relevant validatio
 - If it fixed lint, it **must** run `npm run lint`.
 - If it fixed tests, it **must** run `npm run test <file>`.
 
+### 0.4 Decision-router benefit gate
+
+Do not pay for a separate routing inference when a local command, explicit user route, or obvious static row already decides the task. For substantive or ambiguous turns, `smart-sub-agents` may use its optional learned decision router. Keep these invariants:
+
+- A typed decision scorer chooses `tier`, `effort`, risk, and delegation shape; the selected worker still performs the work.
+- Explicit user routes override scorer preferences; without one, low confidence, timeout, malformed output, or missing credentials fails open to `balanced`.
+- Safety floors apply last as a monotonic lower bound and cannot be downgraded.
+- Run the learned router once per meaningful phase, not once per tool call.
+- Start new policies in shadow mode and calibrate thresholds from validation outcomes; raw confidence is not portable across workloads.
+- Log requested/effective route, confidence, latency, validation result, and fallback reason without logging secrets or full prompt bodies.
+
 ---
 
 ## Tier 1 — Escalation & Intelligence Mapping
@@ -77,6 +89,10 @@ DISPATCH
 worker: <name>
 tier: budget|balanced|quality
 effort: low|medium|high|xhigh|max
+router: heuristic|typed-scorer
+router_mode: heuristic|shadow|advisory|enforce
+router_confidence: 0.00-1.00|unavailable
+router_fallback: ask|static-catalog|balanced|none
 tokens: <range from taskRouting>
 time: <range from taskRouting>
 verify: <command>
