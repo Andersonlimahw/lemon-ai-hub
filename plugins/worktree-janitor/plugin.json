@@ -1,0 +1,23 @@
+{
+  "name": "worktree-janitor",
+  "version": "1.0.0",
+  "description": "Limpa worktrees git abandonadas por agentes de IA (Claude Code, Codex, Gemini CLI, Agy/Antigravity, OpenCode, Cursor) em todos os projetos da máquina, com autorização explícita do usuário e relatório HTML autocontido. Classifica cada worktree por risco — órfã, mergeada, upstream removido, sem commits próprios, stale, suja, ativa, protegida — lista projetos/branches/diretórios antes de remover qualquer coisa, aplica só a seleção aprovada e gera undo.sh. Use quando o usuário pedir para limpar worktrees, remover worktrees órfãs ou mergeadas, fazer faxina de branches de agentes, liberar espaço de worktrees ou auditar worktrees da máquina.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "worktree-janitor",
+    "git",
+    "worktree",
+    "cleanup",
+    "orphan-branches",
+    "merged-branches",
+    "html-report",
+    "disk-space",
+    "cross-harness"
+  ]
+}
