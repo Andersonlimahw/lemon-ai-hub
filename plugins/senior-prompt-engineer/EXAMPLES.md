@@ -63,12 +63,21 @@ Add a user-toggleable dark mode that persists across reloads.
 - Do NOT flash light-then-dark on load (set class before paint).
 - Do NOT introduce a second source of truth for the theme.
 
-# Execution Map
-Agents: inline (single linear task).
-Skills: skills-selector → smart-dispatch → git-commit.
-Models: Sonnet (claude-sonnet-4-6) — standard frontend implementation, no
-deep architectural ambiguity.
-Effort: low | Time: ~15–25 min | Tokens: ~10k–20k | MCP/Tools: none.
+EXEC-MAP v1
+intent: build-code
+executor: claude
+effort: low
+time: ~15–25 min
+tokens: ~10k–20k
+skills: [skills-selector, smart-dispatch, git-commit]
+models: {plan: sonnet, impl: sonnet, mechanical: haiku}
+agents: inline
+mcp: []
+router: heuristic
+router_mode: heuristic
+router_confidence: unavailable
+router_fallback: static-catalog
+notes: standard frontend implementation; no deep architectural ambiguity.
 ```
 
 **Changelog appended**
@@ -116,15 +125,23 @@ Refactor the entire payments module to make it cleaner and add tests
 - Adds DO-NOT: "no behavior changes", "no public API rename without note".
 - Flags it as genuinely fan-out → recommends an agent + Opus for the plan phase.
 
-**Execution Map produced**
+**EXEC-MAP produced**
 ```
-Agents: Plan agent (or gsd:plan-phase) to map the refactor BEFORE editing;
-then general-purpose agent per submodule if it parallelizes.
-Skills: skills-selector → smart-dispatch → (testing) → git-commit.
-Models: Opus (claude-opus-4-8) for the refactor plan & risk analysis;
-Sonnet (claude-sonnet-4-6) for the mechanical edits + test writing.
-Effort: high | Time: ~60–120 min | Tokens: ~50k–90k (fan-out adds ~30%).
-MCP/Tools: none. TBD — confirm there's a payments test suite to extend.
+EXEC-MAP v1
+intent: refactor
+executor: claude
+effort: high
+time: ~60–120 min
+tokens: ~50k–90k
+skills: [skills-selector, smart-dispatch, testing, git-commit]
+models: {plan: opus, impl: sonnet, mechanical: haiku}
+agents: [plan-agent, submodule-workers]
+mcp: []
+router: heuristic
+router_mode: heuristic
+router_confidence: unavailable
+router_fallback: ask
+notes: fan-out adds ~30%; confirm there is a payments test suite to extend.
 ```
 
 ---
@@ -138,13 +155,26 @@ MCP/Tools: none. TBD — confirm there's a payments test suite to extend.
 **Input**: the skill reads the current conversation / last user request as the prompt to harden.
 **Behavior**:
 - If the last request is trivial/clear → triviality gate fires: `Prompt already clear; skipping refinement → skills-selector`. No refinement.
+- If there is no usable request to classify, ask for it and do not emit an invalid map with placeholder enum values.
 - Else → refine in place, return the definitive prompt + Execution Map **inline** (single fenced block), no file written. Then the routers (skills-selector → smart-dispatch) pick skills/models using the sharpened prompt.
 
-**Execution Map (inline)**
+**Execution Map after resolving an architecture-planning request (inline)**
 ```
-Agents: inline. Skills: skills-selector → smart-dispatch.
-Models: Opus for ambiguity resolution, Sonnet for impl.
-Effort: medium | Time: ~20–40 min | Tokens: ~15k–35k | MCP/Tools: TBD.
+EXEC-MAP v1
+intent: plan
+executor: claude
+effort: medium
+time: ~20–40 min
+tokens: ~15k–35k
+skills: [skills-selector, smart-dispatch]
+models: {plan: opus, impl: sonnet, mechanical: haiku}
+agents: inline
+mcp: []
+router: heuristic
+router_mode: heuristic
+router_confidence: unavailable
+router_fallback: ask
+notes: architecture plan only; implementation remains out of scope.
 ```
 
 ---

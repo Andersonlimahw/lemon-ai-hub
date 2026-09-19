@@ -1,8 +1,29 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "schemaVersion": 1,
-  "updated": "2026-08-16",
+  "updated": "2026-09-17",
   "efforts": ["none", "low", "medium", "high", "xhigh", "max", "ultra"],
+  "decisionRouting": {
+    "defaultMode": "heuristic",
+    "modes": ["heuristic", "shadow", "advisory", "enforce"],
+    "scoreContract": {
+      "output": "typed-option-probabilities",
+      "confidenceGate": 0.7,
+      "lowConfidenceTier": "balanced",
+      "failureTier": "balanced",
+      "maxAddedLatencyMs": 750,
+      "requiresCalibration": true
+    },
+    "sharedState": {
+      "reusePrefix": true,
+      "batchIndependentCriteria": true
+    },
+    "safetyFloor": {
+      "tasks": ["security-audit", "production-incident", "destructive-op", "legal", "medical", "financial"],
+      "tier": "quality",
+      "effort": "high"
+    }
+  },
   "profiles": {
     "budget": {
       "effort": "low",

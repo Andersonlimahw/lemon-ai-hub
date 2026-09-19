@@ -13,11 +13,22 @@ from pathlib import Path
 DEFAULT_CATALOG = Path(__file__).resolve().parents[1] / "references" / "provider-matrix.json"
 SLUG = re.compile(r"^[a-z0-9]+(?:[._/-][a-z0-9]+)*$")
 TIERS = {"budget", "balanced", "quality"}
+DECISION_MODES = {"heuristic", "shadow", "advisory", "enforce"}
 REQUIRED_HARNESSES = {"claude-code", "codex", "opencode", "antigravity", "gemini-cli", "lemon-code"}
 
 
-def validate(catalog: dict) -> list[str]:
+def _object(value: object, path: str, errors: list[str]) -> dict:
+    if not isinstance(value, dict):
+        errors.append(f"{path} must be an object")
+        return {}
+    return value
+
+
+def validate(catalog: object) -> list[str]:
     errors: list[str] = []
+    catalog = _object(catalog, "catalog", errors)
+    if errors:
+        return errors
     if catalog.get("schemaVersion") != 1:
         errors.append("schemaVersion must be 1")
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(catalog.get("updated", ""))):
@@ -27,6 +38,44 @@ def validate(catalog: dict) -> list[str]:
     required_efforts = {"low", "medium", "high", "max"}
     if not required_efforts <= efforts:
         errors.append(f"efforts must include {sorted(required_efforts)}")
+
+    decision_routing = _object(catalog.get("decisionRouting", {}), "decisionRouting", errors)
+    raw_modes = decision_routing.get("modes", [])
+    modes = set(raw_modes) if isinstance(raw_modes, list) and all(isinstance(mode, str) for mode in raw_modes) else set()
+    if modes != DECISION_MODES:
+        errors.append(f"decisionRouting modes must equal {sorted(DECISION_MODES)}")
+    if decision_routing.get("defaultMode") not in modes:
+        errors.append("decisionRouting defaultMode must be a declared mode")
+    score_contract = _object(decision_routing.get("scoreContract", {}), "decisionRouting scoreContract", errors)
+    gate = score_contract.get("confidenceGate")
+    if isinstance(gate, bool) or not isinstance(gate, (int, float)) or not 0 <= gate <= 1:
+        errors.append("decisionRouting scoreContract: confidenceGate must be between 0 and 1")
+    if score_contract.get("output") != "typed-option-probabilities":
+        errors.append("decisionRouting scoreContract: output must be typed-option-probabilities")
+    for field in ("lowConfidenceTier", "failureTier"):
+        if score_contract.get(field) not in TIERS:
+            errors.append(f"decisionRouting scoreContract: invalid {field}")
+    latency = score_contract.get("maxAddedLatencyMs")
+    if isinstance(latency, bool) or not isinstance(latency, int) or latency <= 0:
+        errors.append("decisionRouting scoreContract: maxAddedLatencyMs must be a positive integer")
+    if score_contract.get("requiresCalibration") is not True:
+        errors.append("decisionRouting scoreContract: requiresCalibration must be true")
+    shared_state = _object(decision_routing.get("sharedState", {}), "decisionRouting sharedState", errors)
+    if shared_state.get("reusePrefix") is not True or shared_state.get("batchIndependentCriteria") is not True:
+        errors.append("decisionRouting sharedState must enable prefix reuse and independent-criteria batching")
+    safety_floor = _object(decision_routing.get("safetyFloor", {}), "decisionRouting safetyFloor", errors)
+    tasks = safety_floor.get("tasks")
+    if (
+        not isinstance(tasks, list)
+        or not tasks
+        or any(not isinstance(task, str) or not task.strip() for task in tasks)
+        or len(tasks) != len(set(tasks))
+    ):
+        errors.append("decisionRouting safetyFloor: tasks must be unique non-empty strings")
+    if safety_floor.get("tier") not in TIERS:
+        errors.append("decisionRouting safetyFloor: invalid tier")
+    if safety_floor.get("effort") not in efforts:
+        errors.append("decisionRouting safetyFloor: invalid effort")
 
     harnesses = catalog.get("harnesses", {})
     missing_harnesses = REQUIRED_HARNESSES - set(harnesses)

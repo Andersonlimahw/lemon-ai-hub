@@ -4,6 +4,8 @@ Portable provider/model/effort routing for Claude Code, Codex, OpenCode, Antigra
 
 The plugin keeps a curated, source-linked matrix in [`references/provider-matrix.json`](references/provider-matrix.json), resolves explicit routes, normalizes a small set of known aliases, and renders native or handoff artifacts without writing global configuration by default. It pairs with [`smart-dispatch`](../smart-dispatch/SKILL.md), which announces a `DISPATCH` budget contract and picks the cheapest worker that still fits the task.
 
+An optional typed-decision layer can score substantive turns before selecting an executor. It is off by default (`heuristic`), fails open to the balanced static route, and keeps safety floors outside the scorer. See [`references/decision-routing.md`](references/decision-routing.md) for the model-agnostic rollout and calibration contract.
+
 ## Worker matrix (named agents)
 
 A tier x effort grid of named subagents is generated from the matrix and installed into each harness. Claude bodies are canonical; other harnesses render/symlink.
@@ -75,4 +77,5 @@ python3 plugins/smart-sub-agents/scripts/install_worker_matrix.py
 - [`SKILL.md`](SKILL.md) - routing protocol (`ROUTE-MAP v1`) and the install/sync commands.
 - [`references/provider-matrix.md`](references/provider-matrix.md) - recommended routes, alias corrections, and the harness-vs-provider distinction.
 - [`references/provider-matrix.json`](references/provider-matrix.json) - the verified catalog: providers, models, harnesses, `workerMatrix`, `taskRouting`, `aliases`.
+- [`references/decision-routing.md`](references/decision-routing.md) - optional typed-decision architecture, shared-state optimization, rollout, calibration, and caveats.
 - [`plugins/smart-dispatch/SKILL.md`](../smart-dispatch/SKILL.md) - task -> tier -> worker routing table and the mandatory `DISPATCH` budget contract.

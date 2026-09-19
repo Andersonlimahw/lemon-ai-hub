@@ -45,9 +45,48 @@ You are <role> working in <repo/domain>. <relevant constraints of the environmen
 - <specific anti-pattern for THIS task>
 
 # Execution Map
-Agents: <...> | Skills: <...> | Models: <...>
-Effort: <trivial|low|medium|high> | Time: <~range> | Tokens: <~range> | MCP/Tools: <...>
+EXEC-MAP v1
+intent: <plan | design-ui | build-code | fix-bug | refactor | review | test | git-op | debug | docs | research | data | content | media | mcp-or-skill | config-harness | ops | trivial-or-chat>
+executor: <claude | codex | gemini | opencode | lemon | api>
+effort: <trivial | low | medium | high>
+time: <rough range>
+tokens: <rough range>
+skills: [<validated candidates, or empty>]
+models: {plan: <quality tier>, impl: <balanced tier>, mechanical: <budget tier>}
+agents: <inline | validated named agents>
+mcp: [<tools, or empty>]
+router: <heuristic | typed-scorer>
+router_mode: <heuristic | shadow | advisory | enforce>
+router_confidence: <0.00-1.00 | unavailable>
+router_fallback: <ask | static-catalog | balanced | none>
+notes: <one bounded line>
 ```
+
+---
+
+## Decision-native refinement
+
+The Execution Map is the typed handoff between prompt refinement and routing. Keep
+the state/question/action shape explicit:
+
+```text
+state: request + confirmed repo facts + executor + available catalog + constraints
+questions: intent | ambiguity | risk | execution_shape | route_fit
+answers: declared options/probabilities, or unavailable when no calibrated scorer exists
+action: definitive prompt + EXEC-MAP, then selector/dispatcher policy
+```
+
+Evaluate independent questions against the shared state in one pass. `Choice` is
+for a bounded category, `Noul` for a yes/no gate, and `Score` for an ordered
+spectrum. The surrounding policy still owns explicit overrides, safety floors,
+clarifying questions, validation, and fallback. A typed answer prevents malformed
+options; it does not prove semantic correctness.
+
+Use `heuristic` by default. `shadow`, `advisory`, and `enforce` are rollout modes
+for a real decision scorer, not permission to fabricate model confidence. Keep the
+static map as the fail-open route, and record `unavailable` rather than a guessed
+probability. The model-agnostic rationale and research references live in
+[`smart-sub-agents/references/decision-routing.md`](../smart-sub-agents/references/decision-routing.md).
 
 ---
 
