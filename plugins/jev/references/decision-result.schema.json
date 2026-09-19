@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lemon.ai/schemas/jev-decision-result-v1.json",
+  "title": "Provider-neutral DecisionResult",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "answers"],
+  "properties": {
+    "schema_version": { "const": "1" },
+    "answers": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "$ref": "#/$defs/choice" },
+          { "$ref": "#/$defs/score" },
+          { "$ref": "#/$defs/noul" }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "probabilities": {
+      "type": "object",
+      "minProperties": 2,
+      "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+    },
+    "choice": {
+      "type": "object", "additionalProperties": false,
+      "required": ["type", "choice", "probabilities", "confidence"],
+      "properties": {
+        "type": { "const": "choice" }, "choice": { "type": "string" },
+        "probabilities": { "$ref": "#/$defs/probabilities" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "score": {
+      "type": "object", "additionalProperties": false,
+      "required": ["type", "score", "probabilities", "confidence"],
+      "properties": {
+        "type": { "const": "score" }, "score": { "type": "number" },
+        "probabilities": { "$ref": "#/$defs/probabilities" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "noul": {
+      "type": "object", "additionalProperties": false,
+      "required": ["type", "noul"],
+      "properties": { "type": { "const": "noul" }, "noul": { "type": "number", "minimum": 0, "maximum": 1 } }
+    }
+  }
+}

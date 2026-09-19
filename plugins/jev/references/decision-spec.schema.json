@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lemon.ai/schemas/jev-decision-spec-v1.json",
+  "title": "Provider-neutral DecisionSpec",
+  "description": "Internal contract, not TypeSafe's wire schema. Adapters enforce current provider shapes and limits.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "state", "questions"],
+  "properties": {
+    "schema_version": { "const": "1" },
+    "state": { "type": ["string", "object", "array"] },
+    "questions": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "oneOf": [
+          { "$ref": "#/$defs/choice" },
+          { "$ref": "#/$defs/score" },
+          { "$ref": "#/$defs/noul" }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "choice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "instructions", "criteria"],
+      "properties": {
+        "type": { "const": "choice" },
+        "instructions": { "type": ["string", "object", "array"] },
+        "criteria": { "type": "object", "minProperties": 2, "maxProperties": 255 }
+      }
+    },
+    "score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "instructions", "criteria"],
+      "properties": {
+        "type": { "const": "score" },
+        "instructions": { "type": ["string", "object", "array"] },
+        "criteria": { "type": "array", "minItems": 2, "maxItems": 10 }
+      }
+    },
+    "noul": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "instructions"],
+      "properties": {
+        "type": { "const": "noul" },
+        "instructions": { "type": ["string", "object", "array"] },
+        "criteria": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["true", "false"],
+          "properties": { "true": { "type": "string" }, "false": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
