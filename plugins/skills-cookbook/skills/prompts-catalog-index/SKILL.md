@@ -227,7 +227,7 @@ One line per plugin: **when to use it**. Grouped by area; tracks with a full rec
 | `migrate-to-codex` | port skills/flows to Codex |
 | `caveman` | response compression (lite/full/ultra) |
 | `token-saver` | cut the biggest context consumers |
-| `jev` | model-agnostic typed decisions, uncertainty routing, and honest token/cost comparison |
+| `typed-decision-engineering` | model-agnostic typed decisions, uncertainty routing, and honest token/cost comparison |
 | `skills-cookbook` | this cookbook: recipes, combos, and anti-patterns |
 
 ## Fun & experiments

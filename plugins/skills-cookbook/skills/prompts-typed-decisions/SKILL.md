@@ -1,19 +1,20 @@
 ---
 name: prompts-typed-decisions
-description: Ready-to-paste prompts for Jev-inspired, model-agnostic typed decisions — atomic Choice/Score/Noul design, provider adapters, runtime validation, uncertainty routing, and comparable token/cost benchmarks.
+description: Ready-to-paste prompts for model-agnostic typed decisions — atomic choice/score/binary-probability design, provider adapters, runtime validation, uncertainty routing, and comparable token/cost benchmarks.
 ---
 
 # Prompts — Typed decisions
 
-Recipes for applying Jev/System One architecture with any LM. Code owns control flow and side effects; models answer narrow typed questions. Use `jev` as router, then name only needed sub-skills.
+Recipes for typed decision engineering with any LM. Code owns control flow and side effects; models answer narrow typed questions. Use `typed-decision-engineering` as router, then name only needed sub-skills.
 
 ## R1 — Decompose a broad judgment
 
-**Skills:** `jev` + `decision-design`
+**Skills:** `typed-decision-engineering` + `decision-design`
 **When:** a prompt asks one model to classify, score, explain, and decide an action in one response.
 
 ```text
-Use jev and decision-design to redesign <current workflow> as atomic
+Use typed-decision-engineering and decision-design to redesign
+<current workflow> as atomic
 typed judgments over <shared state>. Separate each judgment into
 Choice, Score, or Noul; batch only independent questions; keep
 calculations, permissions, side effects, and final routing in code.
@@ -26,11 +27,12 @@ round; no side effect is model-controlled.
 
 ## R2 — Add a provider-neutral typed boundary
 
-**Skills:** `jev` + `type-safe-contracts`
-**When:** the same decision flow must work with Jev, JSON-schema/tool-calling LMs, or guarded JSON parsing.
+**Skills:** `typed-decision-engineering` + `type-safe-contracts`
+**When:** the same decision flow must work with native classifiers, JSON-schema/tool-calling LMs, or guarded JSON parsing.
 
 ```text
-Use jev and type-safe-contracts to implement a provider-neutral
+Use typed-decision-engineering and type-safe-contracts to implement
+a provider-neutral
 DecisionSpec and DecisionResult for <workflow>. Add adapters for
 <providers/models>, runtime schema validation, semantic validation
 (IDs/types, option membership, probability bounds/sum), one bounded
@@ -43,11 +45,12 @@ declared fallback without executing a side effect.
 
 ## R3 — Compare token/cost efficiency with slides
 
-**Skills:** `jev` + `token-benchmark`
+**Skills:** `typed-decision-engineering` + `token-benchmark`
 **When:** deciding whether a typed-decision pipeline is cheaper/faster than a generative baseline.
 
 ```text
-Use jev and token-benchmark to compare <baseline> against <candidate>
+Use typed-decision-engineering and token-benchmark to compare
+<baseline> against <candidate>
 on paired cases from <dataset>. Capture provider/model/version,
 tokenizer, evaluator/version, input/output/cached/reasoning tokens,
 calls, latency, cost, retries, parse failures, and quality. Label each
@@ -79,6 +82,5 @@ tokens, calls, latency, cost, and limitations.
 
 ## See also
 
-- `typesafe-ai` — official TypeSafe API integration guidance.
 - `verification-before-completion` — final evidence gate after implementation.
 - `prompts-feedback-loops` — continuous metric optimization after baseline calibration.

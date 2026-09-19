@@ -33,4 +33,4 @@ Status: internal draft. Check provider terms before publication.
 - Token units can differ across providers.
 - Prices and aliases change.
 - Vendor claims are not measured results.
-- TypeSafe terms may restrict publication of service benchmarks.
+- Provider terms may restrict publication of service benchmarks or brand usage.

@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://lemon.ai/schemas/jev-decision-spec-v1.json",
+  "$id": "https://lemon.ai/schemas/typed-decision-spec-v1.json",
   "title": "Provider-neutral DecisionSpec",
-  "description": "Internal contract, not TypeSafe's wire schema. Adapters enforce current provider shapes and limits.",
+  "description": "Provider-neutral internal contract. Adapters enforce current provider shapes and limits.",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "state", "questions"],

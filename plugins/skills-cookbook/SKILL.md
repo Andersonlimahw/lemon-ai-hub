@@ -81,7 +81,7 @@ Ready-to-paste prompt recipes that teach efficient use of this hub's skills — 
 | Mobile & Release | [prompts-mobile-release](skills/prompts-mobile-release/SKILL.md) | iOS/Android go/no-go, App Store Connect, Play API, ASO |
 | Data & Backend | [prompts-data-backend](skills/prompts-data-backend/SKILL.md) | Supabase/Postgres, Firebase, database decisions, incidents |
 | Knowledge & Notion | [prompts-knowledge-notion](skills/prompts-knowledge-notion/SKILL.md) | decision capture, meetings, research docs, spec-to-code, persistent learning |
-| Typed decisions | [prompts-typed-decisions](skills/prompts-typed-decisions/SKILL.md) | Jev/System One patterns, provider-neutral contracts, uncertainty routing, token/cost evidence |
+| Typed decisions | [prompts-typed-decisions](skills/prompts-typed-decisions/SKILL.md) | provider-neutral decision patterns, contracts, uncertainty routing, token/cost evidence |
 | Meta-harness | [prompts-meta-harness](skills/prompts-meta-harness/SKILL.md) | authoring skills/plugins, hooks, multi-agent orchestration, migration, tokens |
 | A–Z index | [prompts-catalog-index](skills/prompts-catalog-index/SKILL.md) | every plugin in the hub with a one-line when-to-use hint |
 

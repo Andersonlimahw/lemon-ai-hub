@@ -21,6 +21,6 @@ description: Measure baseline versus typed-decision pipelines using comparable t
 - `estimated`: derived from disclosed tokenizer or price assumptions.
 - `vendor_claimed`: quoted claim with source/date; never present as reproduced result.
 
-TypeSafe MCA may restrict publication of service benchmarks. Treat Jev results as internal/private unless legal terms and written permission allow publication. Provider-neutral local comparisons remain subject to each provider's terms.
+Provider terms may restrict publication of service benchmarks or use of brand names. Keep results internal unless applicable terms allow publication or written permission exists.
 
 Do not optimize tokens alone. A cheaper invalid decision is regression.

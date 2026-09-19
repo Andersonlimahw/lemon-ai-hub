@@ -18,7 +18,7 @@ Ready-to-paste example prompts that teach efficient use of the lemon-ai-hub skil
 | Mobile & Release | `prompts-mobile-release` | iOS/Android go/no-go, App Store Connect, Play API, ASO |
 | Data & Backend | `prompts-data-backend` | Supabase/Postgres, Firebase, database decisions, incidents |
 | Knowledge & Notion | `prompts-knowledge-notion` | decision capture, meetings, research docs, spec-to-code, persistent learning |
-| Typed decisions | `prompts-typed-decisions` | Jev/System One design, type-safe adapters, uncertainty routing, token/cost benchmarks |
+| Typed decisions | `prompts-typed-decisions` | provider-neutral decision design, type-safe adapters, uncertainty routing, token/cost benchmarks |
 | Meta-harness | `prompts-meta-harness` | authoring skills/plugins, hooks, multi-agent orchestration, migration, tokens |
 | A–Z index | `prompts-catalog-index` | every plugin in the hub with a one-line when-to-use hint |
 

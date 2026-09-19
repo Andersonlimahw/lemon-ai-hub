@@ -1,0 +1,17 @@
+{
+  "name": "typed-decision-engineering",
+  "version": "1.0.0",
+  "description": "Model-agnostic typed decision engineering: bounded judgments, runtime validation, uncertainty routing, and honest token/cost benchmarks.",
+  "author": {
+    "name": "Lemon AI Hub"
+  },
+  "license": "MIT",
+  "keywords": [
+    "decision-engineering",
+    "typed-decisions",
+    "type-safe",
+    "structured-output",
+    "token-efficiency",
+    "benchmark"
+  ]
+}

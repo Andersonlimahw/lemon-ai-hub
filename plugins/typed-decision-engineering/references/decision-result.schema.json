@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://lemon.ai/schemas/jev-decision-result-v1.json",
+  "$id": "https://lemon.ai/schemas/typed-decision-result-v1.json",
   "title": "Provider-neutral DecisionResult",
   "type": "object",
   "additionalProperties": false,
