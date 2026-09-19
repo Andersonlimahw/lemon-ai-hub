@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["experiment", "variant", "case_id", "run_id", "provider", "model", "model_version", "tokenizer", "evaluator", "evaluator_version", "calls", "latency_ms", "evidence"],
+  "properties": {
+    "experiment": { "type": "string", "minLength": 1 },
+    "variant": { "type": "string", "minLength": 1 },
+    "case_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "provider": { "type": "string", "minLength": 1 },
+    "model": { "type": "string", "minLength": 1 },
+    "model_version": { "type": "string" },
+    "tokenizer": { "type": "string", "minLength": 1 },
+    "evaluator": { "type": "string", "minLength": 1 },
+    "evaluator_version": { "type": "string", "minLength": 1 },
+    "calls": { "type": "integer", "minimum": 0 },
+    "input_tokens": { "type": "integer", "minimum": 0 },
+    "output_tokens": { "type": "integer", "minimum": 0 },
+    "cached_tokens": { "type": "integer", "minimum": 0 },
+    "reasoning_tokens": { "type": "integer", "minimum": 0 },
+    "latency_ms": { "type": "number", "minimum": 0 },
+    "cost_usd": { "type": "number", "minimum": 0 },
+    "schema_retries": { "type": "integer", "minimum": 0 },
+    "parse_failures": { "type": "integer", "minimum": 0 },
+    "quality_score": { "type": "number" },
+    "evidence": { "enum": ["measured", "estimated", "vendor_claimed"] },
+    "price_snapshot_date": { "type": "string", "format": "date" },
+    "notes": { "type": "string" }
+  }
+}

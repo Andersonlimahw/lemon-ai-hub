@@ -1,6 +1,6 @@
 # Skills Cookbook
 
-Ready-to-paste example prompts that teach efficient use of the lemon-ai-hub skills. Thirteen recipe tracks, each a sub-skill with recipes (prompt template + placeholders + verifiable success criterion), plus combination rules, an anti-pattern matrix of mutually exclusive or redundant skills, and a complete A–Z index. The meta-harness track includes concrete recipes for `senior-prompt-engineer`, `skills-selector`, `smart-dispatch`, and `smart-sub-agents`.
+Ready-to-paste example prompts that teach efficient use of the lemon-ai-hub skills. Fourteen recipe tracks, each a sub-skill with recipes (prompt template + placeholders + verifiable success criterion), plus combination rules, an anti-pattern matrix of mutually exclusive or redundant skills, and a complete A–Z index. The meta-harness track includes concrete recipes for `senior-prompt-engineer`, `skills-selector`, `smart-dispatch`, and `smart-sub-agents`, alongside `prompts-typed-decisions`.
 
 ## Tracks
 
@@ -18,6 +18,7 @@ Ready-to-paste example prompts that teach efficient use of the lemon-ai-hub skil
 | Mobile & Release | `prompts-mobile-release` | iOS/Android go/no-go, App Store Connect, Play API, ASO |
 | Data & Backend | `prompts-data-backend` | Supabase/Postgres, Firebase, database decisions, incidents |
 | Knowledge & Notion | `prompts-knowledge-notion` | decision capture, meetings, research docs, spec-to-code, persistent learning |
+| Typed decisions | `prompts-typed-decisions` | provider-neutral decision design, type-safe adapters, uncertainty routing, token/cost benchmarks |
 | Meta-harness | `prompts-meta-harness` | decision-native pipeline, portable subagents, authoring, hooks, migration, tokens |
 | A–Z index | `prompts-catalog-index` | every plugin in the hub with a one-line when-to-use hint |
 

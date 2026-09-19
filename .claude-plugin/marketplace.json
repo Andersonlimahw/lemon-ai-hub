@@ -1095,6 +1095,24 @@
       ]
     },
     {
+      "name": "heygen-expert",
+      "source": "./plugins/heygen-expert",
+      "description": "Canonical HeyGen orchestrator — routes between the HeyGen API skills (avatar, video, translate), the HyperFrames composition framework, and the heygen/hyperframes CLIs.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "heygen",
+        "hyperframes",
+        "avatar",
+        "video",
+        "video-translate",
+        "motion-graphics",
+        "orchestrator"
+      ]
+    },
+    {
       "name": "high-end-visual-design",
       "source": "./plugins/high-end-visual-design",
       "description": "Teaches the AI to design like a high-end agency. Defines the exact fonts, spacing, shadows, card structures, and animations that make a website feel expensive. Blocks all the common defaults that make AI designs look cheap or generic.",
@@ -2075,7 +2093,7 @@
     {
       "name": "skills-cookbook",
       "source": "./plugins/skills-cookbook",
-      "description": "Ready-to-paste example prompts across thirteen tracks, including decision-native recipes for senior-prompt-engineer, skills-selector, smart-dispatch, and smart-sub-agents. Ships verifiable prompt templates, combination rules, anti-patterns, and a complete A-to-Z catalog index. Use when the user asks for examples, how to use or combine skills, portable subagent routing, or how to navigate the hub with less cognitive load.",
+      "description": "Ready-to-paste example prompts across fourteen tracks, including decision-native recipes for senior-prompt-engineer, skills-selector, smart-dispatch, and smart-sub-agents, plus typed decisions. Ships verifiable prompt templates, combination rules, anti-patterns, and a complete A-to-Z catalog index. Use when the user asks for examples, how to use or combine skills, portable subagent routing, or how to navigate the catalog with less cognitive load.",
       "version": "1.2.0",
       "license": "MIT",
       "keywords": [
@@ -2316,6 +2334,21 @@
         "skill",
         "lemon-ai-hub",
         "token-saver"
+      ]
+    },
+    {
+      "name": "typed-decision-engineering",
+      "source": "./plugins/typed-decision-engineering",
+      "description": "Model-agnostic typed decision engineering: bounded judgments, runtime validation, uncertainty routing, and honest token/cost benchmarks.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "decision-engineering",
+        "typed-decisions",
+        "type-safe",
+        "structured-output",
+        "token-efficiency",
+        "benchmark"
       ]
     },
     {
