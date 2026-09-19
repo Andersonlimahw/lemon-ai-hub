@@ -14,6 +14,34 @@ Loading a skill injects hundreds to thousands of tokens into the context. Many C
 
 This skill is intentionally short. If you want depth, call the chosen skill — don't add it here.
 
+## Decision-native selection
+
+Treat selection as a bounded decision workflow over one shared state:
+
+```text
+refined prompt or current request + executor/catalog facts
+        -> typed selection questions evaluated together
+        -> deterministic policy clamps
+        -> SKILLS selection block
+        -> chosen skill(s)
+```
+
+The state contains only the objective, confirmed context, explicit user routes,
+available catalog entries, platform, risk, and verification shape. Evaluate these
+independent questions once: `intent` (Choice from the table), `primary_skill`
+(Choice from the available catalog plus `none`), `secondary_skill` (Choice from
+the remaining catalog plus `none`), `heavy_signal` (Noul), `budget` (Score:
+low/medium/high), and `route_fit` (Score). Keep the answer space declared;
+the selector never invents a skill or emits free-form routing JSON for another
+component to parse.
+
+Use the static catalog and rules as the default. A calibrated scorer is optional,
+model-agnostic, and advisory until local validation supports enforcement. Its
+probabilities are routing signals, not correctness proof. If it is missing, invalid,
+slow, or below a calibrated gate, mark confidence `unavailable` and use the static
+catalog, `SKILLS: []`, or a sharp clarification as appropriate. Never compensate
+for uncertainty by selecting a heavier skill or more skills.
+
 ---
 
 ## Protocol — run exactly these steps, in order
@@ -25,10 +53,19 @@ If stage-0 (`senior-prompt-engineer`) already ran, an `EXEC-MAP v1` block is in 
 - Seed candidates from `EXEC-MAP.skills` (skip step 2's catalog lookup; still run step 3 rank/prune to validate, cap at 2, and drop heavy skills lacking signal).
 - Carry `effort`/`tokens` into `BUDGET`.
 - Add `MAP: consumed` to the emitted block so the audit trail shows stage-0's work wasn't redone.
+- Validate `skills`, `intent`, `effort`, and `router_fallback` against the current catalog and
+  platform. Preserve the canonical `router`, `router_mode`, `router_confidence`, and
+  `router_fallback` fields losslessly when valid; otherwise use the static policy values.
 
 Only fall through to steps 1–2 when **no** EXEC-MAP block exists.
 
-### 1. Classify the request (inline, silent) — only if no EXEC-MAP
+### 1. Build the shared state and classify once — only if no EXEC-MAP
+
+Construct the bounded state described above. Evaluate the typed questions once; do
+not ask separate model calls to classify intent, choose skills, and estimate budget.
+Use the artifact the user expects at the end to resolve ambiguity.
+
+### 1a. Classify the request (inline, silent) — only if no EXEC-MAP
 
 Assign the user's turn to **one primary intent** from:
 
@@ -44,6 +81,8 @@ Assign the user's turn to **one primary intent** from:
 | `git-op`                    | "commit", "pr", "branch", "changelog", "release notes"       |
 | `debug`                     | "debug", "trace", "repro", "investigate"                     |
 | `docs`                      | "readme", "document", "write docs", "api doc"                |
+| `research`                  | "research", "compare", "survey", "find evidence"             |
+| `data`                      | "analyze data", "dataset", "query", "metrics"                 |
 | `content`                   | "copy", "tweet", "post", "landing copy", "pitch"             |
 | `media`                     | "video", "remotion", "heygen", "thumbnail", "render"         |
 | `mcp-or-skill`              | "mcp server", "new skill", "create a skill", "extend"        |
@@ -68,6 +107,8 @@ Apply these rules, in order — each one can drop a candidate:
 5. **Heavy skills need explicit signal.** `ui-ux-pro-max`, `frontend-design`, `gsd:new-project`, `superpowers` (if present), `remotion-best-practices`, `heygen-best-practices`, `mcp-builder`, `Agent Development` — only if the user names their domain or explicitly asks for depth.
 6. **Never chain design + plan + build in one turn.** Pick the nearest waypoint and let the user confirm before escalating.
 7. **If a domain skill and a meta-skill both match, pick the domain one.** E.g. for "write a PR", `git-pr-create` beats `smart-dispatch`.
+8. **Apply typed-router output only after policy clamps.** Explicit user routes, deterministic bypasses, heavy-skill signals, catalog availability, and the two-skill cap always win.
+9. **Fail open to the static catalog.** Low confidence, timeout, malformed output, or missing scorer credentials must not trigger quality escalation; select the static route, inline handling, or ask one sharp question.
 
 ### 4. Emit the selection block, then hand off
 
@@ -80,6 +121,10 @@ REASON: <≤15 words, concrete>
 BUDGET: <low | medium | high>   # token/context intent
 MAP:    <consumed | none>       # consumed = seeded from senior-prompt-engineer EXEC-MAP
 NEXT:   <first concrete action>
+router: <heuristic | typed-scorer>
+router_mode: <heuristic | shadow | advisory | enforce>
+router_confidence: <0.00-1.00 | unavailable>
+router_fallback: <ask | static-catalog | balanced | none>
 ```
 
 If `SKILLS: []`, proceed inline without invoking any skill. If one or more skills are selected, **invoke them via the platform's Skill mechanism** (Claude Code: `Skill` tool; Codex: `/<skill>` or skill invocation; Gemini: slash command / skill call). Never paraphrase a skill — always invoke it so its authoritative content drives behavior.

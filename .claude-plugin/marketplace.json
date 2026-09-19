@@ -1979,13 +1979,15 @@
     {
       "name": "senior-prompt-engineer",
       "source": "./plugins/senior-prompt-engineer",
-      "description": "Pipeline stage-0 prompt refiner. Runs FIRST \u2014 before skills-selector and smart-dispatch \u2014 turning a raw idea, pasted draft, or the current chat into a definitive, production-grade prompt (Anthropic prompt-engineering best practices), then hands the refined prompt + an Execution Map (agents, skills, models, effort, time & token estimate) to the routers so they pick the best skills/models with sharpened context. When no file path is given, the input IS the chat/pasted text and the output is returned inline (processed naturally), not forced to a file. Use when the user invokes /senior-prompt-engineer, says \"refine my prompt\", \"improve this prompt\", \"turn this idea into a prompt\", \"rewrite idea.md to prompt.md\", \"definitive prompt\", \"professional prompt\", or pastes a draft prompt/idea to be hardened. Cross-CLI: Claude, Codex, Gemini, OpenCode, Antigravity (agy), lemon-code (lemon).",
-      "version": "1.0.0",
+      "description": "Pipeline stage-0 prompt refiner. Runs FIRST \u2014 before skills-selector and smart-dispatch \u2014 turning a raw idea, pasted draft, or the current chat into a definitive, production-grade prompt (Anthropic prompt-engineering best practices), then hands the refined prompt + an Execution Map (agents, skills, models, effort, time & token estimate) to the routers so they pick the best skills/models with sharpened context. Uses a model-agnostic decision-native state/question/action contract with bounded options, honest confidence, and fail-open fallbacks; it does not add a Jev or TypeSafe runtime dependency. When no file path is given, the input IS the chat/pasted text and the output is returned inline (processed naturally), not forced to a file. Use when the user invokes /senior-prompt-engineer, says \"refine my prompt\", \"improve this prompt\", \"turn this idea into a prompt\", \"rewrite idea.md to prompt.md\", \"definitive prompt\", \"professional prompt\", or pastes a draft prompt/idea to be hardened. Cross-CLI: Claude, Codex, Gemini, OpenCode, Antigravity (agy), lemon-code (lemon).",
+      "version": "1.1.0",
       "license": "MIT",
       "keywords": [
         "skill",
         "lemon-ai-hub",
-        "senior-prompt-engineer"
+        "senior-prompt-engineer",
+        "decision-routing",
+        "calibration"
       ]
     },
     {
@@ -2091,7 +2093,7 @@
     {
       "name": "skills-cookbook",
       "source": "./plugins/skills-cookbook",
-      "description": "Ready-to-paste example prompts that teach efficient use of the hub's skills across fourteen tracks: project understanding, feedback loops, product, marketing, design/frontend, Karpathy method, Vercel/React, engineering quality, APIs/CLIs, mobile release, data/backend, knowledge/Notion, typed decisions, and meta-harness \u2014 plus a complete A-to-Z catalog index. Ships combination recipes and an anti-pattern matrix. Use when the user asks for example prompts, how to use or combine a skill, or how to navigate the catalog with less cognitive load.",
+      "description": "Ready-to-paste example prompts across fourteen tracks, including decision-native recipes for senior-prompt-engineer, skills-selector, smart-dispatch, and smart-sub-agents, plus typed decisions. Ships verifiable prompt templates, combination rules, anti-patterns, and a complete A-to-Z catalog index. Use when the user asks for examples, how to use or combine skills, portable subagent routing, or how to navigate the catalog with less cognitive load.",
       "version": "1.2.0",
       "license": "MIT",
       "keywords": [
@@ -2109,25 +2111,28 @@
     {
       "name": "skills-selector",
       "source": "./plugins/skills-selector",
-      "description": "Meta-skill gatekeeper that runs FIRST on every task to decide which other skill(s) \u2014 if any \u2014 should activate. Analyzes the user request, matches it against a ranked catalog (frontend-design, ui-ux-pro-max, superpowers/planning, git-*, mcp-builder, smart-dispatch, claude-api, etc.), and emits a tight SELECTION plan so other skills are loaded on-demand only. Minimizes token/context consumption by refusing to activate heavy skills unless clearly justified. Triggers on ANY user instruction that could plausibly benefit from a specialized skill \u2014 i.e. essentially every turn that starts new work. Keywords: \"plan\", \"design\", \"ui\", \"ux\", \"implement\", \"build\", \"create\", \"fix\", \"refactor\", \"commit\", \"pr\", \"review\", \"test\", \"debug\", \"deploy\", \"mobile\", \"video\", \"mcp\", \"skill\", \"architecture\", \"api\", \"ci\", \"docs\", \"copy\", \"social\", \"setup\", \"doctor\".",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "skill",
-        "lemon-ai-hub",
-        "skills-selector"
-      ]
-    },
-    {
-      "name": "smart-dispatch",
-      "source": "./plugins/smart-dispatch",
-      "description": "Automatically routes tasks to the optimal AI agent, model, or provider based on complexity, cost, and capability. Optionally combines with smart-sub-agents to pin harness, provider, model, and effort through an explicit combine_smart_subagents parameter. Use when implementing features, fixing bugs, or any multi-step development work. Triggers on \"implement\", \"build\", \"create\", \"fix\", \"add feature\", \"develop\", or when the user asks to do any coding task.",
+      "description": "Meta-skill gatekeeper that runs FIRST on every task to decide which other skill(s) \u2014 if any \u2014 should activate. Analyzes the user request with a bounded decision-native state, typed candidate questions, explicit policy clamps, and confidence-aware fail-open fallback, then emits a tight SELECTION plan so other skills are loaded on-demand only. Minimizes token/context consumption by refusing to activate heavy skills unless clearly justified. Triggers on ANY user instruction that could plausibly benefit from a specialized skill \u2014 i.e. essentially every turn that starts new work. This is vendor-neutral and does not require a Jev or TypeSafe runtime. Keywords: \"plan\", \"design\", \"ui\", \"ux\", \"implement\", \"build\", \"create\", \"fix\", \"refactor\", \"commit\", \"pr\", \"review\", \"test\", \"debug\", \"deploy\", \"mobile\", \"video\", \"mcp\", \"skill\", \"architecture\", \"api\", \"ci\", \"docs\", \"copy\", \"social\", \"setup\", \"doctor\".",
       "version": "1.1.0",
       "license": "MIT",
       "keywords": [
         "skill",
         "lemon-ai-hub",
-        "smart-dispatch"
+        "skills-selector",
+        "decision-routing",
+        "calibration"
+      ]
+    },
+    {
+      "name": "smart-dispatch",
+      "source": "./plugins/smart-dispatch",
+      "description": "Routes tasks to the cheapest adequate agent, model, or provider using deterministic bypasses, calibrated escalation, and optional typed option scoring through smart-sub-agents.",
+      "version": "1.2.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "smart-dispatch",
+        "decision-routing"
       ]
     },
     {
@@ -2149,8 +2154,8 @@
     {
       "name": "smart-sub-agents",
       "source": "./plugins/smart-sub-agents",
-      "description": "Creates portable subagent routes with explicit harness, provider, model, and effort selection. Ships a verified model matrix, normalization for common aliases, and renderers for Claude Code, Codex, OpenCode, Antigravity, Gemini CLI, and lemon-code.",
-      "version": "1.1.0",
+      "description": "Creates portable subagent routes with explicit harness, provider, model, effort, and optional calibrated decision routing. Ships a verified model matrix, safety floors, normalization, and renderers for Claude Code, Codex, OpenCode, Antigravity, Gemini CLI, and lemon-code.",
+      "version": "1.2.0",
       "license": "MIT",
       "keywords": [
         "skill",
@@ -2159,6 +2164,7 @@
         "subagents",
         "provider-routing",
         "model-routing",
+        "decision-routing",
         "effort",
         "claude-code",
         "codex",

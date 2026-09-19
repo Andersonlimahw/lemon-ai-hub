@@ -1,7 +1,7 @@
 {
   "name": "skills-cookbook",
   "version": "1.2.0",
-  "description": "Ready-to-paste example prompts that teach efficient use of the hub's skills across fourteen tracks: project understanding, feedback loops, product, marketing, design/frontend, Karpathy method, Vercel/React, engineering quality, APIs/CLIs, mobile release, data/backend, knowledge/Notion, typed decisions, and meta-harness — plus a complete A-to-Z catalog index. Ships combination recipes and an anti-pattern matrix. Use when the user asks for example prompts, how to use or combine a skill, or how to navigate the catalog with less cognitive load.",
+  "description": "Ready-to-paste example prompts across fourteen tracks, including decision-native recipes for senior-prompt-engineer, skills-selector, smart-dispatch, and smart-sub-agents, plus typed decisions. Ships verifiable prompt templates, combination rules, anti-patterns, and a complete A-to-Z catalog index. Use when the user asks for examples, how to use or combine skills, portable subagent routing, or how to navigate the catalog with less cognitive load.",
   "author": {
     "name": "Anderson Lima",
     "url": "https://andersonlimahw.github.io"

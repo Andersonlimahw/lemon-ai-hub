@@ -210,9 +210,10 @@ One line per plugin: **when to use it**. Grouped by area; tracks with a full rec
 
 | Plugin | When to use |
 |---|---|
-| `senior-prompt-engineer` | refine a request into a definitive prompt + EXEC-MAP (stage-0) |
-| `skills-selector` | decide which skills to activate (stage-1) |
-| `smart-dispatch` | route agent/model/cost (stage-2) |
+| `senior-prompt-engineer` | refine a request into a definitive prompt + canonical EXEC-MAP (stage-0) |
+| `skills-selector` | consume EXEC-MAP and activate the smallest valid skill set (stage-1) |
+| `smart-dispatch` | route worker/tier/effort with calibrated fail-open and validation (stage-2) |
+| `smart-sub-agents` | pin portable harness/provider/model/effort routes and separate provider/router fallbacks |
 | `skill-creator` | guided creation of a new skill |
 | `skill-authoring` | best practices for writing a skill |
 | `skill-installer` | install external skills |

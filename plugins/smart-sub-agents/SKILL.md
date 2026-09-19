@@ -1,6 +1,6 @@
 ---
 name: smart-sub-agents
-description: Creates and routes portable subagents by harness, provider, model, and effort. Use when a task needs explicit model selection, multi-provider delegation, dynamic effort, parallel subagents, or configuration for Claude Code, Codex, OpenCode, Antigravity, Gemini CLI, or lemon-code.
+description: Creates and routes portable subagents by harness, provider, model, and effort, with optional calibrated typed-decision routing and safety floors. Use when a task needs explicit model selection, multi-provider delegation, dynamic effort, parallel subagents, probability-based routing, or configuration for Claude Code, Codex, OpenCode, Antigravity, Gemini CLI, or lemon-code.
 ---
 
 # Smart Sub-Agents
@@ -19,6 +19,8 @@ The source of truth is [`references/provider-matrix.json`](references/provider-m
 - **Harness**: the tool that owns the subagent (`claude-code`, `codex`, `opencode`, `antigravity`, `gemini-cli`, or `lemon-code`).
 - **Provider/model**: the model service and model ID used by that harness (`anthropic/claude-opus-5`, `openai/gpt-5.6`, and so on).
 
+It also separates the optional **decision scorer** from the executor. A scorer may choose a route, but it never appears as a worker model because it does not generate the task result. Read [`references/decision-routing.md`](references/decision-routing.md) before enabling probability-based routing.
+
 ## Routing protocol
 
 1. Select the harness that can actually execute the work. Use `opencode` when the requested provider is not native to the current harness.
@@ -27,6 +29,20 @@ The source of truth is [`references/provider-matrix.json`](references/provider-m
 4. Validate the exact model ID against the matrix. Never silently replace an unavailable model with a similarly named one.
 5. Map the normalized effort to the provider's native control. If the provider only supports a boolean thinking switch or model-specific variants, record that limitation in the route.
 6. Emit one `ROUTE-MAP v1` block and, when requested, render the harness-specific subagent configuration.
+
+### Fast decision path
+
+Use the cheapest path whose overhead can pay for itself:
+
+1. Bypass model routing for deterministic local commands and tiny tasks; execute them locally.
+2. Use the static `taskRouting` table by default. It adds no network hop and remains the fail-open path.
+3. Use a learned decision router only for substantive turns where model or effort choice can materially change cost, latency, or quality.
+4. Apply an explicit user route override when present; explicit values win over scorer preferences.
+5. Otherwise, if confidence is below the calibrated gate, the router times out, or its output is invalid, use the configured balanced fallback. Do not jump to the most expensive model merely because the router is uncertain.
+6. Apply `decisionRouting.safetyFloor` as the final monotonic clamp. It may raise, but never lower, the effective route.
+7. Reassess at phase boundaries (plan, implementation, verification), not after every tool call. De-escalate when the remaining work becomes mechanical, subject to the safety floor.
+
+Ask independent typed questions together: tier, effort, task risk, tool complexity, and whether parallel reasoning will amortize startup cost. Reuse the shared task state across those questions when the scorer supports prefix caching or parallel suffixes. Treat option probabilities as routing signals, not proof of correctness. Start in `shadow`, measure against validation outcomes, calibrate per workload, then move to `advisory` or `enforce`. Never copy the example confidence gate into production without local calibration.
 
 Recommended profile defaults:
 
@@ -95,11 +111,15 @@ provider: deepseek
 model: deepseek-v4-flash
 effort: max
 native_effort: thinking=true
-fallback: openrouter/auto
+provider_fallback: openrouter/auto
+router: heuristic|typed-scorer
+router_mode: heuristic|shadow|advisory|enforce
+router_confidence: 0.00-1.00|unavailable
+router_fallback: ask|static-catalog|balanced|none
 reason: quality-first coding route with DeepSeek V4 Flash thinking mode
 ```
 
-Do not add secrets, invent provider support, or fall back after an explicit cancellation. A fallback is only a declared route for a provider outage or unavailable model and must be visible to the caller.
+Do not add secrets, invent provider support, or fall back after an explicit cancellation. `provider_fallback` is only a declared route for a provider outage or unavailable model; `router_fallback` explains a decision-router failure or uncertainty. Both must be visible to the caller.
 
 ## Worker matrix (named agents)
 
