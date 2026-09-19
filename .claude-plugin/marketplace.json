@@ -2494,6 +2494,26 @@
         "lemon-ai-hub",
         "writing-guidelines"
       ]
+    },
+    {
+      "name": "worktree-janitor",
+      "source": "./plugins/worktree-janitor",
+      "description": "Limpa worktrees git abandonadas por agentes de IA (Claude Code, Codex, Gemini CLI, Agy/Antigravity, OpenCode, Cursor) em todos os projetos da m\u00e1quina, com autoriza\u00e7\u00e3o expl\u00edcita do usu\u00e1rio e relat\u00f3rio HTML autocontido. Classifica cada worktree por risco \u2014 \u00f3rf\u00e3, mergeada, upstream removido, sem commits pr\u00f3prios, stale, suja, ativa, protegida \u2014 lista projetos/branches/diret\u00f3rios antes de remover qualquer coisa, aplica s\u00f3 a sele\u00e7\u00e3o aprovada e gera undo.sh. Use quando o usu\u00e1rio pedir para limpar worktrees, remover worktrees \u00f3rf\u00e3s ou mergeadas, fazer faxina de branches de agentes, liberar espa\u00e7o de worktrees ou auditar worktrees da m\u00e1quina.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "worktree-janitor",
+        "git",
+        "worktree",
+        "cleanup",
+        "orphan-branches",
+        "merged-branches",
+        "html-report",
+        "disk-space",
+        "cross-harness"
+      ]
     }
   ]
 }
