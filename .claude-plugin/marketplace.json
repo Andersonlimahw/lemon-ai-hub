@@ -2106,8 +2106,8 @@
     {
       "name": "skills-cookbook",
       "source": "./plugins/skills-cookbook",
-      "description": "Ready-to-paste example prompts that teach efficient use of the hub's skills across thirteen tracks: project understanding (cognitive-load reduction), feedback and quality loops, product, marketing, design/frontend, the Karpathy method, Vercel/React, engineering quality, APIs and CLIs, mobile release, data/backend, knowledge/Notion, and meta-harness \u2014 plus a complete A-to-Z catalog index covering every plugin in the hub. Ships combination recipes and an anti-pattern matrix of mutually exclusive or redundant skills. Use when the user asks for example prompts, how to use a skill, which skills to combine, or how to understand a project with less cognitive load.",
-      "version": "1.1.0",
+      "description": "Ready-to-paste example prompts that teach efficient use of the hub's skills across fourteen tracks: project understanding, feedback loops, product, marketing, design/frontend, Karpathy method, Vercel/React, engineering quality, APIs/CLIs, mobile release, data/backend, knowledge/Notion, typed decisions, and meta-harness \u2014 plus a complete A-to-Z catalog index. Ships combination recipes and an anti-pattern matrix. Use when the user asks for example prompts, how to use or combine a skill, or how to navigate the catalog with less cognitive load.",
+      "version": "1.2.0",
       "license": "MIT",
       "keywords": [
         "skill",
