@@ -20,7 +20,8 @@ Recursive error-fix loop. Every fixed error must reduce the chance of the same e
 |---|---|
 | `SKILL.md` | The recursive loop protocol (load on demand). |
 | `agents/error-fixer-loop-runner.md` | Focused subagent that executes the protocol for one captured failure. |
-| `hooks/error-fixer-loop-hook.sh` | Claude Code `PostToolUse` hook for `Bash`. |
+| `hooks/error-fixer-loop-hook.sh` | Claude Code `PostToolUse` hook for `Bash` (plain-text output — Claude Code only). |
+| `hooks/error-fixer-loop-codex.py` | Codex CLI `PostToolUse` hook for `Bash` (JSON `hookSpecificOutput` output — Codex only). |
 | `hooks/error-fixer-loop.ts` | OpenCode plugin on `tool.execute.after`. |
 | `scripts/install.sh` | Idempotent installer for both harnesses. |
 | `scripts/detect-error.sh` | Standalone detector for CI / pre-push. |
@@ -50,6 +51,29 @@ Add `.error-fixer-loop/` to `.gitignore` if you don't want the artifacts version
 # Or pick one
 ./scripts/install.sh claude
 ./scripts/install.sh opencode
+```
+
+## Codex
+
+Do NOT register `hooks/error-fixer-loop-hook.sh` in `~/.codex/hooks.json`:
+it prints plain text, and Codex rejects that with
+`hook returned invalid post-tool-use JSON output` on every Bash call.
+Register `hooks/error-fixer-loop-codex.py` instead — it prints nothing when
+clean and valid `hookSpecificOutput` JSON when an error is detected:
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "/usr/bin/python3 ~/.codex/hooks/error-fixer-loop-codex.py" }
+        ]
+      }
+    ]
+  }
+}
 ```
 
 ## Quick use

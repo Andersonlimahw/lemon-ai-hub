@@ -169,12 +169,13 @@ Create an **eval** (`evals.json`) when the failure can be simulated (e.g., "agen
 
 ## Hook integration
 
-Two hooks auto-detect build/test errors in bash output and inject a reminder to run this loop:
+Three hooks auto-detect build/test errors in bash output and inject a reminder to run this loop:
 
-- **Claude Code**: `hooks/error-fixer-loop-hook.sh` — register as `PostToolUse` on `Bash`.
+- **Claude Code**: `hooks/error-fixer-loop-hook.sh` — register as `PostToolUse` on `Bash`. Plain-text output; Claude Code only.
+- **Codex**: `hooks/error-fixer-loop-codex.py` — register as `PostToolUse` on `Bash` in `~/.codex/hooks.json`. Prints nothing when clean, valid `hookSpecificOutput` JSON on error. Never register the `.sh` hook in Codex — Codex rejects plain-text hook output with `hook returned invalid post-tool-use JSON output`.
 - **OpenCode**: `hooks/error-fixer-loop.ts` — plugin listening on `tool.execute.after`.
 
-Both are passive: they only print a one-line reminder. They never block, never mutate the tool result, never auto-run the fix.
+All are passive: they only emit a reminder. They never block, never mutate the tool result, never auto-run the fix.
 
 Detected patterns (extend via `ERROR_PATTERNS` in the TS hook or the regex in the shell hook):
 

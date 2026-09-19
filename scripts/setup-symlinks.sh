@@ -124,6 +124,38 @@ curate_hub_symlinks "~/.agy/skills"
 curate_hub_symlinks "~/.config/opencode/skills"
 curate_hub_symlinks "~/.gemini/skills"
 
+# Nested review skills have no top-level plugins/<name> dir, so
+# curate_hub_symlinks never matches them. Codex resolves
+# code-review-expert via marketplace/symlink — without these links the
+# orchestration falls back to raw subagents that never complete.
+link_nested_review_skills_to_codex() {
+  local codex_skills_dir="${1/#\~/$HOME}"
+  local src dst name backup
+  for name in code-review-expert code-review-adversary thermo-nuclear-review thermo-nuclear-code-quality-review; do
+    src="$REPO_PLUGINS_DIR/code-review-expert/skills/$name"
+    dst="$codex_skills_dir/$name"
+    [ -f "$src/SKILL.md" ] || {
+      echo "WARNING: missing source $src/SKILL.md" >&2
+      continue
+    }
+    if [ -L "$dst" ]; then
+      echo "Linked (already): $name"
+    elif [ -d "$dst" ]; then
+      backup="$codex_skills_dir/.${name}_bak_$(date +%s)"
+      echo "Curating: $name (physical copy -> symlink; backup at $backup)"
+      mv "$dst" "$backup"
+      ln -s "$src" "$dst"
+    elif [ -e "$dst" ]; then
+      echo "Skipping: $dst exists and is not a directory" >&2
+    else
+      mkdir -p "$codex_skills_dir"
+      ln -s "$src" "$dst"
+      echo "Linked: $name"
+    fi
+  done
+}
+link_nested_review_skills_to_codex "~/.codex/skills"
+
 # Phase 3.5: per-harness agent frontmatter sync.
 # Materializes transformed copies of plugins/cli-wrapper/agents/*.md into each
 # harness's agents/ dir with the correct schema (drops `name` for OpenCode,
