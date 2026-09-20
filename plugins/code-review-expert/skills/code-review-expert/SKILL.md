@@ -6,15 +6,17 @@ disable-model-invocation: true
 
 # Code Review Expert
 
-Run the two thermo review passes as async background subagents in parallel, then synthesize their results.
+Run the two thermo review passes as parallel subagents, then synthesize their results.
 
 ## Workflow
 
 1. Determine the review scope from the user request, PR, current branch, or relevant changed files.
 2. Gather the diff and any file/context excerpts needed for reviewers to evaluate the change without guessing.
-3. Launch both subagents in the same message with `run_in_background: true`:
+3. Launch both subagents in parallel:
    - `subagent_type: "thermo-nuclear-review-subagent"` for bugs, breakages, security, devex regressions, feature-flag leaks, and other branch-audit risks.
    - `subagent_type: "thermo-nuclear-code-quality-review-subagent"` for maintainability, structure, file-size growth, spaghetti, abstractions, and codebase-health risks.
+   - **Claude Code**: launch both in the same message with `run_in_background: true`.
+   - **Codex**: dispatch both via `~/.codex/agents/` and wait for both to complete before synthesizing. Do NOT use `run_in_background` — in Codex that pattern leaves the agents never completing.
 4. Pass each subagent the same scoped diff/file context and ask it to return prioritized findings with file references and evidence.
 5. After both finish, synthesize the results with findings first, deduplicated across reviewers. Weight overlapping findings more heavily, resolve disagreements with your own judgment, and keep summaries brief.
 
