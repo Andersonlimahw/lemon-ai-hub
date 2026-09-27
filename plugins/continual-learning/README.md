@@ -26,13 +26,14 @@ On eligible `stop` events, the hook may emit a `followup_message` that asks the 
 
 The skill is marked `disable-model-invocation: true`, so it will not be auto-selected during normal model invocation. When it does run, it delegates the full memory update flow to `agents-memory-updater`.
 
-The hook keeps local runtime state in:
+The hook keeps runtime state outside the project, one folder per workspace:
 
-- `.cursor/hooks/state/continual-learning.json` (cadence state)
+- Claude Code: `${CLAUDE_PLUGIN_DATA}/<workspace-slug>/`
+- other runtimes without a plugin data dir: `~/.claude/state/continual-learning/<workspace-slug>/`
+- Cursor: `.cursor/hooks/state/` in the workspace (Cursor's own convention)
 
-The updater uses an incremental transcript index at:
-
-- `.cursor/hooks/state/continual-learning-index.json`
+That folder holds `continual-learning.json` (cadence state) and `continual-learning-index.json`
+(the updater's incremental transcript index; its absolute path is passed in the follow-up message).
 
 ## Trigger cadence
 

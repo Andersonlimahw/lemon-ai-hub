@@ -43,5 +43,5 @@ Use from `continual-learning` when transcript deltas may produce durable memory 
 
 ## Output
 
-- Updated `AGENTS.md` and `.cursor/hooks/state/continual-learning-index.json` when needed
+- Updated `AGENTS.md` and the incremental index file named in the follow-up message when needed
 - Otherwise exactly `No high-signal memory updates.`

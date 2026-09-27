@@ -2,6 +2,8 @@ plugins/.system/
 # Local Claude Code state (worktrees, settings, agent scratch dirs).
 # Machine-specific, never commit. See docs/rules/worktree-hygiene.md.
 .claude/
+# Cursor workspace state (hooks, e.g. continual-learning when run from Cursor).
+.cursor/
 # Python bytecode
 __pycache__/
 *.pyc
