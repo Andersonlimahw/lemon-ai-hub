@@ -1546,6 +1546,26 @@
       ]
     },
     {
+      "name": "motion-movie-expert",
+      "source": "./plugins/motion-movie-expert",
+      "description": "Definitive cross-harness plugin for creating and editing motion videos with AI agents: master-prompt briefs, storyboards, seam-law choreography, motion-graphics shots, HyperFrames production, voice/caption sync, UI motion patterns, and render QC.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "motion-design",
+        "video",
+        "motion-graphics",
+        "hyperframes",
+        "storyboard",
+        "voiceover",
+        "captions",
+        "video-editing",
+        "orchestrator"
+      ]
+    },
+    {
       "name": "notion-knowledge-capture",
       "source": "./plugins/notion-knowledge-capture",
       "description": "Capture conversations and decisions into structured Notion pages; use when turning chats/notes into wiki entries, how-tos, decisions, or FAQs with proper linking.",
