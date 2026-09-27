@@ -1,13 +1,27 @@
 /// <reference types="bun-types-no-globals/lib/index.d.ts" />
 
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { homedir } from "node:os";
+import { dirname, join, resolve } from "node:path";
 import { stdin } from "bun";
 
-const STATE_PATH = resolve(".cursor/hooks/state/continual-learning.json");
-const INCREMENTAL_INDEX_PATH = resolve(
-  ".cursor/hooks/state/continual-learning-index.json"
-);
+// Cursor keeps hook state in the workspace (.cursor/hooks/state). Every other
+// runtime keeps it outside the project so the hook never leaves a stray
+// .cursor/ folder in the user's repo: one subfolder per project under the
+// plugin data dir (Claude Code: ${CLAUDE_PLUGIN_DATA}) or ~/.claude/state.
+function resolveStateDir(): string {
+  const cwd = process.cwd();
+  if (process.env.CURSOR_PLUGIN_ROOT && !process.env.CLAUDE_PLUGIN_ROOT) {
+    return resolve(cwd, ".cursor/hooks/state");
+  }
+  const base =
+    process.env.CLAUDE_PLUGIN_DATA ?? join(homedir(), ".claude", "state", "continual-learning");
+  return join(base, cwd.replace(/[^A-Za-z0-9]/g, "-"));
+}
+
+const STATE_DIR = resolveStateDir();
+const STATE_PATH = join(STATE_DIR, "continual-learning.json");
+const INCREMENTAL_INDEX_PATH = join(STATE_DIR, "continual-learning-index.json");
 const DEFAULT_MIN_TURNS = 10;
 const DEFAULT_MIN_MINUTES = 120;
 const TRIAL_DEFAULT_MIN_TURNS = 3;
