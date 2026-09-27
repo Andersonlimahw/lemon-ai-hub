@@ -1,0 +1,23 @@
+{
+  "name": "motion-movie-expert",
+  "version": "1.0.0",
+  "description": "Definitive cross-harness plugin for creating and editing motion videos with AI agents: master-prompt briefs, storyboards, seam-law choreography, motion-graphics shots, HyperFrames production, voice/caption sync, UI motion patterns, and render QC.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "motion-design",
+    "video",
+    "motion-graphics",
+    "hyperframes",
+    "storyboard",
+    "voiceover",
+    "captions",
+    "video-editing",
+    "orchestrator"
+  ]
+}

@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Added
+- **motion-movie-expert plugin**: Cross-harness orchestrator for creating and editing motion videos — master-prompt template (PT-BR) and storyboard contract, seam-law choreography, motion-graphics shots, HyperFrames/`seek(t)` production, voice↔video sync (`scripts/build_timeline.py`: timestamps → timeline, SRT/VTT, dwell/readability warnings), UI motion patterns, FFmpeg edit recipes and render QC (`scripts/qc.sh`). Includes `motion-director` and `motion-qc` agents. Upstream skills curated with prompt-injection/supply-chain gating (no runtime self-updates, confirmed installs/uploads/publishing).
 - **smart-handoff plugin**: Runtime-agnostic session handoff protocol. Pauses long-running AI coding sessions when context/token budget is nearly exhausted (~90-95%), writes a self-contained handoff file, commits, pushes, and stops — enabling any runtime (Claude Code, Codex, Antigravity/Agy, OpenCode, Gemini CLI) to cleanly resume. Includes `handoff-writer` and `handoff-resumer` agents plus a handoff template.
 
 ## [1.2.0] - 2026-07-11
