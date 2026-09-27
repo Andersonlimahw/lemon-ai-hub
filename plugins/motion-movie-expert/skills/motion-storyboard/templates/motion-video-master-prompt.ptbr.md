@@ -123,7 +123,7 @@ próxima interação). Progressão constante, **sem tempo morto**.
 4. **Encerramento da marca** — {{DETALHE}} vira o logo. Tagline: **{{TAGLINE}}** · CTA: `{{URL}}`.
    {{DISCLAIMER_SE_HOUVER}}
 
-Se for loop, o último frame conecta perfeitamente ao primeiro.
+Se for loop, o frame seguinte ao último é o primeiro (sem frame duplicado na emenda).
 
 ## MICROINTERAÇÕES
 
@@ -215,7 +215,7 @@ plan · audio cue plan · arquitetura · lista de fatos com fonte.
 - [ ] dados verdadeiros com fonte; marcas fictícias; sem métrica inventada;
 - [ ] nenhuma PII; licenças de música/fonte/mapa verificadas;
 - [ ] primeiro segundo já apresenta valor;
-- [ ] loop perfeito quando solicitado;
+- [ ] loop perfeito quando solicitado (`qc.sh loop` passa);
 - [ ] render determinístico; qualquer frame reproduzível por `seek(t)`.
 
 ## INÍCIO DA EXECUÇÃO

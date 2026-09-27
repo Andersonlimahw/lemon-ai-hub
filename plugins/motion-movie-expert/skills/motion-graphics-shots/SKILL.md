@@ -1,6 +1,6 @@
 ---
 name: motion-graphics-shots
-description: Short design-led motion graphics where motion is the message — kinetic typography, stat count-up, chart/data-viz reveal, logo sting, lower third or callout, animated map, tweet/news/headline card, webpage or UI walkthrough, and image-plus-data fusion. Usually under 10 s, up to about 30 s, no narration; renders to MP4 or a transparent overlay.
+description: Short design-led motion graphics where motion is the message — kinetic typography, stat count-up, chart/data-viz reveal, logo sting, lower third or callout, animated map, tweet/news/headline card, webpage or UI walkthrough, and image-plus-data fusion. Usually under 10 s, up to about 30 s, no narration; renders to MP4 or a transparent overlay. Use when the user wants a short motion graphic, animated stat/chart/logo/map/card, or overlay; when the upstream HyperFrames `motion-graphics` skill is installed, use it for exact CLI flags and registry blocks.
 ---
 
 # Motion Graphics Shots
@@ -19,7 +19,7 @@ For pieces under ~30 s with no narrator. Longer or narrated work → back to the
    neutral ramp, and state them. Lay out the resting frame first: it must work as a still.
 4. **Build** — prefer reusing a proven block or component and editing it in place over authoring
    from scratch. Follow `motion-choreography` for timing. Keep everything seekable (`seek(t)`).
-5. **Verify** — stills at every beat + contact sheet (`scripts/qc.sh sheet`). Check legibility,
+5. **Verify** — stills at every beat + contact sheet (`<plugin-root>/scripts/qc.sh sheet`). Check legibility,
    safe areas, numbers, and brand colors before rendering.
 6. **Render** — final encode; overlays keep alpha (`-c:v prores_ks -profile:v 4444` for MOV or
    `-c:v libvpx-vp9 -pix_fmt yuva420p` for WebM).

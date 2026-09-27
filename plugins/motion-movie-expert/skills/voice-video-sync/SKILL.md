@@ -29,7 +29,9 @@ Mercator wanted sailors | to hold a straight course.
 ## gap 0.6
 ```
 
-`## gap <seconds>` inserts a silent hold after a paragraph (dwell budget for the last visual).
+`## gap <seconds>` asks for a pause of at least that long after the paragraph (dwell for the last
+visual). Produce it in the audio — SSML `<break time="600ms"/>` for TTS, or inserted silence when
+assembling per-paragraph files. The timeline tool never shifts timings; it verifies the pause.
 
 ## 2. Lock the script
 
@@ -58,14 +60,16 @@ Normalize them to this JSON:
 ## 5. Build the timeline
 
 ```bash
-python3 scripts/build_timeline.py words.json --script script.txt --fps 30 \
+python3 <plugin-root>/scripts/build_timeline.py words.json --script script.txt --fps 30 \
   --out-dir timeline/ --max-chars 42 --min-dwell 1.0
 ```
 
 Produces `timeline.json` (shots with start/end frames, caption blocks, chapter starts),
-`captions.srt`, `captions.vtt`, and warnings for: caption blocks too long to read, shots whose last
-caption leaves less than `--min-dwell` seconds before the next shot (add `## gap` or merge), and
-gaps where nothing is spoken for longer than 3 s. Feed `timeline.json` to the composition; never
+`captions.srt`, `captions.vtt`, and warnings for: script words missing from the audio (or audio
+words missing from the script), captions too long or too fast to read, shots whose last caption
+leaves less than `--min-dwell` seconds before the next shot (add a pause in the audio or merge),
+requested `## gap` pauses the audio does not have, and silences longer than 3 s. Words a forced
+aligner left untimed (common for numbers in WhisperX) are interpolated between their neighbours. Feed `timeline.json` to the composition; never
 retype frame numbers by hand.
 
 ## 6. Caption rules
@@ -84,7 +88,7 @@ retype frame numbers by hand.
 | Music under VO | duck 8–12 dB while speech is present, 150–300 ms attack/release |
 | SFX | ≈10 dB under music; on the causing frame, not after |
 
-Measure with `scripts/qc.sh loudness final.mp4`. When HyperFrames audio skills are installed,
+Measure with `<plugin-root>/scripts/qc.sh loudness final.mp4` (add `-23` for broadcast). When HyperFrames audio skills are installed,
 `hyperframes-audio` provides ducking ("voiceover carve"), EQ, and automation inside the composition;
 otherwise use FFmpeg `sidechaincompress` and `loudnorm` (two-pass).
 

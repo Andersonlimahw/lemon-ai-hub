@@ -78,7 +78,8 @@ composition(t) → Playwright page.evaluate(seek, t) → wait fonts/images → s
 
 - 60 fps × 4 subframes, shutter 0.5, is a good default; drop blur on frames where numbers change if
   it hurts legibility.
-- Encode: `-c:v libx264 -pix_fmt yuv420p -crf 16 -preset slow -movflags +faststart`, AAC 320 kbps.
+- Master encode (archive and re-edit source): `-c:v libx264 -pix_fmt yuv420p -crf 16 -preset slow`,
+  AAC 320 kbps. Platform delivery encodes are derived from it in `video-edit-qc`.
 - The same timestamp rendered twice must produce identical pixels; test it on 3 random frames.
 
 ## Hand-off

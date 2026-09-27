@@ -11,8 +11,13 @@ slideshow of unrelated screens.
 
 Sub-skills live in `skills/<name>/SKILL.md` next to this file. Load only the ones the task
 needs; every runtime (Claude Code, Codex, Antigravity/Agy, OpenCode, Gemini CLI) can read them
-by path, so routing never depends on runtime-specific skill discovery. Paths such as `scripts/…`
-and `skills/…` in any sub-skill or agent are relative to this plugin root, not to the sub-skill.
+by path, so routing never depends on runtime-specific skill discovery.
+
+`<plugin-root>` below and in every sub-skill or agent means the directory holding this file:
+`${CLAUDE_PLUGIN_ROOT}` in Claude Code, `plugins/motion-movie-expert/` in the hub, or two levels up
+from any `skills/<name>/` directory. Run scripts from the user's project directory by full path
+(`python3 <plugin-root>/scripts/build_timeline.py …`) so relative inputs and outputs stay in the
+project.
 
 ## Route
 
@@ -103,7 +108,9 @@ and stock media; never state product facts or metrics the user has not provided 
 
 ## Scripts
 
-- `scripts/build_timeline.py` — word/segment timestamps (Whisper, ElevenLabs, Azure, edge-tts) →
-  caption blocks, shot windows, SRT/VTT, and dwell warnings. See `voice-video-sync`.
-- `scripts/qc.sh` — ffprobe summary, loudness (EBU R128), contact sheet, stills at timestamps,
-  and loop seam diff. See `video-edit-qc`.
+- `<plugin-root>/scripts/build_timeline.py` — word/segment timestamps (from Whisper/WhisperX
+  directly; normalize ElevenLabs character timings or Azure/edge-tts word events first) + locked
+  script → caption blocks, shot windows, SRT/VTT, and readability/dwell warnings. See
+  `voice-video-sync`.
+- `<plugin-root>/scripts/qc.sh` — ffprobe summary, loudness (EBU R128), contact sheet, stills at
+  timestamps, and loop seam check. See `video-edit-qc`.

@@ -1,6 +1,6 @@
 ---
 name: ui-motion-patterns
-description: Motion tokens, spring presets, and production patterns for product UI in React/Next.js (motion/react) — buttons, lists, modals, toasts, numbers, layout and page transitions, reduced motion, SSR safety — plus how to rebuild real product UI faithfully for video. Use when animating a web UI or recreating product screens inside a motion video.
+description: Motion tokens, spring presets, and React/Next.js (motion/react) interaction patterns for product UI that appears in a video — rebuilding real product screens faithfully, animating them as seekable scenes, and keeping the live product's motion consistent with the film. Use when a motion video shows or recreates product UI; for web UI work with no video deliverable use design-expert instead.
 ---
 
 # UI Motion Patterns
@@ -28,14 +28,15 @@ export const motionTokens = {
 export const springs = {
   press:   { type: "spring", stiffness: 600, damping: 38 },  // buttons, toggles
   snappy:  { type: "spring", stiffness: 420, damping: 34 },  // chips, menus
-  gentle:  { type: "spring", stiffness: 260, damping: 30 },  // cards, panels
-  layout:  { type: "spring", stiffness: 320, damping: 36 },  // reorder, resize
-  camera:  { type: "spring", stiffness: 140, damping: 26 },  // big moves, video only
+  gentle:  { type: "spring", stiffness: 260, damping: 27 },  // cards, panels
+  layout:  { type: "spring", stiffness: 320, damping: 30 },  // reorder, resize
+  camera:  { type: "spring", stiffness: 140, damping: 20 },  // big moves, video only
 } as const;
 ```
 
-These presets stay near a damping ratio of 0.75–0.90 (overshoot ≤6 %). Adjust per brand, but keep
-the table the single source.
+With mass 1, damping ratio ζ = damping / (2·√stiffness): press 0.78, snappy 0.83, gentle 0.84,
+layout 0.84, camera 0.85 — all inside the 0.75–0.90 band (overshoot ≤ ~6 %). Adjust per brand with
+that formula, and keep this table the single source.
 
 ## 2. Accessibility and SSR
 

@@ -9,7 +9,9 @@ The storyboard is the contract. Nothing gets animated until it exists and the us
 
 ## 1. Fill the master prompt
 
-Copy `templates/motion-video-master-prompt.ptbr.md` into the video project (for example
+The master prompt is the project brief (facts, tokens, defaults, rules); the storyboard is the plan
+built from it. Copy `templates/motion-video-master-prompt.ptbr.md` (Portuguese; translate the
+headings for other languages) into the video project (for example
 `docs/MASTER-PROMPT.md`) and replace every `{{placeholder}}`. Sources of truth, in order:
 
 1. what the user said in this conversation;
@@ -59,8 +61,8 @@ Use `templates/storyboard.md`. Required sections:
 - **Product video** — understanding over copy: `problem → interaction → result → next capability`.
 - **Explainer** — one storyline, cause before effect, numbers converted to felt scale; the script is
   written and locked before storyboard timing (hand off to `voice-video-sync`).
-- **Perfect loop** — last frame equals first frame in camera, geometry, cursor, opacity, velocity,
-  text, and state. Design it from beat 1; audio loops with tails re-injected.
+- **Perfect loop** — designed from beat 1 per `motion-choreography` §8; audio loops with tails
+  re-injected.
 
 ## 4. Approval gate
 

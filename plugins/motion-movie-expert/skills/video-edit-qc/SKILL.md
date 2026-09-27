@@ -28,9 +28,9 @@ ffmpeg -i in.mp4 -i captions.srt -c copy -c:s mov_text out.mp4
 # Replace audio / duck music under voice / normalize to -14 LUFS
 ffmpeg -i in.mp4 -i mix.wav -map 0:v -map 1:a -c:v copy -shortest out.mp4
 ffmpeg -i music.wav -i vo.wav -filter_complex "[0][1]sidechaincompress=threshold=0.05:ratio=8:attack=150:release=300[m];[m][1]amix=inputs=2:normalize=0" mix.wav
-ffmpeg -i mix.wav -af loudnorm=I=-14:TP=-1:LRA=11 mix_norm.wav   # use two-pass for final delivery
+ffmpeg -i mix.wav -af loudnorm=I=-14:TP=-1:LRA=11 -ar 48000 mix_norm.wav   # two-pass for final delivery
 
-# Web delivery encode
+# Web/social delivery encode (from the master; the master itself is CRF 16 — see hyperframes-production)
 ffmpeg -i in.mp4 -c:v libx264 -pix_fmt yuv420p -crf 18 -preset slow -movflags +faststart -c:a aac -b:a 192k out.mp4
 ```
 
@@ -41,14 +41,14 @@ of cropping when possible.
 
 ## QC gates
 
-Run `scripts/qc.sh` (paths are relative to the plugin root):
+Run from the project directory (`QC=<plugin-root>/scripts/qc.sh`):
 
 ```bash
-scripts/qc.sh probe    final.mp4                  # codec, size, fps, duration, audio present
-scripts/qc.sh sheet    final.mp4 sheet.png 4 4    # contact sheet for a full read-through
-scripts/qc.sh stills   final.mp4 qc/ 0.5 3 7.5    # one still per storyboard beat
-scripts/qc.sh loudness final.mp4                  # -14..-16 LUFS, true peak <= -1 dBTP
-scripts/qc.sh loop     final.mp4 40               # loops only: first vs last frame PSNR
+$QC probe    final.mp4                  # codec, size, fps, duration, audio present
+$QC sheet    final.mp4 qc/sheet.png 4 4 # contact sheet for a full read-through
+$QC stills   final.mp4 qc/ 0.5 3 7.5    # one still per storyboard beat; fails past the end
+$QC loudness final.mp4                  # -14 ±1 LUFS (pass -23 for broadcast), true peak <= -1 dBTP
+$QC loop     final.mp4                  # loops only: seam must look like a normal frame step
 ```
 
 Then review the stills and sheet against the storyboard:

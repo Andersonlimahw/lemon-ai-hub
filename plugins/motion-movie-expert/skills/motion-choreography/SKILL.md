@@ -61,8 +61,8 @@ Chain moves so each is visibly launched by the last:
   frames). Multiple targets = sum of independent responses, each starting at its own trigger time.
 - Direct manipulation (drag, pinch, scroll): value follows the pointer; on release, the spring
   starts from the exact release position and velocity.
-- Put key actions on the beat grid (at 120 BPM: every 0.5 s). Leave the viewer time to read: a
-  caption or label needs ≈ 0.3 s + 0.06 s per character on screen.
+- Put key actions on the beat grid (at 120 BPM: every 0.5 s). Leave the viewer time to read
+  on-screen text; caption reading-speed limits live in `voice-video-sync` §6.
 
 ## 5. Performance: the scene keeps performing
 
@@ -87,8 +87,10 @@ dutch angles, and 3D orbits without narrative purpose.
 
 ## 8. Loops
 
-Design the loop from beat 1: last frame equals first frame in camera, geometry, cursor, opacity,
-velocity, text, and state. Verify with `scripts/qc.sh loop` (see `video-edit-qc`).
+Design the loop from beat 1: the frame that would follow the last frame is the first frame — same
+camera, geometry, cursor, opacity, velocity, text, and state — so the seam looks like any other
+frame step (a duplicated frame at the seam is a visible hitch). Verify with
+`<plugin-root>/scripts/qc.sh loop` (see `video-edit-qc`).
 
 ## 9. Reduced motion and accessibility
 
