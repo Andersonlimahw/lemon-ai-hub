@@ -1,6 +1,6 @@
 {
   "name": "smart-sub-agents",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Creates portable subagent routes with explicit harness, provider, model, effort, and optional calibrated decision routing. Ships a verified model matrix, safety floors, normalization, and renderers for Claude Code, Codex, OpenCode, Antigravity, Gemini CLI, and lemon-code.",
   "author": {
     "name": "Anderson Lima",

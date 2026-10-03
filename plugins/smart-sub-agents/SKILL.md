@@ -139,6 +139,7 @@ Naming contract:
 | Codex | `{luna\|terra\|sol}_worker_{effort}` | `luna_worker_max` |
 | OpenCode Zen | `zen_{family}_worker_{effort}` | `zen_sol_worker_max` |
 | OpenCode Go | `go_{family}_worker_{effort}` | `go_luna_worker_high` |
+| MiniMax Token Plan | `mm_{fast\|m3\|flash}_worker_{effort}` (OpenCode `mode: all` + lean tools; Claude/Agy bridges relay via `mm-run`) | `mm_flash_worker_high` |
 | Agy | symlink → Claude workers + Codex-named aliases | `opus_worker_high` → `~/.claude/agents/...` |
 
 Claude bodies are canonical. Codex gets native TOML (`model` + `model_reasoning_effort`). OpenCode gets adapted markdown (`mode/permission/model`). Agy symlinks Claude.

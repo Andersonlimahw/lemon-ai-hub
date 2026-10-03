@@ -210,6 +210,20 @@ class SmartSubAgentsCatalogTests(unittest.TestCase):
             catalog_path.unlink(missing_ok=True)
 
 
+    def test_minimax_route_uses_case_sensitive_runtime_id(self) -> None:
+        result = self.run_cli(RENDERER, "--harness", "opencode", "--model", "minimax flash", "--effort", "xhigh")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("model: minimax/MiniMax-M3.1-Flash-Preview", result.stdout)
+
+    def test_runtime_id_must_be_case_variant_of_id(self) -> None:
+        catalog = json.loads((PLUGIN_ROOT / "references" / "provider-matrix.json").read_text(encoding="utf-8"))
+        minimax = next(p for p in catalog["providers"] if p["id"] == "minimax")
+        minimax["models"][0]["runtimeId"] = "MiniMax-M9"
+        result = self.validate_catalog(catalog)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("runtimeId", result.stderr)
+
+
 class InstallHelperTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -221,6 +235,48 @@ class InstallHelperTests(unittest.TestCase):
 
     def test_worker_name_format(self) -> None:
         self.assertEqual(self.installer.worker_name("go_luna", "high"), "go_luna_worker_high")
+
+    def minimax_family(self, family_id: str) -> tuple[dict, dict]:
+        catalog = self.installer.load_catalog(self.installer.DEFAULT_CATALOG)
+        family = next(f for f in catalog["workerMatrix"]["opencode"]["lanes"]["minimax"]["families"] if f["id"] == family_id)
+        family = {**family, "runtimeModel": self.installer.runtime_model(catalog, family["provider"], family["model"])}
+        return catalog, family
+
+    def test_minimax_lane_renders_inline_lean_worker(self) -> None:
+        _, family = self.minimax_family("mm_flash")
+        text = self.installer.render_opencode("mm_flash_worker_max", family, "max", lane="minimax", mode="all", lean_tools=True)
+        frontmatter = text.split("---", 2)[1]
+        self.assertIn("mode: all", frontmatter)
+        self.assertIn("model: minimax/MiniMax-M3.1-Flash-Preview", frontmatter)
+        self.assertIn("reasoningEffort: max", frontmatter)
+        self.assertIn('"*": false', frontmatter)
+        self.assertIn("bash: true", frontmatter)
+
+    def test_fixed_depth_family_has_no_reasoning_effort(self) -> None:
+        _, family = self.minimax_family("mm_m3")
+        text = self.installer.render_opencode("mm_m3_worker_high", family, "high", lane="minimax", mode="all", lean_tools=True)
+        self.assertNotIn("reasoningEffort", text)
+        self.assertIn("model: minimax/MiniMax-M3\n", text)
+
+    def test_existing_lanes_keep_subagent_mode_and_full_tools(self) -> None:
+        family = {"id": "go_glm", "provider": "opencode-go", "model": "glm-5.2", "tier": "balanced", "tasks": ["x"]}
+        text = self.installer.render_opencode("go_glm_worker_high", family, "high", lane="go")
+        self.assertIn("mode: subagent", text)
+        self.assertNotIn("tools:", text)
+
+    def test_claude_bridge_relays_and_falls_back_to_same_tier(self) -> None:
+        catalog, family = self.minimax_family("mm_flash")
+        fallback = self.installer.bridge_fallback(catalog, "quality", "xhigh")
+        self.assertEqual(fallback, "opus_worker_xhigh")
+        self.assertEqual(self.installer.bridge_fallback(catalog, "budget", "high"), "haiku_worker_high")
+        text = self.installer.render_claude_bridge("mm_flash_worker_xhigh", family, "xhigh", "mm-run", fallback)
+        self.assertIn("model: claude-haiku-4-5", text)
+        self.assertIn("mm-run --agent mm_flash_worker_xhigh", text)
+        self.assertIn("ROUTE-FALLBACK: opus_worker_xhigh", text)
+        self.assertIn(self.installer.MANAGED_MARKER, text)
+        names = self.installer.bridge_names(catalog)
+        self.assertEqual(len(names), 11)
+        self.assertIn("mm_fast_worker_low", names)
 
     def test_load_catalog_fails_closed_on_invalid_matrix(self) -> None:
         bad = {

@@ -147,21 +147,49 @@ developer_instructions = """
 '''
 
 
-def render_opencode(name: str, family: dict, effort: str, lane: str | None = None) -> str:
+def runtime_model(catalog: dict, provider_id: str, model_id: str) -> str:
+    """Return the case-sensitive id the runtime expects (catalog ids are slugs)."""
+    for provider in catalog["providers"]:
+        if provider["id"] != provider_id:
+            continue
+        for model in provider["models"]:
+            if model["id"] == model_id:
+                return model.get("runtimeId", model_id)
+    return model_id
+
+
+# Allowlist used by lean lanes. `opencode run` otherwise ships every MCP tool
+# schema in the system prompt (~118k input tokens per call measured on
+# 2026-10-03 vs ~6.7k with this list), which burns subscription quota.
+LEAN_TOOLS = ("bash", "read", "edit", "write", "glob", "grep", "list", "patch")
+
+
+def render_opencode(
+    name: str,
+    family: dict,
+    effort: str,
+    lane: str | None = None,
+    mode: str = "subagent",
+    lean_tools: bool = False,
+) -> str:
     provider = family["provider"]
-    model_ref = f"{provider}/{family['model']}"
+    model_ref = f"{provider}/{family.get('runtimeModel', family['model'])}"
     tasks = ", ".join(family.get("tasks", []))
     lane_note = f" lane={lane}" if lane else ""
+    effort_line = f"reasoningEffort: {effort}\n" if family.get("variantEffort") else ""
+    tools_block = ""
+    if lean_tools:
+        tools_block = 'tools:\n  "*": false\n' + "".join(f"  {tool}: true\n" for tool in LEAN_TOOLS)
     return f"""---
 name: {name}
 description: >
   Worker {family['id']} @ {effort} ({family['tier']}){lane_note}.
   Use for: {tasks}. Model {model_ref}.
-mode: subagent
+mode: {mode}
 model: {model_ref}
-temperature: 0.1
+{effort_line}temperature: 0.1
 color: "{TIER_COLOR.get(family['tier'], '#6B7280')}"
-permission:
+{tools_block}permission:
   bash: allow
   read: allow
   edit: allow
@@ -232,13 +260,102 @@ def install_opencode(catalog: dict, dry_run: bool) -> list[str]:
     root = HARNESS_DIRS["opencode"]
     lanes = catalog["workerMatrix"]["opencode"]["lanes"]
     for lane_id, lane in lanes.items():
+        # `opencode run --agent X` silently falls back to the default agent when
+        # X is mode: subagent, so lanes meant for inline CLI use declare "all".
+        mode = lane.get("agentMode", "subagent")
+        lean = bool(lane.get("leanTools"))
         for family in lane["families"]:
+            family = {**family, "runtimeModel": runtime_model(catalog, family["provider"], family["model"])}
             for effort in family["efforts"]:
                 # names: go_luna_worker_high, zen_sol_worker_max
                 name = worker_name(family["id"], effort)
                 path = root / f"{name}.md"
-                results.append(write_file(path, render_opencode(name, family, effort, lane=lane_id), dry_run))
+                content = render_opencode(name, family, effort, lane=lane_id, mode=mode, lean_tools=lean)
+                results.append(write_file(path, content, dry_run))
     return results
+
+
+def bridge_fallback(catalog: dict, tier: str, effort: str) -> str:
+    """Claude canonical worker of the same tier, effort clamped to that family."""
+    family = next(f for f in catalog["workerMatrix"]["claude-code"]["families"] if f["tier"] == tier)
+    mapped = effort if effort in family["efforts"] else family["efforts"][-1]
+    return worker_name(family["id"], mapped)
+
+
+def render_claude_bridge(name: str, family: dict, effort: str, runner: str, fallback: str) -> str:
+    """Claude agent that relays to the same-named OpenCode worker inline.
+
+    Claude Code cannot point one subagent at a non-Anthropic provider, so the
+    bridge runs on the cheapest Claude model and only shells out.
+    """
+    tasks = ", ".join(family.get("tasks", []))
+    model_ref = f"{family['provider']}/{family.get('runtimeModel', family['model'])}"
+    return f"""---
+name: {name}
+description: >
+  Bridge worker {family['id']} @ {effort} ({family['tier']}, subscription).
+  Runs {model_ref} inline through OpenCode. Use for: {tasks}.
+  Managed by smart-sub-agents worker matrix.
+model: claude-haiku-4-5
+effort: low
+color: "{TIER_COLOR.get(family['tier'], '#6B7280')}"
+tools: Bash, Read, Grep, Glob
+# {MANAGED_MARKER}
+---
+
+# {name} (bridge)
+
+You are a **thin relay**. Do not solve the task yourself. The work runs on
+`{model_ref}` @ `{effort}` through the OpenCode worker of the same name.
+
+## Run
+1. Turn the request into one self-contained prompt: goal, files, constraints,
+   acceptance check. The worker sees none of this conversation.
+2. Execute from the project root:
+   ```bash
+   {runner} --agent {name} --dir "$PWD" -- "<self-contained prompt>"
+   ```
+   If `{runner}` is not on PATH:
+   `opencode run --agent {name} --dir "$PWD" -- "<self-contained prompt>"`
+3. Relay stdout verbatim (trim only). Add `git status --short` when files changed.
+
+## Exit codes
+- `0` → success, return the output.
+- `75` → subscription quota/rate window hit. Return `ROUTE-FALLBACK: {fallback}`
+  and stop; do not retry on MiniMax.
+- other → return the last 20 lines of stderr plus `ROUTE-ESCALATE`.
+
+## DO NOT
+- Print, read, or ask for API/subscription keys.
+- Edit files yourself or widen the task scope.
+"""
+
+
+def install_claude_bridges(catalog: dict, dry_run: bool) -> list[str]:
+    results: list[str] = []
+    root = HARNESS_DIRS["claude-code"]
+    for lane in catalog["workerMatrix"]["opencode"]["lanes"].values():
+        if not lane.get("claudeBridge"):
+            continue
+        runner = lane.get("bridgeRunner", "opencode run")
+        for family in lane["families"]:
+            family = {**family, "runtimeModel": runtime_model(catalog, family["provider"], family["model"])}
+            for effort in family["efforts"]:
+                name = worker_name(family["id"], effort)
+                fallback = bridge_fallback(catalog, family["tier"], effort)
+                content = render_claude_bridge(name, family, effort, runner, fallback)
+                results.append(write_file(root / f"{name}.md", content, dry_run))
+    return results
+
+
+def bridge_names(catalog: dict) -> list[str]:
+    return [
+        worker_name(family["id"], effort)
+        for lane in catalog["workerMatrix"]["opencode"]["lanes"].values()
+        if lane.get("claudeBridge")
+        for family in lane["families"]
+        for effort in family["efforts"]
+    ]
 
 
 def install_agy(catalog: dict, dry_run: bool) -> list[str]:
@@ -261,6 +378,13 @@ def install_agy(catalog: dict, dry_run: bool) -> list[str]:
                 results.append(f"MISSING_CANONICAL {src}")
                 continue
             results.append(symlink_file(src, dst, dry_run))
+    # Bridge workers only shell out, so Agy can run the Claude body unchanged.
+    for name in bridge_names(catalog):
+        src = claude_root / f"{name}.md"
+        if not src.exists() and not dry_run:
+            results.append(f"MISSING_CANONICAL {src}")
+            continue
+        results.append(symlink_file(src, root / f"{name}.md", dry_run))
     # Also expose codex-named aliases as thin markdown pointers for discoverability.
     for family in catalog["workerMatrix"]["codex"]["families"]:
         for effort in family["efforts"]:
@@ -341,21 +465,23 @@ def validate_installed() -> list[str]:
             errors.append(f"{path}: missing effort")
         if MANAGED_MARKER not in text:
             errors.append(f"{path}: missing managed marker")
-    # Codex toml
+    # Codex toml: validate managed workers only. Other tools (e.g.
+    # migrate-to-codex) leave Claude-named *_worker_*.toml files here; the
+    # installer never owns or deletes them, so they must not fail validation.
     for path in HARNESS_DIRS["codex"].glob("*_worker_*.toml"):
         text = path.read_text(encoding="utf-8")
+        if MANAGED_MARKER not in text:
+            continue
         if 'model = "' not in text:
             errors.append(f"{path}: missing model")
         if "model_reasoning_effort" not in text:
             errors.append(f"{path}: missing model_reasoning_effort")
-        if MANAGED_MARKER not in text:
-            errors.append(f"{path}: missing managed marker")
     # OpenCode
     for path in HARNESS_DIRS["opencode"].glob("*_worker_*.md"):
         text = path.read_text(encoding="utf-8")
         fm = text.split("---", 2)[1] if text.startswith("---") else ""
-        if "mode: subagent" not in fm:
-            errors.append(f"{path}: missing mode: subagent")
+        if "mode: subagent" not in fm and "mode: all" not in fm:
+            errors.append(f"{path}: missing mode: subagent|all")
         if "model:" not in fm:
             errors.append(f"{path}: missing model")
         if MANAGED_MARKER not in text:
@@ -405,6 +531,7 @@ def main() -> int:
             continue
         if harness == "claude-code":
             results.extend(install_claude(catalog, args.dry_run))
+            results.extend(install_claude_bridges(catalog, args.dry_run))
         elif harness == "codex":
             results.extend(install_codex(catalog, args.dry_run))
         elif harness == "opencode":

@@ -89,7 +89,7 @@ def resolve_route(catalog: dict, harness: str, profile: str, provider: str | Non
         "harness": harness,
         "provider": provider,
         "model": model,
-        "modelRef": f"{provider}/{model}",
+        "modelRef": f"{provider}/{entry.get('runtimeId', model)}",
         "effort": selected_effort,
         "nativeEffort": native,
         "tier": entry["tier"],
