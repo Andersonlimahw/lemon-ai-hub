@@ -16,6 +16,9 @@ A tier x effort grid of named subagents is generated from the matrix and install
 | Codex | `{luna\|terra\|sol}_worker_{effort}` | `luna_worker_max` | `~/.codex/agents/` |
 | OpenCode Zen (free) | `zen_{family}_worker_{effort}` | `zen_sol_worker_max` | `~/.config/opencode/agents/` |
 | OpenCode Go (subscription) | `go_{family}_worker_{effort}` | `go_luna_worker_high` | `~/.config/opencode/agents/` |
+| MiniMax Token Plan (subscription) | `mm_{fast\|m3\|flash}_worker_{effort}` | `mm_flash_worker_high` | `~/.config/opencode/agents/` + Claude/Agy bridges in `~/.claude/agents/`, `~/.agy/agents/` |
+
+Lane options in `provider-matrix.json`: `agentMode: "all"` makes workers callable by `opencode run --agent` (it ignores `mode: subagent`), `leanTools: true` allowlists core tools so MCP schemas stay out of the prompt (~118k → ~6.7k input tokens), `claudeBridge: true` also writes Haiku relay agents that call `bridgeRunner` (`mm-run` from [`minimax-subagents`](../minimax-subagents/SKILL.md)). Models whose runtime id is case-sensitive carry `runtimeId` (`minimax-m3` → `MiniMax-M3`).
 | Agy | symlink -> Claude workers + Codex-named aliases | `opus_worker_high` -> `~/.claude/agents/...` | `~/.agy/agents/` |
 
 Every generated file carries the marker `managed-by: smart-sub-agents/worker-matrix` and the installer is idempotent: re-running it never duplicates managed workers and never deletes non-managed agents.

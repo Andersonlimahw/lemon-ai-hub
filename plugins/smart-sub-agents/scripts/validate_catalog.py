@@ -104,6 +104,11 @@ def validate(catalog: object) -> list[str]:
             models_by_key[key] = model
             if not SLUG.fullmatch(model_id):
                 errors.append(f"invalid model id: {provider_id}/{model_id}")
+            # runtimeId carries the case-sensitive id a runtime expects (MiniMax-M3);
+            # it must stay the same model as the slug id, only differently cased.
+            runtime_id = model.get("runtimeId")
+            if runtime_id is not None and (not isinstance(runtime_id, str) or runtime_id.lower() != model_id):
+                errors.append(f"{provider_id}/{model_id}: runtimeId must be a case variant of the id")
             if model.get("tier") not in TIERS:
                 errors.append(f"{provider_id}/{model_id}: invalid tier")
             model_efforts = set(model.get("efforts", []))
