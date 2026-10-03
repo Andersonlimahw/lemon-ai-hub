@@ -22,8 +22,13 @@ class InstallTests(unittest.TestCase):
         (self.other_hub / "smart-sub-agents" / "plugin.json").write_text("{}")
         (self.home / ".gemini").mkdir()
         (self.home / ".gemini" / "skills").symlink_to(self.other_hub)
-        # A curated per-skill dir that should get a link.
-        (self.home / ".config" / "opencode" / "skills").mkdir(parents=True)
+        # A curated per-skill dir that should get a link. Real curated dirs
+        # already hold per-skill symlinks into the hub (incl. smart-sub-agents).
+        curated = self.home / ".config" / "opencode" / "skills"
+        curated.mkdir(parents=True)
+        (curated / "smart-sub-agents").symlink_to(self.other_hub / "smart-sub-agents")
+        # A stale link from an earlier install (other checkout) gets repointed.
+        (curated / "minimax-subagents").symlink_to(Path(self.tmp.name) / "old-clone" / "minimax-subagents")
         fake = Path(self.tmp.name) / "opencode"
         fake.write_text("#!/bin/sh\nexit 0\n")
         fake.chmod(0o755)
