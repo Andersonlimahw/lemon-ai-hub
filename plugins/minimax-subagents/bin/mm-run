@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# mm-run shim: resolves symlinks so it works from ~/.local/bin or a plugin bin/ on PATH.
+set -euo pipefail
+src="${BASH_SOURCE[0]}"
+while [ -L "$src" ]; do
+  dir="$(cd -P "$(dirname "$src")" && pwd)"
+  src="$(readlink "$src")"
+  [[ $src != /* ]] && src="$dir/$src"
+done
+here="$(cd -P "$(dirname "$src")" && pwd)"
+exec python3 "$here/../scripts/mm_run.py" "$@"
