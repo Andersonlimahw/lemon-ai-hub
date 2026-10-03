@@ -16,13 +16,15 @@ run mkdir -p "$HOME/.local/bin"
 run ln -sfn "$PLUGIN_DIR/bin/mm-run" "$HOME/.local/bin/mm-run"
 echo "LINK ~/.local/bin/mm-run -> $PLUGIN_DIR/bin/mm-run"
 
-# 2. Skill into curated skill dirs. Dirs that resolve to the hub already see it.
-hub_real="$(cd -P "$HUB_PLUGINS" && pwd)"
+# 2. Skill into curated skill dirs. A dir that resolves to ANY hub plugins/
+# (this clone or another checkout) already sees the plugin; linking there
+# would drop a stray symlink into that hub's working tree.
 for dir in "$HOME/.config/opencode/skills" "$HOME/.gemini/skills" "$HOME/.gemini/config/skills" \
            "$HOME/.agy/skills" "$HOME/.antigravity/skills" "$HOME/.codex/skills" "$HOME/.agents/skills"; do
   [ -d "$dir" ] || continue
-  if [ "$(cd -P "$dir" && pwd)" = "$hub_real" ]; then
-    echo "SKIP $dir (resolves to the hub)"
+  resolved="$(cd -P "$dir" && pwd)"
+  if [ -f "$resolved/smart-sub-agents/plugin.json" ]; then
+    echo "SKIP $dir (resolves to a hub plugins/ dir: $resolved)"
     continue
   fi
   target="$dir/minimax-subagents"
