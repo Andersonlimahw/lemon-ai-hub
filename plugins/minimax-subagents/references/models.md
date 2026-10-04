@@ -38,6 +38,24 @@ Anthropic.
 | `-m minimax/MiniMax-M2.7-highspeed` (default `build` agent, all MCP tools) | ~118k | ~10 s |
 | lean worker (`tools: "*": false` + core allowlist, `mode: all`) | ~4.2k-6.7k | ~4 s |
 
+## Measured: MiniMax Code backend (2026-10-04, mcode 0.6.2, OAuth managed route)
+
+| Call | Input / cache tokens | Wall time |
+|------|----------------------|-----------|
+| first call, M3, "Reply OK" | ~14k input | ~2.5 s model / ~5 s total |
+| warm calls (`mm-run --tier …`) | ~0.7k input + ~15k cache read | 5-9 s |
+| real coding task (implement + run tests, M3) | 47.7k input + 68.7k cache | 28 s |
+
+- `mcode exec --effort` works only on `MiniMax-M3.1-Flash-Preview`
+  (low/medium/high/xhigh/max); M3 and M2.7 reject the flag.
+- Failures end with `{"type":"exec.result","status":"failed","error":{...}}`
+  and exit code 4; `error.retryable` is `true` even for an unknown model, so
+  `mm-run` does not trust it for retries.
+- Inside Codex `workspace-write`, mcode fails on an internal migration lock
+  even with `~/.minimax` and `~/.minimax-code` writable.
+
+## OpenCode notes
+
 - `opencode run --agent X` ignores agents declared `mode: subagent` and falls
   back to the default agent; inline workers must be `mode: all`.
 - `--variant` on a model without variants is silently ignored.

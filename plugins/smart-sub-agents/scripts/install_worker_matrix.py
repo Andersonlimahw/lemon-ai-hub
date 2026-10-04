@@ -294,7 +294,7 @@ def render_claude_bridge(name: str, family: dict, effort: str, runner: str, fall
 name: {name}
 description: >
   Bridge worker {family['id']} @ {effort} ({family['tier']}, subscription).
-  Runs {model_ref} inline through OpenCode. Use for: {tasks}.
+  Runs {model_ref} inline via {runner}. Use for: {tasks}.
   Managed by smart-sub-agents worker matrix.
 model: claude-haiku-4-5
 effort: low
@@ -306,7 +306,9 @@ tools: Bash, Read, Grep, Glob
 # {name} (bridge)
 
 You are a **thin relay**. Do not solve the task yourself. The work runs on
-`{model_ref}` @ `{effort}` through the OpenCode worker of the same name.
+`{model_ref}` @ `{effort}` through `{runner}`, which picks the backend
+(MiniMax Code `mcode` by default for mm-run, else the OpenCode worker of the
+same name).
 
 ## Run
 1. Turn the request into one self-contained prompt: goal, files, constraints,

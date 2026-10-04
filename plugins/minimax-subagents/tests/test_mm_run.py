@@ -84,6 +84,8 @@ class MmRunTests(unittest.TestCase):
             "FAKE_MODE": mode,
             "MM_STATE_DIR": str(self.state / "mm"),
             "MM_AGENT_DIRS": str(self.agents),
+            # These tests cover the opencode backend; never pick up a real mcode.
+            "MM_MCODE_BIN": "",
             **(extra_env or {}),
         }
         env = {k: v for k, v in env.items() if v is not None}

@@ -1548,14 +1548,16 @@
     {
       "name": "minimax-subagents",
       "source": "./plugins/minimax-subagents",
-      "description": "MiniMax subagents and tiered workers on the Token Plan subscription, run inline through OpenCode from Claude Code, Codex, OpenCode, Antigravity (Agy) and Gemini CLI. Ships mm-run (tier/effort routing to lean workers, thinking stripped, transient retry, quota fallback exit 75, parallel cap), mm_fast/mm_m3/mm_flash worker lanes via smart-sub-agents, Claude/Agy bridge agents, and a one-shot cross-harness installer. Use when delegating coding, refactor, docs, long-context or multimodal work to MiniMax-M3.1-Flash-Preview, MiniMax-M3 or MiniMax-M2.7-highspeed.",
-      "version": "1.0.0",
+      "description": "MiniMax subagents and tiered workers on the M Plan / Token Plan subscription, run inline from Claude Code, Codex, OpenCode, Antigravity (Agy) and Gemini CLI through MiniMax Code (mcode exec, default backend, OAuth with no key on disk) or OpenCode. Ships mm-run (backend auto/mcode/opencode, tier/effort routing, thinking stripped, transient retry, one OpenCode retry when mcode breaks, quota fallback exit 75, parallel cap), mm_fast/mm_m3/mm_flash worker lanes via smart-sub-agents, Claude/Agy bridge agents, and a one-shot cross-harness installer. Use when delegating coding, refactor, docs, long-context or multimodal work to MiniMax-M3.1-Flash-Preview, MiniMax-M3 or MiniMax-M2.7-highspeed.",
+      "version": "1.1.0",
       "license": "MIT",
       "keywords": [
         "skill",
         "lemon-ai-hub",
         "minimax-subagents",
         "minimax",
+        "mcode",
+        "minimax-code",
         "subagents",
         "workers",
         "token-plan",
@@ -2198,7 +2200,7 @@
       "name": "smart-sub-agents",
       "source": "./plugins/smart-sub-agents",
       "description": "Creates portable subagent routes with explicit harness, provider, model, effort, and optional calibrated decision routing. Ships a verified model matrix, safety floors, normalization, and renderers for Claude Code, Codex, OpenCode, Antigravity, Gemini CLI, and lemon-code.",
-      "version": "1.3.0",
+      "version": "1.3.1",
       "license": "MIT",
       "keywords": [
         "skill",
