@@ -26,6 +26,7 @@ import statistics
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
@@ -57,6 +58,8 @@ DEFAULT_WEIGHTS = {"checks": 0.6, "judge": 0.4}
 SKIP_DIRS = {".git", "node_modules", "__pycache__", ".venv", "venv", "dist", "build",
              ".next", "target", ".pytest_cache", ".mypy_cache"}
 EXCERPT = 4000
+_ID_SAFE = re.compile(r"^[A-Za-z0-9_.-]+$")
+_STDERR_LOCK = threading.Lock()
 
 
 # ---------------------------------------------------------------- parsing ---
@@ -159,6 +162,9 @@ def build_env(target: dict) -> dict:
 
 
 def run_one(cfg: dict, base: Path, out: Path, target: dict, task: dict, rep: int, resume: bool) -> dict:
+    for label, ident in (("target.id", target.get("id", "")), ("task.id", task.get("id", ""))):
+        if not _ID_SAFE.match(ident):
+            raise SystemExit(f"refusing to run: {label}={ident!r} contains unsafe path characters")
     rdir = out / "runs" / target["id"] / task["id"] / f"r{rep}"
     rjson = rdir / "run.json"
     if resume and rjson.exists():
@@ -206,8 +212,9 @@ def run_one(cfg: dict, base: Path, out: Path, target: dict, task: dict, rep: int
     }
     rjson.write_text(json.dumps(run, indent=2))
     mark = "✓" if status == "ok" else "✗"
-    print(f"  {mark} {target['id']:<24} {task['id']:<20} r{rep}  {secs:6.1f}s  "
-          f"checks {sum(c['passed'] for c in checks)}/{len(checks)}", file=sys.stderr)
+    with _STDERR_LOCK:
+        print(f"  {mark} {target['id']:<24} {task['id']:<20} r{rep}  {secs:6.1f}s  "
+              f"checks {sum(c['passed'] for c in checks)}/{len(checks)}", file=sys.stderr)
     return run
 
 
@@ -260,11 +267,37 @@ Reply with ONLY one JSON object, no prose before or after:
 
 
 def extract_json(text: str) -> dict | None:
-    for m in re.finditer(r"\{.*\}", text, flags=re.S):
-        try:
-            return json.loads(m.group(0))
-        except json.JSONDecodeError:
-            continue
+    r"""Pick the first balanced ``{...}`` block in `text` that parses as JSON.
+
+    A naive ``\{.*\}`` greedy match spans the whole response — any prose the
+    judge inserts between two JSON attempts gets swallowed into the match
+    and invalidates it. Tracking depth keeps each candidate isolated, and
+    breaking on `JSONDecodeError` lets us move on to the next candidate.
+    """
+    starts = [i for i, c in enumerate(text) if c == "{"]
+    for s in starts:
+        depth, in_str, esc = 0, False, False
+        for i in range(s, len(text)):
+            c = text[i]
+            if in_str:
+                if esc:
+                    esc = False
+                elif c == "\\":
+                    esc = True
+                elif c == '"':
+                    in_str = False
+            else:
+                if c == '"':
+                    in_str = True
+                elif c == "{":
+                    depth += 1
+                elif c == "}":
+                    depth -= 1
+                    if depth == 0:
+                        try:
+                            return json.loads(text[s:i + 1])
+                        except json.JSONDecodeError:
+                            break
     return None
 
 

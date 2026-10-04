@@ -86,6 +86,31 @@ class ScoringTests(unittest.TestCase):
         self.assertEqual([bench.tier(s) for s in (95, 80, 79.9, 60, 45, 10, None)], ["A", "A", "B", "B", "C", "D", None])
 
 
+class ExtractJsonTests(unittest.TestCase):
+    """F1 — the regex used to span the whole response and swallow any prose the judge
+    inserted between two JSON attempts. Balanced-brace extraction must pick the
+    first *valid* block and ignore later text."""
+
+    def test_picks_first_valid_block(self):
+        text = 'thinking... {"scores": {"correctness": 7}} all done.'
+        self.assertEqual(bench.extract_json(text)["scores"]["correctness"], 7)
+
+    def test_recovers_when_first_block_is_invalid(self):
+        text = '{not json at all} actually here: {"scores": {"correctness": 9}}'
+        self.assertEqual(bench.extract_json(text)["scores"]["correctness"], 9)
+
+    def test_ignores_trailing_prose(self):
+        text = '{"scores": {"correctness": 5}}\n\nWait, scratch that: actually no change.'
+        self.assertEqual(bench.extract_json(text)["scores"]["correctness"], 5)
+
+    def test_handles_quoted_braces(self):
+        text = '{"scores": {"correctness": 8, "notes": "use {curly} safely"}}'
+        self.assertEqual(bench.extract_json(text)["scores"]["notes"], "use {curly} safely")
+
+    def test_returns_none_when_nothing_parses(self):
+        self.assertIsNone(bench.extract_json("no json anywhere"))
+
+
 class EndToEndTests(unittest.TestCase):
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp())
@@ -159,6 +184,17 @@ class EndToEndTests(unittest.TestCase):
         self.run_bench("--targets", "lazy", "--tasks", "shipping-math", "--no-judge")
         html = render(json.loads((self.out / "results.json").read_text()))
         self.assertNotRegex(html, r'<(script|link)[^>]+(src|href)="https?://')
+
+    def test_unsafe_id_is_refused(self):
+        """F3 — an id with path separators must be rejected before any workdir is created."""
+        cfg = json.loads((self.tmp / "suite" / "quick-suite.json").read_text())
+        cfg["targets"] = [{"id": "../escape", "label": "evil", "provider": "x",
+                           "cmd": "echo hi", "parse": "text"}]
+        (self.tmp / "suite" / "quick-suite.json").write_text(json.dumps(cfg))
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit):
+                bench.main(["run", str(self.cfg), "-o", str(self.out), "--no-judge"])
+        self.assertFalse((self.out / "runs" / "..").exists() or (self.out / "runs").exists())
 
 
 if __name__ == "__main__":
