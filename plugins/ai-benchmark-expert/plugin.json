@@ -1,0 +1,30 @@
+{
+  "name": "ai-benchmark-expert",
+  "version": "1.0.0",
+  "description": "Benchmark LLMs the way serious leaderboards do: hand the SAME task to many providers and models as headless CLI subagents (Claude Code, Codex, Gemini CLI, OpenCode/MiniMax, mm-run or any command), run hidden deterministic checks in isolated workdirs, score the anonymised output with a blind LLM judge on an 8-dimension weighted rubric, and publish a single self-contained interactive HTML report — leaderboard with tiers, quality-vs-cost Pareto chart, efficiency bars, rubric heatmap, sortable table, per-run evidence, methodology — that you can share as one file. Methodology modelled on akitaonrails' LLM coding benchmark, BenchLM, the Open LLM Leaderboard, SWE-bench and Aider.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "ai-benchmark-expert",
+    "benchmark",
+    "llm",
+    "evaluation",
+    "evals",
+    "leaderboard",
+    "llm-as-judge",
+    "subagents",
+    "multi-provider",
+    "claude-code",
+    "codex",
+    "gemini",
+    "opencode",
+    "minimax",
+    "report",
+    "dataviz"
+  ]
+}

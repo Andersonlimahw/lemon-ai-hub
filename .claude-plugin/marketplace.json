@@ -88,6 +88,33 @@
       ]
     },
     {
+      "name": "ai-benchmark-expert",
+      "source": "./plugins/ai-benchmark-expert",
+      "description": "Benchmark LLMs the way serious leaderboards do: hand the SAME task to many providers and models as headless CLI subagents (Claude Code, Codex, Gemini CLI, OpenCode/MiniMax, mm-run or any command), run hidden deterministic checks in isolated workdirs, score the anonymised output with a blind LLM judge on an 8-dimension weighted rubric, and publish a single self-contained interactive HTML report — leaderboard with tiers, quality-vs-cost Pareto chart, efficiency bars, rubric heatmap, sortable table, per-run evidence, methodology — that you can share as one file. Methodology modelled on akitaonrails' LLM coding benchmark, BenchLM, the Open LLM Leaderboard, SWE-bench and Aider.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "ai-benchmark-expert",
+        "benchmark",
+        "llm",
+        "evaluation",
+        "evals",
+        "leaderboard",
+        "llm-as-judge",
+        "subagents",
+        "multi-provider",
+        "claude-code",
+        "codex",
+        "gemini",
+        "opencode",
+        "minimax",
+        "report",
+        "dataviz"
+      ]
+    },
+    {
       "name": "ai-seo",
       "source": "./plugins/ai-seo",
       "description": "When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use when the user mentions 'AI SEO,' 'AEO,' 'GEO,' 'LLMO,' 'answer engine optimization,' 'generative engine optimization,' 'LLM optimization,' 'AI Overviews,' 'optimize for ChatGPT,' 'optimize for Perplexity,' 'AI citations,' 'AI visibility,' 'zero-click search,' 'how do I show up in AI answers,' 'LLM mentions,' 'optimize for Claude/Gemini,' 'llms.txt,' 'OKF,' 'Open Knowledge Format,' 'knowledge bundle,' or 'agent-readable site.' Use this whenever someone wants their content to be cited or surfaced by AI assistants and AI search engines. For traditional technical and on-page SEO audits, see seo-audit. For structured data implementation, see schema.",

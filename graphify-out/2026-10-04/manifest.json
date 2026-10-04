@@ -1,8 +1,8 @@
 {
   ".claude-plugin/marketplace.json": {
-    "mtime": 1791091321.2958827,
-    "seen": 1791094433.722016,
-    "ast_hash": "486d8566ea3db9e483409951efd77992",
+    "mtime": 1791057320.218983,
+    "seen": 1791057985.917203,
+    "ast_hash": "daba7247b347249a37a0a6b2f182b710",
     "semantic_hash": ""
   },
   "plugins/a11y-audit/plugin.json": {
@@ -1302,33 +1302,33 @@
     "semantic_hash": ""
   },
   "plugins/minimax-subagents/bin/mm-run": {
-    "mtime": 1791058252.5813122,
-    "seen": 1791094433.726464,
+    "mtime": 1791055040.116534,
+    "seen": 1791057985.917351,
     "ast_hash": "fcfbfea0a82d573fd3916dc8287ea9e6",
     "semantic_hash": ""
   },
   "plugins/minimax-subagents/plugin.json": {
-    "mtime": 1791078283.6968117,
-    "seen": 1791094433.726465,
-    "ast_hash": "44d16271c0bc0d817921a981c22c7f36",
+    "mtime": 1791055176.7636127,
+    "seen": 1791057985.917352,
+    "ast_hash": "94fe3867deee84455771685ded1cf641",
     "semantic_hash": ""
   },
   "plugins/minimax-subagents/scripts/install.sh": {
-    "mtime": 1791058252.5820875,
-    "seen": 1791094433.7264671,
-    "ast_hash": "8efd2520eb8f2cf8e096aeb749867def",
+    "mtime": 1791057948.7949543,
+    "seen": 1791057985.917353,
+    "ast_hash": "2fa6e151de7ead40ebc4d0544ad436fe",
     "semantic_hash": ""
   },
   "plugins/minimax-subagents/scripts/mm_run.py": {
-    "mtime": 1791078283.6975155,
-    "seen": 1791094433.726468,
-    "ast_hash": "761192fb87f1432c7cb44acec2202bcf",
+    "mtime": 1791057829.683375,
+    "seen": 1791057985.917353,
+    "ast_hash": "dcddb6df5b9e810935837dd62dc6b6b2",
     "semantic_hash": ""
   },
   "plugins/minimax-subagents/tests/test_mm_run.py": {
-    "mtime": 1791078283.6978767,
-    "seen": 1791094433.726471,
-    "ast_hash": "026b64541c6883efb4a1948791b16ad7",
+    "mtime": 1791057845.283046,
+    "seen": 1791057985.9173539,
+    "ast_hash": "d7ff6ee9b1498dd94a92d8900b091a27",
     "semantic_hash": ""
   },
   "plugins/motion-movie-expert/plugin.json": {
@@ -1854,26 +1854,26 @@
     "semantic_hash": ""
   },
   "plugins/smart-sub-agents/plugin.json": {
-    "mtime": 1791078283.6985347,
-    "seen": 1791094433.728416,
-    "ast_hash": "6a0071f718b225695606afe6efa23b31",
+    "mtime": 1791057287.3273964,
+    "seen": 1791057985.917409,
+    "ast_hash": "97d1d468f370378fa65fa25daba4b77d",
     "semantic_hash": ""
   },
   "plugins/smart-sub-agents/references/provider-matrix.json": {
-    "mtime": 1791058252.584022,
-    "seen": 1791094433.728417,
+    "mtime": 1791054942.482004,
+    "seen": 1791057985.917409,
     "ast_hash": "af338fef6a0133175175734e4bf77305",
     "semantic_hash": ""
   },
   "plugins/smart-sub-agents/scripts/install_worker_matrix.py": {
-    "mtime": 1791078283.6988595,
-    "seen": 1791094433.728418,
-    "ast_hash": "49d964c19ede6938a143027979f461ce",
+    "mtime": 1791057421.6546907,
+    "seen": 1791057985.9174101,
+    "ast_hash": "b8a19351006d7cb0d90e5e7f831b326a",
     "semantic_hash": ""
   },
   "plugins/smart-sub-agents/scripts/render_agents.py": {
-    "mtime": 1791058252.5846667,
-    "seen": 1791094433.728419,
+    "mtime": 1791054950.7095637,
+    "seen": 1791057985.917411,
     "ast_hash": "de15ce0cd0decbb1ced895df83407f38",
     "semantic_hash": ""
   },
@@ -1884,14 +1884,14 @@
     "semantic_hash": ""
   },
   "plugins/smart-sub-agents/scripts/validate_catalog.py": {
-    "mtime": 1791058252.584898,
-    "seen": 1791094433.72844,
+    "mtime": 1791054948.353278,
+    "seen": 1791057985.917412,
     "ast_hash": "a61a380410539a5735fa60afb53af89e",
     "semantic_hash": ""
   },
   "plugins/smart-sub-agents/tests/test_catalog.py": {
-    "mtime": 1791058252.5851886,
-    "seen": 1791094433.728441,
+    "mtime": 1791057354.2124987,
+    "seen": 1791057985.917412,
     "ast_hash": "35f413c86a0e7b2f35311112fa9af00b",
     "semantic_hash": ""
   },
@@ -2874,9 +2874,9 @@
     "semantic_hash": ""
   },
   "CHANGELOG.md": {
-    "mtime": 1791091341.892327,
-    "seen": 1791094433.731678,
-    "ast_hash": "2bd743aa1fd31b5dd61b25698f5206c6",
+    "mtime": 1790537321.6988502,
+    "seen": 1791057985.9175181,
+    "ast_hash": "4e6e43a4f6c0a2f2d828e5a233f0d4e6",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -2928,9 +2928,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1791091306.332164,
-    "seen": 1791094433.73179,
-    "ast_hash": "fa4bd4f99d396ea2b024d0baa3f9569e",
+    "mtime": 1791057323.639467,
+    "seen": 1791057985.9175239,
+    "ast_hash": "3cb308c40e207600ea7127d9a3683198",
     "semantic_hash": ""
   },
   "docs/architecture.md": {
@@ -5484,27 +5484,27 @@
     "semantic_hash": ""
   },
   "plugins/minimax-subagents/README.md": {
-    "mtime": 1791078283.6960564,
-    "seen": 1791094433.7403479,
-    "ast_hash": "c1b2faabc3e733ccc67343480973cd70",
+    "mtime": 1791057277.410398,
+    "seen": 1791057985.917799,
+    "ast_hash": "fa28b756cb058255eba3e5d43f9f9fd7",
     "semantic_hash": ""
   },
   "plugins/minimax-subagents/SKILL.md": {
-    "mtime": 1791078283.6964633,
-    "seen": 1791094433.7403488,
-    "ast_hash": "6aeb4b38acdd080b701b2743e814323c",
+    "mtime": 1791057945.554204,
+    "seen": 1791057985.9178,
+    "ast_hash": "c01f2b3e14140d2bbf3863fa0aec5e1f",
     "semantic_hash": ""
   },
   "plugins/minimax-subagents/agents/minimax-worker.md": {
-    "mtime": 1791058252.5808797,
-    "seen": 1791094433.74035,
+    "mtime": 1791055223.3731189,
+    "seen": 1791057985.9178,
     "ast_hash": "cdb691478e2b82039875fd6e4cd75a35",
     "semantic_hash": ""
   },
   "plugins/minimax-subagents/references/models.md": {
-    "mtime": 1791078283.697107,
-    "seen": 1791094433.740351,
-    "ast_hash": "8af3014d40315c79bdb51b76e526dcdd",
+    "mtime": 1791057272.0156646,
+    "seen": 1791057985.917801,
+    "ast_hash": "5cc60a86e74a30370ddadd400ec22748",
     "semantic_hash": ""
   },
   "plugins/motion-movie-expert/README.md": {
@@ -6822,14 +6822,14 @@
     "semantic_hash": ""
   },
   "plugins/smart-sub-agents/README.md": {
-    "mtime": 1791058252.5831814,
-    "seen": 1791094433.745068,
+    "mtime": 1791057337.8675518,
+    "seen": 1791057985.917938,
     "ast_hash": "76f88fbbe306af05fe321296144d5439",
     "semantic_hash": ""
   },
   "plugins/smart-sub-agents/SKILL.md": {
-    "mtime": 1791058252.5834396,
-    "seen": 1791094433.745069,
+    "mtime": 1791057333.6049023,
+    "seen": 1791057985.917938,
     "ast_hash": "30cf55eb9f463a1b8695e32c3d127839",
     "semantic_hash": ""
   },
@@ -8883,126 +8883,6 @@
     "mtime": 1786847517.9227278,
     "seen": 1791057985.918161,
     "ast_hash": "f29f702557d9c38020a01b0723c723f8",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/examples/checks/check_duration.py": {
-    "mtime": 1791091123.5443854,
-    "seen": 1791094433.722199,
-    "ast_hash": "235dcd3c6c787b9755f73fd49e2393f7",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/examples/checks/check_slugify.py": {
-    "mtime": 1791091123.5425014,
-    "seen": 1791094433.7222002,
-    "ast_hash": "2a404b692d2f20b3a69b14af0fb61de9",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/examples/fixtures/slugify/slugify.py": {
-    "mtime": 1791091085.242293,
-    "seen": 1791094433.722201,
-    "ast_hash": "880c30a6a7a0284b42555d3ccb5139a2",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/examples/quick-suite.json": {
-    "mtime": 1791091839.4150386,
-    "seen": 1791094433.722202,
-    "ast_hash": "db7f3b6517ec812611af6a81e5fac719",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/plugin.json": {
-    "mtime": 1791091198.9104488,
-    "seen": 1791094433.7222028,
-    "ast_hash": "8040f6321f4350179b2d777be10a3f82",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/scripts/bench.py": {
-    "mtime": 1791091819.6347296,
-    "seen": 1791094433.722204,
-    "ast_hash": "b2b80146ff65ef0570290eb033a0f371",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/scripts/report.py": {
-    "mtime": 1791090845.7080019,
-    "seen": 1791094433.722205,
-    "ast_hash": "1b20979028c09164554877bb46f179af",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/tests/ref/duration.py": {
-    "mtime": 1791091142.365092,
-    "seen": 1791094433.7222059,
-    "ast_hash": "bdc40a2115e8e242f6729187dd70ca23",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/tests/ref/slugify.py": {
-    "mtime": 1791091145.375372,
-    "seen": 1791094433.722207,
-    "ast_hash": "2faa4b1bef2736f6ecfc7fcf46fc0b80",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/tests/ref/test_duration.py": {
-    "mtime": 1791091143.8282685,
-    "seen": 1791094433.722208,
-    "ast_hash": "bb92a5d198e786a0434ad664d07d2743",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/tests/ref/test_slugify.py": {
-    "mtime": 1791091146.4998336,
-    "seen": 1791094433.722209,
-    "ast_hash": "ffed8d77997b81c5fabc1b09f3e06668",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/tests/test_bench.py": {
-    "mtime": 1791091819.6351228,
-    "seen": 1791094433.722209,
-    "ast_hash": "bb0a1f9f50bbdd0a865c56b8e9a106ff",
-    "semantic_hash": ""
-  },
-  "plugins/minimax-subagents/tests/test_install.py": {
-    "mtime": 1791058252.5826426,
-    "seen": 1791094433.72647,
-    "ast_hash": "3c57b15c37a0190acb9e82fc9316e538",
-    "semantic_hash": ""
-  },
-  "plugins/minimax-subagents/tests/test_mm_run_mcode.py": {
-    "mtime": 1791078283.698185,
-    "seen": 1791094433.726472,
-    "ast_hash": "c9d60a6a5dcbce4307d4f6c44bfb3136",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/README.md": {
-    "mtime": 1791091338.9765859,
-    "seen": 1791094433.732518,
-    "ast_hash": "63d875104f460eb667b0456a7b724be8",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/SKILL.md": {
-    "mtime": 1791091226.24633,
-    "seen": 1791094433.732519,
-    "ast_hash": "ee32bac5a45aab43454b083f0b5d99c6",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/agents/ai-benchmark-runner.md": {
-    "mtime": 1791091234.596222,
-    "seen": 1791094433.7325199,
-    "ast_hash": "b20af9ad9599ce372c01b9c669052b75",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/assets/report-template.html": {
-    "mtime": 1791091839.414677,
-    "seen": 1791094433.732521,
-    "ast_hash": "67292da9a2bdb540ce4e40e3242264a5",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/references/methodology.md": {
-    "mtime": 1791091256.173397,
-    "seen": 1791094433.732522,
-    "ast_hash": "071256a756023362d3c31832845e9e94",
-    "semantic_hash": ""
-  },
-  "plugins/ai-benchmark-expert/references/targets.md": {
-    "mtime": 1791091408.1427667,
-    "seen": 1791094433.732523,
-    "ast_hash": "cbc4a2e0f719fcc533f975cfe430de01",
     "semantic_hash": ""
   }
 }

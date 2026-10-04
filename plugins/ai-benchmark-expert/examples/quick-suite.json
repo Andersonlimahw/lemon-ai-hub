@@ -1,0 +1,132 @@
+{
+  "name": "Quick coding suite",
+  "description": "Three small, discriminating tasks (greenfield code, bug fix, arithmetic reasoning) run headless across Claude, Codex, Gemini and OpenCode/MiniMax.",
+  "repeat": 1,
+  "parallel": 4,
+  "timeout": 600,
+  "weights": {
+    "checks": 0.6,
+    "judge": 0.4
+  },
+  "judge": {
+    "label": "Claude Opus 5.5",
+    "model": "claude-opus-5-5",
+    "cmd": "claude -p --model claude-opus-5-5 --output-format json --tools ''",
+    "parse": "claude-json",
+    "unset_env": [
+      "ANTHROPIC_BASE_URL",
+      "ANTHROPIC_AUTH_TOKEN",
+      "ANTHROPIC_MODEL"
+    ],
+    "timeout": 300
+  },
+  "tasks": [
+    {
+      "id": "parse-duration",
+      "title": "Parse durations",
+      "category": "coding",
+      "prompt": "In the current directory, create `duration.py` with a function `parse_duration(text: str) -> int` that returns a duration in whole seconds.\n\nRules:\n- Units are `h`, `m`, `s` (case-insensitive), each used at most once, in that order (h before m before s).\n- Each unit is preceded by a non-negative integer. Components may be separated by single spaces; leading/trailing whitespace is ignored.\n- Examples: `45s` -> 45, `2h` -> 7200, `1h30m` -> 5400, `1h 5m 3s` -> 3903, `90m` -> 5400.\n- Anything else (empty string, unknown unit, missing number or unit, decimals, negatives, repeated or out-of-order units) raises `ValueError`.\n\nAlso create `test_duration.py` with `unittest` tests (standard library only) covering valid and invalid input. Do not ask questions; just write the files and make sure `python3 -m unittest` passes.",
+      "checks": [
+        {
+          "name": "hidden acceptance cases",
+          "cmd": "python3 \"$BENCH_SUITE_DIR/checks/check_duration.py\""
+        },
+        {
+          "name": "model's own tests pass",
+          "cmd": "python3 -m unittest -q"
+        }
+      ]
+    },
+    {
+      "id": "slugify-bugfix",
+      "title": "Fix slugify",
+      "category": "bug fix",
+      "fixture": "fixtures/slugify",
+      "prompt": "`slugify.py` in the current directory is buggy. Fix it so that:\n- the docstring examples hold;\n- accented letters are transliterated to plain ASCII (`Ação` -> `acao`, `Über` -> `uber`); characters with no ASCII equivalent are dropped;\n- there are no leading, trailing or repeated hyphens;\n- truncation to `max_len` never leaves a trailing hyphen.\n\nKeep the signature `slugify(title: str, max_len: int = 60) -> str`, use only the standard library, and add `unittest` tests in `test_slugify.py`. Do not ask questions; edit the files directly.",
+      "checks": [
+        {
+          "name": "hidden acceptance cases",
+          "cmd": "python3 \"$BENCH_SUITE_DIR/checks/check_slugify.py\""
+        },
+        {
+          "name": "model's own tests pass",
+          "cmd": "python3 -m unittest -q"
+        }
+      ]
+    },
+    {
+      "id": "shipping-math",
+      "title": "Shipping arithmetic",
+      "category": "reasoning",
+      "judge": false,
+      "prompt": "A warehouse ships 120 boxes on Monday. Every following day it ships 15% fewer boxes than the previous day, rounded down to a whole box. How many boxes does it ship in total from Monday through Friday? Show brief working, then end with a final line of the form `ANSWER: <integer>`. Do not create any files.",
+      "checks": [
+        {
+          "name": "final answer is 443",
+          "cmd": "grep -Eq '^\\**ANSWER:\\**[[:space:]]*\\**443\\b' \"$BENCH_ANSWER\""
+        }
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "id": "claude-haiku-4-5",
+      "label": "Claude Haiku 4.5",
+      "provider": "anthropic",
+      "harness": "claude code",
+      "model": "claude-haiku-4-5",
+      "cmd": "claude -p --model {model} --output-format json --permission-mode bypassPermissions",
+      "parse": "claude-json",
+      "unset_env": [
+        "ANTHROPIC_BASE_URL",
+        "ANTHROPIC_AUTH_TOKEN",
+        "ANTHROPIC_MODEL"
+      ],
+      "version_cmd": "claude --version"
+    },
+    {
+      "id": "claude-sonnet-5",
+      "label": "Claude Sonnet 5",
+      "provider": "anthropic",
+      "harness": "claude code",
+      "model": "claude-sonnet-5",
+      "cmd": "claude -p --model {model} --output-format json --permission-mode bypassPermissions",
+      "parse": "claude-json",
+      "unset_env": [
+        "ANTHROPIC_BASE_URL",
+        "ANTHROPIC_AUTH_TOKEN",
+        "ANTHROPIC_MODEL"
+      ],
+      "version_cmd": "claude --version"
+    },
+    {
+      "id": "codex-default",
+      "label": "Codex (default model)",
+      "provider": "openai",
+      "harness": "codex exec",
+      "cmd": "codex exec --json --skip-git-repo-check --sandbox workspace-write -",
+      "parse": "codex-jsonl",
+      "version_cmd": "codex --version"
+    },
+    {
+      "id": "gemini-3-5-flash",
+      "label": "Gemini 3.5 Flash",
+      "provider": "google",
+      "harness": "gemini cli",
+      "cmd": "gemini --skip-trust --yolo --output-format json -m {model} -p {prompt}",
+      "parse": "gemini-json",
+      "version_cmd": "gemini --version",
+      "model": "gemini-3.5-flash"
+    },
+    {
+      "id": "minimax-m3",
+      "label": "MiniMax M3",
+      "provider": "minimax",
+      "harness": "opencode",
+      "model": "minimax/MiniMax-M3",
+      "cmd": "opencode run --format json -m {model} {prompt}",
+      "parse": "opencode-json",
+      "version_cmd": "opencode --version"
+    }
+  ]
+}
