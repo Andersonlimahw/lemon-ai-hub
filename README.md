@@ -278,7 +278,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Andersonlimahw/lemon-ai-
 
 **Lemon AI Hub** is maintained by **Anderson Lima**. 
 
-[Website](https://lemon.dev.br) • [GitHub](https://github.com/Andersonlimahw) • [LinkedIn](https://www.linkedin.com/in/andersonlimadev/) • [X/Twitter](https://x.com/andersonlimadev)
+[Website](https://lemon.dev.br) • [GitHub](https://github.com/Andersonlimahw)
 
 ---
 *Built with 🍋 by Anderson Lima.*
