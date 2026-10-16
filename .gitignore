@@ -9,3 +9,5 @@ __pycache__/
 *.pyc
 # Local Karpathy Graph outputs
 .karpathy-graphs/
+# Graphify knowledge-graph output (local, regenerated)
+graphify-out/
