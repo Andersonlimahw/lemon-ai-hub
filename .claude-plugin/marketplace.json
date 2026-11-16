@@ -90,7 +90,7 @@
     {
       "name": "ai-benchmark-expert",
       "source": "./plugins/ai-benchmark-expert",
-      "description": "Benchmark LLMs the way serious leaderboards do: hand the SAME task to many providers and models as headless CLI subagents (Claude Code, Codex, Gemini CLI, OpenCode/MiniMax, mm-run or any command), run hidden deterministic checks in isolated workdirs, score the anonymised output with a blind LLM judge on an 8-dimension weighted rubric, and publish a single self-contained interactive HTML report — leaderboard with tiers, quality-vs-cost Pareto chart, efficiency bars, rubric heatmap, sortable table, per-run evidence, methodology — that you can share as one file. Methodology modelled on akitaonrails' LLM coding benchmark, BenchLM, the Open LLM Leaderboard, SWE-bench and Aider.",
+      "description": "Benchmark LLMs the way serious leaderboards do: hand the SAME task to many providers and models as headless CLI subagents (Claude Code, Codex, Gemini CLI, OpenCode/MiniMax, mm-run or any command), run hidden deterministic checks in isolated workdirs, score the anonymised output with a blind LLM judge on an 8-dimension weighted rubric, and publish a single self-contained interactive HTML report \u2014 leaderboard with tiers, quality-vs-cost Pareto chart, efficiency bars, rubric heatmap, sortable table, per-run evidence, methodology \u2014 that you can share as one file. Methodology modelled on akitaonrails' LLM coding benchmark, BenchLM, the Open LLM Leaderboard, SWE-bench and Aider.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -1096,7 +1096,7 @@
     {
       "name": "graph-feature-architect",
       "source": "./plugins/graph-feature-architect",
-      "description": "Plan new feature implementations grounded in the project's existing knowledge graph (graphify-out/ or a karpathy-graph output) instead of ad-hoc grepping. Use when the user asks to plan, scope, or architect a new feature and a graph already exists for the codebase — surfaces god nodes, community boundaries, and cross-file relationships the feature will touch before any code is written. Recreated as a minimal skeleton after the original plugin was removed from the hub; broken symlinks in consumer repos pointed here.",
+      "description": "Plan new feature implementations grounded in the project's existing knowledge graph (graphify-out/ or a karpathy-graph output) instead of ad-hoc grepping. Use when the user asks to plan, scope, or architect a new feature and a graph already exists for the codebase \u2014 surfaces god nodes, community boundaries, and cross-file relationships the feature will touch before any code is written. Recreated as a minimal skeleton after the original plugin was removed from the hub; broken symlinks in consumer repos pointed here.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -1124,7 +1124,7 @@
     {
       "name": "heygen-expert",
       "source": "./plugins/heygen-expert",
-      "description": "Canonical HeyGen orchestrator — routes between the HeyGen API skills (avatar, video, translate), the HyperFrames composition framework, and the heygen/hyperframes CLIs.",
+      "description": "Canonical HeyGen orchestrator \u2014 routes between the HeyGen API skills (avatar, video, translate), the HyperFrames composition framework, and the heygen/hyperframes CLIs.",
       "version": "1.0.0",
       "license": "MIT",
       "keywords": [
@@ -1917,6 +1917,22 @@
       ]
     },
     {
+      "name": "pstack",
+      "source": "./plugins/pstack",
+      "description": "if you want to go fast, go deep first. pstack helps you write less, but higher quality code. rigorous agent workflows you can parallelize with confidence.",
+      "version": "0.15.42",
+      "license": "MIT",
+      "keywords": [
+        "pstack",
+        "poteto-mode",
+        "workflow",
+        "principles",
+        "agent-style",
+        "subagents",
+        "unslop"
+      ]
+    },
+    {
       "name": "public-relations",
       "source": "./plugins/public-relations",
       "description": "When the user wants help with public relations, earned media, press coverage, journalist outreach, or media strategy (not pull requests). Also use when the user mentions 'PR,' 'public relations,' 'press,' 'press release,' 'press coverage,' 'media outreach,' 'pitch a journalist,' 'get featured,' 'media list,' 'media kit,' 'press kit,' 'newsjacking,' 'news hijack,' 'HARO,' 'Qwoted,' 'Featured,' 'Help A Reporter,' 'reporter request,' 'tech press,' 'TechCrunch,' 'earned media,' 'thought leadership placement,' 'op-ed,' 'guest article,' 'press contacts,' or 'how do I get press.' Use this for earned media work \u2014 finding journalists, pitching stories, newsjacking, and responding to press requests. For startup/SaaS/AI directory submissions, see directory-submissions. For product launches, see launch. For social-media engagement, see social. For cold-email outreach to prospects, see cold-email.",
@@ -1962,6 +1978,21 @@
         "skill",
         "lemon-ai-hub",
         "revops"
+      ]
+    },
+    {
+      "name": "rtk",
+      "source": "./plugins/rtk",
+      "description": "Token-optimized CLI proxy for shell commands (Rust Token Killer). Use to run shell commands prefixed with rtk saving 60-90% tokens.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "rtk",
+        "tokens",
+        "cli",
+        "proxy"
       ]
     },
     {
@@ -2556,18 +2587,6 @@
       ]
     },
     {
-      "name": "writing-guidelines",
-      "source": "./plugins/writing-guidelines",
-      "description": "Review docs/prose for Writing Guidelines compliance. Use when asked to \"review my docs\", \"check writing style\", \"audit prose\", \"review docs voice and tone\", or \"check this page against the writing handbook\".",
-      "version": "1.0.0",
-      "license": "MIT",
-      "keywords": [
-        "skill",
-        "lemon-ai-hub",
-        "writing-guidelines"
-      ]
-    },
-    {
       "name": "worktree-janitor",
       "source": "./plugins/worktree-janitor",
       "description": "Limpa worktrees git abandonadas por agentes de IA (Claude Code, Codex, Gemini CLI, Agy/Antigravity, OpenCode, Cursor) em todos os projetos da m\u00e1quina, com autoriza\u00e7\u00e3o expl\u00edcita do usu\u00e1rio e relat\u00f3rio HTML autocontido. Classifica cada worktree por risco \u2014 \u00f3rf\u00e3, mergeada, upstream removido, sem commits pr\u00f3prios, stale, suja, ativa, protegida \u2014 lista projetos/branches/diret\u00f3rios antes de remover qualquer coisa, aplica s\u00f3 a sele\u00e7\u00e3o aprovada e gera undo.sh. Use quando o usu\u00e1rio pedir para limpar worktrees, remover worktrees \u00f3rf\u00e3s ou mergeadas, fazer faxina de branches de agentes, liberar espa\u00e7o de worktrees ou auditar worktrees da m\u00e1quina.",
@@ -2585,6 +2604,18 @@
         "html-report",
         "disk-space",
         "cross-harness"
+      ]
+    },
+    {
+      "name": "writing-guidelines",
+      "source": "./plugins/writing-guidelines",
+      "description": "Review docs/prose for Writing Guidelines compliance. Use when asked to \"review my docs\", \"check writing style\", \"audit prose\", \"review docs voice and tone\", or \"check this page against the writing handbook\".",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "writing-guidelines"
       ]
     }
   ]
