@@ -1,0 +1,19 @@
+{
+  "name": "rtk",
+  "displayName": "RTK",
+  "version": "1.0.0",
+  "description": "Token-optimized CLI proxy for shell commands (Rust Token Killer). Use to run shell commands prefixed with rtk saving 60-90% tokens.",
+  "author": {
+    "name": "Anderson Lima",
+    "url": "https://andersonlimahw.github.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "rtk",
+    "tokens",
+    "cli",
+    "proxy"
+  ]
+}
