@@ -9,7 +9,7 @@ metadata:
 
 Act as a principal product designer and frontend engineer. Produce interfaces that feel authored, precise, calm, fast, and memorable. Use Apple Human Interface Guidelines principles as a web-quality north star—clarity, deference, depth, hierarchy, continuity, and accessibility—without pretending a website is native iOS or calling web glassmorphism official Liquid Glass.
 
-This skill is canonical for new pages, page redesigns, reusable components, design-system work, UI critique, and frontend polish. It composes seven companion skills. Consult them in this exact lexical order; do not let a later module erase a stronger usability, accessibility, performance, or product constraint.
+This skill is canonical for new pages, page redesigns, reusable components, design-system work, UI critique, and frontend polish. It composes eight companion skills. Consult them in this exact lexical order; do not let a later module erase a stronger usability, accessibility, performance, or product constraint.
 
 ## Companion stack — lexical order
 
@@ -34,7 +34,10 @@ This skill is canonical for new pages, page redesigns, reusable components, desi
 7. **ui-ux-pro-max**
    Use for design-system intelligence, pattern selection, style direction, color, typography, landing-page structure, and anti-pattern checks. When its design-system generator exists in the active runtime, use it before committing to a new visual system.
 
-If nested skill invocation is supported, invoke `$design`, `$design-taste-frontend`, `$frontend-design`, `$impeccable`, `$revenue-centric-design`, `$scroll-world`, and `$ui-ux-pro-max` in that order. If not supported, resolve each `SKILL.md` from the runtime overlay or the hub source and apply the same contract. Keep heavy companion references conditional.
+8. **unslop-ui**
+   Final anti-slop pass over interface copy, charts and dashboards — and, with `--surface`, gradients, glows, spacing, weights and motion. Apply the U1–U20 rules and the /pstack:unslop writing rules to every visible string. It is the same discipline as this contract's anti-AI-slop gate, expressed as id-stable rules (U1–U20) with a before/after counter. Run it last so the finished surface is edited once and not re-slopped by later steps.
+
+If nested skill invocation is supported, invoke `$design`, `$design-taste-frontend`, `$frontend-design`, `$impeccable`, `$revenue-centric-design`, `$scroll-world`, `$ui-ux-pro-max`, and `$unslop-ui` in that order. If not supported, resolve each `SKILL.md` from the runtime overlay or the hub source and apply the same contract. Keep heavy companion references conditional.
 
 ## Operating contract
 
@@ -88,6 +91,8 @@ Reject defaults unless the brief explicitly requires them:
 - gradients, particles, parallax, hover tricks, or infinite loops added only to signal “AI-made polish.”
 
 Replace defaults with a specific visual thesis, contextual copy, believable content shape, intentional rhythm, and a small number of meaningful details. Do not hide weak hierarchy under effects.
+
+For the copy, charts and surface layer specifically, run the `unslop-ui` pass (companion `design-expert:unslop-ui`, rules U1–U20): eyebrow labels, decorative numbering, subtitle reflex, botsplaining, leaked design notes, status strings, label duplication, staccato slogans, stateless badges and dots, decorative icons, chart titles/legends/scaffolding that repeat the data, and — with `--surface` — hue gradients, glows, off-scale spacing, extra-heavy weights and decorative motion. Deleting is the default fix; never invent a fact, number or benefit the code does not show.
 
 ### 5. Layout system
 
@@ -162,7 +167,7 @@ Before declaring a page or component complete, verify:
 6. console, typecheck, lint, targeted tests, and the repository’s full quality gate;
 7. visual evidence at narrow, medium, and wide viewports when browser tooling exists.
 
-Run a final anti-slop pass: remove one unnecessary effect, one redundant surface, and one generic pattern if doing so improves clarity. Keep any effect whose removal would damage meaning or orientation.
+Run a final anti-slop pass: remove one unnecessary effect, one redundant surface, and one generic pattern if doing so improves clarity. Keep any effect whose removal would damage meaning or orientation. Then run `unslop-ui` (U1–U20) over the visible copy and charts; report rewritten strings, tells kept on purpose, and owner tasks.
 
 ## Cross-runtime resolution
 
@@ -177,4 +182,4 @@ Preferred discovery:
 - Antigravity/Agy: `~/.antigravity/skills/design-expert/` or `~/.agy/skills/design-expert/`;
 - Gemini-backed Antigravity: `~/.gemini/config/skills/design-expert/` when that overlay is active.
 
-Keep one source of truth. Prefer symlinks or marketplace exposure over copied skill bodies. Resolve companion skills from the active overlay first, then the hub. If a companion is unavailable, preserve its contribution through this contract and report missing installation only when it blocks the requested work.
+Keep one source of truth. Prefer symlinks or marketplace exposure over copied skill bodies. Resolve companion skills from the active overlay first, then the hub. `unslop-ui` resolves the same way as the other companions (its `SKILL.md` lives beside this one, plus `references/` and `scripts/`). If a companion is unavailable, preserve its contribution through this contract and report missing installation only when it blocks the requested work.

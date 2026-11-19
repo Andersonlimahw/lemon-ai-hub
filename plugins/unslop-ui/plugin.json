@@ -1,0 +1,23 @@
+{
+  "name": "unslop-ui",
+  "version": "0.5.1",
+  "description": "Cut AI tells from interface and chart copy: eyebrow labels, 01/02/03 numbering, redundant subtitles, captions that explain what is already visible, leaked design notes, decorative badges, icons and status dots, chart clutter and legends a direct label could replace. With --surface it also fixes gradients and glows, off-scale spacing, extra-heavy weights and decorative motion.",
+  "author": {
+    "name": "Felipe Basurto"
+  },
+  "homepage": "https://github.com/felipebasurto/unslop-ui",
+  "repository": "https://github.com/felipebasurto/unslop-ui",
+  "license": "MIT",
+  "keywords": [
+    "skill",
+    "lemon-ai-hub",
+    "unslop",
+    "ai-slop",
+    "ui",
+    "ux-writing",
+    "copywriting",
+    "design",
+    "dashboards",
+    "charts"
+  ]
+}
