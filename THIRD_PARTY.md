@@ -28,6 +28,7 @@ Confirmado com `find plugins -iname 'LICENSE*'`:
 - `skills-cookbook` — `plugins/skills-cookbook/LICENSE` (MIT)
 - `teaching` — `plugins/teaching/LICENSE` (MIT)
 - `webapp-testing` — `plugins/webapp-testing/LICENSE.txt` (Apache-2.0)
+- `unslop-ui` — `plugins/unslop-ui/LICENSE` (MIT, upstream https://github.com/felipebasurto/unslop-ui)
 
 ## Plugins com origem provável de terceiros
 

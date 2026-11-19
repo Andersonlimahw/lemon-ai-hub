@@ -2467,6 +2467,25 @@
       ]
     },
     {
+      "name": "unslop-ui",
+      "source": "./plugins/unslop-ui",
+      "description": "Cut AI tells from interface and chart copy: eyebrow labels, 01/02/03 numbering, redundant subtitles, captions that explain what is already visible, leaked design notes, decorative badges, icons and status dots, chart clutter and legends a direct label could replace. With --surface it also fixes gradients and glows, off-scale spacing, extra-heavy weights and decorative motion.",
+      "version": "0.5.1",
+      "license": "MIT",
+      "keywords": [
+        "skill",
+        "lemon-ai-hub",
+        "unslop",
+        "ai-slop",
+        "ui",
+        "ux-writing",
+        "copywriting",
+        "design",
+        "dashboards",
+        "charts"
+      ]
+    },
+    {
       "name": "vercel-cli-with-tokens",
       "source": "./plugins/vercel-cli-with-tokens",
       "description": "Deploy and manage projects on Vercel using token-based authentication. Use when working with Vercel CLI using access tokens rather than interactive login \u2014 e.g. \"deploy to vercel\", \"set up vercel\", \"add environment variables to vercel\".",
